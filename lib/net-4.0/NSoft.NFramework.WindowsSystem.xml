@@ -1,0 +1,999 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.WindowsSystem</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.WindowsSystem.AdServiceTool">
+      <summary>
+            Active Directory 관련 Utility Class
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.WindowsSystem.AdServiceTool.DEFAULT_PREFIX">
+      <summary>
+            Scheme for LDAP (LDAP://)
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.AdServiceTool.Authenticate(System.String,System.String,System.String)">
+      <summary>
+            Active Directory 서버에서 사용자 인증을 수행한다.
+            </summary>
+      <param name="adPath">AD 서버 경로 (ex: LDAP://ServerName )</param>
+      <param name="username">사용자 Id</param>
+      <param name="password">사용자 비밀번호</param>
+      <returns>인증 성공 여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.AdServiceTool.Authenticate(System.String,System.String,System.String,System.DirectoryServices.AuthenticationTypes)">
+      <summary>
+            Active Directory 서버에서 사용자 인증을 수행한다.
+            </summary>
+      <param name="adPath">AD 서버 경로 (ex: LDAP://ServerName )</param>
+      <param name="username">사용자 Id</param>
+      <param name="password">사용자 비밀번호</param>
+      <param name="authType">인증 형식</param>
+      <returns>인증 성공 여부</returns>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.EventLogger">
+      <summary>
+            Windows 의 Event Log 서비스에 Event를 기록하는 Logger입니다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.WindowsSystem.EventLogger.DEFAULT_LOG_NAME">
+      <summary>
+            기본 로그 명
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.WindowsSystem.EventLogger.DEFAULT_MACHINE_NAME">
+      <summary>
+            기본 머신 이름
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.#ctor">
+      <summary>
+            RwEventLog 생성자 (Application Event Log)
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.#ctor(System.String)">
+      <summary>
+            RwEventLog 생성자
+            </summary>
+      <param name="logName">ex: Application, Security, System 같은 로그 이름</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.#ctor(System.String,System.String)">
+      <summary>
+            RwEventLog 생성자
+            </summary>
+      <param name="logName">ex: Application, Security, System 같은 로그 이름</param>
+      <param name="machineName">Computer machine name (ex '.')</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.#ctor(System.String,System.String,System.String)">
+      <summary>
+            RwEventLog 생성자
+            </summary>
+      <param name="logName">ex: Application, Security, System 같은 로그 이름</param>
+      <param name="machineName">Computer machine name (ex '.')</param>
+      <param name="source">event source (일반적으로 Assembly 명을 사용한다)</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16,System.Byte[])">
+      <summary>
+            EventLog에 항목을 쓴다.
+            </summary>
+      <param name="message">
+      </param>
+      <param name="entryType">
+      </param>
+      <param name="eventID">
+      </param>
+      <param name="category">
+      </param>
+      <param name="rawData">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)">
+      <summary>
+            EventLog에 항목을 쓴다.
+            </summary>
+      <param name="message">로그엔트리 정보</param>
+      <param name="entryType">엔트리 타입</param>
+      <param name="eventID">이벤트 ID</param>
+      <param name="category">분류 번호</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.WriteEntry(System.String,System.Diagnostics.EventLogEntryType,System.Int32)">
+      <summary>
+            EventLog에 항목을 쓴다.
+            </summary>
+      <param name="message">로그엔트리 정보</param>
+      <param name="entryType">엔트리 타입</param>
+      <param name="eventID">이벤트 ID</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.WriteEntry(System.String,System.Diagnostics.EventLogEntryType)">
+      <summary>
+            EventLog에 항목을 쓴다.
+            </summary>
+      <param name="message">로그엔트리 정보</param>
+      <param name="entryType">엔트리 타입</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.GetEntries">
+      <summary>
+            Event Log의 모든 항목을 가져온다.
+            </summary>
+      <returns>EventLogEntry의 Collection 객체</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.ClearLog">
+      <summary>
+            Event Log에서 모든 항목을 삭제한다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.CloseLog">
+      <summary>
+            EventLog 를 닫는다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.DeleteLog">
+      <summary>
+            해당 Log를 삭제하고 로그객체 리소스를 해제한다. 
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.FindEntryByTime(System.DateTime,System.Boolean)">
+      <summary>
+            EventLog 중 생성일 전/후의 Entry를 검색
+            </summary>
+      <param name="generatedTime">검색 기준이 되는 생성시간</param>
+      <param name="isBefore">생성시간 전, 후를 나눔</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.FindEntryByEntryType(System.Diagnostics.EventLogEntryType)">
+      <summary>
+            지정된 <c>EventLogEntryType</c>(수준)과 같은 <c>EventLogEntry</c>를 검색한다.
+            </summary>
+      <param name="entryType">검색할 <c>EventLogEntryType</c>(수준)의 값</param>
+      <returns>찾은 <c>EventLogEntry</c>의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.Close">
+      <summary>
+            EventLog 닫기
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.Dispose(System.Boolean)">
+      <summary>
+            Disposing
+            </summary>
+      <param name="disposing">관리되는 객체를 메모리에서 해제할 것인가</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogger.OnDisposed">
+      <summary>
+            인스턴스가 Dispose될 때 호출되는 메소드
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.EventLogger.LogName">
+      <summary>
+            이벤트 로그의 이름
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.EventLogger.Source">
+      <summary>
+            원본 이름
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.EventLogger.MachineName">
+      <summary>
+            컴퓨터 이름
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.EventLogger.IsOpen">
+      <summary>
+            사용 가능 여부
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.EventLogger.Log">
+      <summary>
+            열려진 EventLog 객체
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.EventLogger.IsSystemDefault">
+      <summary>
+            Windows System이 제공하는 기본 EventLog 여부
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.EventLogTool">
+      <summary>
+        <c>RwEventLog</c>를 이용하여, Windows Event Log를 쉽게 사용할 수 있는 Utility Class 입니다.
+            </summary>
+      <example>
+        <code>
+                // Windows EventLog에 정보를 쓴다. 
+                EventLogTool.WriteEntry("Application", "NSoft.NFramework.Test", "Information : EventLogTool Test", EventLogEntryType.Information);
+                </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.GetEventLog(System.String)">
+      <summary>
+        <paramref name="logName">로그 이름</paramref>에 해당하는 <see href="EventLog" /> 인스턴스를 반환한다.
+            </summary>
+      <param name="logName">
+      </param>
+      <returns>EventLog 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.GetEventLog(System.String,System.String)">
+      <summary>
+            해당 EventLog를 반환한다. Event Source가 없다면 생성한다.
+            </summary>
+      <param name="logName">로그 이름</param>
+      <param name="source">이벤트 로그 엔트리 소스</param>
+      <returns>해당 EventLog Instance</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.GetEventLog(System.String,System.String,System.String)">
+      <summary>
+            해당 EventLog를 반환한다. Event Source가 없다면 생성한다.
+            </summary>
+      <param name="logName">로그 이름</param>
+      <param name="source">엔트리 소스</param>
+      <param name="machineName">로그가 있는 컴퓨터</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.WriteEntry(System.String,System.String,System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16,System.Byte[])">
+      <summary>
+            이벤트 로그를 쓴다.
+            </summary>
+      <param name="logName">이벤트 로그 명</param>
+      <param name="source">원본</param>
+      <param name="message">이벤트 메시지</param>
+      <param name="type">이벤트 수준(경고, 정보 등)</param>
+      <param name="eventID">이벤트 ID</param>
+      <param name="category">이벤트 분류</param>
+      <param name="rawData">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.WriteEntry(System.String,System.String,System.String,System.Diagnostics.EventLogEntryType,System.Int32,System.Int16)">
+      <summary>
+            이벤트 로그를 쓴다.
+            </summary>
+      <param name="logName">이벤트 로그 명</param>
+      <param name="source">원본</param>
+      <param name="message">이벤트 메시지</param>
+      <param name="type">이벤트 수준(경고, 정보 등)</param>
+      <param name="eventID">이벤트 ID</param>
+      <param name="category">이벤트 분류</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.WriteEntry(System.String,System.String,System.String,System.Diagnostics.EventLogEntryType,System.Int32)">
+      <summary>
+            이벤트 로그를 쓴다.
+            </summary>
+      <param name="logName">이벤트 로그 명</param>
+      <param name="source">원본</param>
+      <param name="message">이벤트 메시지</param>
+      <param name="type">이벤트 수준(경고, 정보 등)</param>
+      <param name="eventID">이벤트 ID</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.WriteEntry(System.String,System.String,System.String,System.Diagnostics.EventLogEntryType)">
+      <summary>
+            이벤트 로그를 쓴다.
+            </summary>
+      <param name="logName">이벤트 로그 명</param>
+      <param name="source">원본</param>
+      <param name="message">이벤트 메시지</param>
+      <param name="type">이벤트 수준(경고, 정보 등)</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.WriteEntry(System.String,System.Diagnostics.EventLogEntryType)">
+      <summary>
+            이벤트 로그를 쓴다.
+            </summary>
+      <param name="message">이벤트 메시지</param>
+      <param name="type">이벤트 수준(경고, 정보 등)</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.FindEntryByGeneratedTime(System.Diagnostics.EventLog,System.DateTime,System.Boolean)">
+      <summary>
+            EventLogEntry의 생성 시간을 기준으로 검색한다.
+            </summary>
+      <param name="eventLog">대성 EventLog 인스턴스</param>
+      <param name="generatedTime">검색할 기준 시간</param>
+      <param name="isBefore">기준시간 전/후를 판단하는 옵션</param>
+      <returns>검색된 로그 엔트리의 컬렉션</returns>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.FindEntryByGeneratedTime(System.String,System.String,System.DateTime,System.Boolean)">
+      <summary>
+            EventLogEntry의 생성 시간을 기준으로 검색한다.
+            </summary>
+      <param name="logName">로그 엔트리 목록 (예: Application, System)</param>
+      <param name="source">로그 소스</param>
+      <param name="generatedTime">검색할 기준 시간</param>
+      <param name="isBefore">기준시간 전/후를 판단하는 옵션</param>
+      <returns>검색된 로그 엔트리의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.FindEntryBySource(System.Diagnostics.EventLog,System.String,System.Boolean)">
+      <summary>
+        <c>EventLogEntry</c>의 원본 이름으로 찾기
+            </summary>
+      <param name="eventLog">검색 대상 <c>EventLog</c></param>
+      <param name="source">검색할 <c>EventLogEntry</c>의 원본 이름</param>
+      <param name="ignoreCase">대소문자 구분 여부</param>
+      <returns>찾은 <c>EventLogEntry</c>의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.FindEntryBySource(System.String,System.String,System.Boolean)">
+      <summary>
+        <c>EventLogEntry</c>의 원본 이름으로 찾기
+            </summary>
+      <param name="logName">
+        <c>EventLog</c>의 이름</param>
+      <param name="source">검색할 <c>EventLogEntry</c>의 원본 이름</param>
+      <param name="ignoreCase">대소문자 구분 여부</param>
+      <returns>찾은 <c>EventLogEntry</c>의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.FindEntryByEntryType(System.Diagnostics.EventLog,System.Diagnostics.EventLogEntryType)">
+      <summary>
+            지정된 <c>EventLogEntryType</c>(수준)과 같은 <c>EventLogEntry</c>를 검색한다.
+            </summary>
+      <param name="eventLog">대상 <c>EventLog</c> 인스턴스</param>
+      <param name="entryType">검색할 <c>EventLogEntryType</c>(수준)의 값</param>
+      <returns>찾은 <c>EventLogEntry</c>의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.FindEntryByEntryType(System.String,System.String,System.Diagnostics.EventLogEntryType)">
+      <summary>
+            지정된 <c>EventLogEntryType</c>(수준)과 같은 <c>EventLogEntry</c>를 검색한다.
+            </summary>
+      <param name="logName">
+        <c>EventLog</c>의 이름</param>
+      <param name="source">검색할 <c>EventLogEntry</c>의 원본 이름</param>
+      <param name="entryType">검색할 <c>EventLogEntryType</c>(수준)의 값</param>
+      <returns>찾은 <c>EventLogEntry</c>의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.EventLogTool.SetLogMaxSize(System.String,System.Int32)">
+      <summary>
+            이벤트 로그 크기를 조절한다.
+            </summary>
+      <param name="logName">이벤트 로그 이름</param>
+      <param name="maxSize">Log 크기, KByte 단위</param>
+      <remarks>레지스트리를 조작할 수 있는 권한이 있어야 한다.</remarks>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.IRegistryReader">
+      <summary>
+            레지스트리 값 읽기 Interface
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.IRegistryReader.GetValue(System.String,System.String)">
+      <summary>
+             레지스트리의 서브키의 name에 해당하는 값을 가져온다. 
+            </summary>
+      <param name="subKey">레지스트리 서브키찾</param>
+      <param name="name">찾고자하는 레지스트리 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.MsmqTool">
+      <summary>
+            Microsoft Message Queue에 대한 Utility Class 입니다.
+            </summary>
+      <remark>
+        <b>ActiveX Library와는 달리 .NET Framework Class이므로 이를 생성해서 사용하는 계정의 Windows System 권한이 중요하다.</b>
+      </remark>
+    </member>
+    <member name="F:NSoft.NFramework.WindowsSystem.MsmqTool.PRIVATE_PATH">
+      <summary>
+            Private MessageQueue의 Root Path
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPublicQueues">
+      <summary>
+            가동 시스템의 공개 큐들을 1차원 배열로 반환한다.
+            </summary>
+      <returns>큐의 1차원 배열</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPublicQueues(System.Collections.Generic.List{System.Messaging.MessageQueue})">
+      <summary>
+            가동 시스템의 공개 큐들을 지정된 리스트에 추가한다.
+            </summary>
+      <param name="list">큐를 저장할 리스트 객체</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPublicQueues(System.String)">
+      <summary>
+            지정된 머신의 공개 큐들을 1차원 배열로 반환한다.
+            </summary>
+      <param name="machineName">컴퓨터 이름</param>
+      <returns>큐의 배열, 실패시에는 길이가 0인 배열</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPublicQueues(System.String,System.Collections.Generic.List{System.Messaging.MessageQueue})">
+      <summary>
+            가동 시스템의 공개 큐들을 지정된 리스트에 추가한다.
+            </summary>
+      <param name="machineName">컴퓨터 이름</param>
+      <param name="list">큐 리스트</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPrivateQueues">
+      <summary>
+            현 시스템의 비공개 큐들을 1차원 배열로 반환한다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPrivateQueues(System.String)">
+      <summary>
+            지정된 컴퓨터이름을 가진 시스템의 비공개 큐들을 1차원 배열로 반환한다.
+            </summary>
+      <remarks>
+            타 컴퓨터의 경우 보안이 제대로 설정되어 있지 않다면, 실패할 것이다.
+            </remarks>
+      <param name="machineName">
+      </param>
+      <returns>1차원 배열</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPrivateQueue(System.Collections.Generic.List{System.Messaging.MessageQueue})">
+      <summary>
+            현 시스템의 비공개 큐들을 제공된 리스트에 추가한다.
+            </summary>
+      <param name="list">큐를 저장할 리스트 객체</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetPrivateQueues(System.String,System.Collections.Generic.List{System.Messaging.MessageQueue})">
+      <summary>
+            지정된 컴퓨터이름을 가진 시스템의 비공개 큐들을 제공된 리스트에 추가한다.
+            </summary>
+      <remarks>
+            타 컴퓨터의 경우 보안이 제대로 설정되어 있지 않다면, 실패할 것이다.
+            </remarks>
+      <param name="machineName">큐가 있는 컴퓨터이름</param>
+      <param name="list">큐를 저장할 리스트 객체</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.Exists(System.String)">
+      <summary>
+            메시지 큐가 지정된 경로에 존재하는지 확인합니다.
+            </summary>
+      <param name="path">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreatePrivateQueue(System.String)">
+      <summary>
+            새로운 개인 대기열을 생성합니다.
+            </summary>
+      <param name="queueName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreatePrivateQueue(System.String,System.String)">
+      <summary>
+            개인 대기열을 생성합니다.
+            </summary>
+      <param name="queueName">대기열 이름</param>
+      <param name="label">대기열 라벨</param>
+      <returns>생성된 대기열</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreatePrivateQueue(System.String,System.Boolean)">
+      <summary>
+            개인 대기열을 생성합니다.
+            </summary>
+      <param name="queueName">개인대기열 이름</param>
+      <param name="transactional">Transaction 지원 유무</param>
+      <returns>생성된 개인 대기열</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreatePrivateQueue(System.String,System.String,System.Boolean)">
+      <summary>
+            새로운 개인 대기열을 생성합니다.
+            </summary>
+      <param name="queueName">개인대기열 이름</param>
+      <param name="label">라벨</param>
+      <param name="transactional">Transaction 지원 유무</param>
+      <returns>생성된 개인 대기열</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreateQueue(System.String)">
+      <summary>
+            지정된 경로에 공개 메시지 대기열을 만듭니다.  
+            </summary>
+      <param name="path">대기열 경로</param>
+      <returns>생성된 Message Queue</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreateQueue(System.String,System.String)">
+      <summary>
+            지정된 경로에 공개 메시지 대기열을 만듭니다.  
+            </summary>
+      <param name="path">대기열 경로</param>
+      <param name="queueLabel">대기열 라벨</param>
+      <returns>생성된 Message Queue</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreateQueue(System.String,System.Boolean)">
+      <summary>
+            지정된 경로에 공개 메시지 대기열을 만듭니다.  
+            </summary>
+      <param name="path">대기열 경로</param>
+      <param name="transactional">Transaction 지원 유무</param>
+      <returns>생성된 Message Queue</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.CreateQueue(System.String,System.String,System.Boolean)">
+      <summary>
+            지정된 경로에 공개 메시지 대기열을 만듭니다.  
+            </summary>
+      <param name="path">대기열 경로</param>
+      <param name="label">대기열 라벨</param>
+      <param name="transactional">Transaction 지원 유무</param>
+      <returns>생성된 Message Queue, 생성에 실패하념 null이 반환된다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.Send(System.String,System.Object)">
+      <summary>
+            message body를 인자로 대기열에 전송
+            </summary>
+      <param name="path">보낼 대기열 경로</param>
+      <param name="body">보낼 내용</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.Send(System.String,System.Object,System.String)">
+      <summary>
+            message body를 인자로 대기열에 전송
+            </summary>
+      <param name="path">보낼 대기열 경로</param>
+      <param name="body">보낼 내용</param>
+      <param name="label">메시지 라벨</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.Send(System.String,System.Object,System.String,System.Int32)">
+      <summary>
+            System.Messaging.Message 객체를 Message Queue에 전송한다.
+            </summary>
+      <param name="path">전송할 대기열 위치</param>
+      <param name="body">본문 내용</param>
+      <param name="label">메시지 라벨</param>
+      <param name="appSpec">메시지 구분을 위한 Message AppSpecific</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.SendMessage(System.String,System.Messaging.Message)">
+      <summary>
+            System.Messaging.Message 형식의 객체를 지정된 대기열에 전송한다.
+            </summary>
+      <param name="path">지정된 대기열 위치</param>
+      <param name="message">전송할 메시지 객체</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetAllMessages(System.String)">
+      <summary>
+            지정된 대기열에 있는 모든 메시지의 복사본을 가져온다.
+            </summary>
+      <param name="path">지정된 대기열</param>
+      <returns>지정된 대기열에 있는 모든 메시지</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetMessageEnumerator(System.String)">
+      <summary>
+            지정된 대기열에서 foreach 구문을 위한 <c>System.Messaging.MessageEnumerator</c> 개체를 반환<br />
+            기본적으로 대기열안의 본문 내용이 문자열로 가정한다.
+            </summary>
+      <param name="path">지정된 대기열 위치</param>
+      <returns>
+        <c>System.Messaging.MessageEnumerator</c> 객체</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.MsmqTool.GetMessageEnumerator(System.String,System.Type[])">
+      <summary>
+            지정된 대기열에서 foreach 구문을 위한 <c>System.Messaging.MessageEnumerator</c> 개체를 반환<br /><b>개체(사용자가 정의한 일반 Class) 를 사용할 수도 있도록 Type[] 개체를 받음</b><remarks>
+            이때의 Type은 <c>XmlMessageFormatter</c>를 이용하여
+            XML로 serialize/deserialize되므로 <c>SerializableAttribute</c> 특성이 지정되었거나 
+            <c>ISerializable</c> 인터페이스를 구현한 Class여야 한다.
+            </remarks></summary>
+      <example>
+        <code>
+            // RwMqUtilityTest.cs 파일의 ReadMessages Method 참조
+            MessageEnumerator me = MsmqUtil.GetMessageEnumerator(path);//, new Type[] { typeof(string) } );
+            Message m;
+            
+            Console.WriteLine("Label       ID      BODY");
+            while (me.MoveNext())
+            {
+                m = me.Current;
+            
+                Console.WriteLine("{0} {1} {2}", m.Label, m.Id, m.Body);
+                me.RemoveCurrent();
+            }
+            me.Dispose();
+            </code>
+      </example>
+      <param name="path">지정된 대기열 위치</param>
+      <param name="types">XmlMessageFormatter 형식</param>
+      <returns>foreach문을 지원하기 위한<c>MessageEnumerator</c> 객체</returns>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.Registry32">
+      <summary>
+            32bit OS 용 Registry 사용을 위한 클래스입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.Registry32.#ctor(Microsoft.Win32.RegistryKey)">
+      <summary>
+            생성자
+            </summary>
+      <param name="rootKey">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.Registry32.GetValue(System.String,System.String)">
+      <summary>
+            지정된 서브키의 레지스트리 명에 해당하는 값을 가져온다. 없으면 null을 반환한다.
+            </summary>
+      <param name="subKey">레지스트리 서브 키</param>
+      <param name="name">레지스트리 명</param>
+      <returns>레지스트리 값, 없으면 null을 반환한다.</returns>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.Registry32.LocalMachine">
+      <summary>
+            32bit OS Registry의 LocalMachine
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.Registry64">
+      <summary>
+            64bit OS 용 Registry 사용을 위한 클래스입니다.
+            </summary>
+      <example>
+        <code>
+            // 64bit registry 중 LOCAL_MACHINE에 해당하는 registry key를 반환한다.
+            Registry64 reg64 = Registry64.LocalMachine;
+            
+            // registry로부터 값을 얻는다.
+            string maxSizeValue = reg64.GetValue( @"SOFTWARE\NSoft\NFramework\Test", "MaxSize");
+            </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.Registry64.#ctor(System.IntPtr)">
+      <summary>
+            Initialize a new instance of the <see cref="T:NSoft.NFramework.WindowsSystem.Registry64" /> class
+            </summary>
+      <param name="rootKey">The root HKey</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.Registry64.GetValue(System.String,System.String)">
+      <summary>
+             레지스트리의 서브키의 name에 해당하는 값을 가져온다. 
+            </summary>
+      <param name="subKey">레지스트리 서브키찾</param>
+      <param name="name">찾고자하는 레지스트리 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.Registry64.LocalMachine">
+      <summary>
+            64bit OS Registry의 LocalMachine
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.RegistryClient">
+      <summary>
+            Windows Registry 를 조작하는 Class
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.#ctor">
+      <summary>
+            기본 생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.#ctor(Microsoft.Win32.RegistryKey)">
+      <summary>
+            생성자
+            </summary>
+      <param name="rootKey">레지스트리 키</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.#ctor(Microsoft.Win32.RegistryKey,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="rootKey">레지스트리 키</param>
+      <param name="subKeyName">서브 키 이름</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.Close">
+      <summary>
+            Registry 사용을 마친다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.Dispose(System.Boolean)">
+      <summary>
+            실제 Disposing하는 메소드
+            </summary>
+      <param name="disposing">관리되는 객체를 Disposing할 것인가.</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.OnDisposed">
+      <summary>
+            인스턴스가 Dispose 되면 호출된다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.CreateSubKey(System.String)">
+      <summary>
+            RootKey에서 새로운 서브키를 생성한다.
+            </summary>
+      <param name="subKeyName">경로</param>
+      <returns>생성된 레지스트리 키 인스턴스, 사용후 꼭 Close 를 해야 한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValue(System.String)">
+      <summary>
+            현재 열려있는 서브키에서 지정된 이름의 값을 읽어온다.
+            </summary>
+      <param name="name">이름</param>
+      <returns>실패시에는 null 값 반환</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValue(System.String,System.String)">
+      <summary>
+            지정된 서브키에서 지정된 이름의 값을 읽어온다.
+            </summary>
+      <param name="subKeyName">레지스트리 키 명</param>
+      <param name="name">이름</param>
+      <returns>실패시에는 null 값 반환</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValueDef``1(System.String,``0)">
+      <summary>
+            현재 서브 키에서 지정된 이름의 값을 가져온다. 실패시에는 지정된 기본값을 반환한다.
+            </summary>
+      <typeparam name="T">값의 타입</typeparam>
+      <param name="name">이름</param>
+      <param name="defaultValue">기본값</param>
+      <returns>실패시에는 defaultValue를 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValueDef``1(System.String,System.String,``0)">
+      <summary>
+            지정된 서브키에서 지정된 이름의 값을 가져온다. 실패시에는 지정된 기본값을 반환한다.
+            </summary>
+      <typeparam name="T">값의 타입</typeparam>
+      <param name="subKeyName">서브 키 이름</param>
+      <param name="name">이름</param>
+      <param name="defaultValue">기본값</param>
+      <returns>실패시에는 defaultValue를 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValues">
+      <summary>
+            현재 열려진 서브 키에 있는 모든 이름-값 을 가져온다.
+            </summary>
+      <returns>
+        <c>System.Collections.Specialized.HybridDictionary</c> 객체를 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValues(System.String)">
+      <summary>
+            지정된 서브 키에 있는 모든 이름-값 을 가져온다.
+            </summary>
+      <param name="subKeyName">서브 키 이름</param>
+      <returns>
+        <c>System.Collections.Specialized.HybridDictionary</c> 객체를 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValues(System.String,System.Object)">
+      <summary>
+            지정된 서브 키에 있는 모든 이름-값 을 가져온다.
+            </summary>
+      <param name="subKeyName">서브 키 이름</param>
+      <param name="defaultValue">기본 값</param>
+      <returns>
+        <c>System.Collections.Specialized.HybridDictionary</c> 객체를 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.SetValue(System.String,System.Object)">
+      <summary>
+             지정된 RootKey/SubKeyName에 있는 name 값에 data를 설정한다.
+             </summary>
+      <param name="name">이름</param>
+      <param name="value">데이타 값</param>
+      <example>
+        <code>
+            		using( DisposableRegistry reg = new DisposableRegistry(Registry.LocalMachine, REG_KEY_SUBKEY) )	
+            		{
+            			reg.SetValue(REG_VALUE_NAME1, 34);
+            			reg.SetValue(REG_VALUE_NAME2, "RealWeb.Common.Win32.DisposableRegistry, RealWeb.Common");
+            			reg.SetValue(REG_VALUE_NAME3, "가나다라마바사아");
+            
+            			Console.WriteLine(REG_VALUE_NAME1 + " = " + reg.GetValue(REG_VALUE_NAME1, 0).ToString());
+            			Console.WriteLine(REG_VALUE_NAME2 + " = " + reg.GetValue(REG_VALUE_NAME2, "").ToString());
+            			Console.WriteLine(REG_VALUE_NAME3 + " = " + reg.GetValue(REG_VALUE_NAME3, "").ToString());
+            		}
+            	</code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.SetValue(System.String,System.String,System.Object)">
+      <summary>
+             지정된 RootKey/subKeyName에 있는 name 값에 data를 설정한다.
+             </summary>
+      <param name="subKeyName">Registry Key</param>
+      <param name="name">Registry name</param>
+      <param name="value">Registry value</param>
+      <example>
+        <code>
+            		using( DisposableRegistry reg = new DisposableRegistry(Registry.LocalMachine, REG_KEY_SUBKEY) )	
+            		{
+            			reg.SetValue(REG_VALUE_NAME1, 34);
+            			reg.SetValue(REG_VALUE_NAME2, "RealWeb.Common.Win32.DisposableRegistry, RealWeb.Common");
+            			reg.SetValue(REG_VALUE_NAME3, "가나다라마바사아");
+            
+            			Console.WriteLine(REG_VALUE_NAME1 + " = " + reg.GetValue(REG_VALUE_NAME1, 0).ToString());
+            			Console.WriteLine(REG_VALUE_NAME2 + " = " + reg.GetValue(REG_VALUE_NAME2, "").ToString());
+            			Console.WriteLine(REG_VALUE_NAME3 + " = " + reg.GetValue(REG_VALUE_NAME3, "").ToString());
+            		}
+            	</code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.SetValues(System.Collections.IDictionary)">
+      <summary>
+            RootKey/SubkeyName 에 Collection에 있는 이름-값 쌍을 넣는다.
+            </summary>
+      <param name="dictionary">
+        <c>IDictionary</c>를 구현한 객체</param>
+      <example>
+        <code>
+            	Hashtable hash = new Hashtabhe();
+            	for(int i=0; i &lt; 5; i++)
+            	{
+            		string val = "Value " + i.ToString();
+            		hash.Add("Name " + i.ToString(), val);
+            	}
+            	
+            	using(DisposableRegistry reg = new DisposableRegistry(Microsoft.Win32.Registry.LocalMachine))
+            	{
+            		reg.SubKeyName = @"SOFTWARE\NSoft\Common\Test";
+            		
+            		reg.SetValues(hash);
+            	}
+            </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.SetValues(System.String,System.Collections.IDictionary)">
+      <summary>
+            지정된 RootKey/subkeyName 에 Collection에 있는 이름-Data값 쌍을 저장한다.
+            </summary>
+      <param name="subKeyName">서브 키 이름</param>
+      <param name="nameValues">저장할 정보 객체 <c>IDictionary</c> 형태여아 한다.</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteSubKey">
+      <summary>
+            현재 지정된 서브키를 삭제한다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteSubKey(System.Boolean)">
+      <summary>
+            현재 지정된 서브키 및 하위의 모든 서브 키들을 재귀적으로 삭제한다.
+            </summary>
+      <param name="deep">서브키 밑의 모든 하위 서브 키를 삭제할 지 여부</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteSubKey(System.String)">
+      <summary>
+            지정된 서브 키를 삭제한다.
+            </summary>
+      <param name="subKeyName">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteSubKey(System.String,System.Boolean)">
+      <summary>
+            지정된 서브키와 자식 서브키들을 삭제한다.
+            </summary>
+      <param name="subKeyName">서브 키 이름</param>
+      <param name="deep">자식 하위키를 재귀적으로 삭제할지 여부</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteValue(System.String)">
+      <summary>
+            현재 열려진 서브키에서 지정된 이름의 값을 제거한다.
+            </summary>
+      <param name="name">이름</param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteValue(System.String,System.String)">
+      <summary>
+            지정된 하위키의 지정된 이름의 값을 제거한다.
+            </summary>
+      <param name="subKeyName">
+      </param>
+      <param name="name">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteValues(System.String[])">
+      <summary>
+            현재 열려진 서브키에서 해당되는 이름들의 값을 삭제한다.
+            </summary>
+      <param name="names">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.DeleteValues(System.String,System.String[])">
+      <summary>
+            지정된 서브키에서 해당되는 이름의 값을 삭제한다.
+            </summary>
+      <param name="subKeyName">
+      </param>
+      <param name="names">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.CanAccess(System.Boolean)">
+      <summary>
+            서브키를 액세스 할 수 있는지 여부를 검사한다.
+            </summary>
+      <param name="writable">true이면 읽기/쓰기여부, false이면 읽기 가능한지 여부</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.CanAccess(System.String,System.Boolean)">
+      <summary>
+            지정된 서브키를 액세스 할 수 있는지 여부를 검사한다.
+            </summary>
+      <param name="subKeyName">
+      </param>
+      <param name="writable">true이면 읽기/쓰기여부, false이면 읽기 가능한지 여부</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.OpenSubKey">
+      <summary>
+            서브키를 지정된 읽기 모드로 연다.
+            </summary>
+      <returns>레지스트리 키 객체</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.OpenSubKey(System.Boolean)">
+      <summary>
+            서브키를 지정된 접근 모드 (읽기, 읽기/쓰기) 로 연다.
+            </summary>
+      <param name="writable">true이면 읽기/쓰기여부, false이면 읽기 가능한지 여부</param>
+      <returns>레지스트리 키 객체</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.OpenSubKey(System.String)">
+      <summary>
+            지정된 서브키를 읽기모드로 연다.
+            </summary>
+      <param name="subKeyName">서브 키 이름</param>
+      <returns>레지스트리 키 객체</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.OpenSubKey(System.String,System.Boolean)">
+      <summary>
+            지정된 서브키를 지정된 접근 모드 (읽기, 읽기/쓰기) 로 연다.
+            </summary>
+      <param name="subKeyName">서브 키 이름</param>
+      <param name="writable">true이면 읽기/쓰기여부, false이면 읽기 가능한지 여부</param>
+      <returns>레지스트리 키 객체</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetSubKeyNames">
+      <summary>
+            SubKey에 해당하는 모든 Key 이름을 얻는다.
+            </summary>
+      <returns>문자열 1차원 배열, 실패시 길이가 0인 문자열 배열을 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetSubKeyNames(System.String)">
+      <summary>
+            지정된 키의 하위에 있는 모든 Sub Key의 이름을 반환한다.
+            </summary>
+      <param name="keyName">키 이름</param>
+      <returns>성공시 문자열 1차원 배열, 실패시 길이가 0인 문자열 배열을 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValueNames">
+      <summary>
+            SubKey에 해당하는 모든 값의 이름을 얻는다.
+            </summary>
+      <returns>문자열 1차원 배열, 실패시 길이가 0인 문자열 배열을 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetValueNames(System.String)">
+      <summary>
+            지정된 키와 관련된 모든 값 이름이 포함된 문자열의 배열을 검색합니다.   
+            </summary>
+      <param name="subKeyName">원하는 Key Name</param>
+      <returns>문자열 1차원 배열, 실패시 길이가 0인 문자열 배열을 반환한다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetSubKeyCount">
+      <summary>
+            RootKey\SubKeyName\ 하위 Key의 갯수를 반환
+            </summary>
+      <returns>갯수 반환, 실패시 0 반환</returns>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryClient.GetSubKeyCount(System.String)">
+      <summary>
+            RootKey/keyName/ 하위의 Key의 갯수를 반환
+            </summary>
+      <param name="keyName">찾고자하는 Registry Key Name</param>
+      <returns>지정된 서브키 하위의 SubKey 갯수 반환, 실패시 0 반환</returns>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.RegistryClient.RootKey">
+      <summary>
+            Registry Root Key : Microsoft.Win32.Registry.LocalMachine 이 기본이다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.RegistryClient.SubKeyName">
+      <summary>
+            Registry의 이용하고자 하는 SubKey Name
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.WindowsSystem.RegistryTool">
+      <summary>
+            Registry 접근을 위한 Utility Class 입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.WindowsSystem.RegistryTool.GetLocalMachineValue(System.String,System.String)">
+      <summary>
+            레지스트리 Local Machine에서 값을 읽어옵니다.
+            </summary>
+      <param name="subKey">
+      </param>
+      <param name="name">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.WindowsSystem.RegistryTool.Is64BitOS">
+      <summary>
+            64bit OS인가 검사한다.
+            </summary>
+    </member>
+  </members>
+</doc>

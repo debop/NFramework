@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="NSoft.NFramework.DataServices.WebHost.Wcf.DataService" CodeBehind="DataService.svc.cs" %>

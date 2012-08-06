@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Data.RavenDB</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.Data.RavenDB.NHCaches.RavenCacheConfig">
+      <summary>
+            Raven Cache 설정 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.RavenDB.NHCaches.RavenCacheConfig.Region">
+      <summary>
+            MongoDB connection string (예: mongodb://localhost/NFramework_Cache?strict=false) 
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.RavenDB.NHCaches.RavenCacheConfig.Properties">
+      <summary>
+            부가 속성들
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.RavenDB.NHCaches.RavenCacheSectionHandler">
+      <summary>
+            MongoCacheClient의 환경설정 정보를 읽어드립니다.
+            </summary>
+      <example>
+        <code>
+          <configSections>
+            <section name="ravenCache" type="NSoft.NFramework.Data.RavenDB.NHCaches.RavenCacheSectionHandler, NSoft.NFramework.Data.RavenDB" />
+          </configSections>
+          <ravenCache>
+            <!-- region 은 Unique 해야 합니다. expiration: TimeSpan, compressThreshold:byte단위-->
+            <cache region="NSoft.NFramework" connectionString="server=localhost;database=NFramework-Cache;safe=true;" expiration="02:00:00" compressThreshold="40960" />
+            <cache region="NAccount" connectionString="server=localhost;database=NAccount-Cache;safe=true;" expiration="02:00:00" compressThreshold="40960" />
+          </ravenCache>
+        </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Data.RavenDB.NHCaches.RavenCacheSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+      <summary>
+            구성 섹션 처리기를 만듭니다.
+            </summary>
+      <returns>
+            만들어진 섹션 처리기 개체입니다.
+            </returns>
+      <param name="parent">부모 개체입니다.</param>
+      <param name="configContext">구성 컨텍스트 개체입니다.</param>
+      <param name="section">섹션 XML 노드입니다.</param>
+    </member>
+    <member name="T:NSoft.NFramework.Data.RavenDB.Web.RavenOutputCacheEntry">
+      <summary>
+            ASP.NET Output Cache 정보를 Raven DB에 저장하기 위한 클래스를 표현합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.RavenDB.Web.RavenOutputCacheEntry.Id">
+      <summary>
+            Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.RavenDB.Web.RavenOutputCacheEntry.SerializedObject">
+      <summary>
+            OutputCache 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.RavenDB.Web.RavenOutputCacheEntry.UtcExpiry">
+      <summary>
+            Output Cache  엔트리의 만료 시각
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.RavenDB.RavenTool">
+      <summary>
+            RavenDB 용 Tool Class
+            </summary>
+    </member>
+  </members>
+</doc>

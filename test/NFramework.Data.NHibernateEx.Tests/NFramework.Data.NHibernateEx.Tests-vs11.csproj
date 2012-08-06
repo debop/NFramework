@@ -1,0 +1,308 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B36B625E-0C65-4FDF-B42A-F0993B0DFC8F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Data.NHibernateEx</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Data.NHibernateEx.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x86</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Components.Validator, Version=2.5.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data, Version=5.0.392.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\Devart.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Devart.Data.Oracle, Version=6.70.293.0, Culture=neutral, PublicKeyToken=09af7300eec23701, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\Devart.Data.Oracle.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\lib\net-4.0\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\lib\net-4.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\lib\net-4.0\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip, Version=1.9.1.8, Culture=neutral, PublicKeyToken=edbe51ad942a3f5c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqSpecs">
+      <HintPath>..\..\lib\net-4.0\LinqSpecs.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\lib\net-4.0\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql">
+      <HintPath>..\..\lib\net-4.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\net-4.0\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.2.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\Oracle.DataAccess.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\..\lib\net-4.0\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite">
+      <HintPath>..\..\lib\net-4.0\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AOP\CustomProxyFixture.cs" />
+    <Compile Include="AOP\DataBindingNHRepository.cs" />
+    <Compile Include="Caches\SharedCacheFixture.cs" />
+    <Compile Include="Caches\SharedCacheProviderFixture.cs" />
+    <Compile Include="Caches\SysCacheFixture.cs" />
+    <Compile Include="Caches\VelocityClientFixture.cs" />
+    <Compile Include="Caches\VelocityFixture.cs" />
+    <Compile Include="Caches\VelocityProviderFixture.cs" />
+    <Compile Include="Criterion\CriteriaBatchTestFixture.cs" />
+    <Compile Include="Criterion\ExpressionFixture.cs" />
+    <Compile Include="Criterion\FutureFixture.cs" />
+    <Compile Include="Domain\CustomerRepository.cs" />
+    <Compile Include="Domain\Extensions\EntityExtensionsTestCase.cs" />
+    <Compile Include="Domain\FluentDomainTestCaseBase.cs" />
+    <Compile Include="Domain\MappingFixture.cs" />
+    <Compile Include="Domain\NorthwindDbTestFixtureBase.cs" />
+    <Compile Include="Domain\Northwind\Entities\CategoryFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\CustomerFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\CustomerOrderHistoryFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\EmployeeFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\OrderDetailFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\ProductFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\ShipperFixture.cs" />
+    <Compile Include="Domain\Northwind\Entities\SupplierFixture.cs" />
+    <Compile Include="Domain\Northwind\IniNHQueryStringProviderFixture.cs" />
+    <Compile Include="Domain\Northwind\Linq\AggregateTestFixture.cs" />
+    <Compile Include="Domain\Northwind\Linq\DynamicQueryTestFixture.cs" />
+    <Compile Include="Domain\Northwind\Linq\FunctionTestCase.cs" />
+    <Compile Include="Domain\Northwind\Linq\NorthwindContext.cs" />
+    <Compile Include="Domain\Northwind\Linq\NorthwindDataContextTestFixture.cs" />
+    <Compile Include="Domain\Northwind\Linq\NorthwindDataContextTestFixtureBase.cs" />
+    <Compile Include="Domain\Northwind\ProjectionFixture.cs" />
+    <Compile Include="Domain\Northwind\RepositoryFixture.cs" />
+    <Compile Include="Domain\OrderDetailRepository.cs" />
+    <Compile Include="Domain\Utils\DomainUtilTestCase.cs" />
+    <Compile Include="EventListeners\AuditLogger.cs" />
+    <Compile Include="EventListeners\ModifyEventListener.cs" />
+    <Compile Include="FluentMappings\FluentConfigurationFixture.cs" />
+    <Compile Include="FluentMappings\FluentDatabaseTestFixture.cs" />
+    <Compile Include="FluentMappings\FluentNHUnitOfWorkFactoryFixture.cs" />
+    <Compile Include="FluentMappings\Mappings\FluentProductMap.cs" />
+    <Compile Include="FluentMappings\Models\ActorRole.cs" />
+    <Compile Include="FluentMappings\Models\Book.cs" />
+    <Compile Include="FluentMappings\Models\FVProduct.cs" />
+    <Compile Include="FluentMappings\Models\Movie.cs" />
+    <Compile Include="FluentMappings\Models\VersionedEntity.cs" />
+    <Compile Include="ForTesting\DatabaseTestFixtureBaseTests.cs" />
+    <Compile Include="ForTesting\GuidEntityForTesting.cs" />
+    <Compile Include="HttpModules\UnitOfWorkHttpApplicationFixture.cs" />
+    <Compile Include="Interceptors\MultipleInterceptorFixture.cs" />
+    <Compile Include="Interceptors\PropertyChangedInterceptorFixture.cs" />
+    <Compile Include="IoCSetUpBase.cs" />
+    <Compile Include="Linq\LinqSpecsFixture.cs" />
+    <Compile Include="Linq\LinqTestFixture.cs" />
+    <Compile Include="Linq\Specifications\ParentHasChild.cs" />
+    <Compile Include="Linq\Specifications\ParentNameBy.cs" />
+    <Compile Include="MappingTestCase.cs" />
+    <Compile Include="ModelSchemaTestFixture.cs" />
+    <Compile Include="NHCaches\SysCache\SysCacheFixture.cs" />
+    <Compile Include="NHDatabaseTestFixtureBase.cs" />
+    <Compile Include="NHOrderTestCase.cs" />
+    <Compile Include="NHRepositoryTestFixtureBase.cs" />
+    <Compile Include="NHUtilsStatelessTestFixture.cs" />
+    <Compile Include="NHUtilsTestCase.cs" />
+    <Compile Include="PerformanceInterceptor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryOvers\QueryOverTestCase.cs" />
+    <Compile Include="Repositories\MultiCriteriaTestFixture.cs" />
+    <Compile Include="Repositories\RepositoryTestFixture.cs" />
+    <Compile Include="Repositories\SearchFilterTextFixture.cs" />
+    <Compile Include="UnitOfWorks\FluentNHUnitOfWorkFactoryFixture.cs" />
+    <Compile Include="UnitOfWorks\GlobalNonThreadSafeUnitOfWorkFixture.cs" />
+    <Compile Include="UnitOfWorks\MultipleUnitOfWorkArtifacts\DomainObjectFromDatabase1.cs" />
+    <Compile Include="UnitOfWorks\MultipleUnitOfWorkArtifacts\DomainObjectFromDatabase2.cs" />
+    <Compile Include="UnitOfWorks\NHMultipleUnitOfWorkFactoryFixture.cs" />
+    <Compile Include="UnitOfWorks\NHMultipleUnitOfWorkFactoryFixtureBase.cs" />
+    <Compile Include="UnitOfWorks\NHUnitOfWorkFactoryFixture.cs" />
+    <Compile Include="UnitOfWorks\TransactionalFlushTestFixture.cs" />
+    <Compile Include="UserTypes\CompanyFixture.cs" />
+    <Compile Include="UserTypes\NetCultureInfoFixture.cs" />
+    <Compile Include="UserTypes\UserTypeFixture.cs" />
+    <Compile Include="Utils\CriteriaUtilTestCase.cs" />
+    <Compile Include="Utils\LinqUtilTestCase.cs" />
+    <Compile Include="Utils\QueryOverUtilTestCase.cs" />
+    <Compile Include="WindsorInstallers\NHRepositoryWindsorInstaller.cs" />
+    <Compile Include="WindsorInstallers\WindsorInstallerFixture.cs" />
+    <Compile Include="With\With.Caching.Fixture.cs" />
+    <Compile Include="With\With.Transaction.Fixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\samples\NFramework.Data.NHibernateEx.Domain\NFramework.Data.NHibernateEx.Domain-vs11.csproj">
+      <Project>{10182EA2-F39C-41B1-9C7C-B6A975DAFFB2}</Project>
+      <Name>NFramework.Data.NHibernateEx.Domain-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Caching.SharedCache\NFramework.Caching.SharedCache-vs11.csproj">
+      <Project>{65A1D582-0B6C-4EDB-A22F-1C0ADB9151EE}</Project>
+      <Name>NFramework.Caching.SharedCache-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Data.NHibernateEx\NFramework.Data.NHibernateEx-vs11.csproj">
+      <Project>{C19799F1-C38E-4478-A122-C958153F0AD6}</Project>
+      <Name>NFramework.Data.NHibernateEx-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{EB7BEB5B-6813-4A60-B453-93060BE22C30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="default.build" />
+    <None Include="Domain\Windsor.Northwind.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ForTesting\Windsor.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="ForTesting\Windsor2.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Interceptors\IoC.NHibernate.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Interceptors\IoC.PropertyChanged.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <Content Include="Domain\hibernate.northwind.mssql.fluent.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="IoC.Testing.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="NFramework.Data.IoC.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="QueryFiles\Northwind.nhibernate.mssql.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="QueryFiles\Pubs.nhibernate.mssql.ini">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="UnitOfWorks\IoC.FluentUnitOfWork.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="UnitOfWorks\IoC.MultipleUnitOfWork.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Windsor.Hibernate.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Domain\hibernate.northwind.mssql.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Domain\hibernate.pubs.mssql.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="ForTesting\GuidEntityForTesting.hbm.xml" />
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="hibernate.fluent.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logging.nlog.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UnitOfWorks\MultipleUnitOfWorkArtifacts\Database1.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UnitOfWorks\MultipleUnitOfWorkArtifacts\Database2.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="UnitOfWorks\MultipleUnitOfWorkArtifacts\DomainObjectFromDatabase1.hbm.xml" />
+    <EmbeddedResource Include="UnitOfWorks\MultipleUnitOfWorkArtifacts\DomainObjectFromDatabase2.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Linq\Entities\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

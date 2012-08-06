@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sf.net/release/0.91-alpha2/nant.xsd">
+
+	<description>
+		<![CDATA[
+		이 파일은 프로젝트 빌드를 위해 범용적인 task들을 정의해 두었다. 
+		솔루션이 아닌 실제적인 단위 프로젝트들은 다음과 같이 정의해서 사용해야 한다.
+
+		Usage : 
+
+		<property name="root.dir" value="../.." />
+		<include buildfile="${root.dir}/build-common/common-project.xml" />
+
+		위 내용은 <project> 바로 아래 정의되어야 하고, 
+		root.dir 도 RealWeb Common Library프로젝트의 root directory로 정의되어 있어야 한다.
+		
+		이 파일을 포함시키고, target은 환경설정 변수들을 정의해 주어야 한다. 
+		이러한 환경설정을 해주는 target은 "init"으로 정의하고, "common.init" 에 의존한다.
+		
+		
+		Other predefined targets are:
+
+			- common.compile-tests
+				compile NUnit tests and copy App.config file to the output directory,
+				if it exists.
+
+			- common.compile-dll
+				compile a DLL, generating the documentation file (.xml) and using Clover
+				if enabled.
+
+			- common.generate-assemblyinfo
+				generate an AssemblyInfo.cs file from assembly.* NAnt properties.
+
+			- common.run-tests
+				run compiled NUnit tests.
+				
+			- common.compile-website
+				run compiled .NET 1.1 Web Application
+				
+			- common.compile-website-2.0				
+				run compile .NET 2.0 Web Site
+				
+		모든 빌드 결과물은 build.dir에 기록된다.
+		common.compile* 형태의 target은 
+		id="project.sources" (소스)
+		id="project.references" (Reference assembly)
+		id="project.resources" (resources)
+		를 사용한다.
+		
+		예:
+		<target name="init" depends="common.init">
+			<property name="assembly.description" value="RealWeb Common Library. "/>
+			<property name="assembly.allow-partially-trusted-callers" value="true" />
+			<property overwrite="true" name="assembly.title" value="${project::get-name()} for ${framework::get-description(framework::get-target-framework())}" />
+
+			<assemblyfileset id="project.references" basedir="${build.dir}" >
+				<include name="System.dll"/>
+				<include name="System.Core.dll"/>
+				<include name="System.Data.dll"/>
+				<include name="System.Web.dll"/>
+				<include name="System.Xml.dll"/>
+				<include name="log4net.dll"/>
+			</assemblyfileset>
+
+			<resourcefileset id="project.resources" dynamicprefix="true">
+				<include name="**/*.resx"/>
+			</resourcefileset>
+
+			<fileset id="project.sources">
+				<include name="**/*.cs"/>
+			</fileset>
+		</target>
+
+		]]>
+	</description>
+
+	<include buildfile="common.xml" />
+
+	<target name="common.build">
+		<nant>
+			<buildfiles refid="buildfiles.all"/>
+		</nant>
+	</target>
+
+	<target name="common.compile-tests" depends="" description="Compile MbUnit tests and copy App.config file to the output directory, if it exists.">
+
+		<call target="common.compile-dll"/>
+
+		<!-- Check if there is a framework specific config file and use that -->
+		<property name="app.config.src" value="${src.dir}/App-${framework::get-target-framework()}.config"/>
+		<if test="${file::exists(app.config.src)}">
+			<copy file="${app.config.src}"
+				  tofile="${build.dir}/${project::get-name()}.dll.config"
+			/>
+			<call target="common.configure-tests"/>
+			<property name="app.config.src.found" value="true"/>
+		</if>
+
+		<!-- In case there was no framework specific config check if there is a framework neutral file and use that. -->
+		<property name="app.config.src" value="${src.dir}/App.Config" />
+		<if test="${file::exists(app.config.src)}" unless="${property::exists('app.config.src.found')}">
+			<copy file="${app.config.src}"
+				  tofile="${build.dir}/${project::get-name()}.dll.config"
+			/>
+			<call target="common.configure-tests"/>
+		</if>
+	</target>
+
+	<target name="common.configure-tests" description="NUnit/MbUnit을 이용한 테스트를 위해 설정을 변경한다.">
+
+		<property name="app.config" value="${build.dir}/${project::get-name()}.dll.config"/>
+
+		<!-- make sure the config file is writable -->
+		<attrib file="${app.config}" readonly="false"/>
+
+		<!--
+			테스트 설정 정보를 지정한다.
+		-->
+		<!--
+		<xmlpoke
+			file="${app.config}"
+			xpath="/configuration/appSettings/add[@key='tests.src']/@value"
+			value="${src.dir}"
+			failonerror="false"
+		/>
+
+		<xmlpoke
+			file="${app.config}"
+			xpath="${test.db.xpath}"
+			value="${test.db}" />
+		-->
+	</target>
+
+	<target name="common.compile-dll" depends="" description="Compile source into a DLL">
+
+		<if test="${build.msbuild}">
+			<property name="msbuildlogger" value="" overwrite="false" unless="${property::exists('CCNetLabel')}" />
+			<property name="msbuildlogger" value="/logger:ThoughtWorks.CruiseControl.MsBuild.XmlLogger" overwrite="false" if="${property::exists('CCNetLabel')}" />
+			<property name="msbuild.defines" value="${string::replace(current.build.defines, ',', ';')}" />
+
+			<exec program="${framework::get-framework-directory(framework::get-target-framework())}/MSBuild.exe" workingdir="${build.dir}">
+				<arg file="${src.dir}/${project.vsproj}" />
+				<arg value="/p:Configuration=${project.config}" />
+				<arg value="/p:OutputPath=${build.dir}" />
+				<arg value="/p:TreatWarningsAsErrors=${build.warnaserror}" />
+				<arg value='/p:DefineConstants="${msbuild.defines}"' />
+				<arg value='/t:Rebuild' if="${build.rebuild}" />
+				<arg value="/p:DocumentationFile=${build.dir}/${project::get-name()}.xml" />
+				<arg value="/p:NoWarn=1591" unless="${build.warnmissingdocs}" />
+				<arg line="/p:SignAssembly=${assembly.sign} /p:AssemblyOriginatorKeyFile=${key.file}" />
+				<arg value="${msbuildlogger}" />
+			</exec>
+		</if>
+		<if test="${not build.msbuild}">
+			<property name="project.name" value="${project::get-name()}" overwrite="false" />
+
+			<csc target="library"
+				 define="${current.build.defines}"
+				 debug="${build.debug}"
+				 optimize="${build.optimize}"
+				 warnaserror="${build.warnaserror}"
+				 unsafe="${build.unsafe}"
+				 output="${build.dir}/${project.name}.dll"
+				 doc="${build.dir}/${project.name}.xml"
+				 rebuild="${build.rebuild}"
+			>
+				<nowarn>
+					<warning number="1570" unless="${build.warnmissingdocs}" />
+					<warning number="1587" unless="${build.warnmissingdocs}" />
+					<warning number="1591" unless="${build.warnmissingdocs}" />
+					<warning number="1591" unless="${build.warnmissingdocs}"/>
+					<!-- No XML comment for pulicly visible member -->
+				</nowarn>
+				<sources refid="project.sources"/>
+				<references refid="project.references"/>
+				<resources refid="project.resources"/>
+
+				<arg line="${csc.keyfile}" if="${assembly.sign}"/>
+				<arg line="${csc.args}"/>
+
+			</csc>
+		</if>
+	</target>
+
+	<!-- .NET 1.1 Web Application 컴파일 -->
+	<target name="common.compile-website" description="Compile .NET 1.1 web site">
+
+		<property name="bin.dir" value="${src.dir}/bin" />
+
+		<mkdir dir="${bin.dir}"/>
+		<delete file="${bin.dir}/${project::get-name()}.pdb" failonerror="false"/>
+		<property name="build.dir" value="${bin.dir}"/>
+
+		<call target="common.compile-dll"/>
+		<call target="common.copy-references" />
+
+	</target>
+
+	<!-- .NET 2.0 Web Site 컴파일 -->
+	<target name="common.compile-website-2.0" description="Compile .NET 2.0 web site">
+
+		<property name="web.virtualpath" value="/${project::get-name()}" overwrite="false" />
+		<property name="aspnet-compile.commandline" value=' -v ${web.virtualpath} -p "${src.dir}" -c' overwrite="true" />
+
+		<echo message="aspnet_compiler.exe ${aspnet-compile.commandline}"/>
+
+		<exec
+			program="${clr.dir}/aspnet_compiler.exe"
+			workingdir="${src.dir}"
+			commandline="${aspnet-compile.commandline}"
+		/>
+		<!-- ' -v /${project::get-name()} -p "${src.dir}" -c' -->
+	</target>
+
+	<target name="common.copy-references">
+		<foreach item="File" property="reference">
+			<in>
+				<items refid="project.references"/>
+			</in>
+			<do>
+				<copy file="${reference}" todir="${build.dir}" overwrite="${build.rebuild}"/>
+			</do>
+		</foreach>
+	</target>
+
+	<target name="common.compile-exe" depends="" description="Compile sources into a console executable">
+
+		<csc target="exe"
+			 define="${current.build.defines}"
+			 debug="${build.debug}"
+			 optimize="${build.optimize}"
+			 warnaserror="${build.warnaserror}"
+			 output="${build.dir}/${project::get-name()}.exe"
+			 unsafe="${build.unsafe}"
+		>
+			<nowarn>
+				<warning number="1570" unless="${build.warnmissingdocs}" />
+				<warning number="1587" unless="${build.warnmissingdocs}" />
+				<warning number="1591" unless="${build.warnmissingdocs}" />
+			</nowarn>
+			<sources refid="project.sources" />
+			<references refid="project.references" />
+			<resources refid="project.resources" />
+			<arg line="${csc.keyfile}" if="${assembly.sign}"/>
+			<arg line="${csc.args}" />
+		</csc>
+	</target>
+
+
+	<target name="common.compile-wfp" depends="" description="Compile source into a WPF">
+
+		<if test="${target.framework.net.4.0}">
+			<property name="msbuildlogger" value="" overwrite="false" unless="${property::exists('CCNetLabel')}" />
+			<property name="msbuildlogger" value="/logger:ThoughtWorks.CruiseControl.MsBuild.XmlLogger" overwrite="false" if="${property::exists('CCNetLabel')}" />
+			<property name="msbuild.defines" value="${string::replace(current.build.defines, ',', ';')}" />
+
+			<exec program="${framework::get-framework-directory(framework::get-target-framework())}/MSBuild.exe" workingdir="${build.dir}">
+				<arg file="${src.dir}/${project.vsproj}" />
+				<arg value="/p:Configuration=${project.config}" />
+				<arg value="/p:OutputPath=${build.dir}" />
+				<arg value="/p:TreatWarningsAsErrors=${build.warnaserror}" />
+				<arg value='/p:DefineConstants="${msbuild.defines}"' />
+				<arg value='/t:Rebuild' if="${build.rebuild}" />
+				<arg value="/p:DocumentationFile=${build.dir}/${project::get-name()}.xml" />
+				<arg value="/p:NoWarn=1591" unless="${build.warnmissingdocs}" />
+				<!--<arg line="/p:SignAssembly=${assembly.sign} /p:AssemblyOriginatorKeyFile=${key.file}" />-->
+				<arg value="${msbuildlogger}" />
+			</exec>
+		</if>
+	</target>
+
+
+	<target name="common.compile-silverlight" depends="" description="Compile source into a Silverlight">
+
+		<property name="msbuildlogger" value="" overwrite="false" unless="${property::exists('CCNetLabel')}" />
+		<property name="msbuildlogger" value="/logger:ThoughtWorks.CruiseControl.MsBuild.XmlLogger" overwrite="false" if="${property::exists('CCNetLabel')}" />
+		<property name="msbuild.defines" value="${string::replace(current.build.defines, ',', ';')}" />
+
+		<exec program="${framework::get-framework-directory(framework::get-target-framework())}/MSBuild.exe" workingdir="${build.dir}">
+			<arg file="${src.dir}/${project.vsproj}" />
+			<arg value="/p:Configuration=${project.config}" />
+			<arg value="/p:OutputPath=${build.dir}" />
+			<arg value="/p:TreatWarningsAsErrors=${build.warnaserror}" />
+			<arg value='/p:DefineConstants="${msbuild.defines}"' />
+			<arg value='/t:Rebuild' if="${build.rebuild}" />
+			<arg value="/p:DocumentationFile=${build.dir}/${project::get-name()}.xml" />
+			<arg value="/p:NoWarn=1591" unless="${build.warnmissingdocs}" />
+			<!--<arg line="/p:SignAssembly=${assembly.sign} /p:AssemblyOriginatorKeyFile=${key.file}" />-->
+			<arg value="${msbuildlogger}" />
+		</exec>
+	</target>
+
+	<!-- Obfuscator -->
+	<target name="common.obfuscator" depends="" description="어셈블리를 암호화합니다.">
+
+		<if test="${obfuscator.enabled}">
+			<echo message="${build.dir}/${project::get-name()}.dll 어셈블리를 암호화합니다!!!"/>
+
+			<exec program="${eazfuscator-exe}" failonerror="false" >
+				<arg value='-k "${key.file}"' />
+				<arg value="${build.dir}/${project::get-name()}.dll" />
+				<arg value="-v 3.2" />
+			</exec>
+		</if>
+	</target>
+
+
+	<target name="common.set-assembly-attribute-values">
+		<property overwrite="false" name="assembly.is-cls-compliant" value="true"/>
+		<property overwrite="false" name="assembly.is-com-visible" value="false" />
+		<property overwrite="false" name="assembly.guid" value="" />
+		<property overwrite="false" name="assembly.allow-partially-trusted-callers" value="false"/>
+		<property overwrite="false" name="assembly.description" value=""/>
+		<property overwrite="false" name="assembly.product" value="${project::get-name()}"/>
+		<property overwrite="false" name="assembly.company" value="${project.company}"/>
+		<property overwrite="false" name="assembly.title" value="${project::get-name()} for ${framework::get-description(framework::get-target-framework())}" />
+		<property overwrite="false" name="assembly.version" value="${solution.version}"/>
+		<property overwrite="false" name="assembly.version.informational" value="${solution.version}"/>
+		<property overwrite="false" name="assembly.version.file" value="${project.version.numeric}"/>
+		<property overwrite="false" name="assembly.copyright" value="${project.copyright}"/>
+		<property overwrite="false" name="assembly.default.alias" value="${project::get-name()}"/>
+		<property overwrite="false" name="assemlby.keyfile" value="${key.file}"/>
+		<property overwrite="false" name="assembly.sign" value="${sign}"/>
+		<property overwrite="false" name="assembly.satelliteContractVersion" value="${assembly.version}"/>
+
+		<property overwrite="false" name="assembly.obfuscator" value="${obfuscator.enabled}" />
+	</target>
+
+	<target name="common.generate-assemblyinfo"
+			depends="common.init common.set-assembly-attribute-values"
+			description="Generate AssemblyInfo.cs using assembly.* properties.">
+
+		<property name="assemblyinfo.cs" value="${path::combine(prop.dir,'AssemblyInfo.cs')}" />
+		<attrib file="${assemblyinfo.cs}" readonly="false"  failonerror="false"/>
+		<asminfo output="${assemblyinfo.cs}" language="CSharp" failonerror="true">
+			<imports>
+				<import namespace="System"/>
+				<import namespace="System.Reflection"/>
+				<import namespace="System.Resources" />
+				<!-- <import namespace="System.Runtime.CompilerServices"/> -->
+				<import namespace="System.Runtime.InteropServices"/>
+				<import namespace="System.Security" if="${assembly.allow-partially-trusted-callers}"/>
+			</imports>
+			<attributes>
+				<attribute type="CLSCompliantAttribute" value="${assembly.is-cls-compliant}"/>
+				<attribute type="ComVisibleAttribute" value="${assembly.is-com-visible}" />
+				<attribute type="GuidAttribute" value="${assembly.guid}" if="${assembly.guid != ''}" />
+				<attribute type="AssemblyTitleAttribute" value="${assembly.title}" />
+				<attribute type="AssemblyDescriptionAttribute" value="${assembly.description}" />
+				<attribute type="AssemblyCompanyAttribute" value="${assembly.company}" />
+				<attribute type="AssemblyProductAttribute" value="${assembly.product}" />
+				<attribute type="AssemblyCopyrightAttribute" value="${assembly.copyright}" />
+				<attribute type="AssemblyVersionAttribute" value="${assembly.version}" />
+				<attribute type="AssemblyInformationalVersionAttribute" value="${assembly.version.informational}" />
+				<attribute type="AssemblyFileVersionAttribute" value="${assembly.version.file}" />
+				<attribute type="SatelliteContractVersionAttribute" value="${assembly.satelliteContractVersion}" />
+				<!--<attribute type="AssemblyKeyFile" value="${assembly.keyfile}" if="${assembly.sign}"/>-->
+				<attribute type="AssemblyDelaySignAttribute" value="false" />
+
+				<!-- For some reason, NAnt doesn't detect that APTCA has a public no-argument constructor -->
+				<attribute asis="true" type="AllowPartiallyTrustedCallersAttribute" if="${assembly.allow-partially-trusted-callers}" />
+
+				<!-- 기본 Resource Language -->
+				<attribute asis="true" type="NeutralResourcesLanguageAttribute" value='"ko-KR"' />
+
+				<!-- Obfuscator -->
+				<attribute asis="true" type="ObfuscationAttribute" value='Feature="string encryption", Exclude=false' if="${obfuscator.enabled}" unless="${build.silverlight}" />
+				<attribute asis="true" type="ObfuscationAttribute"  value='Feature="rename symbol names with printable characters", Exclude=false' if="${obfuscator.enabled}" unless="${build.silverlight}" />
+				<!--
+				<attribute asis="true" type="ObfuscationAttribute"  value='Feature="code control flow obfuscation", Exclude=false' if="${assembly.obfuscator}" unless="${build.silverlight}"/>
+				-->
+				
+			</attributes>
+			<references>
+				<include name="System.EnterpriseServices.dll"/>
+			</references>
+		</asminfo>
+	</target>
+
+	<target name="common.assemblyinfo" description="generate AssemblyInfo.cs for all projects">
+		<nant target="generate-assemblyinfo">
+			<buildfiles refid="buildfiles.all"/>
+		</nant>
+	</target>
+
+	<target name="common.run-tests" description="Run MbUnit tests">
+
+		<if test="${common.testrunner.enabled}">
+			<call target="detect.xunit"/>
+
+			<if test="${use.xunit}">
+				<echo message="Running XUnit Tests in '${project::get-name()}'"/>
+				<loadtasks assembly="${lib.dir}\xUnit\XUnit.NAntTasks.dll" />
+				<xunit assembly="${build.dir}\${project::get-name()}.dll"
+					   html="${testresults.dir}\${project::get-name()}.dll-results.html"
+					   xml="${testresults.dir}\${project::get-name()}.dll-results.xml"
+					   workingDir="${build.dir}" />
+
+			</if>
+			<if test="${not use.xunit}">
+				<echo message="Running MbUnit Tests in '${project::get-name()}'"/>
+				<exec
+					program="${mbunit-console}"
+					workingdir="${build.dir}"
+					commandline='${project::get-name()}.dll /rf:"${testresults.dir}" /rnf:"${project::get-name()}.dll-results" /rt:Html /rt:Xml'
+					failonerror="${common.testrunner.failonerror}"
+				/>
+
+			</if>
+		</if>
+		<if test="${not common.testrunner.enabled}">
+			<echo message="Tests are disabled for '${project::get-name()}'"/>
+		</if>
+
+	</target>
+
+	<target name="detect.xunit" description="Discover whether to use xunit">
+		<property name="use.xunit" value="false" overwrite="false"/>
+		<foreach item="File" property="reference">
+			<in>
+				<items refid="project.references"/>
+			</in>
+			<do>
+				<if test="${string::contains(reference, 'xunit')}">
+					<property name="use.xunit" value="true"/>
+				</if>
+			</do>
+		</foreach>
+		<echo message="detect xunit : ${use.xunit}"/>
+	</target>
+
+	<target name="common.run-database-tests"
+		depends="common.put-connection-settings-into-app-config common.run-tests common.remove-connection-settings-from-app-config" />
+
+	<target name="common.put-connection-settings-into-app-config">
+
+		<property name="app.config" value="${build.dir}/${project::get-name()}.dll.config" />
+
+		<!-- make sure the config file is writable -->
+		<attrib file="${app.config}" readonly="false" />
+
+		<!--
+			Tell nhibernate how to connect to the test database.
+		-->
+		<xmlpoke
+			file="${app.config}"
+			xpath="/configuration/nhibernate/add[@key='hibernate.dialect']/@value"
+			value="${nhibernate.dialect}"
+		/>
+		<xmlpoke
+			file="${app.config}"
+			xpath="/configuration/nhibernate/add[@key='hibernate.connection.driver_class']/@value"
+			value="${nhibernate.connection.driver_class}"
+		/>
+		<xmlpoke
+			file="${app.config}"
+			xpath="/configuration/nhibernate/add[@key='hibernate.connection.connection_string']/@value"
+			value="${nhibernate.connection.connection_string}"
+		/>
+	</target>
+
+	<target name="common.remove-connection-settings-from-app-config">
+		<property name="app.config" value="${build.dir}/${project::get-name()}.dll.config" />
+
+		<xmlpoke
+			file="${app.config}"
+			xpath="/configuration/nhibernate/add[@key='hibernate.connection.connection_string']/@value"
+			value="conn string here"
+		/>
+	</target>
+
+</project>

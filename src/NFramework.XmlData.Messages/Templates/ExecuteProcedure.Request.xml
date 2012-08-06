@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RWXMLDS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" dir="0" cnn="" commandTimeout="90" tranx="1" cursor="3" isolation="4096">
+	<ERRORS />
+	<REQUEST id="0" qtype="0" rtype="0" pageSize="-1" pageNo="-1" sort="">
+		<QUERY>EmployeeAdd</QUERY>
+		<PARAMS>
+			<P paramType="">LastName</P>
+			<P paramType="">FirstName</P>
+		</PARAMS>
+		<VALUES>
+			<V>
+				<P>Bae</P>
+				<P>Sunghyouk</P>
+			</V>
+			<V>
+				<P>Bae</P>
+				<P>Jehyoug</P>
+			</V>
+		</VALUES>
+		<PREQUERIES>
+			<Q>
+				if OBJECT_ID('EmployeeAdd') &lt;&gt; 0 DROP PROC EmployeeAdd
+			</Q>
+			<Q>
+				CREATE PROC EmployeeAdd @LastName nvarchar(20), @FirstName nvarchar(10) AS INSERT into Employees (LastName, FirstName) values(@LastName, @FirstName) return 0
+			</Q>
+		</PREQUERIES>
+		<POSTQUERIES>
+			<Q>
+				DELETE FROM Employees where LastName='Bae'
+			</Q>
+			<Q>
+				if OBJECT_ID('EmployeeAdd') &lt;&gt; 0 DROP PROC EmployeeAdd
+			</Q>
+		</POSTQUERIES>
+	</REQUEST>
+</RWXMLDS>

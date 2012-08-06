@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.WebHost"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+	
+	<!-- 
+		파일 시스템 Web Application (.NET 2.0 이상에서 지원) 빌드
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+
+	<target name="init" depends="common.init">
+		<property name="assembly.description" value="NSoft.NFramework Test Web Site"/>
+		
+		<!-- 테스트용 Assembly는 CLS 일 필요도 없고, Sign도 필요 없다.-->
+		<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+		<property name="sign" value="false" overwrite="true"/>
+		
+		<!-- Web Application의 Virtual path를 지정한다. 지정하지 않으면 Project Name을 사용한다. -->
+		<property name="web.virtualpath" value="/NFramework" overwrite="true"/>
+	
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+			
+			<include name="System"/>
+			<include name="System.Core"/>
+			<include name="System.Data" />
+            <include name="System.Drawing" />
+            <include name="System.EnterpriseServices" />
+			<include name="System.Web"/>
+            <include name="System.Web.Extensions"/>
+			<include name="System.Web.Services" />
+			<include name="System.Xml" />
+			<include name="System.Xml.Linq" />
+
+			<include name="AntiXssLibrary.dll"/>
+            <include name="AsyncCtpLibrary.dll" />
+			
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+
+			<include name="Enyim.Caching" />
+            <include name="Fasterflect.dll" />
+			<include name="FluentValidation.dll" />
+			<include name="ICSharpCode.SharpZibLib.dll" />
+            <include name="Iesi.Collections.dll" />
+			<include name="Newtonsoft.Json.dll" />
+			
+            <include name="NHibernate.dll" />
+            <include name="NLog.dll"/>
+
+			<include name="NSoft.NFramework.dll"/>
+			<include name="NSoft.NFramework.Caching.Memcached.dll" />
+			<include name="NSoft.NFramework.Caching.SharedCache.dll" />
+			<include name="NSoft.NFramework.Data.MongoDB.dll" />
+            <include name="NSoft.NFramework.Web.dll" />
+
+			<include name="SharedCache.WinServiceCommon.dll" />
+            
+            <include name="Wintellect.Threading.dll" />
+			
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+		</resourcefileset>
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<!-- .NET 2.0 Web Application은 website-2.0 을 호출해야 합니다. : generate-assemblyinfo 는 필요없습니다.-->
+	<target name="build"  
+			depends="generate-assemblyinfo common.compile-website"
+			description="Build ${project::get-name()}">
+	</target>
+</project>

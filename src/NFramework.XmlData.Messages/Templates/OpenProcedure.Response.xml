@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RWXMLDS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" dir="1" cnn="" commandTimeout="90" tranx="1" cursor="3" isolation="4096">
+	<ERRORS />
+	<RESPONSE reqId="0" id="0" seqId="0" pageCount="-1" totalCount="10" pageSize="-1" pageNo="-1" sort="" rtype="0">
+		<FIELDS>
+			<F paramType="System.String" size="-1">ProductName</F>
+			<F paramType="System.Int32" size="-1">Total</F>
+		</FIELDS>
+		<RECORDS>
+			<R>
+				<C>Camembert Pierrot</C>
+				<C>10</C>
+			</R>
+			<R>
+				<C>Gudbrandsdalsost</C>
+				<C>1</C>
+			</R>
+			<R>
+				<C>Konbu</C>
+				<C>10</C>
+			</R>
+			<R>
+				<C>Mascarpone Fabioli</C>
+				<C>10</C>
+			</R>
+			<R>
+				<C>
+					Mozzarella di Giovanni
+				</C>
+				<C>10</C>
+			</R>
+			<R>
+				<C>Outback Lager</C>
+				<C>5</C>
+			</R>
+			<R>
+				<C>Queso Cabrales</C>
+				<C>2</C>
+			</R>
+			<R>
+				<C>
+					Singaporean Hokkien Fried Mee
+				</C>
+				<C>5</C>
+			</R>
+			<R>
+				<C>
+					Teatime Chocolate Biscuits
+				</C>
+				<C>7</C>
+			</R>
+			<R>
+				<C>Tofu</C>
+				<C>3</C>
+			</R>
+		</RECORDS>
+	</RESPONSE>
+	<RESPONSE reqId="0" id="0" seqId="1" pageCount="-1" totalCount="-1" pageSize="-1" pageNo="-1" sort="" rtype="0">
+		<FIELDS>
+			<F paramType="System.String" size="-1">ProductName</F>
+			<F paramType="System.Int32" size="-1">Total</F>
+		</FIELDS>
+		<RECORDS>
+			<R>
+				<C>Alice Mutton</C>
+				<C>56</C>
+			</R>
+			<R>
+				<C>Aniseed Syrup</C>
+				<C>20</C>
+			</R>
+			<R>
+				<C>Boston Crab Meat</C>
+				<C>50</C>
+			</R>
+			<R>
+				<C>Camembert Pierrot</C>
+				<C>75</C>
+			</R>
+			<R>
+				<C>Chai</C>
+				<C>60</C>
+			</R>
+			<R>
+				<C>Geitost</C>
+				<C>64</C>
+			</R>
+			<R>
+				<C>
+					Gnocchi di nonna Alice
+				</C>
+				<C>18</C>
+			</R>
+			<R>
+				<C>
+					Grandma's Boysenberry Spread
+				</C>
+				<C>12</C>
+			</R>
+			<R>
+				<C>Guarana Fantastica</C>
+				<C>30</C>
+			</R>
+			<R>
+				<C>Gula Malacca</C>
+				<C>58</C>
+			</R>
+			<R>
+				<C>Ikura</C>
+				<C>46</C>
+			</R>
+			<R>
+				<C>Ipoh Coffee</C>
+				<C>9</C>
+			</R>
+			<R>
+				<C>
+					Jack's New England Clam Chowder
+				</C>
+				<C>25</C>
+			</R>
+			<R>
+				<C>
+					Manjimup Dried Apples
+				</C>
+				<C>24</C>
+			</R>
+			<R>
+				<C>
+					Mozzarella di Giovanni
+				</C>
+				<C>35</C>
+			</R>
+			<R>
+				<C>
+					Northwoods Cranberry Sauce
+				</C>
+				<C>16</C>
+			</R>
+			<R>
+				<C>
+					NuNuCa Nuß-Nougat-Creme
+				</C>
+				<C>60</C>
+			</R>
+			<R>
+				<C>Outback Lager</C>
+				<C>30</C>
+			</R>
+			<R>
+				<C>Pate chinois</C>
+				<C>15</C>
+			</R>
+			<R>
+				<C>Queso Cabrales</C>
+				<C>5</C>
+			</R>
+			<R>
+				<C>Raclette Courdavault</C>
+				<C>25</C>
+			</R>
+			<R>
+				<C>Rhonbrau Klosterbier</C>
+				<C>10</C>
+			</R>
+			<R>
+				<C>Scottish Longbreads</C>
+				<C>42</C>
+			</R>
+			<R>
+				<C>
+					Singaporean Hokkien Fried Mee
+				</C>
+				<C>20</C>
+			</R>
+			<R>
+				<C>Tarte au sucre</C>
+				<C>101</C>
+			</R>
+			<R>
+				<C>
+					Uncle Bob's Organic Dried Pears
+				</C>
+				<C>20</C>
+			</R>
+			<R>
+				<C>Zaanse koeken</C>
+				<C>30</C>
+			</R>
+		</RECORDS>
+	</RESPONSE>
+	<RESPONSE reqId="0" id="0" seqId="2" pageCount="-1" totalCount="-1" pageSize="-1" pageNo="-1" sort="" rtype="0">
+		<FIELDS>
+			<F paramType="System.String" size="-1">ProductName</F>
+			<F paramType="System.Int32" size="-1">Total</F>
+		</FIELDS>
+		<RECORDS>
+			<R>
+				<C>Gorgonzola Telino</C>
+				<C>20</C>
+			</R>
+			<R>
+				<C>Gumbar Gummibarchen</C>
+				<C>12</C>
+			</R>
+			<R>
+				<C>
+					Jack's New England Clam Chowder
+				</C>
+				<C>9</C>
+			</R>
+			<R>
+				<C>Konbu</C>
+				<C>25</C>
+			</R>
+			<R>
+				<C>Lakkalikoori</C>
+				<C>12</C>
+			</R>
+			<R>
+				<C>Perth Pasties</C>
+				<C>20</C>
+			</R>
+			<R>
+				<C>Queso Cabrales</C>
+				<C>20</C>
+			</R>
+			<R>
+				<C>Raclette Courdavault</C>
+				<C>30</C>
+			</R>
+			<R>
+				<C>Rhonbrau Klosterbier</C>
+				<C>12</C>
+			</R>
+		</RECORDS>
+	</RESPONSE>
+</RWXMLDS>

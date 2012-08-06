@@ -1,0 +1,1498 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Data.MongoDB</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheConfig">
+      <summary>
+            Config properties
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheConfig.Region">
+      <summary>
+            MongoDB connection string (예: mongodb://localhost/NFramework_NH_Cache?strict=false) 
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheConfig.Properties">
+      <summary>
+            부가 속성들
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheSectionHandler">
+      <summary>
+            MongoCacheClient의 환경설정 정보를 읽어드립니다.
+            </summary>
+      <example>
+        <code>
+          <configSections>
+            <section name="mongoCache" type="NSoft.NFramework.Data.Mongo.NHCaches.MongoCacheSectionHandler, NSoft.NFramework.Data.Mongo" />
+          </configSections>
+          <mongoCache>
+            <!-- region 은 Unique 해야 합니다. expiration: TimeSpan, compressThreshold:byte단위-->
+            <cache region="NSoft.NFramework" connectionString="server=localhost;database=NFramework-Cache;safe=true;" expiration="02:00:00" compressThreshold="40960" />
+            <cache region="NAccount" connectionString="server=localhost;database=NAccount-Cache;safe=true;" expiration="02:00:00" compressThreshold="40960" />
+          </mongoCache>
+        </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+      <summary>
+            구성 섹션 처리기를 만듭니다.
+            </summary>
+      <returns>
+            만들어진 섹션 처리기 개체입니다.
+            </returns>
+      <param name="parent">부모 개체입니다.</param>
+      <param name="configContext">구성 컨텍스트 개체입니다.</param>
+      <param name="section">섹션 XML 노드입니다.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient">
+      <summary>
+            MongoDB 를 캐시 저장소로 이용하는 캐시입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.#ctor(System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="regionName">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.#ctor(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            생성자
+            </summary>
+      <param name="regionName">
+      </param>
+      <param name="props">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Get(System.Object)">
+      <summary>
+            Get the object from the Cache
+            </summary>
+      <param name="key" />
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Put(System.Object,System.Object)">
+      <summary>
+            캐시에 값을 저장합니다.
+            </summary>
+      <param name="key">키</param>
+      <param name="value">값</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Remove(System.Object)">
+      <summary>
+            캐시에서 해당 키의 캐시 항목을 삭제합니다.
+            </summary>
+      <param name="key">The Id of the Item in the Cache to remove.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Clear">
+      <summary>
+            Clear the Cache
+            </summary>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Destroy">
+      <summary>
+            Clean up.
+            </summary>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Lock(System.Object)">
+      <summary>
+            If this is a clustered cache, lock the item
+            </summary>
+      <param name="key">The Id of the Item in the Cache to lock.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Unlock(System.Object)">
+      <summary>
+            If this is a clustered cache, unlock the item
+            </summary>
+      <param name="key">The Id of the Item in the Cache to unlock.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.NextTimestamp">
+      <summary>
+            Generate a timestamp
+            </summary>
+      <returns />
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Region">
+      <summary>
+            캐시 영역
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.ConnectionString">
+      <summary>
+            MongoDB ConnectionString (예: server=localhost;database=nhcache;safe=true; )
+            </summary>
+      <seealso cref="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultConnectionString" />
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Expiry">
+      <summary>
+            기본 유효기간
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.CompressThreshold">
+      <summary>
+            압축 수행을 위한 최소 크기 (byte)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.Timeout">
+      <summary>
+            Get a reasonable "lock timeout" (60 seconds)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheClient.RegionName">
+      <summary>
+            Gets the name of the cache region
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheProvider">
+      <summary>
+            MongoDB를 캐시 저장소로 사용하는 CacheProvider입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheProvider.BuildCache(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            Configure the cache
+            </summary>
+      <param name="regionName">the name of the cache region</param>
+      <param name="properties">configuration settings</param>
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheProvider.NextTimestamp">
+      <summary>
+            generate a timestamp
+            </summary>
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheProvider.Start(System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            Callback to perform any necessary initialization of the underlying cache implementation during ISessionFactory construction.
+            </summary>
+      <param name="properties">current configuration settings</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.NHCaches.MongoCacheProvider.Stop">
+      <summary>
+            Callback to perform any necessary cleanup of the underlying cache implementation during <see cref="M:NHibernate.ISessionFactory.Close" />.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.Web.MongoAspOutputCacheEntry">
+      <summary>
+            MongDB에 저장할 OutputCache 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.Web.MongoAspOutputCacheEntry.Id">
+      <summary>
+            Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.Web.MongoAspOutputCacheEntry.SerializedObject">
+      <summary>
+            OutputCache 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.Web.MongoAspOutputCacheEntry.UtcExpiry">
+      <summary>
+            Output Cache  엔트리의 만료 시각
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.Web.MongoOutputCacheProvider">
+      <summary>
+            .NET 4.0 이상에서 ASP.NET Page의 OutputCache를 MongoDB에 저장합니다.
+            참고:
+                 http://www.4guysfromrolla.com/articles/061610-1.aspx
+                 http://weblogs.asp.net/gunnarpeipman/archive/2009/11/19/asp-net-4-0-writing-custom-output-cache-providers.aspx
+                 http://weblogs.asp.net/scottgu/archive/2010/01/27/extensible-output-caching-with-asp-net-4-vs-2010-and-net-4-0-series.aspx
+            </summary>
+      <example>
+        <code>
+          <system.web>
+            <compilation debug="true" targetFramework="4.0" />
+            <caching>
+              <outputCache defaultProvider="MongoOutputCacheProvider">
+                <providers>
+                  <add name="MongoOutputCacheProvider" type="NSoft.NFramework.Data.MongoDB.Web.MongoOutputCacheProvider, NSoft.NFramework.Data.MongoDB" />
+                </providers>
+              </outputCache>
+            </caching>
+          </system.web>
+        </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoOutputCacheProvider.Get(System.String)">
+      <summary>
+            출력 캐시에서 지정된 항목에 대한 참조를 반환합니다.
+            </summary>
+      <returns>
+            캐시에서 지정된 항목을 식별하는 <paramref name="key" /> 값이거나 캐시에 지정된 항목이 없는 경우 null입니다.
+            </returns>
+      <param name="key">출력 캐시에서 캐시된 항목에 대한 고유 식별자입니다. </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoOutputCacheProvider.Add(System.String,System.Object,System.DateTime)">
+      <summary>
+            지정된 항목을 출력 캐시에 삽입합니다. 
+            </summary>
+      <returns>
+            지정된 공급자에 대한 참조입니다. 
+            </returns>
+      <param name="key">
+        <paramref name="entry" />에 대한 고유 식별자입니다.</param>
+      <param name="entry">출력 캐시에 추가할 내용입니다.</param>
+      <param name="utcExpiry">캐시된 항목이 만료되는 날짜와 시간입니다.</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoOutputCacheProvider.Set(System.String,System.Object,System.DateTime)">
+      <summary>
+            지정된 항목을 출력 캐시에 삽입하고 이미 캐시되어 있는 경우 해당 항목을 덮어씁니다.
+            </summary>
+      <param name="key">
+        <paramref name="entry" />에 대한 고유 식별자입니다.</param>
+      <param name="entry">출력 캐시에 추가할 내용입니다.</param>
+      <param name="utcExpiry">캐시된 <paramref name="entry" />가 만료되는 날짜와 시간입니다.</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoOutputCacheProvider.Remove(System.String)">
+      <summary>
+            출력 캐시에서 지정된 항목을 제거합니다.
+            </summary>
+      <param name="key">출력 캐시에서 제거할 항목에 대한 고유 식별자입니다. </param>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.Web.MongoPageStatePersister">
+      <summary>
+            ViewState 정보를 MongoDB에 저장합니다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.Web.MongoPageStatePersister.DefaultStateConnectionString">
+      <summary>
+            상태정보를 저장할 DB의 기본 ConnectionString
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoPageStatePersister.#ctor(System.Web.UI.Page)">
+      <summary>
+            생성자
+            </summary>
+      <param name="page">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoPageStatePersister.LoadFromRepository">
+      <summary>
+            ViewState 저장소로부터 저장된 ViewState 정보를 가져옵니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoPageStatePersister.SaveToRepository">
+      <summary>
+            Page의 ViewState 정보를 특정 저장소에 저장하고, 저장 토큰 값을 <see cref="P:NSoft.NFramework.Web.PageStatePersisters.AbstractServerPageStatePersister.StateValue" />에 저장합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.Web.MongoPageStatePersister.ConnectionString">
+      <summary>
+            상태정보 DB의 ConnectionString
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider">
+      <summary>
+            SessionState 정보를 MongoDB 시스템에 저장하도록 합니다.
+            예제 : http://msdn.microsoft.com/en-us/library/ms178589.aspx
+            </summary>
+      <example>
+        <code>
+            // web.config 에서 다음과 같이 환경 설정하면 됩니다.
+            <system.web><sessionState cookieless="true" regenerateExpiredSessionId="true" mode="Custom" customProvider="MongoSessionStateStoreProvider"><providers><add name="MongoSessionStateStoreProvider" type="NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider, NSoft.NFramework.Data.MongoDB" /></providers></sessionState></system.web></code>
+      </example>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider.ConnectionString">
+      <summary>
+            Session 상태 정보가 저장될 Database의 기본 ConnectionString
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider.CreateNewStoreData(System.Web.HttpContext,System.Int32)">
+      <summary>
+            현재 요청에 사용할 새 <see cref="T:System.Web.SessionState.SessionStateStoreData" /> 개체를 만듭니다.
+            </summary>
+      <returns>
+            현재 요청에 대한 새 <see cref="T:System.Web.SessionState.SessionStateStoreData" />입니다.
+            </returns>
+      <param name="context">현재 요청에 대한 <see cref="T:System.Web.HttpContext" />입니다.</param>
+      <param name="timeout">새 <see cref="T:System.Web.SessionState.SessionStateStoreData" />의 세션 상태 <see cref="P:System.Web.SessionState.HttpSessionState.Timeout" /> 값입니다.</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider.GetItem(System.Web.HttpContext,System.String,System.Boolean@,System.TimeSpan@,System.Object@,System.Web.SessionState.SessionStateActions@)">
+      <summary>
+            세션 데이터 저장소에서 읽기 전용 세션 상태 데이터를 반환합니다.
+            </summary>
+      <returns>
+            세션 데이터 저장소의 세션 값과 정보로 채워진 <see cref="T:System.Web.SessionState.SessionStateStoreData" />입니다.
+            </returns>
+      <param name="context">현재 요청에 대한 <see cref="T:System.Web.HttpContext" />입니다.</param>
+      <param name="id">현재 요청에 대한 <see cref="P:System.Web.SessionState.HttpSessionState.SessionID" />입니다.</param>
+      <param name="locked">이 메서드가 반환될 때 요청된 세션 항목이 세션 데이터 저장소에서 잠겨 있으면 true로 설정된 부울 값이 포함되고, 그렇지 않으면 false로 설정된 부울 값이 포함됩니다.</param>
+      <param name="lockAge">이 메서드가 반환될 때 세션 데이터 저장소의 항목이 잠겨 있는 시간으로 설정된 <see cref="T:System.TimeSpan" /> 개체가 포함됩니다.</param>
+      <param name="lockId">이 메서드가 반환될 때 현재 요청에 대한 잠금 식별자로 설정된 개체가 포함됩니다.잠금 식별자에 대한 자세한 내용은 <see cref="T:System.Web.SessionState.SessionStateStoreProviderBase" /> 클래스 요약에서 "세션 저장소 데이터 잠금"을 참조하십시오.</param>
+      <param name="actions">이 메서드가 반환될 때 현재 세션이 초기화되지 않은 쿠키 없는 세션인지 여부를 나타내는 <see cref="T:System.Web.SessionState.SessionStateActions" /> 값 중 하나가 포함됩니다.</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider.Initialize(System.String,System.Collections.Specialized.NameValueCollection)">
+      <summary>
+            공급자를 초기화합니다.
+            </summary>
+      <param name="name">공급자의 이름입니다.</param>
+      <param name="config">이 공급자에 대해 구성에 지정된 공급자별 특성을 나타내는 이름/값 쌍의 컬렉션입니다.</param>
+      <exception cref="T:System.ArgumentNullException">공급자 이름이 null인 경우</exception>
+      <exception cref="T:System.ArgumentException">공급자 이름의 길이가 0인 경우</exception>
+      <exception cref="T:System.InvalidOperationException">공급자가 이미 초기화된 후 공급자에 대해 <see cref="M:System.Configuration.Provider.ProviderBase.Initialize(System.String,System.Collections.Specialized.NameValueCollection)" />를 호출하려고 한 경우</exception>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider.InitializeRequest(System.Web.HttpContext)">
+      <summary>
+            요청별 초기화를 위해 <see cref="T:System.Web.SessionState.SessionStateModule" /> 개체에 의해 호출됩니다.
+            </summary>
+      <param name="context">현재 요청에 대한 <see cref="T:System.Web.HttpContext" />입니다.</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.Web.MongoSessionStateStoreProvider.RemoveItem(System.Web.HttpContext,System.String,System.Object,System.Web.SessionState.SessionStateStoreData)">
+      <summary>
+            세션 데이터 저장소에서 항목 데이터를 삭제합니다.
+            </summary>
+      <param name="context">현재 요청에 대한 <see cref="T:System.Web.HttpContext" />입니다.</param>
+      <param name="id">현재 요청에 대한 세션 식별자입니다.</param>
+      <param name="lockId">현재 요청에 대한 잠금 식별자입니다.</param>
+      <param name="item">데이터 저장소에서 삭제할 항목을 나타내는 <see cref="T:System.Web.SessionState.SessionStateStoreData" />입니다.</param>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.IMongoRepository">
+      <summary>
+            MongoDB¿¡ ´ëÇÑ Data Ã³¸®¸¦ À§ÇÑ Repository¸¦ Ç¥ÇöÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.DatabaseExists(System.String)">
+      <summary>
+        <paramref name="databaseName" />ÀÇ Database°¡ Á¸ÀçÇÏ´ÂÁö ¿©ºÎ
+            </summary>
+      <param name="databaseName">Database ¸í</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.DropDatabase(System.String)">
+      <summary>
+        <paramref name="databaseName" />ÀÇ Database¸¦ »èÁ¦ÇÏµµ·Ï ¸í·ÉÇÕ´Ï´Ù.
+            </summary>
+      <param name="databaseName">»èÁ¦ÇÒ Database ¸í</param>
+      <returns>»èÁ¦ °á°ú</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.CreateCollection(System.String)">
+      <summary>
+            ÁöÁ¤µÈ ÀÌ¸§ÀÇ ÄÃ·º¼ÇÀ» »ý¼ºÇÕ´Ï´Ù.
+            </summary>
+      <param name="collectionName">»ý¼ºÇÒ ÄÃ·º¼Ç ¸í</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.DropCollection(System.String)">
+      <summary>
+            ÁöÁ¤ÇÑ collection name¿¡ ÇØ´çÇÏ´Â ÄÃ·º¼ÇÀ» DB¿¡¼­ »èÁ¦ÇÕ´Ï´Ù. (GenericÀÌ ¾Æ´Ï¹Ç·Î, ¿©·¯°¡Áö ¼öÇüÀ» ´ãÀ» ¼ö ÀÖ´Â ÄÃ·º¼ÇÀÔ´Ï´Ù.)
+            </summary>
+      <param name="collectionName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.DropAllCollection">
+      <summary>
+            Çö <see cref="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.Database" />ÀÇ ¸ðµç ÄÃ·º¼ÇÀ» »èÁ¦ÇÕ´Ï´Ù.
+            </summary>
+      <returns>»èÁ¦ ¼öÇà °á°úÀÇ ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.GetCollection(System.String)">
+      <summary>
+        <paramref name="collectionName" />ÀÇ CollectionÀ» ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="collectionName">ÄÃ·º¼Ç ¸í</param>
+      <returns>ÄÃ·º¼Ç ¸íÀÇ ÄÃ·º¼Ç ¹ÝÈ¯</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.GetCollection(System.Type,System.String)">
+      <summary>
+        <paramref name="collectionName" />ÀÇ CollectionÀ» ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="documentType">
+      </param>
+      <param name="collectionName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.GetCollectionAs``1(System.String)">
+      <summary>
+        <paramref name="collectionName" />ÀÇ CollectionÀ» ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="collectionName">ÄÃ·º¼Ç ¸í</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.RenameCollection(System.String,System.String)">
+      <summary>
+        <paramref name="srcName" />ÀÇ ÄÃ·º¼ÇÀÇ ÀÌ¸§À» <paramref name="destName" />À¸·Î º¯°æÇÕ´Ï´Ù.
+            </summary>
+      <param name="srcName">
+      </param>
+      <param name="destName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.GetAllCollectionNames">
+      <summary>
+        <see cref="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.Database" />ÀÇ ¸ðµç CollectionÀÇ ¾Æ¸§À» ¿­°ÅÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.GetAllCollection">
+      <summary>
+            Database¿¡ ÀÖ´Â ¸ðµç CollectionÀ» °¡Á®¿Â´Ù.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.GetAllCollectionSettings">
+      <summary>
+            DatabaseÀÇ ¸ðµç ÄÃ·º¼ÇÀÇ Á¤º¸¸¦ °¡Á®¿É´Ï´Ù.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Count">
+      <summary>
+            ÁöÁ¤µÈ ÄÃ·º¼ÇÀÇ Document ¼ö¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Count(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            ÁöÁ¤µÈ ÄÃ·º¼ÇÀÇ Á¶°Ç¿¡ ¸Â´Â Document ¼ö¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">ÁúÀÇ °´Ã¼</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Distinct(System.String)">
+      <summary>
+            ÄÃ·º¼Ç¿¡¼­ <paramref name="key" /> ÀÇ °ªµéÀ» Áßº¹µÇÁö ¾Êµµ·Ï °¡Á®¿É´Ï´Ù.
+            </summary>
+      <param name="key">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Distinct(System.String,MongoDB.Driver.IMongoQuery)">
+      <summary>
+            ÄÃ·º¼Ç¿¡¼­ <paramref name="key" /> ÀÇ °ªµéÀ» Áßº¹µÇÁö ¾Êµµ·Ï °¡Á®¿É´Ï´Ù.
+            </summary>
+      <param name="key">
+      </param>
+      <param name="query">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindOne(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            Á¶°Ç¿¡ ¸Â´Â Ã¹¹øÂ° ¿ä¼Ò¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù. 
+            </summary>
+      <param name="query">Á¶°Ç Àý (¾øÀ¸¸é nullÀ» ÀÔ·ÂÇÏ¼¼¿ä)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindOneAs(System.Type,MongoDB.Driver.IMongoQuery)">
+      <summary>
+            Á¶°Ç¿¡ ¸Â´Â Ã¹¹øÂ° ¿ä¼Ò¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù. 
+            </summary>
+      <param name="documentType">Document Type</param>
+      <param name="query">Á¶°Ç Àý (¾øÀ¸¸é nullÀ» ÀÔ·ÂÇÏ¼¼¿ä)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindOneAs``1(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            Á¶°Ç¿¡ ¸Â´Â Ã¹¹øÂ° ¿ä¼Ò¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">Á¶°Ç Àý (¾øÀ¸¸é nullÀ» ÀÔ·ÂÇÏ¼¼¿ä)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindOneById(MongoDB.Bson.BsonValue)">
+      <summary>
+            Id·Î Document Á¶È¸ÇÏ±â
+            </summary>
+      <param name="id">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindOneByIdAs(System.Type,MongoDB.Bson.BsonValue)">
+      <summary>
+            Id·Î Document Á¶È¸ÇÏ±â
+            </summary>
+      <param name="documentType">
+      </param>
+      <param name="id">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindOneByIdAs``1(MongoDB.Bson.BsonValue)">
+      <summary>
+            Id·Î Document Á¶È¸ÇÏ±â
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="id">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Find(MongoDB.Driver.IMongoQuery)">
+      <summary>
+        <paramref name="query" /> Á¶°Ç¿¡ ¸Â´Â Document¸¦ Á¶È¸ÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">ÁúÀÇ</param>
+      <returns>ÁúÀÇ °á°ú ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAs(System.Type,MongoDB.Driver.IMongoQuery)">
+      <summary>
+        <paramref name="query" /> Á¶°Ç¿¡ ¸Â´Â Document¸¦ Á¶È¸ÇÕ´Ï´Ù.
+            </summary>
+      <param name="documentType">Document ¼öÇü</param>
+      <param name="query">ÁúÀÇ</param>
+      <returns>ÁúÀÇ °á°ú ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAs``1(MongoDB.Driver.IMongoQuery)">
+      <summary>
+        <paramref name="query" /> Á¶°Ç¿¡ ¸Â´Â Document¸¦ Á¶È¸ÇÕ´Ï´Ù.
+            </summary>
+      <typeparam name="T">¿ä¼ÒÀÇ ¼öÇü</typeparam>
+      <param name="query">ÁúÀÇ</param>
+      <returns>ÁúÀÇ °á°ú ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAll">
+      <summary>
+            ÄÃ·º¼ÇÀÇ ¸ðµç Document¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAllAs(System.Type)">
+      <summary>
+            ÄÃ·º¼ÇÀÇ ¸ðµç Document¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAllAs``1">
+      <summary>
+            ÄÃ·º¼ÇÀÇ ¸ðµç Document¸¦ ÁöÁ¤µÈ Çü½ÄÀ¸·Î ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAndModify(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoSortBy,MongoDB.Driver.IMongoUpdate,System.Nullable{System.Boolean})">
+      <summary>
+            Á¶È¸ÇÑ Document Á¤º¸¸¦ °»½ÅÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">ÇÊÅÍ¸µ</param>
+      <param name="sortBy">Á¤·Ä ±ÔÄ¢</param>
+      <param name="update">Update </param>
+      <param name="returnNew">UpdateµÈ Document¸¦ ¹ÝÈ¯ÇÒ °ÍÀÎ°¡?</param>
+      <returns>´ë»ó °á°ú</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAndModify(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoSortBy,MongoDB.Driver.IMongoUpdate,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+      <summary>
+            Á¶È¸ÇÑ Document Á¤º¸¸¦ °»½ÅÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">ÇÊÅÍ¸µ</param>
+      <param name="sortBy">Á¤·Ä ±ÔÄ¢</param>
+      <param name="update">Update </param>
+      <param name="returnNew">UpdateµÈ Document¸¦ ¹ÝÈ¯ÇÒ °ÍÀÎ°¡?</param>
+      <param name="upsert">UpdateÇÒ °Ô ¾øÀ¸¸é Insert¸¦ ÇÒ °ÍÀÎ°¡?</param>
+      <returns>´ë»ó °á°ú</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAndRemove(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            ÁúÀÇ¿¡ ÇØ´çÇÏ´Â Document¸¦ Ã£¾Æ¼­ »èÁ¦ÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">ÁúÀÇ</param>
+      <returns>¼öÇà °á°ú</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.FindAndRemove(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoSortBy)">
+      <summary>
+            ÁúÀÇ¿¡ ÇØ´çÇÏ´Â Document¸¦ Ã£¾Æ¼­ »èÁ¦ÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">ÁúÀÇ</param>
+      <param name="sortBy">Á¤·Ä ¹æ½Ä</param>
+      <returns>¼öÇà °á°ú</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Group(MongoDB.Driver.IMongoQuery,System.String,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonJavaScript)">
+      <summary>
+            Group By¸¦ ¼öÇàÇÕ´Ï´Ù. (Find() ÈÄ¿¡ LINQ ÀÇ GroupBy¸¦ »ç¿ëÇÏ´Â°Ô ´õ ÆíÇÒ °Í °°½À´Ï´Ù)
+            </summary>
+      <param name="query">ÇÊÅÍ¸µ</param>
+      <param name="key">Grouping ±âÁØ Å°</param>
+      <param name="initial">ÃÊ±â°ª¿¡ ÇØ´çÇÏ´Â Document</param>
+      <param name="reduce">Grouping ½ÃÀÇ Ã³¸®¿¡ ´ëÇÑ ·ÎÁ÷À» °¡Áø Javascript (¿¹: "function(doc, prev) { prev.count += 1; }")</param>
+      <param name="finalize">¸¶Áö¸· Á¤¸® ½ÃÀÇ ½ÇÇàÇØ¾ß ÇÒ Javascript</param>
+      <returns>GroupingµÈ DocumentÀÇ ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Group(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoGroupBy,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonJavaScript)">
+      <summary>
+            Group By¸¦ ¼öÇàÇÕ´Ï´Ù. (Find() ÈÄ¿¡ LINQ ÀÇ GroupBy¸¦ »ç¿ëÇÏ´Â°Ô ´õ ÆíÇÒ °Í °°½À´Ï´Ù)
+            </summary>
+      <param name="query">ÇÊÅÍ¸µ</param>
+      <param name="groupBy">Grouping ±âÁØ Å° (¿¹: GroupBy.Keys("x"), GroupBy.Function("function(doc) { return { x: doc.x }; }") )</param>
+      <param name="initial">ÃÊ±â°ª¿¡ ÇØ´çÇÏ´Â Document</param>
+      <param name="reduce">Grouping ½ÃÀÇ Ã³¸®¿¡ ´ëÇÑ ·ÎÁ÷À» °¡Áø Javascript (¿¹: "function(doc, prev) { prev.count += 1; }")</param>
+      <param name="finalize">¸¶Áö¸· Á¤¸® ½ÃÀÇ ½ÇÇàÇØ¾ß ÇÒ Javascript</param>
+      <returns>GroupingµÈ DocumentÀÇ ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Group(MongoDB.Driver.IMongoQuery,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonJavaScript)">
+      <summary>
+            Group By¸¦ ¼öÇàÇÕ´Ï´Ù. (Find() ÈÄ¿¡ LINQ ÀÇ GroupBy¸¦ »ç¿ëÇÏ´Â°Ô ´õ ÆíÇÒ °Í °°½À´Ï´Ù)
+            </summary>
+      <param name="query">ÇÊÅÍ¸µ</param>
+      <param name="keyFunction">Grouping ±âÁØ Å°¸¦ ¼±ÅÃÇÏ´Â Javascript (¿¹: "function(doc) { return { x: doc.x }; }") </param>
+      <param name="initial">ÃÊ±â°ª¿¡ ÇØ´çÇÏ´Â Document</param>
+      <param name="reduce">Grouping ½ÃÀÇ Ã³¸®¿¡ ´ëÇÑ ·ÎÁ÷À» °¡Áø Javascript (¿¹: "function(doc, prev) { prev.count += 1; }")</param>
+      <param name="finalize">¸¶Áö¸· Á¤¸® ½ÃÀÇ ½ÇÇàÇØ¾ß ÇÒ Javascript</param>
+      <returns>GroupingµÈ DocumentÀÇ ÄÃ·º¼Ç</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Insert(MongoDB.Bson.BsonDocument)">
+      <summary>
+            ¿£Æ¼Æ¼¸¦ »õ·Î Ãß°¡ÇÕ´Ï´Ù.
+            </summary>
+      <param name="document">Ãß°¡ÇÒ Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Insert(System.Type,System.Object)">
+      <summary>
+            ¿£Æ¼Æ¼¸¦ »õ·Î Ãß°¡ÇÕ´Ï´Ù.
+            </summary>
+      <param name="documentType">Ãß°¡ÇÒ DocumentÀÇ ¼öÇü</param>
+      <param name="document">Ãß°¡ÇÒ Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Insert``1(``0)">
+      <summary>
+            ¿£Æ¼Æ¼¸¦ »õ·Î Ãß°¡ÇÕ´Ï´Ù.
+            </summary>
+      <typeparam name="T">Ãß°¡ÇÒ DocumentÀÇ ¼öÇü</typeparam>
+      <param name="document">Ãß°¡ÇÒ Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.InsertBatch(System.Type,System.Collections.Generic.IEnumerable{System.Object})">
+      <summary>
+            ¿£Æ¼Æ¼µéÀ» »õ·Î Ãß°¡ÇÕ´Ï´Ù.
+            </summary>
+      <param name="documentType">¿ä¼ÒÀÇ ¼öÇü</param>
+      <param name="documents">Ãß°¡ÇÒ ¿ä¼ÒÀÇ ½ÃÄö½º</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.InsertBatch``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>
+            ¿£Æ¼Æ¼µéÀ» »õ·Î Ãß°¡ÇÕ´Ï´Ù.
+            </summary>
+      <param name="documents">Ãß°¡ÇÒ ¿ä¼ÒÀÇ ½ÃÄö½º</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Save(System.Type,System.Object)">
+      <summary>
+            Document ¸¦ ÀúÀåÇÕ´Ï´Ù. Document´Â [BsonId] ¸¦ °¡Áö´Â Id ¼Ó¼ºÀ» °¡Á®¾ß ÇÕ´Ï´Ù.
+            </summary>
+      <param name="documentType">
+      </param>
+      <param name="document">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Save``1(``0)">
+      <summary>
+            Document ¸¦ ÀúÀåÇÕ´Ï´Ù. Document´Â [BsonId] ¸¦ °¡Áö´Â Id ¼Ó¼ºÀ» °¡Á®¾ß ÇÕ´Ï´Ù.
+            </summary>
+      <typeparam name="T">Ãß°¡ÇÒ DocumentÀÇ ¼öÇü</typeparam>
+      <param name="document">Ãß°¡ÇÒ Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Remove(MongoDB.Bson.BsonDocument)">
+      <summary>
+            »èÁ¦ÇÑ´Ù.
+            </summary>
+      <param name="document">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.Remove(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            ÁúÀÇ Á¶°Ç¿¡ ÇØ´çÇÏ´Â Document¸¦ »èÁ¦ÇÕ´Ï´Ù.
+            </summary>
+      <param name="query">»èÁ¦ÇÒ ¿ä¼ÒÀÇ Á¶°Ç</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.RemoveById(MongoDB.Bson.BsonValue)">
+      <summary>
+        <paramref name="id" /> °ªÀ» °¡Áö´Â Document¸¦ »èÁ¦ÇÕ´Ï´Ù
+            </summary>
+      <param name="id">Document Id</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.RemoveByIdAs(System.Type,MongoDB.Bson.BsonValue)">
+      <summary>
+        <paramref name="id" /> °ªÀ» °¡Áö´Â Document¸¦ »èÁ¦ÇÕ´Ï´Ù
+            </summary>
+      <param name="documentType">Document ¼öÇü</param>
+      <param name="id">Document Id</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.RemoveByIdAs``1(MongoDB.Bson.BsonValue)">
+      <summary>
+        <paramref name="id" /> °ªÀ» °¡Áö´Â Document¸¦ »èÁ¦ÇÕ´Ï´Ù
+            </summary>
+      <typeparam name="T">Document ¼öÇü</typeparam>
+      <param name="id">Document Id</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.IMongoRepository.RemoveAll">
+      <summary>
+            ÄÃ·º¼Ç¿¡¼­ ¸ðµç ¿£Æ¼Æ¼¸¦ »èÁ¦ÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.Server">
+      <summary>
+            MongoDB ¼­¹ö
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.DatabaseName">
+      <summary>
+            Database ¸í
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.Database">
+      <summary>
+            MongoDB Database ÀÎ½ºÅÏ½º
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.CollectionName">
+      <summary>
+            ÄÃ·º¼Ç ¸í
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.Collection">
+      <summary>
+            ÄÃ·º¼Ç
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.GridFS">
+      <summary>
+            Mongo Grid File System
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.IsServerConnected">
+      <summary>
+            ¼­¹ö¿¡ Á¢¼Ó ÁßÀÎ°¡?
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.IMongoRepository.SafeMode">
+      <summary>
+            ¾ÈÀü ¸ðµåÀÎ°¡?
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.MongoRepository">
+      <summary>
+            MongoDB 에 대한 Data 처리를 수행하는 Repository에 대한 Utility Class 입니다.
+            </summary>
+      <summary>
+        <see cref="T:NSoft.NFramework.Data.MongoDB.IMongoRepository" /> 를 위한 확장 메소드를 제공합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.Ping(NSoft.NFramework.Data.MongoDB.IMongoRepository)">
+      <summary>
+            서버와의 접속이 제대로 되었는지 확인합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.DeleteAllFile(NSoft.NFramework.Data.MongoDB.IMongoRepository)">
+      <summary>
+            모든 파일을 삭제합니다.
+            </summary>
+      <param name="repository">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.CreateIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,System.String[])">
+      <summary>
+            인덱스를 생성합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keyNames">인덱스 명의 배열</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.CreateIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,MongoDB.Driver.IMongoIndexKeys)">
+      <summary>
+            인덱스를 생성합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keys">인덱스 키</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.CreateIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,MongoDB.Driver.IMongoIndexKeys,MongoDB.Driver.IMongoIndexOptions)">
+      <summary>
+            인덱스를 생성합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keys">인덱스 키</param>
+      <param name="options">인덱스 옵션</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.DropAllIndexes(NSoft.NFramework.Data.MongoDB.IMongoRepository)">
+      <summary>
+            인덱스 제거
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <returns>결과 정보 <see cref="P:MongoDB.Driver.CommandResult.Response" />.ElementCount 가 삭제된 인덱스의 수입니다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.DropIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,MongoDB.Driver.IMongoIndexKeys)">
+      <summary>
+            인덱스 제거
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keys">인덱스 키</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.DropIndexByName(NSoft.NFramework.Data.MongoDB.IMongoRepository,System.String)">
+      <summary>
+            인덱스 제거
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="indexName">인덱스 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.EnsureIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,System.String[])">
+      <summary>
+            해당 인덱스가 존재하지 않으면 새로 생성합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keyNames">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.EnsureIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,MongoDB.Driver.IMongoIndexKeys)">
+      <summary>
+            해당 인덱스가 존재하지 않으면 새로 생성합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keys">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.EnsureIndex(NSoft.NFramework.Data.MongoDB.IMongoRepository,MongoDB.Driver.IMongoIndexKeys,MongoDB.Driver.IMongoIndexOptions)">
+      <summary>
+            해당 인덱스가 존재하지 않으면 새로 생성합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="keys">
+      </param>
+      <param name="options">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.GetIndexes(NSoft.NFramework.Data.MongoDB.IMongoRepository)">
+      <summary>
+        <paramref name="repository" />의 현재 컬렉션의 모든 인덱스 정보를 가져옵니다.
+            </summary>
+      <param name="repository">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepository.IndexExistsByName(NSoft.NFramework.Data.MongoDB.IMongoRepository,System.String)">
+      <summary>
+            인덱스 존재 여부를 파악합니다.
+            </summary>
+      <param name="repository">MongRepository 인스턴스</param>
+      <param name="indexName">인덱스 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl">
+      <summary>
+            Mongo DB에 대한 Repository 패턴을 제공하는 클래스입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.DatabaseExists(System.String)">
+      <summary>
+        <paramref name="databaseName" />의 DB가 존재하는지 검사합니다.
+            </summary>
+      <param name="databaseName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.CreateCollection(System.String)">
+      <summary>
+            지정된 이름의 컬렉션을 생성합니다.
+            </summary>
+      <param name="collectionName">생성할 컬렉션 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.DropCollection(System.String)">
+      <summary>
+            지정한 collection name에 해당하는 컬렉션을 DB에서 삭제합니다. (Generic이 아니므로, 여러가지 수형을 담을 수 있는 컬렉션입니다.)
+            </summary>
+      <param name="collectionName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.DropAllCollection">
+      <summary>
+            현 <see cref="P:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Database" />의 모든 컬렉션을 삭제합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.GetCollection(System.String)">
+      <summary>
+        <paramref name="collectionName" />의 Collection을 반환합니다.
+            </summary>
+      <param name="collectionName">컬렉션 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.GetCollection(System.Type,System.String)">
+      <summary>
+        <paramref name="collectionName" />의 Collection을 반환합니다.
+            </summary>
+      <param name="documentType">
+      </param>
+      <param name="collectionName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.GetCollectionAs``1(System.String)">
+      <summary>
+        <paramref name="collectionName" />의 Collection을 반환합니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="collectionName">컬렉션 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.RenameCollection(System.String,System.String)">
+      <summary>
+        <paramref name="srcName" />의 컬렉션의 이름을 <paramref name="destName" />으로 변경합니다.
+            </summary>
+      <param name="srcName">
+      </param>
+      <param name="destName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.GetAllCollectionNames">
+      <summary>
+        <see cref="P:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Database" />의 모든 Collection의 아름을 열거합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.GetAllCollection">
+      <summary>
+            Database에 있는 모든 Collection을 가져온다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.GetAllCollectionSettings">
+      <summary>
+            Database의 모든 컬렉션의 정보를 가져옵니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Count">
+      <summary>
+            지정된 컬렉션의 Document 수를 반환합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Count(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            지정된 컬렉션의 조건에 맞는 Document 수를 반환합니다.
+            </summary>
+      <param name="query">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Distinct(System.String)">
+      <summary>
+            컬렉션에서 <paramref name="key" /> 의 값들을 중복되지 않도록 가져옵니다.
+            </summary>
+      <param name="key">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Distinct(System.String,MongoDB.Driver.IMongoQuery)">
+      <summary>
+            컬렉션에서 <paramref name="key" /> 의 값들을 중복되지 않도록 가져옵니다.
+            </summary>
+      <param name="key">
+      </param>
+      <param name="query">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindOne(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            조건에 맞는 첫번째 요소를 반환합니다. 
+            </summary>
+      <param name="query">조건 절 (없으면 null을 입력하세요)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindOneAs(System.Type,MongoDB.Driver.IMongoQuery)">
+      <summary>
+            조건에 맞는 첫번째 요소를 반환합니다. 
+            </summary>
+      <param name="documentType">Document Type</param>
+      <param name="query">조건 절 (없으면 null을 입력하세요)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindOneAs``1(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            조건에 맞는 첫번째 요소를 반환합니다.
+            </summary>
+      <param name="query">조건 절 (없으면 null을 입력하세요)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindOneById(MongoDB.Bson.BsonValue)">
+      <summary>
+            Id로 Document 조회하기
+            </summary>
+      <param name="id">Id 값</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindOneByIdAs(System.Type,MongoDB.Bson.BsonValue)">
+      <summary>
+            Id로 Document 조회하기
+            </summary>
+      <param name="documentType">
+      </param>
+      <param name="id">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindOneByIdAs``1(MongoDB.Bson.BsonValue)">
+      <summary>
+            Id로 Document 조회하기
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="id">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Find(MongoDB.Driver.IMongoQuery)">
+      <summary>
+        <paramref name="query" /> 조건에 맞는 Document를 조회합니다.
+            </summary>
+      <param name="query">질의</param>
+      <returns>질의 결과 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAs(System.Type,MongoDB.Driver.IMongoQuery)">
+      <summary>
+        <paramref name="query" /> 조건에 맞는 Document를 조회합니다.
+            </summary>
+      <param name="documentType">Document 수형</param>
+      <param name="query">질의</param>
+      <returns>질의 결과 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAs``1(MongoDB.Driver.IMongoQuery)">
+      <summary>
+        <paramref name="query" /> 조건에 맞는 Document를 조회합니다.
+            </summary>
+      <typeparam name="T">요소의 수형</typeparam>
+      <param name="query">질의</param>
+      <returns>질의 결과 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAll">
+      <summary>
+            컬렉션의 모든 Document를 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAllAs(System.Type)">
+      <summary>
+            컬렉션의 모든 Document를 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAllAs``1">
+      <summary>
+            컬렉션의 모든 Document를 지정된 형식으로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAndModify(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoSortBy,MongoDB.Driver.IMongoUpdate,System.Nullable{System.Boolean})">
+      <summary>
+            조회한 Document 정보를 갱신합니다.
+            </summary>
+      <param name="query">필터링</param>
+      <param name="sortBy">정렬 규칙</param>
+      <param name="update">Update </param>
+      <param name="returnNew">Update된 Document를 반환할 것인가?</param>
+      <returns>대상 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAndModify(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoSortBy,MongoDB.Driver.IMongoUpdate,System.Nullable{System.Boolean},System.Nullable{System.Boolean})">
+      <summary>
+            조회한 Document 정보를 갱신합니다.
+            </summary>
+      <param name="query">필터링</param>
+      <param name="sortBy">정렬 규칙</param>
+      <param name="update">Update </param>
+      <param name="returnNew">Update된 Document를 반환할 것인가?</param>
+      <param name="upsert">Update할 게 없으면 Insert를 할 것인가?</param>
+      <returns>대상 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAndRemove(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            질의에 해당하는 Document를 찾아서 삭제합니다.
+            </summary>
+      <param name="query">질의</param>
+      <returns>수행 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.FindAndRemove(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoSortBy)">
+      <summary>
+            질의에 해당하는 Document를 찾아서 삭제합니다.
+            </summary>
+      <param name="query">질의</param>
+      <param name="sortBy">정렬 방식</param>
+      <returns>수행 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Group(MongoDB.Driver.IMongoQuery,System.String,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonJavaScript)">
+      <summary>
+            Group By를 수행합니다. (Find() 후에 LINQ 의 GroupBy를 사용하는게 더 편할 것 같습니다)
+            </summary>
+      <param name="query">필터링</param>
+      <param name="key">Grouping 기준 키</param>
+      <param name="initial">초기값에 해당하는 Document</param>
+      <param name="reduce">Grouping 시의 처리에 대한 로직을 가진 Javascript (예: "function(doc, prev) { prev.count += 1; }")</param>
+      <param name="finalize">마지막 정리 시의 실행해야 할 Javascript</param>
+      <returns>Grouping된 Document의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Group(MongoDB.Driver.IMongoQuery,MongoDB.Driver.IMongoGroupBy,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonJavaScript)">
+      <summary>
+            Group By를 수행합니다. (Find() 후에 LINQ 의 GroupBy를 사용하는게 더 편할 것 같습니다)
+            </summary>
+      <param name="query">필터링</param>
+      <param name="groupBy">Grouping 기준 키 (예: GroupBy.Keys("x"), GroupBy.Function("function(doc) { return { x: doc.x }; }") )</param>
+      <param name="initial">초기값에 해당하는 Document</param>
+      <param name="reduce">Grouping 시의 처리에 대한 로직을 가진 Javascript (예: "function(doc, prev) { prev.count += 1; }")</param>
+      <param name="finalize">마지막 정리 시의 실행해야 할 Javascript</param>
+      <returns>Grouping된 Document의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Group(MongoDB.Driver.IMongoQuery,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonDocument,MongoDB.Bson.BsonJavaScript,MongoDB.Bson.BsonJavaScript)">
+      <summary>
+            Group By를 수행합니다. (Find() 후에 LINQ 의 GroupBy를 사용하는게 더 편할 것 같습니다)
+            </summary>
+      <param name="query">필터링</param>
+      <param name="keyFunction">Grouping 기준 키를 선택하는 Javascript (예: "function(doc) { return { x: doc.x }; }") </param>
+      <param name="initial">초기값에 해당하는 Document</param>
+      <param name="reduce">Grouping 시의 처리에 대한 로직을 가진 Javascript (예: "function(doc, prev) { prev.count += 1; }")</param>
+      <param name="finalize">마지막 정리 시의 실행해야 할 Javascript</param>
+      <returns>Grouping된 Document의 컬렉션</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Insert(MongoDB.Bson.BsonDocument)">
+      <summary>
+            엔티티를 새로 추가합니다.
+            </summary>
+      <param name="document">추가할 Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Insert(System.Type,System.Object)">
+      <summary>
+            엔티티를 새로 추가합니다.
+            </summary>
+      <param name="documentType">추가할 Document의 수형</param>
+      <param name="document">추가할 Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Insert``1(``0)">
+      <summary>
+            엔티티를 새로 추가합니다.
+            </summary>
+      <typeparam name="T">추가할 Document의 수형</typeparam>
+      <param name="document">추가할 Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.InsertBatch(System.Type,System.Collections.Generic.IEnumerable{System.Object})">
+      <summary>
+            엔티티들을 새로 추가합니다.
+            </summary>
+      <param name="documentType">요소의 수형</param>
+      <param name="documents">추가할 요소의 시퀀스</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.InsertBatch``1(System.Collections.Generic.IEnumerable{``0})">
+      <summary>
+            엔티티들을 새로 추가합니다.
+            </summary>
+      <param name="documents">추가할 요소의 시퀀스</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Save(System.Type,System.Object)">
+      <summary>
+            Document 를 저장합니다. Document는 [BsonId] 를 가지는 Id 속성을 가져야 합니다.
+            </summary>
+      <param name="documentType">
+      </param>
+      <param name="document">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Save``1(``0)">
+      <summary>
+            Document 를 저장합니다. Document는 [BsonId] 를 가지는 Id 속성을 가져야 합니다.
+            </summary>
+      <typeparam name="T">추가할 Document의 수형</typeparam>
+      <param name="document">추가할 Document</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Remove(MongoDB.Driver.IMongoQuery)">
+      <summary>
+            지정된 엔티티를 삭제합니다.
+            </summary>
+      <param name="query">삭제할 요소의 조건</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.RemoveById(MongoDB.Bson.BsonValue)">
+      <summary>
+        <paramref name="id" /> 값을 가지는 Document를 삭제합니다
+            </summary>
+      <param name="id">Document Id</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.RemoveByIdAs(System.Type,MongoDB.Bson.BsonValue)">
+      <summary>
+        <paramref name="id" /> 값을 가지는 Document를 삭제합니다
+            </summary>
+      <param name="documentType">Document 수형</param>
+      <param name="id">Document Id</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.RemoveByIdAs``1(MongoDB.Bson.BsonValue)">
+      <summary>
+        <paramref name="id" /> 값을 가지는 Document를 삭제합니다
+            </summary>
+      <typeparam name="T">Document 수형</typeparam>
+      <param name="id">Document Id</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.RemoveAll">
+      <summary>
+            컬렉션에서 모든 엔티티를 삭제합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Dispose">
+      <summary>
+            관리되지 않는 리소스의 확보, 해제 또는 다시 설정과 관련된 응용 프로그램 정의 작업을 수행합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.Server">
+      <summary>
+            Mongo DB 서버
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.DatabaseName">
+      <summary>
+            대상 Database 명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.MongoDB.MongoRepositoryImpl.IsServerConnected">
+      <summary>
+            서버에 접속 중인가?
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.MongoDB.MongoTool">
+      <summary>
+            Mongo DB 관련 Tool 입니다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultConnectionString">
+      <summary>
+            기본 서버 명 (localhost)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultDatabaseName">
+      <summary>
+            기본 Database 명 (default)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultCollectionName">
+      <summary>
+            기본 Collection 명 (defaultColl)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.SystemIndexesCollectionName">
+      <summary>
+            시스템 인덱스를 보관하는 컬렉션 명 (system.indexes)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.ConnectionStringFormat">
+      <summary>
+            MongoDB ConnectionString Format (ex: "mongodb://localhost/?safe=true")
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.IdString">
+      <summary>
+            Document Id 명 ("_id")
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.ForceSync">
+      <summary>
+            보류중인 모든 Database 쓰기 작업에 대해, 완료를 수행한다. (Flush와 같은 개념이다)
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.ForceSync(System.String)">
+      <summary>
+            보류중인 모든 Database 쓰기 작업에 대해, 완료를 수행한다. (Flush와 같은 개념이다)
+            </summary>
+      <param name="server">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.ForceSync(System.String,System.Boolean)">
+      <summary>
+            보류중인 모든 Database 쓰기 작업에 대해, 완료를 수행한다. (Flush와 같은 개념이다)
+            </summary>
+      <param name="server">
+      </param>
+      <param name="isAsync">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.GetCollectionName(System.Type)">
+      <summary>
+            지정된 수형의 Collection Name을 유추합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="F:NSoft.NFramework.Data.MongoDB.MongoTool.EmptyCommandResult">
+      <summary>
+            비어있는 <see cref="T:MongoDB.Driver.CommandResult" />입니다. 
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.ToMongoDateTime(System.DateTime)">
+      <summary>
+            MongoDB 가 JSON 형식에서 DataTime 을 내부적으로 double이 아닌 long을 변경해서 저장하므로, .NET DateTime과 오차가 생길 수 있다.
+            MongoDB에 저장된 정보 중 DateTime에 대한 비교는 꼭 ToMongoDateTime() 이용해서 DateTime을 변경한 후 비교해야 합니다.
+            </summary>
+      <param name="dateTime">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.CreateRepository">
+      <summary>
+        <see cref="T:NSoft.NFramework.Data.MongoDB.IMongoRepository" /> 를 생성합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.CreateRepository(System.String)">
+      <summary>
+        <see cref="T:NSoft.NFramework.Data.MongoDB.IMongoRepository" />를 생성합니다.
+            </summary>
+      <param name="connectionString">Mongo DB Connection String (예: server=localhost;database=default;safe=true;)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.CreateRepository(MongoDB.Driver.MongoConnectionStringBuilder)">
+      <summary>
+        <see cref="T:NSoft.NFramework.Data.MongoDB.IMongoRepository" />를 생성합니다. 
+            </summary>
+      <param name="connectionBuilder">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.GetMongoConnectionBuilder">
+      <summary>
+            MongoDB 서버에 접속하기 위한 <see cref="T:MongoDB.Driver.MongoConnectionStringBuilder" />를 빌드 합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.GetMongoConnectionBuilder(System.String)">
+      <summary>
+            MongoDB 서버에 접속하기 위한 <see cref="T:MongoDB.Driver.MongoConnectionStringBuilder" />를 빌드 합니다.
+            </summary>
+      <param name="serverName">Mongo Server IP 또는 DNS 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.GetMongoConnectionBuilder(System.String,System.String)">
+      <summary>
+            MongoDB 서버에 접속하기 위한 <see cref="T:MongoDB.Driver.MongoConnectionStringBuilder" />를 빌드 합니다.
+            </summary>
+      <param name="serverName">Mongo Server IP 또는 DNS 명</param>
+      <param name="databaseName">MongoDB의 database 명</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.GetMongoConnectionBuilder(System.String,System.Nullable{System.Int32},System.String,System.String,System.String)">
+      <summary>
+            MongoDB 서버에 접속하기 위한 <see cref="T:MongoDB.Driver.MongoConnectionStringBuilder" />를 빌드 합니다.
+            </summary>
+      <param name="serverName">Mongo Server IP 또는 DNS 명</param>
+      <param name="port">Port</param>
+      <param name="databaseName">MongoDB의 database 명</param>
+      <param name="username">사용자명</param>
+      <param name="password">비밀번호</param>
+      <returns>
+        <see cref="T:MongoDB.Driver.MongoConnectionStringBuilder" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.CreateMongoServer">
+      <summary>
+            MongoServer의 <see cref="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultConnectionString" />의 <see cref="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultDatabaseName" /> 연결합니다.
+            </summary>
+      <returns>
+        <see cref="T:MongoDB.Driver.MongoServer" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.CreateMongoServer(System.String)">
+      <summary>
+            MongoServer의 <see cref="F:NSoft.NFramework.Data.MongoDB.MongoTool.DefaultDatabaseName" />에 연결합니다.
+            </summary>
+      <param name="connectionString">서버 IP 또는 DNS 명</param>
+      <returns>
+        <see cref="T:MongoDB.Driver.MongoServer" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.CreateMongoServer(MongoDB.Driver.MongoConnectionStringBuilder)">
+      <summary>
+        <paramref name="connectionBuilder" />를 이용하여, <see cref="T:MongoDB.Driver.MongoServer" />를 생성하고, 연결합니다.
+            </summary>
+      <param name="connectionBuilder">MongoDB ConnectionString Builder</param>
+      <returns>
+        <see cref="T:MongoDB.Driver.MongoServer" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.GetLastError(MongoDB.Driver.MongoServer)">
+      <summary>
+            서버의 가장 최근의 예외정보를 반환합니다.
+            </summary>
+      <param name="server">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.MongoDB.MongoTool.DropDatabase(System.String,System.String)">
+      <summary>
+            MongoDB 서버 <paramref name="serverName" />의 Database (<paramref name="databaseName" />)를 삭제합니다.
+            </summary>
+      <param name="serverName">
+      </param>
+      <param name="databaseName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+  </members>
+</doc>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart caption='Performance Counter' subCaption='Web Server' dataStreamURL='NFramework.FusionCharts.PerformanceCounter.axd' refreshInterval='5' numberPrefix='' setAdaptiveYMin='1' xAxisName='Time' showRealTimeValue='1' realTimeValuePadding='10' labelDisplay='Rotate' slantLabels='1'>
+	<categories></categories>
+	<dataset seriesName='% Processor Time' showValues='0'></dataset>
+	<dataset seriesName='Available Memory Mbytes' showValues='0'></dataset>
+	<styles>
+		<definition>
+			<style type='font' name='captionFont' size='14' />
+		</definition>
+		<application>
+			<apply toObject='Caption' styles='captionFont' />
+			<apply toObject='Realtimevalue' styles='captionFont' />
+		</application>
+	</styles>
+</chart>

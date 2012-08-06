@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.XmlData.Tests"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<!--
+			테스트 프로그램
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+
+	<property name="assembly.description" value="NSoft.NFramework XmlData Unit Tests"/>
+
+	<!-- 테스트용 Assembly는 CLS 일 필요도 없고, Sign도 필요 없다.-->
+	<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+	<property name="sign" value="false" overwrite="true"/>
+
+
+	<target name="init" depends="common.init">
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<include name="System"/>
+			<include name="System.Configuration"/>
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.EntperiseServices"/>
+			<include name="System.Runtime.Serialization"/>
+			<include name="System.Web.Services"/>
+			<include name="System.Xml"/>
+			<include name="System.Xml.Linq" />
+
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+			<include name="Microsoft.Practices.EnterpriseLibrary.Common.dll"/>
+			<include name="Microsoft.Practices.EnterpriseLibrary.Data.dll"/>
+
+			<include name="NLog.dll"/>
+			<include name="NUnit.Framework.dll"/>
+
+			<include name="NSoft.NFramework.dll"/>
+			<include name="NSoft.NFramework.Data.dll"/>
+			<include name="NSoft.NFramework.XmlData.dll"/>
+			<include name="NSoft.NFramework.XmlData.Messages.dll"/>
+
+			<include name="SharpTestsEx.dll"/>
+
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.settings"/>
+		</resourcefileset>
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+
+	<target name="build"
+			depends="generate-assemblyinfo common.compile-tests common.run-tests"
+			description="Build ${project::get-name()}">
+		<echo message="${project::get-name()} TEST 완료"/>
+	</target>
+</project>

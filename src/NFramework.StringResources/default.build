@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.StringResources"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+	
+	<!--
+		단위 프로젝트에서 설정해 줄 것
+		
+		assembly.version		: 기본적으로 solution.version을 따라간다.
+		assembly.description	:
+		
+		build.unsafe			: true|false
+		
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+
+	<target name="init" depends="common.init">
+		
+		<property name="assembly.description" value="NSoft.NFramework StringResources Library"/>
+		
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+			
+			<include name="System" />
+			<include name="System.Core" />
+			<include name="System.Web" />
+			<include name="System.Xml" />
+			
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+
+			<include name="FluentNHibernate.dll" />
+			<include name="Iesi.Collection.dll" />
+            <include name="Microsoft.Practices.EnterpriseLibrary.Common.dll"/>
+			<include name="Microsoft.Practices.EnterpriseLibrary.Data.dll"/>
+			<include name="NHibernate.dll"/>
+			<include name="NLog.dll"/>
+			
+			<include name="NSoft.NFramework.dll" />
+			<include name="NSoft.NFramework.Data.dll" />
+			<include name="NSoft.NFramework.Data.NHibernateEx.dll" />
+
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.config" />
+		</resourcefileset>
+
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-dll common.obfuscator"
+			description="Build ${project::get-name()}">
+		<copy file="${build.dir}/${project::get-name()}.dll" tofile="${lib.framework.dir}/${project::get-name()}.dll" />
+		<copy file="${build.dir}/${project::get-name()}.xml" tofile="${lib.framework.dir}/${project::get-name()}.xml" />
+	</target>
+</project>

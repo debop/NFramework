@@ -1,0 +1,350 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NSoft.NFramework.Licensing</name>
+    </assembly>
+    <members>
+        <member name="T:NSoft.NFramework.Licensing.FloatingLicenseNotAvailableException">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicensingException">
+            <summary>
+            라이선스 예외의 기본 클래스입니다.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseExpiredException">
+            <summary>
+            유효기간이 지난 라이선스일 경우 발생하는 예외입니다.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseFileNotFoundException">
+            <summary>
+            라이선스 파일을 찾지 못했을 때 발생하는 예외입니다.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseNotFoundException">
+            <summary>
+            라이선스를 찾을 수 없을 때 발생하는 예외.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.AbstractLicenseValidator">
+            <summary>
+            라이선스 검증자 기본 클래스
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.ILicenseValidator">
+            <summary>
+            라이선스 유효 검증자
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.ILicenseValidator.ExpirationDate">
+            <summary>
+            라이선스 갱신일자
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.ILicenseValidator.SubscriptionEndpoint">
+            <summary>
+            등록 서비스의 Endpoint 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.ILicenseValidator.LicenseKind">
+            <summary>
+            라이선스 종류
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.ILicenseValidator.DisableFloatingLicenses">
+            <summary>
+            Floating License 불가 여부
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.AbstractLicenseValidator.TimeServers">
+            <summary>
+            Standard Time servers
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.AbstractLicenseValidator.AssertValidLicense">
+            <summary>
+            로드된 라이선스를 검증합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.AbstractLicenseValidator.TryOverwritingWithNewLicense(System.String)">
+            <summary>
+            라이선스 파일을 로드합니다.
+            </summary>
+            <param name="newLicense"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.AbstractLicenseValidator.RemoveExistingLicense">
+            <summary>
+            기존 라이선스 정보를 제거합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.AbstractLicenseValidator.TryLoadingLicenseValuesFromValidatedXml">
+            <summary>
+            유효한 라이선스 파일로부터 라이선스 정보를 로드합니다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.ExpirationDate">
+            <summary>
+            라이선스 갱신일자
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.SubscriptionEndpoint">
+            <summary>
+            등록 서비스의 Endpoint 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.LicenseKind">
+            <summary>
+            라이선스 종류
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.UserId">
+            <summary>
+            라이선스 소유자 Id
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.Name">
+            <summary>
+            라이선스 소유자 명
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.DisableFloatingLicenses">
+            <summary>
+            Floating License 불가 여부
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.LicenseAttributes">
+            <summary>
+            라이선스 추가 속성 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.AbstractLicenseValidator.License">
+            <summary>
+            라이선스 정보
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseValidator">
+            <summary>
+            Disk에 저장된 라이선스 파일에 대한 라이선스의 유효화에 대한 검증을 수행합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseValidator.#ctor(System.String,System.String)">
+            <summary>
+            생성자
+            </summary>
+            <param name="publicKey">public key</param>
+            <param name="licensePath">라이선스 파일 전체 경로</param>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseValidator.AssertValidLicense">
+            <summary>
+            로드된 라이선스를 검증합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseValidator.RemoveExistingLicense">
+            <summary>
+            기존 라이선스 정보를 제거합니다.
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.LicenseValidator.License">
+            <summary>
+            라이선스 정보
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.StringLicenseValidator">
+            <summary>
+            라이선스 파일 내용을 검증합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.StringLicenseValidator.#ctor(System.String,System.String)">
+            <summary>
+            생성자
+            </summary>
+            <param name="publicKey">public key</param>
+            <param name="license">라이선스 내용</param>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.StringLicenseValidator.License">
+            <summary>
+            License content
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.ILicensingService">
+            <summary>
+            Licensing Server의 Service Contract 입니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.ILicensingService.LeaseLicense(System.String,System.String,System.Guid)">
+            <summary>
+            Issues a float license for the user.
+            </summary>
+            <param name="machine">machine name</param>
+            <param name="user">user name</param>
+            <param name="id">Id of the license holder</param>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.InvalidationKind">
+            <summary>
+            무효 종류
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.InvalidationKind.CannotGetNewLicense">
+            <summary>
+            새 라이선스 발급 불가
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.InvalidationKind.TimeExpired">
+            <summary>
+            라이선스 유효기간 초과
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.ISubscriptionLicensingService">
+            <summary>
+            Subscription Server의 Service Contract
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.ISubscriptionLicensingService.LeaseLicense(System.String)">
+            <summary>
+            Issues a leased license
+            </summary>
+            <param name="previousLicense"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseGenerator">
+            <summary>
+            라이선스 생성자
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseGenerator.#ctor(System.String)">
+            <summary>
+            생성자
+            </summary>
+            <param name="privateKey">제품 private key</param>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseGenerator.GenerateFloatingLicense(System.String,System.String)">
+            <summary>
+            새로운 Floating 라이선스를 생성합니다.
+            </summary>
+            <param name="name"></param>
+            <param name="publicKey"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseGenerator.Generate(System.String,System.Guid,System.DateTime,NSoft.NFramework.Licensing.LicenseKind)">
+            <summary>
+            새로운 라이선스를 생성합니다.
+            </summary>
+            <param name="name">라이선스 소유자 명</param>
+            <param name="id">라이선스 소유자 Id</param>
+            <param name="expirationDate">라이선스 유효기간</param>
+            <param name="licenseKind">라이선스 종류</param>
+            <returns>라이선스 내용</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseGenerator.Generate(System.String,System.Guid,System.DateTime,System.Collections.Generic.IDictionary{System.String,System.String},NSoft.NFramework.Licensing.LicenseKind)">
+            <summary>
+            새로운 라이선스를 생성합니다.
+            </summary>
+            <param name="name">라이선스 소유자 명</param>
+            <param name="id">라이선스 소유자 Id</param>
+            <param name="expirationDate">라이선스 유효기간</param>
+            <param name="attributes">라이선스 속성</param>
+            <param name="licenseKind">라이선스 종류</param>
+            <returns>라이선스 내용</returns>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseKind">
+            <summary>
+            라이선스 종류
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.LicenseKind.Trial">
+            <summary>
+            Trial use
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.LicenseKind.Standard">
+            <summary>
+            Standard license
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.LicenseKind.Personal">
+            <summary>
+            Personal use
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.LicenseKind.Floating">
+            <summary>
+            Floating license ( 서버 접속자에게 임시로 주어지는 라이선스, 로그아웃하면 라이선스를 회수)
+            http://en.wikipedia.org/wiki/Floating_licensing
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Licensing.LicenseKind.Subscription">
+            <summary>
+            Subscription 기반의 라이선스
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicenseTool">
+            <summary>
+            License 관련 Utility 클래스
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseTool.GenerateFloatingLicense(System.String,System.String,System.String)">
+            <summary>
+            Floating 라이선스를 생성합니다.
+            참고 : http://en.wikipedia.org/wiki/Floating_licensing
+            </summary>
+            <param name="privateKey">제품의 Private Key</param>
+            <param name="name">라이선스 명</param>
+            <param name="publicKey">제품의 Public Key</param>
+            <returns>Floating License의 XML 문자열</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicenseTool.GenerateLicense(System.String,System.String,System.Guid,System.DateTime,System.Collections.Generic.IDictionary{System.String,System.String},NSoft.NFramework.Licensing.LicenseKind)">
+            <summary>
+            새로운 라이선스를 생성합니다.
+            </summary>
+            <param name="privateKey">제품의 Private Key</param>
+            <param name="name">라이선스 소유자 명</param>
+            <param name="id">라이선스 소유자 Id</param>
+            <param name="expirationDate">라이선스 유효기간</param>
+            <param name="attributes">라이선스 속성</param>
+            <param name="licenseKind">라이선스 종류</param>
+            <returns>라이선스 내용</returns>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.LicensingService">
+            <summary>
+            라이선스 서버 구현체입니다.
+            ServiceBehavior 를 Singleton 이면서 <see cref="F:System.ServiceModel.ConcurrencyMode.Single"/>을 지정하여, 멀티스레드에 대해 안정정으로 작동할 수 있도록 했습니다.
+            다만 대량의 요청에 대해서는 부하가 걸릴 수 있습니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicensingService.#ctor">
+            <summary>
+            생성자
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Licensing.LicensingService.LeaseLicense(System.String,System.String,System.Guid)">
+            <summary>
+            사용자에게 만료된 Floating 라이선스를 제공합니다.
+            </summary>
+            <param name="machine">machine name</param>
+            <param name="user">user name</param>
+            <param name="id">Id of the license holder</param>
+            <returns></returns>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.LicensingService.SoftwarePublicKey">
+            <summary>
+            제품의 공개 키
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Licensing.LicensingService.LicenseServerPrivateKey">
+            <summary>
+            라이선스 서버의 Private Key (비밀번호)
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Licensing.SntpClient">
+            <summary>
+            SNTP (Simple Network Time Protocol) Client입니다.
+            </summary>
+        </member>
+    </members>
+</doc>

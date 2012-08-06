@@ -1,0 +1,495 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.XmlData</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.XmlData.IXmlDataManagerAdapter">
+      <summary>
+        <see cref="T:NSoft.NFramework.XmlData.IXmlDataManager" />에 필요한 요청정보 및 반환된 응답정보를 외부와 통신하기 위한 포맷으로 변환하는 Adapter입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.Execute(System.Byte[])">
+      <summary>
+            1. 직렬화된 정보를 <see cref="P:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.RequestSerializer" />를 이용하여, 역직렬화를 수행. <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />를 빌드<br />
+            2. 요청정보를  <see cref="P:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.XmlDataManager" />에 전달하여, 실행 후, 응답정보를 반환 받음<br />
+            3. 응답정보를 <see cref="P:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.ResponseSerializer" />를 통해 직렬화하여 byte[] 로 반환함.
+            </summary>
+      <param name="requestBytes">직렬화된 요청 Data</param>
+      <returns>응답정보를 직렬화한 byte[]</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.Execute(System.String)">
+      <summary>
+            입력정보를 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />로 변환하여, 요청 작업 후, <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />를 직렬화하여 반환합니다.
+            </summary>
+      <param name="requestText">요청 데이터</param>
+      <returns>응답정보를 직렬화한 문자열</returns>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.XmlDataManager">
+      <summary>
+            요청정보를 처리하여 응답정보를 빌드하는 XmlDataManager 
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.RequestSerializer">
+      <summary>
+            직렬화된 요청정보를 역직렬화를 수행하는 <see cref="T:NSoft.NFramework.ISerializer`1" /> 입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.IXmlDataManagerAdapter.ResponseSerializer">
+      <summary>
+            응답정보를 직렬화하는 <see cref="T:NSoft.NFramework.ISerializer`1" /> 입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.XmlDataManagerAdapter">
+      <summary>
+        <see cref="T:NSoft.NFramework.XmlData.IXmlDataManager" />에 필요한 요청정보 및 반환된 응답정보를 외부와 통신하기 위한 포맷으로 변환하는 Adapter입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManagerAdapter.Execute(System.Byte[])">
+      <summary>
+            1. 직렬화된 정보를 <see cref="P:NSoft.NFramework.XmlData.XmlDataManagerAdapter.RequestSerializer" />를 이용하여, 역직렬화를 수행. <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />를 빌드<br />
+            2. 요청정보를  <see cref="P:NSoft.NFramework.XmlData.XmlDataManagerAdapter.XmlDataManager" />에 전달하여, 실행 후, 응답정보를 반환 받음<br />
+            3. 응답정보를 <see cref="P:NSoft.NFramework.XmlData.XmlDataManagerAdapter.ResponseSerializer" />를 통해 직렬화하여 byte[] 로 반환함.
+            </summary>
+      <param name="requestBytes">직렬화된 요청 Data</param>
+      <returns>응답정보를 직렬화한 byte[]</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManagerAdapter.Execute(System.String)">
+      <summary>
+            입력정보를 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />로 변환하여, 요청 작업 후, <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />를 직렬화하여 반환합니다.
+            </summary>
+      <param name="requestText">요청 데이터</param>
+      <returns>응답정보를 직렬화한 문자열</returns>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.XmlDataManagerAdapter.XmlDataManager">
+      <summary>
+            요청정보를 처리하여 응답정보를 빌드하는 XmlDataManager 
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.XmlDataManagerAdapter.RequestSerializer">
+      <summary>
+            직렬화된 요청정보를 역직렬화를 수행하는 <see cref="T:NSoft.NFramework.ISerializer`1" /> 입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.XmlDataManagerAdapter.ResponseSerializer">
+      <summary>
+            응답정보를 직렬화하는 <see cref="T:NSoft.NFramework.ISerializer`1" /> 입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.XmlDataAsyncManager">
+      <summary>
+            Client의 DB 처리 요청 정보(<see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />)를 파싱하여 비동기적으로 쿼리를 수행한 후,
+            결과를 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" /> 객체에 담아 반환하는 기능을 수행한다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.XmlDataManager">
+      <summary>
+            Client의 DB 처리 요청 정보(<see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />)를 파싱하여 처리 후 
+            결과를 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" /> 객체에 담아 반환하는 기능을 수행한다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.IXmlDataManager">
+      <summary>
+            요청문서를 받아 분석, 실행을 하고, 결과를 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />를 빌드한다.
+            </summary>
+      <remarks>
+            Client Application이 일반적인 SQL Query 문이나, Stored Procedure 호출을 ADO.NET을 통하지 않고, 
+            WEB에서 수행할 수 있도록 요청정보를 분석하여 Database에 Query문을 수행하고, 결과를 XML Format으로 반환한다.
+            </remarks>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.IXmlDataManager.Execute(NSoft.NFramework.XmlData.Messages.XdsRequestDocument)">
+      <summary>
+            요청정보를 실행하여 응답정보를 반환합니다.
+            </summary>
+      <param name="requestDocument">요청정보</param>
+      <returns>요청 처리 응답정보</returns>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.IXmlDataManager.Ado">
+      <summary>
+            Data 처리 시에 사용할 <see cref="T:NSoft.NFramework.Data.IAdoRepository" /> 인스턴스
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.Execute(NSoft.NFramework.XmlData.Messages.XdsRequestDocument)">
+      <summary>
+            요청정보를 실행하여 응답정보를 반환합니다.
+            </summary>
+      <param name="requestDocument">요청정보</param>
+      <returns>요청 처리 응답정보</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.Execute(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,System.Nullable{System.Int32})">
+      <summary>
+            요청정보를 실행하여 응답정보를 반환합니다.
+            </summary>
+      <param name="requestDocument">요청정보</param>
+      <param name="commandTimeout">요청 처리 제한 시간 (단위 : seconds, 기본값 : 90)</param>
+      <returns>요청 처리 응답정보</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.ExecuteRequestCore(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            요청에 대한 실제 작업을 수행합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.DoProcessRequestItem(NSoft.NFramework.XmlData.Messages.XdsRequestItem,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+        <paramref name="request" /> 요청에 대해, 처리를 수행합니다.
+            </summary>
+      <param name="request">요청항목</param>
+      <param name="responseDocument">응답 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.ExecuteProcedure(NSoft.NFramework.XmlData.Messages.XdsRequestItem,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            Stored Procedure를 수행하고, OUTPUT, RETURN_VALUE를 반환한다.
+            </summary>
+      <param name="request">요청 항목</param>
+      <param name="responseDocument">응답 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.ExecuteQuery(NSoft.NFramework.XmlData.Messages.XdsRequestItem,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            일반 SQL Query 문 중에 DDL 과 관련된 문장을 수행한다. (결과 SET이 필요없는 것)
+            </summary>
+      <param name="request">요청 항목</param>
+      <param name="responseDocument">응답 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.OpenProcedure(NSoft.NFramework.XmlData.Messages.XdsRequestItem,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            StoredProcedure 를 실행하고, 결과 Set을 반환받고자 하는 요청에 대해
+            요청 정보를 파싱하고, StoredProcedure를 수행한 후, 결과 정보를 응답 객체에 저장한다. 
+            </summary>
+      <param name="request">요청 항목</param>
+      <param name="responseDocument">응답 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.OpenQuery(NSoft.NFramework.XmlData.Messages.XdsRequestItem,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            일반 Query문을 수행하여 DataSet을 받아서 ResponseDom 객체를 만든다.
+            </summary>
+      <param name="request">요청 항목</param>
+      <param name="responseDocument">응답 정보</param>
+    </member>
+    <!-- Badly formed XML comment ignored for member "M:NSoft.NFramework.XmlData.XmlDataManager.ExtractParameters(NSoft.NFramework.Data.IAdoParameter[],NSoft.NFramework.XmlData.Messages.XdsResponseItem,System.Int32)" -->
+    <member name="M:NSoft.NFramework.XmlData.XmlDataManager.PrepareParameters(NSoft.NFramework.XmlData.Messages.XdsRequestItem,System.Int32)">
+      <summary>
+            DbCommand 인스턴스의 Parameters 컬렉션 속성에 값을 설정한다.
+            </summary>
+      <param name="requestItem">XdsRequestItem 개체 - Stored Procedure 호출에 필요한 파라미터 정보와 Value값이 있다.</param>
+      <param name="requestIndex">RclXdsRequest의 요청 인덱스</param>
+    </member>
+    <member name="P:NSoft.NFramework.XmlData.XmlDataManager.Ado">
+      <summary>
+            Data 처리 시에 사용할 <see cref="T:NSoft.NFramework.Data.IAdoRepository" /> 인스턴스
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataAsyncManager.ExecuteRequestCore(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            요청 정보를 병렬로 모두 수행합니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.Web.HttpHandlers.XmlDataManagerAsyncHandler">
+      <summary>
+            XmlData 서비스의 비동기 HttpHandler 입니다.
+            <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />를 받아, 처리하고, <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />를 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.Web.HttpHandlers.XmlDataManagerAsyncHandler.DoProcessRequest(System.Web.HttpContext)">
+      <summary>
+            HttpHandler의 작업의 메인 메소드입니다. 재정의 하여 원하는 기능을 수행하되, 제일 첫번째에 부모 클래스의 메소들를 호출해주어야 합니다.
+            </summary>
+      <param name="context">
+      </param>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.Web.HttpHandlers.XmlDataManagerHandler">
+      <summary>
+            XmlData 서비스의 웹 HttpHandler 입니다.
+            <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />를 받아, 처리하고, <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />를 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.Web.HttpHandlers.XmlDataManagerHandler.DoProcessRequest(System.Web.HttpContext)">
+      <summary>
+            HttpHandler의 작업의 메인 메소드입니다. 재정의 하여 원하는 기능을 수행하되, 제일 첫번째에 부모 클래스의 메소들를 호출해주어야 합니다.
+            </summary>
+      <param name="context">
+      </param>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.Web.HttpParams">
+      <summary>
+            HttpHandler에서 사용할 Parameter Name 들입니다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.Web.HttpParams.Product">
+      <summary>
+            제품을 나타내는 Parameter 명
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.Web.HttpParams.Compress">
+      <summary>
+            압축 여부를 나타내는 Parameter 명
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.Web.HttpParams.Security">
+      <summary>
+            암호화 여부를 나타내는 Parameter 명
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.XmlDataDocumentSerializer">
+      <summary>
+            RclXmlDataSet과 이 클래스로부터 상속받은 Class들을 ( <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />, <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />)
+            Serialize, Deserialize를 수행한다.
+            </summary>
+      <remarks>
+            Encoding 방식은 UTF8이 기본이다.
+            </remarks>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ConvertToBytes(NSoft.NFramework.XmlData.Messages.XdsDocumentBase,System.Text.Encoding)">
+      <summary>
+        <see cref="T:NSoft.NFramework.XmlData.Messages.XdsDocumentBase" /> 형식의 객체를 Xml Serializer를 수행한 후, byte array로 변환한다.
+            </summary>
+      <param name="xdsDocument">
+      </param>
+      <param name="enc">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ConvertToBytes(NSoft.NFramework.XmlData.Messages.XdsDocumentBase)">
+      <summary>
+        <see cref="T:NSoft.NFramework.XmlData.Messages.XdsDocumentBase" /> 형식의 객체를 Xml Serializer를 수행한 후, byte array로 변환한다.
+            </summary>
+      <param name="xdsDocument">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToStream(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,System.Text.Encoding)">
+      <summary>
+            요청문서를 XmlSerializer를 통해 스트림으로 빌드합니다.
+            </summary>
+      <param name="requestDocument">요청문서</param>
+      <param name="enc">Encoding 방식</param>
+      <returns>요청문서의 Xml 직렬화된 정보를 가진 Stream</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToXmlDocument(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,System.Text.Encoding)">
+      <summary>
+            요청 문서를 <see cref="T:System.Xml.Serialization.XmlSerializer" />를 이용해 직렬화를 수행하여 <see cref="T:System.Xml.XmlDocument" />로 반환합니다.
+            </summary>
+      <param name="requestDocument">요청 문서</param>
+      <param name="enc">Encoding 방식</param>
+      <returns>요청문서의 Xml 직렬화된 정보를 가진 <see cref="T:System.Xml.XmlDocument" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToStream(NSoft.NFramework.XmlData.Messages.XdsResponseDocument,System.Text.Encoding)">
+      <summary>
+            응답문서를 XmlSerializer를 통해 스트림으로 빌드합니다.
+            </summary>
+      <param name="responseDocument">응답문서</param>
+      <param name="enc">Encoding 방식</param>
+      <returns>응답문서의 Xml 직렬화된 정보를 가진 Stream</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToXDocument(NSoft.NFramework.XmlData.Messages.XdsDocumentBase,System.Text.Encoding)">
+      <summary>
+        <see cref="T:NSoft.NFramework.XmlData.Messages.XdsDocumentBase" />를 상속한 Class의 객체를 Xml Serialize를 수행하여 XDocument 객체로 변환한다.
+            </summary>
+      <param name="xds">
+      </param>
+      <param name="enc">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToXmlDocument(NSoft.NFramework.XmlData.Messages.XdsResponseDocument,System.Text.Encoding)">
+      <summary>
+            응답 문서를 <see cref="T:System.Xml.Serialization.XmlSerializer" />를 이용해 직렬화를 수행하여 <see cref="T:System.Xml.XmlDocument" />로 반환합니다.
+            </summary>
+      <param name="responseDocument">응답문서</param>
+      <param name="enc">Encoding 방식</param>
+      <returns>요청문서의 Xml 직렬화된 정보를 가진 <see cref="T:System.Xml.XmlDocument" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ConvertToXdsRequestDocument(System.Byte[],System.Text.Encoding)">
+      <summary>
+            byte array 정보를 Xml Deserialize를 수행하여 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />로 빌드한다.
+            </summary>
+      <param name="inBytes">
+      </param>
+      <param name="enc">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ConvertToXdsRequestDocument(System.Byte[])">
+      <summary>
+            byte array 정보를 Xml Deserialize를 수행하여 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />로 빌드한다.
+            </summary>
+      <param name="inBytes">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ConvertToXdsResponseDocument(System.Byte[],System.Text.Encoding)">
+      <summary>
+            byte array 정보를 Xml Deserialize를 수행하여 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />로 빌드한다.
+            </summary>
+      <param name="inBytes">
+      </param>
+      <param name="enc">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ConvertToXdsResponseDocument(System.Byte[])">
+      <summary>
+            byte array 정보를 Xml Deserialize를 수행하여 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />로 빌드한다.
+            </summary>
+      <param name="inBytes">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToRequestDocument(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Stream을 Xml Deserialize를 통해 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" />로 빌드한다.
+            </summary>
+      <param name="stream">Stream</param>
+      <param name="enc">Encoding 방식</param>
+      <returns>역직렬화된 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataDocumentSerializer.ToResponseDocument(System.IO.Stream,System.Text.Encoding)">
+      <summary>
+            Stream을 Xml Deserialize를 통해 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />로 빌드한다.
+            </summary>
+      <param name="stream">Stream</param>
+      <param name="enc">Encoding 방식</param>
+      <returns>역직렬화된 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" /> 인스턴스</returns>
+    </member>
+    <member name="T:NSoft.NFramework.XmlData.XmlDataTool">
+      <summary>
+            XmlManager 관련 Utility Class
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.XmlDataTool.INVALID_ID">
+      <summary>
+            Invalid Identity Value of Object (-1)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.XmlDataTool.NO_PAGE_INDEX">
+      <summary>
+            No Page Index (0)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.XmlDataTool.NoRequestProvided">
+      <summary>
+            No Request Message provided.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.XmlData.XmlDataTool.ProductParameterName">
+      <summary>
+            Parameter로 제공되는 Product 키
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveXmlDataManagerAdapter">
+      <summary>
+            지정된 DB에 대해 작업을 수행하는 <see cref="T:NSoft.NFramework.XmlData.IXmlDataManagerAdapter" />를 Container로부터 Resolve 합니다.
+            Component 명은 <see cref="F:NSoft.NFramework.XmlData.XmlDataTool.XmlDataManagerAdapterPrefix" />.<see cref="P:NSoft.NFramework.Data.AdoTool.DefaultDatabaseName" /> 형식입니다.
+            </summary>
+      <returns>
+        <see cref="T:NSoft.NFramework.XmlData.IXmlDataManagerAdapter" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveXmlDataManagerAdapter(System.String)">
+      <summary>
+            지정된 DB에 대해 작업을 수행하는 <see cref="T:NSoft.NFramework.XmlData.IXmlDataManagerAdapter" />를 Container로부터 Resolve 합니다.
+            Component 명은 <see cref="F:NSoft.NFramework.XmlData.XmlDataTool.XmlDataManagerAdapterPrefix" />.<paramref name="dbName" /> 형식입니다.
+            </summary>
+      <param name="dbName">Data 요청을 처리할 DB ConnectionString Name</param>
+      <returns>
+        <see cref="T:NSoft.NFramework.XmlData.IXmlDataManagerAdapter" /> 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveXmlDataManager(System.String)">
+      <summary>
+            지정된 Database Source에 요청 정보의 SQL 문을 실행하는 <see cref="T:NSoft.NFramework.XmlData.XmlDataManager" />를 생성한다.
+            </summary>
+      <param name="dbName">Database ConnectionString Name</param>
+      <returns>IoC를 통해 <see cref="T:NSoft.NFramework.XmlData.IXmlDataManager" />를 구현한 클래스의 인스턴트스를 반환합니다. IoC에 정의되어 있지 않다면 <see cref="T:NSoft.NFramework.XmlData.XmlDataManager" />를 반환합니다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveAdoRepository(System.String)">
+      <summary>
+            DB별 AdoRepository를 Resolve 합니다.
+            </summary>
+      <param name="dbName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveRequestSerializer">
+      <summary>
+        <see cref="T:NSoft.NFramework.ISerializer`1" />를 생성합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveRequestSerializer(System.String)">
+      <summary>
+        <see cref="T:NSoft.NFramework.ISerializer`1" />를 생성합니다.
+            </summary>
+      <param name="dbName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveResponseSerializer">
+      <summary>
+        <see cref="T:NSoft.NFramework.ISerializer`1" />를 생성합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ResolveResponseSerializer(System.String)">
+      <summary>
+        <see cref="T:NSoft.NFramework.ISerializer`1" />를 생성합니다.
+            </summary>
+      <param name="dbName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.AssertXmlDataManager(NSoft.NFramework.XmlData.IXmlDataManager)">
+      <summary>
+        <paramref name="xmlDataManager" />의 주요 속성에 대한 유효성 검사를 수행합니다. 유효성을 만족하지 못하면, <see cref="T:System.InvalidOperationException" />을 발생시킵니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.Execute(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,System.String)">
+      <summary>
+            요청정보를 받은 해당 Database에서 작업하고, 결과를 반환한다.
+            </summary>
+      <param name="requestDocument">요청문서</param>
+      <param name="dbName">요청을 실행할 Database connectionString name</param>
+      <returns>응답문서</returns>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.CopyRequestHeader(NSoft.NFramework.XmlData.Messages.XdsRequestDocument,NSoft.NFramework.XmlData.Messages.XdsResponseDocument)">
+      <summary>
+            요청 정보중에 응답정보로 다시 보내기 위해서 헤더 정보를 복사한다.
+            </summary>
+      <param name="requestDocument">요청문서</param>
+      <param name="responseDocument">응답문서</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.GetRecordRange(System.Int32,System.Int32,System.Int32@,System.Int32@)">
+      <summary>
+            DataSet을 얻을 때 범위를 두고 얻는다. 
+            </summary>
+      <param name="pageSize">페이지 크기</param>
+      <param name="pageNo">페이지 번호 (1부터 시작)</param>
+      <param name="firstResult">시작 레코드 인덱스 (0부터 시작)</param>
+      <param name="maxResults">페이지 크기와 같음</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ReportError(NSoft.NFramework.XmlData.Messages.XdsResponseDocument,System.Exception)">
+      <summary>
+            지정된 예외 정보를 응답 문서(<see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument" />)에 등록한다.
+            </summary>
+      <param name="responseDocument">응답 문서</param>
+      <param name="ex">등록할 예외 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.XmlData.XmlDataTool.ConvertToQuery(NSoft.NFramework.Data.IAdoRepository,NSoft.NFramework.XmlData.Messages.XdsRequestItem)">
+      <summary>
+            요청정보 중에 RequestType이 <see cref="F:NSoft.NFramework.XmlData.Messages.XmlDataRequestKind.Method" /> 인 경우에는 Method를 실제 실행할 Query 문장으로 변경한다.
+            </summary>
+      <param name="repository">
+        <see cref="T:NSoft.NFramework.Data.IIniQueryProvider" />를 가진 기본 <see cref="T:NSoft.NFramework.Data.IAdoRepository" /></param>
+      <param name="request">요청 정보</param>
+    </member>
+  </members>
+</doc>

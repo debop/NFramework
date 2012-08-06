@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{CCC76685-024B-4A9C-854E-DDE07AFCDBD5}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Numerics</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Numerics</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NCalc">
+      <HintPath>..\..\lib\net-4.0\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Complex\Complex.cs" />
+    <Compile Include="Complex\ComplexConverter.cs" />
+    <Compile Include="Complex\ComplexList.cs" />
+    <Compile Include="Complex\ComplexTool.cs" />
+    <Compile Include="Core\DataBlock.cs" />
+    <Compile Include="Core\IDifferenciator.cs" />
+    <Compile Include="Core\IIntegrator.cs" />
+    <Compile Include="Core\Interval.cs" />
+    <Compile Include="Core\IntervalKind.cs" />
+    <Compile Include="Core\IPrecisionSupport.cs" />
+    <Compile Include="Core\Line.cs" />
+    <Compile Include="Core\Matrix.cs" />
+    <Compile Include="Core\MatrixTool.cs" />
+    <Compile Include="Core\NaturalPermutation.cs" />
+    <Compile Include="Core\Vector.cs" />
+    <Compile Include="Core\Vector2D.cs" />
+    <Compile Include="Core\Vector2DConverter.cs" />
+    <Compile Include="Core\VectorTool.cs" />
+    <Compile Include="Distributions\Continuous\Beta.cs" />
+    <Compile Include="Distributions\Continuous\Cauchy.cs" />
+    <Compile Include="Distributions\Continuous\Chi.cs" />
+    <Compile Include="Distributions\Continuous\ChiSquare.cs" />
+    <Compile Include="Distributions\Continuous\ContinuousUniform.cs" />
+    <Compile Include="Distributions\Continuous\Erlang.cs" />
+    <Compile Include="Distributions\Continuous\Exponential.cs" />
+    <Compile Include="Distributions\Continuous\FisherSnedecor.cs" />
+    <Compile Include="Distributions\Continuous\Gamma.cs" />
+    <Compile Include="Distributions\Continuous\InverseGamma.cs" />
+    <Compile Include="Distributions\Continuous\Laplace.cs" />
+    <Compile Include="Distributions\Continuous\Normal.cs" />
+    <Compile Include="Distributions\Continuous\Pareto.cs" />
+    <Compile Include="Distributions\Continuous\Rayleigh.cs" />
+    <Compile Include="Distributions\Continuous\Stable.cs" />
+    <Compile Include="Distributions\Continuous\StudentT.cs" />
+    <Compile Include="Distributions\Continuous\Weibull.cs" />
+    <Compile Include="Distributions\Discrete\Bernoulli.cs" />
+    <Compile Include="Distributions\Discrete\Binomial.cs" />
+    <Compile Include="Distributions\Discrete\Categorical.cs" />
+    <Compile Include="Distributions\Discrete\ConwayMaxwellPoisson.cs" />
+    <Compile Include="Distributions\Discrete\DiscreteUniform.cs" />
+    <Compile Include="Distributions\IContinuousDistribution.cs" />
+    <Compile Include="Distributions\IDiscreteDistribution.cs" />
+    <Compile Include="Distributions\IDistribution.cs" />
+    <Compile Include="Equations\BisectionRootFinder.cs" />
+    <Compile Include="Equations\GoldenSectionMinimumFinder.cs" />
+    <Compile Include="Equations\IMinimumFinder.cs" />
+    <Compile Include="Equations\IRootFinder.cs" />
+    <Compile Include="Equations\MinimumFinderBase.cs" />
+    <Compile Include="Equations\NewtonRapsonRootFinder.cs" />
+    <Compile Include="Equations\RootFinderBase.cs" />
+    <Compile Include="Equations\SecantRootFinder.cs" />
+    <Compile Include="Expressions\CalcExpression.cs" />
+    <Compile Include="Histogram_Old.cs" />
+    <Compile Include="Integration\IntegratorBase.cs" />
+    <Compile Include="Integration\MidValueIntegrator.cs" />
+    <Compile Include="Integration\RombergIntegrator.cs" />
+    <Compile Include="Integration\SimpsonIntegrator.cs" />
+    <Compile Include="Integration\TrapizoidalIntegrator.cs" />
+    <Compile Include="Interpolation\IInterpolator.cs" />
+    <Compile Include="Interpolation\InterpolatorBase.cs" />
+    <Compile Include="Interpolation\LagrangeInterpolator.cs" />
+    <Compile Include="Interpolation\LinearInterpolator.cs" />
+    <Compile Include="Interpolation\NevilleInterpolator.cs" />
+    <Compile Include="Interpolation\NewtonInterpolator.cs" />
+    <Compile Include="Interpolation\SplineInterpolator.cs" />
+    <Compile Include="Optimizing\Brentopt.cs" />
+    <Compile Include="Optimizing\GoldenSection.cs" />
+    <Compile Include="Optimizing\OptimizingBase.cs" />
+    <Compile Include="Optimizing\Pijavsky.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Randomize\BetaRandomizer.cs" />
+    <Compile Include="Randomize\BinominalRandomizer.cs" />
+    <Compile Include="Randomize\CauchyRandomizer.cs" />
+    <Compile Include="Randomize\ChiSquareRandomizer.cs" />
+    <Compile Include="Randomize\ExponentialRandomizer.cs" />
+    <Compile Include="Randomize\FastRandom.cs" />
+    <Compile Include="Randomize\FRandomizer.cs" />
+    <Compile Include="Randomize\GammaRandomizer.cs" />
+    <Compile Include="Randomize\GeometricRandomizer.cs" />
+    <Compile Include="Randomize\IRandomizer.cs" />
+    <Compile Include="Randomize\LogisticsRandomizer.cs" />
+    <Compile Include="Randomize\LogNormalRandomizer.cs" />
+    <Compile Include="Randomize\NormalRandomizer.cs" />
+    <Compile Include="Randomize\ParetoRandomizer.cs" />
+    <Compile Include="Randomize\PoissonRandomizer.cs" />
+    <Compile Include="Randomize\PowerRandomizer.cs" />
+    <Compile Include="Randomize\RandomizerBase.cs" />
+    <Compile Include="Randomize\RandomTool.cs" />
+    <Compile Include="Randomize\TRandomizer.cs" />
+    <Compile Include="Randomize\TriangularRandomizer.cs" />
+    <Compile Include="Randomize\UniformRandomizer.cs" />
+    <Compile Include="Randomize\WeibullRandomizer.cs" />
+    <Compile Include="Signals\SignalGenerator.cs" />
+    <Compile Include="Signals\SignalGenerator.Equidistant.cs" />
+    <Compile Include="Signals\SignalGenerator.Random.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.Beta.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.ChiSquare.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.Erf.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.Factorial.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.Gamma.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.Harmonic.cs" />
+    <Compile Include="SpecialFunctions\SpecialFunctions.Stability.cs" />
+    <Compile Include="Statistics\Bucket.cs" />
+    <Compile Include="Statistics\BucketComparer.cs" />
+    <Compile Include="Statistics\DescriptiveStatistics.cs" />
+    <Compile Include="Statistics\Histogram.cs" />
+    <Compile Include="Statistics\Percentile.cs" />
+    <Compile Include="Statistics\PercentileMethod.cs" />
+    <Compile Include="Tools\MathTool.Abs.cs" />
+    <Compile Include="Tools\MathTool.Aggregate.cs" />
+    <Compile Include="Tools\MathTool.Aggregate.Parallel.cs" />
+    <Compile Include="Tools\MathTool.Approximate.cs" />
+    <Compile Include="Tools\MathTool.Clamp.cs" />
+    <Compile Include="Tools\MathTool.Combination.cs" />
+    <Compile Include="Tools\MathTool.Correlation.cs" />
+    <Compile Include="Tools\MathTool.cs" />
+    <Compile Include="Tools\MathTool.Geometrics.cs" />
+    <Compile Include="Tools\MathTool.Kurtosis.cs" />
+    <Compile Include="Tools\MathTool.Mean.cs" />
+    <Compile Include="Tools\MathTool.Median.cs" />
+    <Compile Include="Tools\MathTool.MinMax.cs" />
+    <Compile Include="Tools\MathTool.Moment.cs" />
+    <Compile Include="Tools\MathTool.MovingAverage.cs" />
+    <Compile Include="Tools\MathTool.MovingSum.cs" />
+    <Compile Include="Tools\MathTool.Norm.cs" />
+    <Compile Include="Tools\MathTool.Normalize.cs" />
+    <Compile Include="Tools\MathTool.Primes.cs" />
+    <Compile Include="Tools\MathTool.Probability.cs" />
+    <Compile Include="Tools\MathTool.Random.cs" />
+    <Compile Include="Tools\MathTool.Ranking.cs" />
+    <Compile Include="Tools\MathTool.Root.cs" />
+    <Compile Include="Tools\MathTool.RootMeanSquare.cs" />
+    <Compile Include="Tools\MathTool.Skewness.cs" />
+    <Compile Include="Tools\MathTool.Square.cs" />
+    <Compile Include="Tools\MathTool.StDev.cs" />
+    <Compile Include="Tools\MathTool.Swap.cs" />
+    <Compile Include="Tools\MathTool.Trim.cs" />
+    <Compile Include="Tools\MathTool.Units.cs" />
+    <Compile Include="Tools\MathTool.Variance.cs" />
+    <Compile Include="Tools\Precision.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Algorithms\LinearAlgebra\Acml\" />
+    <Folder Include="Differential\" />
+    <Folder Include="Distributions\Multivriate\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

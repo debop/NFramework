@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- StringResources.xml -->
+<Nini>
+	<Section Name="Glossary">
+		<Key Name="HomePage" Value="홈 페이지 (ko-KR) (XML)" />
+		<Key Name="SiteMap" Value="사이트 맵 (ko-KR) (XML)" />
+		<Key Name="Welcome" Value="환영합니다 (ko-KR) (XML)" />
+	</Section>
+
+	<Section Name="CommonTerms">
+		<Key Name="Hello" Value="안녕하세요 (ko-KR) (XML)  - Glossary Welcome : ${Glossary|Welcome}" />
+	</Section>
+</Nini>

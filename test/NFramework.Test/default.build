@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.Test"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<!--
+		단위 프로젝트에서 설정해 줄 것
+		
+		assembly.version		: 기본적으로 solution.version 을 따라간다.
+		assembly.description	:
+		build.unsafe			: true|false
+		
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+	
+	<property name="assembly.description" value="NSoft.NFramework Unit Testing Assembly"/>
+
+	<!-- 테스트용 Assembly는 CLS 일 필요도 없고, Sign도 필요 없다.-->
+	<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+	<property name="sign" value="false" overwrite="true"/>
+
+	<target name="init" depends="common.init">
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<!-- .NET 4.0 이상일 때만 가능한데...-->
+			<include name="Microsoft.CSharp"/>
+			<include name="System"/>
+			<include name="System.Configuration"/>
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.Drawing"/>
+			<include name="System.Runtime.Serialization"/>
+			<include name="System.Runtime.Serialization.Formatters.Soap" />
+			<include name="System.Web"/>
+			<include name="System.Xml"/>
+			<include name="System.Xml.Linq" />
+			
+            <include name="AntiXssLibrary.dll" />
+            <include name="AsyncCtpLibrary.dll" />
+            
+            <include name="Castle.Core.dll" />
+			<include name="Castle.Facilities.FactorySupport.dll" />
+			<include name="Castle.Windsor.dll" />
+
+			<include name="Fasterflect.dll" />
+			<include name="FluentValidation.dll" />
+			
+			<include name="ICSharpCode.SharpZipLib.dll"/>
+			<include name="Ionic.Zip.dll"/>
+			
+			<include name="Newtonsoft.Json.dll" />
+			<include name="NLog.dll"/>
+
+			<!-- Unit Testing -->
+			<include name="NUnit.Framework.dll" />
+			<include name="SharpTestsEx.dll" />
+			
+			<include name="NSoft.NFramework.dll"/>
+			
+			<!-- Reactive Extensions -->
+			<include name="System.CoreEx.dll" />
+			<include name="System.Interactive.dll" />
+			<include name="System.Reactive.dll" />
+
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true" basedir="${src.dir}">
+			<include name="**/*.resx"/>
+			<include name="**/*.hbm.xml"/>
+		</resourcefileset>
+		
+		<!-- copy the config file for testing -->
+		<copy todir="${build.dir}" overwrite="true">
+			<fileset basedir="${src.dir}">
+				<include name="**/*.xml"/>
+				<include name="**/*.htm"/>
+				<include name="**/*.config"/>
+				<exclude name="app.config"/>	<!-- common.init 에서 자동으로 생성해준다 -->
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-tests common.run-tests"  
+			description="테스트 수행">
+	</target>
+</project>

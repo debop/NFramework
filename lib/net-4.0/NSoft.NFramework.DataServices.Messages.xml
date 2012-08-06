@@ -1,0 +1,313 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.DataServices.Messages</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.DataServices.Messages.RequestItem">
+      <summary>
+            요청 항목
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.MessageObjectBase">
+      <summary>
+            메시지를 구성하는 요소의 기본 클래스
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.MessageObjectBase.FormatVersion">
+      <summary>
+            Message Format Version
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.Id">
+      <summary>
+            Request Item Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.Method">
+      <summary>
+            요청 정보 본문
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.RequestMethod">
+      <summary>
+            요청 방법 (SqlString, Procedure, Method - 기본은  Method 임)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.ResponseFormat">
+      <summary>
+            응답 형식 (None, Scalar, DataSet, Xml 등)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.PrepareStatements">
+      <summary>
+            요청 작업 사전에 수행할 명령문들
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.PostscriptStatements">
+      <summary>
+            요청 작업 사후의 정리를 위한 명령문들
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestItem.Query">
+      <summary>
+        <see cref="P:NSoft.NFramework.DataServices.Messages.RequestItem.Method" /> 에 대한 실제 SQL 문장. ( IAdoRepository.QueryProvider 를 통해 Method에 해당하는 SQL Statements 를 구합니다.)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.RequestMessage">
+      <summary>
+            요청 메시지
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.MessageBase">
+      <summary>
+            요청/응답 문서의 기본 문서입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.DataServices.Messages.MessageBase.AddError(System.Exception)">
+      <summary>
+            메시지에 예외정보 추가
+            </summary>
+      <param name="ex">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.DataServices.Messages.MessageBase.ToUniversalJsonDateTime(System.Nullable{System.DateTime})">
+      <summary>
+            JSON 형식에서 DataTime 을 내부적으로 double이 아닌 long을 변경해서 저장하므로, .NET DateTime과 오차가 생길 수 있다.
+            직렬화된 정보 중 DateTime에 대한 비교는 꼭 ToUniversalJsonDateTime() 이용해서 DateTime을 변경한 후 비교해야 합니다.
+            </summary>
+      <param name="dateTime">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.MessageBase.MessageId">
+      <summary>
+            요청 메시지 고유 Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.MessageBase.Direction">
+      <summary>
+            메시지 방향 (Request|Response)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.MessageBase.Errors">
+      <summary>
+            예외 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.MessageBase.HasError">
+      <summary>
+            요청 작업 처리에 예외가 있는지 표시합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.MessageBase.Properties">
+      <summary>
+            부가 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestMessage.Transactional">
+      <summary>
+            Transaction 하에서 요청들을 처리할 것인가?
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestMessage.AsParallel">
+      <summary>
+            병렬 방식으로 요청들을 처리할 것인가?
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestMessage.Items">
+      <summary>
+            요청 항목들
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestMessage.PrepareStatements">
+      <summary>
+            요청 작업 사전에 수행할 명령문들
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestMessage.PostscriptStatements">
+      <summary>
+            요청 작업 사후의 정리를 위한 명령문들
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.RequestParameter">
+      <summary>
+            요청 시, 메소드의 인자에 대한 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestParameter.Name">
+      <summary>
+            인자 명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestParameter.Value">
+      <summary>
+            인자 값
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.RequestParameter.ValueType">
+      <summary>
+            인자의 수형
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.ResponseItem">
+      <summary>
+            응답 결과 항목
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseItem.Id">
+      <summary>
+            응답 항목 Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseItem.ResponseFormat">
+      <summary>
+            결과 Format
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseItem.RequestItem">
+      <summary>
+            요청 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseItem.ResultValue">
+      <summary>
+            값이 하나인 경우, ResultValue로 값을 제공합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseItem.ResultSet">
+      <summary>
+            결과 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseItem.ExecutionTime">
+      <summary>
+            요청 처리 시간 (속도를 알면 나중에 좋을 듯!!!)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.ResponseMessage">
+      <summary>
+            응답 메시지
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResponseMessage.Items">
+      <summary>
+            결과 항목들
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.ResultRow">
+      <summary>
+            ResultSet의 한 레코드를 표현합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResultRow.FieldNames">
+      <summary>
+        <see cref="T:NSoft.NFramework.DataServices.Messages.ResultSet" />의 필드명 (컬럼명)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.ResultSet">
+      <summary>
+            응답 결과의 정보를 DataSet 처럼 표현합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.DataServices.Messages.ResultSet.GetMappedObjects(System.Type)">
+      <summary>
+        <see cref="T:NSoft.NFramework.DataServices.Messages.ResultRow" /> 들을 <see cref="!:targetType" />의 인스턴스로 매핑합니다.
+            </summary>
+      <param name="targetType">인스턴스의 수형</param>
+      <returns>
+        <see cref="!:targetType" />의 인스턴스의 컬렉션</returns>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ResultSet.FieldNames">
+      <summary>
+            필드(컬럼) 명들
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.ErrorMessage">
+      <summary>
+            예외 정보를 나타냅니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ErrorMessage.Code">
+      <summary>
+            에러 코드
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ErrorMessage.Message">
+      <summary>
+            에러 메시지
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.DataServices.Messages.ErrorMessage.StackTrace">
+      <summary>
+            Stack Trace 정보
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.MessageDirection">
+      <summary>
+            Message 전송 방향
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.MessageDirection.Request">
+      <summary>
+            요청
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.MessageDirection.Response">
+      <summary>
+            응답
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.RequestMethodKind">
+      <summary>
+            요청 메소드 종류 (SqlString, Procedure, Method 등)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.RequestMethodKind.Unknown">
+      <summary>
+            미지정
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.RequestMethodKind.Method">
+      <summary>
+            서버상에 정의된 Method를 호출한다. (ini 파일로 저장되어 있음)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.RequestMethodKind.SqlString">
+      <summary>
+            일반 SQL Query 문 실행 요청
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.RequestMethodKind.Procedure">
+      <summary>
+            Stored Procedure 실행 요청
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.DataServices.Messages.ResponseFormatKind">
+      <summary>
+            Data 실행 결과의 형식 ( Non, Scalar, DataTable 등)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.ResponseFormatKind.Unknown">
+      <summary>
+            미지정
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.ResponseFormatKind.None">
+      <summary>
+            결과값 필요없음 (NonExecuteQuery 실행)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.ResponseFormatKind.Scalar">
+      <summary>
+            Scalar 값 형태의 결과
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.DataServices.Messages.ResponseFormatKind.ResultSet">
+      <summary>
+            Data 정보를 Json 포맷으로 전달 (<see cref="F:NSoft.NFramework.DataServices.Messages.ResponseFormatKind.ResultSet" /> 으로 변환된 후 JSON 직렬화, 역직렬화가 수행된다)
+            </summary>
+    </member>
+  </members>
+</doc>

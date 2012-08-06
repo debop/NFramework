@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+	<siteMapNode url="" title="Home"  description="">
+		<siteMapNode url="Expressions.aspx" title="Expressions Sample"  description="" />
+		<siteMapNode url="NoCompile.aspx" title="No Compile"  description="" />
+		<siteMapNode url="RuntimeCode.aspx" title="RuntimeCode Sample" description=""/>
+
+		<siteMapNode url="" title="NSoft.NFramework Provider" description="">
+			<siteMapNode url="Providers\Expressions.aspx" title ="Expressions" description="Windsor.ResourceProviders.config 에서 GlobalResourceProviderName 를 변경하면 4가지 Provider에 대해 사용할 수 있습니다."/>
+			<siteMapNode url="Providers\NoCompile.aspx" title ="No Compile" description="Windsor.ResourceProviders.config 에서 GlobalResourceProviderName 를 변경하면 4가지 Provider에 대해 사용할 수 있습니다."/>
+			<siteMapNode url="Providers\RuntimeCode.aspx" title ="RuntimeCode" description="Windsor.ResourceProviders.config 에서 GlobalResourceProviderName 를 변경하면 4가지 Provider에 대해 사용할 수 있습니다."/>
+		</siteMapNode>
+	</siteMapNode>
+</siteMap>

@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{717A333E-5309-4BF3-852B-831693E8F24C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.XmlData</RootNamespace>
+    <AssemblyName>NSoft.NFramework.XmlData</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\..\lib\net-4.0\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\lib\net-4.0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\lib\net-4.0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adapters\IXmlDataManagerAdapter.cs" />
+    <Compile Include="Adapters\XmlDataManagerAdapter.cs" />
+    <Compile Include="IXmlDataManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\XmlDataAsyncManager.cs" />
+    <Compile Include="Services\XmlDataManager.cs" />
+    <Compile Include="XmlDataTool.Container.cs" />
+    <Compile Include="XmlDataTool.cs" />
+    <Compile Include="XmlDataTool.Manager.cs" />
+    <Compile Include="Web\HttpHandlers\XmlDataManagerAsyncHandler.cs" />
+    <Compile Include="Web\HttpHandlers\XmlDataManagerHandler.cs" />
+    <Compile Include="Web\HttpParams.cs" />
+    <Compile Include="XmlDataDocumentSerializer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{eb7beb5b-6813-4a60-b453-93060be22c30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework.XmlData.Messages\NFramework.XmlData.Messages-vs2010.csproj">
+      <Project>{e240b680-284b-4239-ba71-748166dde0fd}</Project>
+      <Name>NFramework.XmlData.Messages-vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

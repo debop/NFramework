@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings">
+
+	<!-- access를 field로 했을 경우 SQLite가 제대로 되는지 확인한다. -->
+	<class name="ProjectField" table="ProjectField" dynamic-insert="true" dynamic-update="true">
+
+		<id name="Id" column="ProjectFieldId">
+			<generator class="foreign">
+				<param name="property">Project</param>
+			</generator>
+		</id>
+
+		<one-to-one name="Project" class="Project" constrained="true" foreign-key="FK_PRJ_FLD_PRJ" cascade="save-update" />
+		
+		<property name="Name" column="ProjectFieldName" type="String" />
+		<property name="Value" column="ProjectFieldValue" type="String" length="9999" />
+		<property name="Description" type="String" length="9999" />
+
+		<property name="UpdateTimestamp" type="Timestamp" />
+
+		<!-- 다국어 정보 -->
+		<map name="LocaleMap" table="ProjectFieldLocale" inverse="false" lazy="true" cascade="all, delete">
+			<key column="ProjectFieldId" foreign-key="FK_PRJ_FLD_LOC_PRJ_FLD"/>
+			<index column="LocaleKey" type="NSoft.NFramework.Data.NHibernateEx.Domain.UserTypes.CultureUserType, NSoft.NFramework.Data.NHibernateEx" />
+
+			<composite-element class="ProjectFieldLocale">
+				<property name="Name" column="ProjectFieldName" type="String" />
+				<property name="Description" type="String"  length="9999" />
+			</composite-element>
+		</map>
+
+	</class>
+</hibernate-mapping>

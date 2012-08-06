@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.StringResources.Sample.ExtResources"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+	
+	<!--
+		단위 프로젝트에서 설정해 줄 것
+		
+		assembly.version		: 기본적으로 solution.version을 따라간다.
+		assembly.description	:
+		
+		build.unsafe			: true|false
+		
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+	
+	<property name="assembly.description" value="NSoft.NFramework.StringResources 테스트를 위한 External Resources Sample"/>
+	<property name="sign" value="false"/>
+
+	<target name="init" depends="common.init">
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+			<include name="System"/>
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.hbm.xml"/>
+		</resourcefileset>
+
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-dll"
+			description="Build ${project::get-name()}">
+	</target>
+</project>

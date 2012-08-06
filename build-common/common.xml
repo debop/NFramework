@@ -1,0 +1,404 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project xmlns="http://nant.sf.net/release/0.91-alpha2/nant.xsd">
+
+	<!-- Test를 위한 Database 설정 -->
+	<property name="test.db" value="Data Source=(local)\SQLEXPRESS; Initial Catalog=test;Integrated Security=True"/>
+	<property name="test.db.xpath" value="/configuration/connectionStrings/add[@name='test']/@connectionString"/>
+	
+	<!-- 솔루션 공통 정보 -->
+	<!-- 솔루션 버전은 Major.Minor.Release.Build 인데, Build에 [Alpha|Beta|CR|GA|SP] + No 를 붙이면 된다 : 예: Alpha2, CR1, SP1 -->
+	<property name="solution.name" value="NSoft.NFramework" overwrite="false" />
+
+	<property name="solution.version" value="4.0.0.0" overwrite="false"/>
+	<property name="solution.file.version" value="4.0.0.0" overwrite="false"/>
+
+	<!--
+		Assembly에 sign을 추가하기 위해, 필요하다면 ${solution.name}.snk (예: NSoft.NFramework.snk) 파일을 찾는다.
+	-->
+	<property name="sign" value="true" overwrite="false"/>
+	<property name="key.file" value="${path::get-full-path(build-common.dir)}\${solution.name}.snk" overwrite="false"/>
+
+	<!-- test 를 수행할 것인지 여부 -->
+	<property name="common.run.tests" value="true" overwrite="false"/>
+	<property name="common.testrunner.enabled" value="${common.run.tests}" overwrite="false"/>
+	<!-- 테스트 시 에러가 발생하면 빌드를 중지할 것인가? -->
+	<property name="common.testrunner.failonerror" value="false" overwrite="false"/>
+	
+	<!-- Obfuscator -->
+	<property name="obfuscator.enabled" value="true" overwrite="false" />
+
+	<!-- NAnt version -->
+	<property name="nant.version.091_rc1" value="0.91.4298.0" />
+	<property name="nant.version.beta1_086" value="0.86.2896.0"/>
+	<property name="nant.version.085" value="0.85.2478"/>
+	<property name="nant.version.current" value="${assemblyname::get-version(assembly::get-name(nant::get-assembly()))}"/>
+	<property name="nant.version.required" value="${nant.version.beta1_086}"/>
+
+	<!-- .NET Framework directory -->
+	<property name="clr.dir" value="${framework::get-assembly-directory(framework::get-runtime-framework())}"/>
+
+	<!--
+		Reference assembly 위치 정의 (lib, lib/net, lib/net-3.5, lib/net-4.0)
+	-->
+	<property name="lib.dir" value="${path::get-full-path(root.dir)}/lib" dynamic="true"/>
+	<property name="lib.family.dir" value="${path::combine(lib.dir, framework::get-family(framework::get-target-framework()))}" dynamic="true" />
+	<property name="lib.framework.dir" value="${lib.family.dir}-${version::to-string(framework::get-version(framework::get-target-framework()))}" dynamic="true" />
+	<!--<property name="lib.framework.dir" value="${path::combine(lib.family.dir, version::to-string(framework::get-version(framework::get-target-framework())))}" dynamic="true" />-->
+
+	<property name="tools.dir" value="${path::get-full-path(root.dir)}\Tools" dynamic="true"/>
+	
+	<!-- 
+		Versioning 
+	-->
+	<property name="project.version" value="${solution.file.version}" overwrite="false"/>
+	<regex input="${project.version}" pattern="^(?'shortversion'\d+\.\d+)"/>
+	<property name="project.version.short" value="${shortversion}"/>
+
+	<property name="project.version.numeric" value="${solution.file.version}" overwrite="false"/>
+	<!-- project.version으로부터 project.version.numeric을 생성한다.-->
+	<!--
+	<if test="${not property::exists('project.version.numeric')}">
+		<script language="C#">
+			<code>
+				<![CDATA[
+				public const int BaseAlpha = 1000;
+				public const int BaseBeta  = 2000;
+				public const int BaseCR    = 3000;
+				public const int BaseGA    = 4000;
+				// SP is same as GA because GA has no number and SP's start with 1.
+				public const int BaseSP    = 4000;
+
+				public static void ScriptMain(Project project)
+				{
+					project.Properties["project.version.numeric"] = ToNumericVersion(
+						project.Properties["project.version"]);
+				}
+
+				public static string ToNumericVersion(string version)
+				{
+					int qualifierStart = version.LastIndexOf('.') + 1;
+					int qualifierNumberStart = version.IndexOfAny(
+						"0123456789".ToCharArray(),
+						qualifierStart);
+
+					if (qualifierNumberStart < 0) qualifierNumberStart = version.Length;
+
+					string qualifier = version.Substring(qualifierStart, qualifierNumberStart - qualifierStart);
+					int qualifierNumber = qualifierNumberStart < version.Length
+						? int.Parse(version.Substring(qualifierNumberStart))
+						: 0;
+
+					int revisionBase;
+
+					switch (qualifier)
+					{
+						case "Alpha": revisionBase = BaseAlpha; break;
+						case "Beta":  revisionBase = BaseBeta; break;
+						case "CR":    revisionBase = BaseCR; break;
+						case "GA":    revisionBase = BaseGA; break;
+						case "SP":    revisionBase = BaseSP; break;
+
+						default: throw new BuildException("Unknown version qualifier " + qualifier);
+					}
+
+					string revisionNumber = (revisionBase + qualifierNumber).ToString();
+
+					return version.Substring(0, qualifierStart) + revisionNumber;
+				}
+				]]>
+			</code>
+
+		</script>
+	</if>
+	-->
+
+	<!-- AssemblyInfo 정보 -->
+	<property name="project.company" value="http://www.nsoft.com"/>
+	<property name="project.copyright" value="NSoft. All rights reserved."/>
+
+	<!-- debug|release-->
+	<property name="build.defines" value="TRACE" />
+	<property name="build.defines" value="${build.defines}, STRONG" if="${sign}"/>
+
+	<!-- platform specific properties.-->
+	<property name="current.build.defines" value="${build.defines}"/>
+
+	<!-- named project configuration -->
+	<target name="set-debug-project-configuration" description="Perform a 'debug' build">
+		<property name="build.debug" value="true" overwrite="false"/>
+		<property name="build.optimize" value="false" overwrite="false"/>
+		<property name="build.name" value="${solution.name}-${project.version}-${project.config}"/>
+	</target>
+
+	<target name="set-release-project-configuration" description="Perform a 'release' build">
+		<property name="build.debug" value="false" overwrite="false"/>
+		<property name="build.optimize" value="true" overwrite="false"/>
+		<property name="build.name" value="${solution.name}-${project.version}"/>
+	</target>
+
+	<target name="set-project-configuration">
+		<property name="project.config" value="debug" overwrite="false"/>
+		<if test="${not(target::exists('set-' + project.config + '-project-configuration'))}">
+			<fail message ="Unknown configuration: '${project.config}"/>
+		</if>
+		<property name="build.unsafe" value="false" overwrite="false" />
+		<property name="build.warnaserror" value="false" overwrite="false"/>
+		<property name="build.warnmissingdocs" value="false" overwrite="false"/>
+		<call target="set-${project.config}-project-configuration"/>
+
+		<property name="src.dir" 			value="${path::get-full-path(project::get-base-directory())}" />
+		<property name="prop.dir" 			value="${src.dir}/Properties" />
+		<property name="build.base.dir"		value="${path::get-full-path(root.dir)}/build"/>
+		<!-- /build-->
+		<property name="build.family.dir"	value="${build.base.dir}/${nant.settings.currentframework}"/>
+		<!-- /build/net-3.5-->
+		<property name="build.dir"          value="${path::combine(build.family.dir, project.config)}" dynamic="true"/>
+		<!-- /build/net-3.5/debug | /build/net-3.5/release-->
+		<property name="testresults.dir"	value="${build.dir}/test-results" />
+		<property name="releasenotes.dir"   value="${build.dir}/ReleaseNotes"/>
+		
+		<property name="docs.dir"           value="${root.dir}/doc"/>
+		
+		<property name="build.rebuild"      value="false" overwrite="false"/>
+
+	</target>
+
+	<target name="set-framework-configuration">
+		<if test="${not(target::exists('set-' + framework::get-target-framework() + '-framework-configuration'))}">
+			<fail message="The '${framework::get-target-framework()}' framework is not supported by this version ${project::get-name()}."/>
+		</if>
+		<property name="csc.keyfile" value=""/>
+		<property name="csc.args" value=""/>
+
+		<call target="set-${framework::get-target-framework()}-framework-configuration"/>
+	</target>
+
+	<target name="set-net-2.0-framework-configuration">
+		<property name="nant.settings.currentframework" value="net-2.0" />
+		<property name="current.build.defines" value="${build.defines},NET,NET_2_0" />
+		<property name="link.sdkdoc.version" value="SDK_v2_0" />
+		<property name="merge.targetplatform" value="v2" />
+		<property name="csc.keyfile" value='/keyfile:"${key.file}"'/>
+		
+		<!-- If DevEnvDir exists, we grab it, otherwise we try if the default location (if it exists) -->
+		<!--
+		<if test="${environment::variable-exists('DevEnvDir')}">
+			<property name="dev.env.dir" value="${environment::get-variable('DevEnvDir')}"/>
+		</if>
+		<if test="${not environment::variable-exists('DevEnvDir')}">
+			<property name="default.dev.env.dir" value="%ProgramFiles%\Microsoft Visual Studio 8\Common7\IDE"/>
+			<if test="${directory::exists(default.dev.env.dir)}">
+				<property name="dev.env.dir" value="${default.dev.env.dir}"/>
+			</if>
+		</if>
+		-->
+		<property name="build.msbuild" value="false" overwrite="false"/>
+		<property name="project.vsproj" value="${project::get-name()}-vs2005.csproj"/>
+	</target>
+
+	<target name="set-net-3.5-framework-configuration">
+		<property name="nant.settings.currentframework" value="net-3.5"/>
+		<property name="current.build.defines" value="${build.defines},NET,NET_2_0,NET_3_5"/>
+		<property name="link.sdkdoc.version" value="SDK_v2_0" />
+		<property name="merge.targetplatform" value="v2" />
+		<property name="csc.keyfile" value='/keyfile:"${key.file}"'/>
+		
+		<property name="target.framework.net.3.5" value="true" />
+		<property name="target.framework.net.4.0" value="false" />
+
+		<!-- If DevEnvDir exists, we grab it, otherwise we try if the default location (if it exists) -->
+		<!--<if test="${environment::variable-exists('DevEnvDir')}">
+			<property name="dev.env.dir" value="${environment::get-variable('DevEnvDir')}"/>
+		</if>
+		<if test="${not environment::variable-exists('DevEnvDir')}">
+			<property name="default.dev.env.dir" value="%ProgramFiles%\Microsoft Visual Studio 8\Common7\IDE"/>
+			<if test="${directory::exists(default.dev.env.dir)}">
+				<property name="dev.env.dir" value="${default.dev.env.dir}"/>
+			</if>
+		</if>-->
+
+		<property name="build.msbuild" value="false" overwrite="false"/>
+		<property name="project.vsproj" value="${project::get-name()}-vs2008.csproj"/>
+	</target>
+	
+	<target name="set-net-4.0-framework-configuration">
+		<property name="nant.settings.currentframework" value="net-4.0"/>
+		<property name="current.build.defines" value="${build.defines},NET,NET_2_0,NET_3_5,NET_4_0,NO_PARTIAL_TRUST"/>
+		<property name="link.sdkdoc.version" value="SDK_v4_0" />
+		<property name="merge.targetplatform" value="v4" />
+		<property name="csc.keyfile" value='/keyfile:"${key.file}"'/>
+		
+		<property name="target.framework.net.3.5" value="false" />
+		<property name="target.framework.net.4.0" value="true" />
+
+		<property name="build.msbuild" value="false" overwrite="false"/>
+		<property name="project.vsproj" value="${project::get-name()}-vs2010.csproj"/>
+	</target>
+
+	
+	<target name="set-silverlight-4.0-framework-configuration">
+		<property name="nant.settings.currentframework" value="silverlight-4.0"/>
+		<property name="current.build.defines" value="${build.defines},SILVERLIGHT"/>
+		<property name="link.sdkdoc.version" value="SDK_v4_0" />
+		<property name="merge.targetplatform" value="v4" />
+		<property name="csc.keyfile" value='/keyfile:"${key.file}"'/>
+
+		<property name="target.framework.net.3.5" value="false" />
+		<property name="target.framework.net.4.0" value="false" />
+
+		<property name="build.msbuild" value="false" overwrite="false"/>
+		<property name="project.vsproj" value="${project::get-name()}-Silverlight-vs2010.csproj"/>
+	</target>
+	
+	
+
+	<target name="set-mono-1.0-framework-configuration">
+		<property name="nant.settings.currentframework" value="mono-1.0" />
+		<property name="current.build.defines" value="${build.defines},MONO,MONO1" />
+		<property name="link.sdkdoc.version" value="MsdnOnline" />
+		<!-- mono puts gacutil on PATH -->
+		<property name="gacutil.file" value="gacutil" />
+		<property name="build.warnaserror" value="false" />
+	</target>
+
+	<target name="set-mono-2.0-framework-configuration">
+		<property name="nant.settings.currentframework" value="mono-2.0" />
+		<property name="current.build.defines" value="${build.defines},MONO,MONO2,NET_2_0" />
+		<property name="link.sdkdoc.version" value="MsdnOnline" />
+		<!-- mono puts gacutil on PATH -->
+		<property name="gacutil.file" value="gacutil" />
+		<property name="build.warnaserror" value="false" />
+	</target>
+
+
+	<target name="display-current-runtime">
+		<echo message="" />
+		<echo message="----------------------------------------------------------" />
+		<echo message=" ${framework::get-description(framework::get-target-framework())}" />
+		<echo message="----------------------------------------------------------" />
+		<echo message="" />
+		<echo message="framework : ${framework::get-target-framework()}" />
+		<echo message="description : ${framework::get-description(framework::get-target-framework())}" />
+		<echo message="sdk directory : ${framework::get-sdk-directory(framework::get-target-framework())}" />
+		<echo message="framework directory : ${framework::get-framework-directory(framework::get-target-framework())}" />
+		<echo message="assembly directory : ${framework::get-assembly-directory(framework::get-target-framework())}" />
+		<echo message="runtime engine : ${framework::get-runtime-engine(framework::get-target-framework())}" />
+		<echo message="" />
+	</target>
+
+	<target name="common.init"
+			depends="common.check-nant-version common.find-tools set-framework-configuration set-project-configuration"
+			description="Initialize build properties">
+
+		<fileset id="project.sources" failonempty="true">
+			<include name="${src.dir}/**/*.cs"/>
+			<exclude name="${src.dir}/obj/**/*.cs"/>
+			<exclude name="${src.dir}/bin/**/*.cs"/>
+		</fileset>
+		<resourcefileset id="project.resources"/>
+	</target>
+
+	<target name="common.find-svninfo">
+		<!-- For adding SVN revision to builds -->
+		<property name="svn.revision" value="0" overwrite="false"/>
+		<property name="svn.revision.filename" value="_revision.xml"/>
+		<!-- try to update the revisions -->
+		<exec
+			program="${svn-exe}"
+			commandline='info "${project::get-base-directory()}" --xml'
+			output="${svn.revision.filename}"
+			failonerror="false"/>
+		<xmlpeek
+			file="${svn.revision.filename}"
+			xpath="/info/entry/@revision"
+			property="svn.revision"
+			failonerror="false" />
+		<delete file="${svn.revision.filename}" failonerror="false"/>
+
+		<echo message="INFO: Using Subversion revision number: ${svn.revision}"/>
+	</target>
+
+	<target name="common.find-nunit">
+		<if test="${not property::exists('nunit.found')}">
+			<exec
+				program="${mbunit-console}"
+				resultproperty="mbunit.found"
+				failonerror="false" />
+
+			<property name="mbunit.found" value="${mbunit.found == '0' and string::to-lower(testrunner)=='mbunit'}" readonly="true" />
+
+			<property name="nunit.found" value="-1" />
+			<exec
+				unless="${mbunit.found}"
+				program="${nunit-console2}"
+				resultproperty="nunit.found"
+				failonerror="false" />
+
+			<property name="nunit-console" value="${nunit-console2}" if="${nunit.found == '0'}" />
+
+			<exec unless="${mbunit.found or nunit.found == '0'}"
+				program="${nunit-console}"
+				commandline="/help"
+				resultproperty="nunit.found"
+				output='_nunit.txt'
+				failonerror="false" />
+
+			<property name="nunit.found" value="${nunit.found == '0'}" readonly="true" />
+
+			<fail message="ERROR: NUnit or MBUnit not found, cannot continue." unless="${nunit.found or mbunit.found}"/>
+
+			<echo message="INFO: Using MBUnit for running unit tests" if="${mbunit.found}"/>
+
+			<if test="${nunit.found}">
+				<!-- Determine if we can use this version of NUnit -->
+				<loadfile file="_nunit.txt" property="nunit_txt" />
+				<delete file="_nunit.txt" failonerror="false" />
+				<property name="nunit_findtxt" value="NUnit version " />
+				<property name="nunit_version" value="" />
+				<if test="${string::index-of( nunit_txt, nunit_findtxt) >= 0}">
+					<property name="nunit_version" value="${string::trim(string::substring(nunit_txt, string::index-of( nunit_txt, nunit_findtxt) + string::get-length(nunit_findtxt),6 ))}" />
+				</if>
+				<echo if="${string::get-length(nunit_version) == 0}">WARNING: Unable to determine NUnit version, unit tests may fail unpredictably with your version of NUnit</echo>
+				<echo if="${string::get-length(nunit_version) > 0}">INFO: Found NUnit ${nunit_version}</echo>
+			</if>
+		</if>
+	</target>
+
+	<target name="common.check-nant-version">
+		<!--
+		<fail if="${nant.version.current&lt;nant.version.required}" message="Not using minimum required Nant version: ${nant.version.required} (current version: ${nant.version.current}). Please upgrade your copy of nant." />
+		-->
+	</target>
+	
+	<target name="common.find-tools">
+		<!-- Where is MbUnit.Cons.exe ? -->
+		<property name="mbunit-console" value="${tools.dir}\MbUnit\MbUnit.Cons.exe" overwrite="false" />
+		
+		<!-- Where is Subversion ? -->
+		<property name="svn-exe" value="${tools.dir}\Subversion\svn.exe" overwrite="false"/>
+		
+		<!-- DoxyGen-->
+		<property name="doxygen-exe" value="${tools.dir}\Doxygen\doxygen.exe" overwrite="false"/>
+
+		<!-- Where is nunit-console executable(win/mono) ? -->
+		<property name="nunit-console2" value="nunit-console2" overwrite="false" />
+		<property name="nunit-console" value="nunit-console" overwrite="false" />
+		
+		<!-- Eazfuscator.NET -->
+		<property name="eazfuscator-exe" value="${tools.dir}\Eazfuscator\Eazfuscator.NET.exe" overwrite="false" />
+
+		<property name="testrunner" value="mbunit" />
+
+		<!-- Where is WiX? -->
+		<property name="wix.dir" value="${environment::get-folder-path('ProgramFiles')}\Windows Installer XML v3\bin" overwrite="false" />
+
+		<!-- Where is Sandcastle Help File Builder (SHFB)? -->
+		<property name="shfb.dir" value="${environment::get-folder-path('ProgramFiles')}\EWSoftware\Sandcastle Help File Builder" overwrite="false" />
+
+		<!-- Where is Sandcastle? -->
+		<property name="sandcastle.dir" value="${environment::get-folder-path('ProgramFiles')}\Sandcastle" overwrite="false" />
+
+		<!-- Where is HTML Help 1.0? -->
+		<property name="htmlhelp1x.dir" value="${environment::get-folder-path('ProgramFiles')}\HTML Help Workshop" overwrite="false" />
+	</target>
+</project>

@@ -1,0 +1,489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project name="NSoft.NFramework" default="build" xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+	<!--
+		Package 단위에서의 정의할 것 (common.xml 에서)
+		
+		solution.name    : 전체 프로젝트의 이름
+		solution.version : 솔루션의 공통 버전
+		key.file 명    : NSoft.NFramework.snk
+		
+	-->
+	<!-- Solution Directory -->
+	<property name="root.dir" value="." />
+	<property name="build-common.dir" value="${root.dir}/build-common" />
+	<include buildfile="${build-common.dir}/common.xml" />
+
+	<property name="build.silverlight" value="false" overwrite="true" />
+
+	<!-- 빌드할 모든 것을 여기에 추가한다.-->
+	<fileset id="buildfiles.all">
+	
+		<!-- NSoft.NFramework -->
+		<include name="src/NFramework/default.build" />
+		<include name="src/NFramework.WindowsSystem/default.build" />
+		<include name="test/NFramework.Test/default.build" if="${common.testrunner.enabled}" />
+		<include name="test/NFramework.WindowsSystem.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- NSoft.NFramework.Data -->
+		<include name="src/NFramework.Data/default.build" />
+		<include name="src/NFramework.Data.DevartOracle/default.build" />
+		<include name="src/NFramework.Data.MySql/default.build" />
+		<include name="src/NFramework.Data.OdpNet/default.build" />
+		<include name="src/NFramework.Data.PostgreSql/default.build" />
+		<include name="src/NFramework.Data.SQLite/default.build" />
+		<include name="test/NFramework.Data.Tests/default.build" if="${common.testrunner.enabled}" />
+
+		<!-- NSoft.NFramework.Data.NHibernateEx -->
+		<include name="src/NFramework.Data.NHibernateEx/default.build" />
+		<include name="samples/NFramework.Data.NHibernateEx.Domain/default.build" />
+		<include name="test/NFramework.Data.NHibernateEx.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- NFrameowk.DataServices -->
+		<include name="src/NFramework.DataServices.Messages/default.build" />
+		<include name="src/NFramework.DataServices/default.build" />
+		<!--
+		<include name="src/NFramework.DataServices.Clients/default.build" />
+		<include name="samples/NFramework.DataServices.WebHost/default.build" />
+		<include name="samples/NFramework.DataServices.WebForm/default.build" />
+		<include name="test/NFramework.DataServices.Tests/default.build" if="${common.testrunner.enabled}" />
+		-->
+		
+		<!-- NSoft.NFramework.XmlData -->
+		<include name="src/NFramework.XmlData.Messages/default.build" />
+		<include name="src/NFramework.XmlData/default.build" />
+		<include name="samples/NFramework.XmlData.WebHost/default.build" />
+		<include name="test/NFramework.XmlData.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- DocumentDB -->
+		<include name="src/NFramework.Data.MongoDB/default.build" />
+		<include name="src/NFramework.Data.RavenDB/default.build" />
+		<include name="test/NFramework.Data.DocumentDB.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- Caching -->
+		<include name="src/NFramework.Caching.Memcached/default.build" />
+		<include name="src/NFramework.Caching.SharedCache/default.build" />
+		<include name="test/NFramework.Caching.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- FusionCharts -->
+		<include name="src/NFramework.FusionCharts/default.build" />
+		<include name="samples/NFramework.FusionCharts.WebHos/default.build" />
+		<include name="test/NFramework.FusionCharts.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- JobScheduler (Quartz.NET) -->
+		<include name="src/NFramework.JobScheduler/default.build" />
+		<include name="test/NFramework.JobScheduler.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+		<!-- Licensing -->
+		<include name="src/NFramework.Licensing/default.build" />
+		<include name="test/NFramework.Licensing.Tests/default.build" if="${common.testrunner.enabled}" />
+
+		<!-- Numeric -->
+		<include name="src/NFramework.Numerics/default.build" />
+		<include name="test/NFramework.Numerics.Tests/default.build" if="${common.testrunner.enabled}"/>
+		
+		<!-- StringResources -->
+		<include name="src/NFramework.StringResources/default.build" />
+		<include name="samples/NFramework.StringResources.Sample.ExtResources/default.build" />
+		<include name="samples/NFramework.StringResources.WebHost/default.build" />
+		<include name="test/NFramework.StringResources.Tests/default.build" if="${common.testrunner.enabled}"/>
+        
+        <!-- NSoft.NFramework.Web -->
+		<include name="src/NFramework.Web.TelerikEx/default.build" />
+		<include name="src/NFramework.Web/default.build" />
+        <include name="src/NFramework.Web.Mvc/default.build" />
+		<include name="samples/NFramework.WebHost/default.build" />
+		<include name="test/NFramework.Web.Tests/default.build" if="${common.testrunner.enabled}" />
+		
+	</fileset>
+
+	<fileset id="buildfiles.silverlight">
+
+	</fileset>
+
+	<target name="debug" description="Debug 모드로 컴파일 합니다.">
+		<property name="project.config" value="debug" />
+	</target>
+	<target name="release" description="Release 모드로 컴파일 합니다.">
+		<property name="project.config" value="release" />
+	</target>
+	<target name="quick" description="테스트 수행 없이 소스만 빌드합니다.">
+		<property name="common.testrunner.enabled" value="false" />
+		<property name="obfuscator.enabled" value="false" />
+		<property name="build.silverlight" value="false" />
+	</target>
+
+	<target name="silverlight" description="실버라이트용 컴파일">
+		<property name="build.silverlight" value="true" />
+	</target>
+	
+	<target name="test" description="테스트를 수행하도록 세팅합니다.">
+		<property name="common.testrunner.enabled" value="true" overwrite="true" />
+	</target>
+	
+	<target name="obfuscator" description="어셈블리를 암호화합니다">
+		<property name="obfuscator.enabled" value="true" overwrite="true" />
+	</target>
+	
+	<target name="build" depends="init copy-referenced-assemblies" description="Build ${project::get-name()}">
+		<if test="${not build.silverlight}">
+			<nant target="build">
+				<buildfiles refid="buildfiles.all"/>
+			</nant>
+		</if>
+		<if test="${build.silverlight}">
+			<nant target="build">
+				<buildfiles refid="buildfiles.silverlight"/>
+			</nant>
+		</if>
+	</target>
+	
+	<target name="rebuild" depends="init recreate-build-directory build" description="Rebuild ${project::get-name()}" />
+	
+	<target name="rebuild-all" depends="init recreate-build-directory buildall" description="Rebuild ${project::get-name()}" />
+	
+	<target name="installer" depends="init releaseDocs zip-source">
+		<nant buildfile="Setup/Setup.build" />
+	</target>
+	
+	<target name="init" depends="common.init">
+		<mkdir dir="${build.dir}" />		<!-- root\build\net-3.5\debug -->
+		<mkdir dir="${testresults.dir}" />		<!-- root\build\net-3.5\debug\test-results -->
+		<!-- <call target="common.find-svninfo" /> -->
+		<call target="common.find-nunit" if="${common.testrunner.enabled}" />
+	</target>
+	
+	<!-- Build한 모든 정보를 삭제한다.-->
+	<target name="clean" description="현재 설정된 환경에서 빌드된 파일들을 삭제합니다." depends="common.init">
+		<delete dir="${build.dir}" failonerror="false" />
+		<delete>
+			<fileset basedir="${build.base.dir}">
+				<include name="*.*" />
+			</fileset>
+		</delete>
+	</target>
+	
+	<target name="clean-vs" description="Delete Visual Studio artifacts" depends="common.init">
+		<echo message="Visual Studio 용 부가 파일을 삭제합니다. " />
+		<foreach item="File" property="filename">
+			<in>
+				<items basedir=".">
+					<include name="**/*.suo" />
+					<include name="**/*.csproj.user" />
+					<include name="**/*.Resharper.user" />
+					<include name="**/*.~*"/>
+				</items>
+			</in>
+			<do>
+				<delete file="${filename}" />
+			</do>
+		</foreach>
+		<echo message="Visual Studio 용 부가 폴더를 삭제합니다." />
+		<foreach item="Folder" property="foldername">
+			<in>
+				<items basedir=".">
+					<include name="**/obj" />
+					<include name="**/bin" />
+					<!--
+					<include name="**/bin/Debug"/>
+					<include name="**/bin/Release"/>
+					-->
+					<include name="**/_Resharper*" />
+				</items>
+			</in>
+			<do>
+				<delete dir="${foldername}" failonerror="false" />
+			</do>
+		</foreach>
+	</target>
+	
+	<target name="cleanall" description="Delete all build artifacts" depends="common.init">
+		<echo message="모든 빌드 파일들을 삭제하고, Visual Studio의 부가 파일들을 삭제합니다." />
+		<delete dir="${build.base.dir}" failonerror="false" />
+		<call target="cleanupDocs" />
+		<call target="clean-vs" />
+	</target>
+	
+	<target name="recreate-build-directory" description="Build용 디렉토리를 청소하고, 참조 Assembly만 복사해 둔다">
+		<echo message="프로젝트 루트 디렉토리 : ${project::get-base-directory()}" />
+		<echo message="빌드 디렉토리 : ${build.dir}" />
+		<!-- prepare build directory-->
+		<delete dir="${build.dir}" failonerror="false" />
+		<mkdir dir="${build.dir}" />
+		<mkdir dir="${testresults.dir}" />
+		<call target="copy-referenced-assemblies" />
+		<property name="build.rebuild" value="true" />
+	</target>
+	
+	<target name="copy-referenced-assemblies">
+		<!-- 테스트를 위해 MbUnit을 복사합니다 -->
+		<!--
+		<copy todir="${build.dir}">
+			<fileset basedir="${tools.dir}/MbUnit">
+				<include name="*.dll" />
+				<exclude name="log4net.*" />
+			</fileset>
+		</copy>
+		-->
+		<!-- framework-specific library (예: /lib/net-3.5, /lib/net-4.0)-->
+		<copy todir="${build.dir}">
+			<fileset basedir="${lib.framework.dir}">
+				<include name="*.dll" />
+				<include name="*.xml" />
+				<include name="*.dll.config" />
+			</fileset>
+		</copy>
+		
+		<!-- 참조할 라이브러리를 ${build.dir} 에 복사한다 -->
+		<!--
+		<foreach item="String" 
+				 delim="," 
+				 property="dependency.dir" 
+				 in="AntiXssLibrary,Castle,EnterpriseLibrary,Esent,FileHelpers,ICSharpCode,Interop,log4net,NHibernate,NHibernate.Linq,Moq,NHibernateContrib,Nini,SqlCE,SqLite.Net">
+			<copy todir="${build.dir}">
+				<fileset basedir="${lib.dir}/${dependency.dir}">
+					<include name="*.dll" />
+					<include name="*.xml" />
+					<include name="*.license.txt" />
+					<include name="*.dll.config" />
+				</fileset>
+			</copy>
+
+			<copy todir="${build.dir}">
+				<fileset basedir="${lib.family.dir}/${dependency.dir}">
+					<include name="*.dll" />
+					<include name="*.xml" />
+					<include name="*.license.txt" />
+					<include name="*.dll.config" />
+				</fileset>
+			</copy>
+			
+			<copy todir="${build.dir}">
+				<fileset basedir="${lib.dir}/${dependency.dir}">
+					<include name="*.dll" />
+					<include name="*.xml" />
+					<include name="*.license.txt" />
+					<include name="*.dll.config" />
+				</fileset>
+			</copy>
+		</foreach>
+		-->
+		<!-- /lib/net-3.5/NAnt.Core.dll 로 복사된다.-->
+		<!-- 		
+		<copy file="${path::combine(nant::get-base-directory(), 'NAnt.Core.dll')}" todir="${lib.framework.dir}" />
+		-->
+	</target>
+	
+	<target name="generate-assemblyinfo" depends="init" description="Generate AssemblyInfo files">
+		<property name="visual-studio" value="true" />
+		<if test="${not build.silverlight}">
+			<nant target="build">
+				<buildfiles refid="buildfiles.all"/>
+			</nant>
+		</if>
+		<if test="${build.silverlight}">
+			<nant target="build">
+				<buildfiles refid="buildfiles.silverlight"/>
+			</nant>
+		</if>
+	</target>
+
+	<target name="buildall" description="Build Debug mode, Release Mode" depends="common.init">
+		<property name="current.project.config" value="${project.config}"/>
+		<foreach item="String" delim="," property="config" in="debug,release">
+			<call target="${config}"/>
+			<call target="build"/>
+		</foreach>
+		<property name="project.config" value="${current.project.config}" overwrite="true"/>
+	</target>
+	
+	<!-- 모든 .NET Framework 버전에 대해 빌드한다.-->
+	<target name="build-all-frameworks" depends="init">
+		<property name="build.silverlight" value="false" />
+		<!-- save the current framework -->
+		<property name="current.framework.saved" value="${nant.settings.currentframework}" />
+		<!-- Execute build for each framework-->
+		<foreach item="String" delim="," property="framework" in="net-4.0">
+			<call target="set-${framework}-framework-configuration" />
+			<call target="buildall" />
+		</foreach>
+		<!-- Reset the current framework to the saved value -->
+		<call target="set-${current.framework.saved}-framework-configuration" />
+	</target>
+	
+	<target name="release-all-frameworks" depends="init">
+		<property name="build.silverlight" value="false" />
+		<!-- save the current framework -->
+		<property name="current.framework.saved" value="${nant.settings.currentframework}" />
+		<!-- Execute build for each framework-->
+		<foreach item="String" delim="," property="framework" in="net-4.0">
+			<call target="set-${framework}-framework-configuration" />
+			<call target="release" />
+			<call target="build" />
+			<!--
+			<property name="current.build.defines" value="${current.build.defines},ClientProfile"/>
+			<property name="lib.framework.dir" value="${lib.framework.dir}-ClientProfile" />
+			<call target="release" />
+			<call target="build" />
+			-->
+		</foreach>
+		<!-- Reset the current framework to the saved value -->
+		<call target="set-${current.framework.saved}-framework-configuration" />
+	</target>
+
+	<target name="release-silverlight" depends="init">
+		<property name="build.silverlight" value="true" />
+		<property name="build.msbuild" value="true"/>
+		
+		<property name="current.framework.saved" value="${nant.settings.currentframework}" />
+		<foreach item="String" delim="," property="framework" in="silverlight-4.0">
+			<call target="set-${framework}-framework-configuration" />
+			<call target="release" />
+			<call target="build" />
+		</foreach>
+		<!-- Reset the current framework to the saved value -->
+		<call target="set-${current.framework.saved}-framework-configuration" />
+	</target>
+	
+	
+	<!-- Packaging related tasks -->
+	<target name="package" depends="zip-binary zip-source" description="Create Zip files for Release">
+		<echo message="Create a ${project.config} package in file://${binary.zip.fullpath}" />
+		<delete file="${build.dir}/test-results.zip" failonerror="false" />
+		<delete file="${build.dir}/external-dependencies.zip" failonerror="false" />
+	</target>
+	
+	<target name="zip-binary" depends="build-all-frameworks">
+		<property name="date.today" value="${datetime::get-year(datetime::now())}-${datetime::get-month(datetime::now())}-${datetime::get-day(datetime::now())}" overwrite="false" />
+		<property name="binary.zip.dir" value="${build.base.dir}" overwrite="false" />
+		<property name="binary.zip.file" value="${project::get-name()}-${date.today} (r.${svn.revision}).zip" overwrite="false" dynamic="true" />
+		<property name="binary.zip.fullpath" value="${binary.zip.dir}/${binary.zip.file}" readonly="true" />
+		
+		<delete>
+			<fileset basedir="${binary.zip.dir}">
+				<include name="*.zip" />
+			</fileset>
+		</delete>
+		<!-- Include a zip file with all dependencies -->
+		<!--<call target="zip-dependencies" />-->
+		<!-- Create the master zip file with all files included -->
+		<zip zipfile="${binary.zip.fullpath}">
+			<fileset basedir="${build.base.dir}" prefix="bin">
+				<include name="**/*.dll"/>
+				<include name="**/*.xml"/>
+				<include name="**/*.txt"/>
+				
+				<exclude name="**/*.hbm.xml"/>
+				<exclude name="**/*.log"/>
+				<exclude name="test*/**" />
+				<exclude name="**/*.zip"/>
+			</fileset>
+
+			<fileset basedir="${releasenotes.dir}" prefix="ReleaseNotes">
+				<include name="**/*.txt" />
+			</fileset>
+
+		</zip>
+
+	</target>
+	
+	<target name="zip-dependencies">
+		<zip zipfile="${build.dir}/external-dependecies.zip">
+			<fileset basedir="${build.dir}">
+				<include name="*.*" />
+				<exclude name="**/*.zip" />
+			</fileset>
+		</zip>
+	</target>
+	
+	<target name="zip-source">
+		<property name="source.zip.file" value="${project::get-name()} (r.${svn.revision}) source.zip" overwrite="false" />
+		<zip zipfile="${build.base.dir}/${source.zip.file}">
+			<fileset basedir="${root.dir}">
+			
+				<!-- copy dlls used by this build -->
+				<include name="${lib.dir}/**" />
+				<include name="${tools.dir}/**" />
+				<!-- copy all of project sources. -->
+				<include name="src*/**" />
+				
+				<include name="${build-common.dir}/**"/>
+				
+				<include name="*.snk" />
+				<include name="*.build" />
+				<include name="*.txt" />
+				<include name="*.bat" />
+				<include name="*.cmd" />
+				<include name="*.shfb" />
+				
+				<!-- exclude ReSharper stuff -->
+				<exclude name="**/_ReSharper*/**" />
+				<exclude name="**/*.resharperoptions" />
+				<exclude name="**/*resharper*" />
+				<exclude name="developer*/**" />
+				
+				<!-- exclude VS.NET stuff -->
+				<exclude name="**/*.suo" />
+				<exclude name="**/*.user" />
+				<exclude name="**/bin/**" />
+				<exclude name="**/obj/**" />
+				<exclude name="**/temp/**" />
+			</fileset>
+		</zip>
+	</target>
+	
+	<!-- 사용 안함 -->
+	<target name="releaseDocs" depends="release init cleanupDocs build" description="Generates documentation with default properties">
+		<property name="sanddoc.visibleitems" value="Attributes, InheritedMemebers, InheritedFrameworkMemebers, Protected, SealedProtected" />
+		<property name="sanddoc.missingtags" value="Summary, Parameter, AutoDocumentCtors, Namespace" />
+		<call target="generateDocs" />
+	</target>
+	<!-- 사용 안함 -->
+	<target name="devDocs" depends="debug init cleanupDocs build" description="Generates documentation for developers, with all missing information indicated and private members visible.">
+		<property name="sanddoc.visibleitems" value="Attributes, InheritedMembers, InheritedFrameworkMembers, Privates, Protected, SealedProtected" />
+		<property name="sanddoc.missingtags" value="Summary, Parameter, Returns, Value, AutoDocumentCtors, Namespace" />
+		<property name="outputDocs.file" value="RhinoToolsDev" />
+		<property name="outputDocs.file" value="${project::get-name()}-dev" overwrite="true" />
+		<call target="generateDocs" />
+	</target>
+	
+	<!-- 사용 안함 -->
+	<target name="generateDocs" description="Generate document">
+		<exec program="SandcastleBuilderConsole" basedir="${shfb.dir}" commandline="${build-common.dir}\${solution.name}.shfb">
+			<arg value="-FrameworkVersion=${framework::get-clr-version(framework::get-target-framework())}" />
+			<arg value="-SandcastlePath=${sandcastle.dir}" />
+			<arg value="-HtmlHelp1xCompilerPath=${htmlhelp1x.dir}" />
+			<arg value="-OutputPath=${docs.dir}" />
+			<arg value="-HtmlHelpName=${outputDocs.file}" />
+			<arg value="-HelpFileFormat=HtmlHelp1x" />
+			<arg value="-VisibleItems=${sanddoc.visibleitems}" />
+			<arg value="-MissingTags=${sanddoc.missingtags}" />
+		</exec>
+		
+		<!-- Help 파일을 lib 폴더에 복사합니다. -->
+		<copy file="${docs.dir}/${outputDocs.file}.chm" tofile="${lib.framework.dir}/${outputDocs.file}.chm"/>
+
+	</target>
+	
+	<target name="cleanupDocs">
+		<delete>
+			<fileset>
+				<include name="${docs.dir}/**" />
+				<exclude name="**/*.chm" />
+				<exclude name="**/*.pdf" />
+				<exclude name="**/*.zip" />
+			</fileset>
+		</delete>
+	</target>
+	
+	<!-- Generate Document -->
+	<property name="outputDocs.file" value="${project::get-name()}" />
+
+	<!-- Document 생성 툴을 Doxygen 으로 변경함 - 2010.08.28 -->
+	<target name="doxygen" depends="init cleanupDocs">
+		<!--<call target="set-net-4.0-framework-configuration"/>-->
+		<exec program="${doxygen-exe}" >
+			<arg value="doxyfile"/>
+		</exec>
+	</target>
+
+</project>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Northwind">
+
+	<class name="Order" table="Orders" dynamic-insert="true" dynamic-update="true">
+		
+		<id name="Id" column="OrderId" type="Int32" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<property name="OrderDate" type="DateTime" />
+		<property name="RequiredDate" type="DateTime" />
+		<property name="ShippedDate" type="DateTime" />
+		<property name="ShipName" type="String" />
+
+		<!-- 판매사원 정보 -->
+		<many-to-one name="Seller" column="EmployeeId" class="Employee" lazy="proxy" fetch="select" />
+	
+		<!-- 구매자 정보-->
+		<many-to-one name="OrderedBy" column="CustomerId" class="Customer" lazy="proxy" fetch="select" />
+		
+		<!-- 배송자 -->
+		<many-to-one name="ShipVia" column="ShipVia" class="Shipper" lazy="proxy" fetch="select" />
+
+		<set name="OrderDetails" inverse="true" lazy="true" cascade="all, delete-orphan">
+			<key column="OrderId" not-null="true" />
+			<one-to-many class="OrderDetail" />
+		</set>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="NSoft.NFramework.XmlData.WebHost.Services.XmlDataService" CodeBehind="XmlDataService.svc.cs" %>

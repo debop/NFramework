@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+                   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+                   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Northwind">
+
+	<class name="Customer" table="Customers" dynamic-insert="true" dynamic-update="true">
+
+		<id name="Id" column="CustomerId" type="String">
+			<generator class="assigned" />
+		</id>
+
+		<property name="CompanyName"  />
+		<property name="ContactName"  />
+
+		<bag name="Orders" inverse="true" lazy="true" cascade="all">
+			<key column="CustomerId" />
+			<one-to-many class="Order" />
+		</bag>
+
+	</class>
+</hibernate-mapping>

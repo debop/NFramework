@@ -1,0 +1,46 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="NSoft.NFramework.StringResources.WebHost.Site" %>
+
+<%@ Register Src="~/Common/UserControls/Header.ascx" TagName="Header" TagPrefix="rcl" %>
+<%@ Register Src="~/Common/UserControls/Footer.ascx" TagName="Footer" TagPrefix="rcl" %>
+<%@ Register Src="~/Common/UserControls/Menu.ascx" TagName="Menu" TagPrefix="rcl" %>
+<%@ Register Src="~/Common/UserControls/NavBar.ascx" TagName="NavBar" TagPrefix="rcl" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head id="Head1" runat="server">
+        <title>String Resource Provider Sample</title>
+    </head>
+    <body>
+        <form id="MainForm" runat="server">
+            <table cellpadding="0" cellspacing="0" class="frame">
+                <tr>
+                    <td>
+                        <!-- Header -->
+                        <rcl:Header id="mainHeader" runat="server"></rcl:Header>
+                        <!-- Menu -->
+                        <rcl:Menu ID="mainMenu" runat="server"></rcl:Menu>
+                        <table cellpadding="0" cellspacing="0" style="height: 400px; width: 100%">
+                            <!-- Navigation -->
+                            <tr>
+                                <td class="menu" style="width: 300px" valign="top">
+                                    <rcl:NavBar id="mainNavBar" runat="server"></rcl:NavBar>
+                                </td>
+                                <td class="vborder">
+                                </td>
+                                <!-- contents start -->
+                                <td align="left" valign="top">
+                                    <div>
+                                        <asp:ContentPlaceHolder ID="contentMain" runat="server">
+                                        </asp:ContentPlaceHolder>
+                                    </div>
+                                </td>
+                                <!-- contents end -->
+                            </tr>
+                        </table>
+                        <!-- Footer -->
+                        <rcl:Footer ID="mainFooter" runat="server"></rcl:Footer>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>

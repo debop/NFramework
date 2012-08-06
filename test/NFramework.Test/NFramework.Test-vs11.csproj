@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C1BE155-8D7B-49F0-ABD8-7BE3D09907FB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\..\lib\net-4.0\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation, Version=3.2.0.0, Culture=neutral, PublicKeyToken=a82054b837897c66, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\net-4.0\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\..\lib\net-4.0\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.CoreEx, Version=1.0.2856.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\System.CoreEx.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Interactive, Version=1.0.2856.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\System.Interactive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Reactive, Version=1.0.2856.104, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\System.Reactive.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractFixture.cs" />
+    <Compile Include="Caching\CacheItemBase.cs" />
+    <Compile Include="Caching\ConcurrentCacheRepositoryFixture.cs" />
+    <Compile Include="Caching\TaskCacheItem.cs" />
+    <Compile Include="Caching\ToDoList.cs" />
+    <Compile Include="Collections\BinaryHeapFixture.cs" />
+    <Compile Include="Collections\BinaryHeapPriorityQueueFixture.cs" />
+    <Compile Include="Collections\BinaryTreeFixture.cs" />
+    <Compile Include="Collections\C5\Arrays\ArrayListTest.cs" />
+    <Compile Include="Collections\C5\Arrays\CircularQueueTest.cs" />
+    <Compile Include="Collections\C5\Arrays\HashedArrayListTest.cs" />
+    <Compile Include="Collections\C5\Arrays\SortedArrayTests.cs" />
+    <Compile Include="Collections\C5\BasesTest.cs" />
+    <Compile Include="Collections\C5\Hashing\HashBagTests.cs" />
+    <Compile Include="Collections\C5\Hashing\HashDictionaryTests.cs" />
+    <Compile Include="Collections\C5\Hashing\HashTableTests.cs" />
+    <Compile Include="Collections\C5\Heaps\HeapTests.cs" />
+    <Compile Include="Collections\C5\InterfacesTest.cs" />
+    <Compile Include="Collections\C5\LinkedLists\HashedLinkedListTest.cs" />
+    <Compile Include="Collections\C5\LinkedLists\LinkedListTest.cs" />
+    <Compile Include="Collections\C5\Records.cs" />
+    <Compile Include="Collections\C5\Sorting.cs" />
+    <Compile Include="Collections\C5\SupportClasses.cs" />
+    <Compile Include="Collections\C5\Templates\Clone.cs" />
+    <Compile Include="Collections\C5\Templates\Events.cs" />
+    <Compile Include="Collections\C5\Templates\GenericCollectionTester.cs" />
+    <Compile Include="Collections\C5\Templates\List.cs" />
+    <Compile Include="Collections\C5\Trees\Bag.cs" />
+    <Compile Include="Collections\C5\Trees\Dictionary.cs" />
+    <Compile Include="Collections\C5\Trees\RedBlackTreeSetTests.cs" />
+    <Compile Include="Collections\C5\WrappersTest.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentBagFixture.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentCollectionStressTestUtil.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentMultiMapFixture.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentMultiSetFixture.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentQueueFixture.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentSkipListFixture.cs" />
+    <Compile Include="Collections\DoubleQueueFixture.cs" />
+    <Compile Include="Collections\FrequencyTableFixture.cs" />
+    <Compile Include="Collections\MultiMapFixture.cs" />
+    <Compile Include="Collections\MultiSetFixture.cs" />
+    <Compile Include="Collections\PascalSetFixture.cs" />
+    <Compile Include="Collections\PowerCollections\AlgorithmsFixture.cs" />
+    <Compile Include="Collections\PowerCollections\BagFixture.cs" />
+    <Compile Include="Collections\PowerCollections\BigListFixture.cs" />
+    <Compile Include="Collections\PowerCollections\CollectionBaseFixture.cs" />
+    <Compile Include="Collections\PowerCollections\ComparersFixture.cs" />
+    <Compile Include="Collections\PowerCollections\DequeFixture.cs" />
+    <Compile Include="Collections\PowerCollections\DictionaryBaseFixture.cs" />
+    <Compile Include="Collections\PowerCollections\HashFixture.cs" />
+    <Compile Include="Collections\PowerCollections\InterfaceTests.cs" />
+    <Compile Include="Collections\PowerCollections\ListBaseFixture.cs" />
+    <Compile Include="Collections\PowerCollections\MultiDictionaryBaseFixture.cs" />
+    <Compile Include="Collections\PowerCollections\MultiDictionaryFixture.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedBagFixture.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedMultiDictionaryFixture.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedSetFixture.cs" />
+    <Compile Include="Collections\PowerCollections\OrdinaryDictionaryFixture.cs" />
+    <Compile Include="Collections\PowerCollections\PairFixture.cs" />
+    <Compile Include="Collections\PowerCollections\RedBlackFixture.cs" />
+    <Compile Include="Collections\PowerCollections\SetFixture.cs" />
+    <Compile Include="Collections\PowerCollections\TripleFixture.cs" />
+    <Compile Include="Collections\PowerCollections\UtilFixture.cs" />
+    <Compile Include="Collections\SetFixture.cs" />
+    <Compile Include="Collections\SkipListFixture.cs" />
+    <Compile Include="Collections\WeakReferenceDictionaryFixture.cs" />
+    <Compile Include="Collections\WeakReferenceMapFixture.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="Compressions\CompressAdaptorTestCase.cs" />
+    <Compile Include="Compressions\CompressibleSerializerFixture.cs" />
+    <Compile Include="Compressions\CompressorExFixture.cs" />
+    <Compile Include="Compressions\CompressorFixture.cs" />
+    <Compile Include="Compressions\CompressorFixtureBase.cs" />
+    <Compile Include="Compressions\CompressorIoCFixture.cs" />
+    <Compile Include="Compressions\Compressors\AsyncCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\DeflateCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\GZipCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\IconicGZipCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\IonicBZip2CompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\IonicDeflateCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\IonicZlibCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\SevenZipCompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\SharpBZip2CompressorFixture.cs" />
+    <Compile Include="Compressions\Compressors\SharpGZipCompressorFixture.cs" />
+    <Compile Include="Cryptography\Aria\AriaEngineFixture.cs" />
+    <Compile Include="Cryptography\Aria\AriaSymmetricEncrptorFixture.cs" />
+    <Compile Include="Cryptography\CryptographyExtensionsFixture.cs" />
+    <Compile Include="Cryptography\CryptoSerializerFixture.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptorFixture.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptorFixture.cs" />
+    <Compile Include="Diagnostics\PerformanceCounterFixture.cs" />
+    <Compile Include="Diagnostics\PerformanceCounterUtilFixture.cs" />
+    <Compile Include="Diagnostics\ProcessToolFixture.cs" />
+    <Compile Include="DisposableActionFixture.cs" />
+    <Compile Include="DynamicProxy\DynamicProxyToolFixture.cs" />
+    <Compile Include="DynamicProxy\FreezableInterceptor.cs" />
+    <Compile Include="DynamicProxy\InterceptorFixture.cs" />
+    <Compile Include="DynamicProxy\NotifyPropertyChangedInterceptorFixture.cs" />
+    <Compile Include="DynamicProxy\SimpleViewModel.cs" />
+    <Compile Include="GuidCombFixture.cs" />
+    <Compile Include="InversionOfControl\ContainerSelectorFixture.cs" />
+    <Compile Include="InversionOfControl\FluentRegistrationFixture.cs" />
+    <Compile Include="InversionOfControl\IoCFixture.cs" />
+    <Compile Include="InversionOfControl\WindsorContainerFxiture.cs" />
+    <Compile Include="InversionOfControl\WindsorInstallerFixture.cs" />
+    <Compile Include="IO\FileToolFixture.cs" />
+    <Compile Include="IO\StreamToolFixture.cs" />
+    <Compile Include="Json\JsonSerializerFixture.cs" />
+    <Compile Include="Json\JsonToolFixture.cs" />
+    <Compile Include="LinqEx\EnumerableToolFixture.cs" />
+    <Compile Include="LinqEx\EnumerableToolFixture.List.cs" />
+    <Compile Include="LinqEx\EnumerableToolFixture2.cs" />
+    <Compile Include="LinqEx\DynamicFixture.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Expr.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Arithmetic.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Generate.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Partitioning.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Range.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Repeat.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Rotate.cs" />
+    <Compile Include="LinqEx\LinqToolFixture.Shuffle.cs" />
+    <Compile Include="LinqEx\PetComparer.cs" />
+    <Compile Include="LinqEx\TestPet.cs" />
+    <Compile Include="LinqEx\PivotBuilderFixture.cs" />
+    <Compile Include="LinqEx\ExpressionFixture.cs" />
+    <Compile Include="LinqEx\IndexableCollectionFixture.cs" />
+    <Compile Include="LinqEx\PredicateBuilderFixture.cs" />
+    <Compile Include="LocalDataFixture.cs" />
+    <Compile Include="NamedIndexerFixture.cs" />
+    <Compile Include="Networks\Ftp\AbstractFtpFixture.cs" />
+    <Compile Include="Networks\Ftp\FtpAsyncFixture.cs" />
+    <Compile Include="Networks\Ftp\FtpClientFixture.cs" />
+    <Compile Include="Networks\Http\HttpClientFixture.cs" />
+    <Compile Include="Networks\Http\HttpToolFixture.cs" />
+    <Compile Include="Networks\Smtp\MailSenderFixture.cs" />
+    <Compile Include="Networks\Smtp\SmtpClientFixture.cs" />
+    <Compile Include="Networks\NetUtilsFixture.cs" />
+    <Compile Include="Networks\XmlHttp\XmlHttpClientFixture.cs" />
+    <Compile Include="Nini\Config\AliasTextTests.cs" />
+    <Compile Include="Nini\Config\ArgvConfigSourceTests.cs" />
+    <Compile Include="Nini\Config\ConfigBaseTests.cs" />
+    <Compile Include="Nini\Config\ConfigCollectionTests.cs" />
+    <Compile Include="Nini\Config\ConfigSourceBaseTests.cs" />
+    <Compile Include="Nini\Config\DotNetConfigSourceTests.cs" />
+    <Compile Include="Nini\Config\DotNetConsoleTests.cs" />
+    <Compile Include="Nini\Config\IniConfigSourceTests.cs" />
+    <Compile Include="Nini\Config\RegistryConfigSourceTests.cs" />
+    <Compile Include="Nini\Config\XmlConfigSourceTests.cs" />
+    <Compile Include="Nini\Ini\IniDocumentTests.cs" />
+    <Compile Include="Nini\Ini\IniReaderTests.cs" />
+    <Compile Include="Nini\Ini\IniWriterTests.cs" />
+    <Compile Include="Nini\Util\OrderedListTests.cs" />
+    <Compile Include="Parallelism\Algorithms\FalseSharingTestCase.cs" />
+    <Compile Include="Parallelism\Algorithms\ParallelEx.Sort.Fixture.cs" />
+    <Compile Include="Parallelism\Algorithms\ParallelExSpeculativeTestCase.cs" />
+    <Compile Include="Parallelism\Algorithms\ParallelExTestCaseBase.cs" />
+    <Compile Include="Parallelism\DataStructures\ActionCountdownEventTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncBarrierFixture.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncCacheFixture.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncCallFixture.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncProducerConsumerFixture.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\FutureCacheTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\FutureSpeculativeCacheTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\FutureWebCacheTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\HtmlAsyncCacheTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\ConcurrentDataStructureTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\ConcurrentOrderedQueueTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\ObjectPoolTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\PipelineTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\SerialTaskQueueTestCase.cs" />
+    <Compile Include="Parallelism\DataStructures\TransferStreamTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\APM\CompressorAsyncFixture.cs" />
+    <Compile Include="Parallelism\Extensions\APM\DelegateAsyncFixture.cs" />
+    <Compile Include="Parallelism\Extensions\APM\DnsAsyncTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\APM\FileAsyncTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\APM\WebRequestExtensionsTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\DelegateExtensionsTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\EAP\SmtpClientExtensionsTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\EAP\WebClientExtensionsTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\LazyExtensionsTestCase.cs" />
+    <Compile Include="Parallelism\Extensions\TaskExtensionsTestCase.cs" />
+    <Compile Include="Parallelism\ParallelismFixtureBase.cs" />
+    <Compile Include="Parallelism\Partitioners\PartitionFactoryTestCase.cs" />
+    <Compile Include="TimePeriods\PeriodInvokerTestCase.cs" />
+    <Compile Include="TimePeriods\PeriodTimeFormatTestFixture.cs" />
+    <Compile Include="ReactiveExtensions\Interactive\CombinatorsFixture.cs" />
+    <Compile Include="ReactiveExtensions\Interactive\ConstructorsFixture.cs" />
+    <Compile Include="ReactiveExtensions\Interactive\ExceptionsCase.cs" />
+    <Compile Include="ReactiveExtensions\Interactive\FunctionalCase.cs" />
+    <Compile Include="ReactiveExtensions\Interactive\ImperativeUseCase.cs" />
+    <Compile Include="ReactiveExtensions\Interactive\MaterializeCase.cs" />
+    <Compile Include="ReactiveExtensions\Reactives\AsynchronousToObservableFixture.cs" />
+    <Compile Include="ReactiveExtensions\Reactives\ObservableFixture.cs" />
+    <Compile Include="Parallelism\Samples\ParallelTestCase.cs" />
+    <Compile Include="Parallelism\Samples\TaskSampleTestCase.cs" />
+    <Compile Include="Parallelism\Samples\TaskSchedulerTestCase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflections\BenchmarkCase.cs" />
+    <Compile Include="Reflections\DynamicAccessor2Fixture.cs" />
+    <Compile Include="Reflections\DynamicAccessorToolFixture.cs" />
+    <Compile Include="Reflections\DynamicAccessorFactoryCase.cs" />
+    <Compile Include="Reflections\DynamicAccessorFixture.cs" />
+    <Compile Include="Reflections\FastflectToolFixture.Invoke.cs" />
+    <Compile Include="Reflections\DynamicPropertyComparerFixture.cs" />
+    <Compile Include="Reflections\FasterflectFixture.cs" />
+    <Compile Include="Reflections\FasterflectToolFixture.cs" />
+    <Compile Include="Reflections\ObjectMapper.Exression.Fixture.cs" />
+    <Compile Include="Reflections\ObjectMapperFixture.cs" />
+    <Compile Include="Samples\EnumerationFixture.cs" />
+    <Compile Include="Samples\StringFormatFixture.cs" />
+    <Compile Include="SequentialUuidFixture.cs" />
+    <Compile Include="Serializations\BinarySerializerFixture.cs" />
+    <Compile Include="Serializations\SerializedObjectFixture.cs" />
+    <Compile Include="Serializations\SerializedObjectToolFixture.cs" />
+    <Compile Include="Serializations\SerializerFactoryFixture.cs" />
+    <Compile Include="Serializations\SerializerFixtureBase.cs" />
+    <Compile Include="Serializations\SerializerToolFixture.cs" />
+    <Compile Include="SingletonToolFixture.cs" />
+    <Compile Include="StackTracerFixture.cs" />
+    <Compile Include="Threading\ComputerBoundAsync\ExecutionContextCase.cs" />
+    <Compile Include="Threading\ComputerBoundAsync\ThreadPoolCase.cs" />
+    <Compile Include="Threading\ComputerBoundAsync\TimerCase.cs" />
+    <Compile Include="Threading\CountdownLatchFixture.cs" />
+    <Compile Include="Threading\AbstractThreadFixture.cs" />
+    <Compile Include="Threading\AbstractWorkerThreadFixture.cs" />
+    <Compile Include="Threading\SpinWaitFixture.cs" />
+    <Compile Include="Threading\ThinEventFixture.cs" />
+    <Compile Include="Threading\ThreadSafeStackFixture.cs" />
+    <Compile Include="Threading\ThreadSpinWaitFixture.cs" />
+    <Compile Include="TimePeriods\Calendars\BusinessCaseFixture.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarDateAddFixture.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarPeriodCollectorFixture.cs" />
+    <Compile Include="TimePeriods\Calendars\DateAddFixture.cs" />
+    <Compile Include="TimePeriods\Calendars\DateDiffFixture.cs" />
+    <Compile Include="TimePeriods\Calendars\Seekers\DaySeekerFixture.cs" />
+    <Compile Include="TimePeriods\Core\DateTimeSetFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimeBlockFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimeCalendarFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimeFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimeIntervalFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimePeriodChainFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimePeriodCollectionFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimePeriodCombinerFixture.cs" />
+    <Compile Include="TimePeriods\Core\TimeRangeFixture.cs" />
+    <Compile Include="TimePeriods\CultureTestData.cs" />
+    <Compile Include="TimePeriods\Samples\SchoolTestData.cs" />
+    <Compile Include="TimePeriods\Samples\TimeBlockPeriodRelationTestData.cs" />
+    <Compile Include="TimePeriods\Samples\TimeRangePeriodRelationTestData.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeGapCalculatorFixture.cs" />
+    <Compile Include="TimePeriods\TimePeriodFixtureBase.cs" />
+    <Compile Include="TimePeriods\TimeRanges\CalendarTimeRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\DayRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\DayRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HalfyearRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HalfyearRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HourRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HourRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MinuteRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MinuteRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MonthRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MonthRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\QuarterRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\QuarterRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\WeekRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\WeekRangeFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\YearRangeCollectionFixture.cs" />
+    <Compile Include="TimePeriods\TimeRanges\YearRangeFixture.cs" />
+    <Compile Include="TimePeriods\Tools\DurationFixture.cs" />
+    <Compile Include="TimePeriods\Tools\TimeSpecFixture.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.Calendar.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.Compare.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.DateTime.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.Linq.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.Math.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.Period.cs" />
+    <Compile Include="TimePeriods\Tools\TimeToolFixture.Trim.cs" />
+    <Compile Include="TimePeriods\Tools\WeekToolFixture.cs" />
+    <Compile Include="Tools\ConfigToolFixture.cs" />
+    <Compile Include="Util\AsmInfoFixture.cs" />
+    <Compile Include="Tools\AssemblyToolFixture.cs" />
+    <Compile Include="Tools\BitToolFixture.cs" />
+    <Compile Include="Tools\CommandLineParserFixture.cs" />
+    <Compile Include="Tools\GuardFixture.cs" />
+    <Compile Include="Tools\HashToolFixture.cs" />
+    <Compile Include="Tools\ArrayToolFixture.cs" />
+    <Compile Include="Tools\CodecToolFixture.cs" />
+    <Compile Include="Tools\ConvertToolFixture.cs" />
+    <Compile Include="Tools\DateToolFixture.cs" />
+    <Compile Include="Tools\HexTextToolFixture.cs" />
+    <Compile Include="Reflections\ReflectionToolFixture.cs" />
+    <Compile Include="Tools\StringToolFixture.cs" />
+    <Compile Include="Tools\TypeToolFixture.cs" />
+    <Compile Include="UnitTesting\ThreadStressUtiltiyFixture.cs" />
+    <Compile Include="UserInfo.cs" />
+    <Compile Include="Validations\FluentValidationFixture.cs" />
+    <Compile Include="Validations\Samples\Customer.cs" />
+    <Compile Include="Validations\Samples\CustomerValidator.cs" />
+    <Compile Include="Validations\Samples\CustomerValidator2.cs" />
+    <Compile Include="Validations\Samples\User.cs" />
+    <Compile Include="Validations\Samples\UserValidator.cs" />
+    <Compile Include="Validations\ValidatorFactoryFixture.cs" />
+    <Compile Include="Validations\ValidatorToolFixture.cs" />
+    <Compile Include="Web\AntiXssToolFixture.cs" />
+    <Compile Include="Web\Cookies\CookieChunkerFixture.cs" />
+    <Compile Include="Web\HttpHandlers\HttpHandlerMockTestCase.cs" />
+    <Compile Include="Web\HttpHandlers\JavascriptHandlerImpl.cs" />
+    <Compile Include="Web\HttpApplications\LazyHttpApplicationFixture.cs" />
+    <Compile Include="Web\HttpApplications\WindsorLazyHttpApplicationFixture.cs" />
+    <Compile Include="Web\HttpApplications\WindsorHttpApplicationFixture.cs" />
+    <Compile Include="Web\HttpModules\HttpModuleMockTestCase.cs" />
+    <Compile Include="Web\HttpModules\RemoveW3HttpModuleImpl.cs" />
+    <Compile Include="Web\MimetypeToolFixture.cs" />
+    <Compile Include="Web\PageAdapters\IoCPageAdapterFixture.cs" />
+    <Compile Include="Web\UserInfo.cs" />
+    <Compile Include="Web\WebToolFixture.cs" />
+    <Compile Include="With.OperationTimer.Fixture.cs" />
+    <Compile Include="With.TryAction.Fixture.cs" />
+    <Compile Include="Xml\XmlToolFixture.cs" />
+    <Compile Include="Xml\User.cs" />
+    <Compile Include="Xml\XmlDocFixture.cs" />
+    <Compile Include="Xml\XmlSerializerFixture.cs" />
+    <Compile Include="Xml\XStreamReaderFixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="default.build">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="NSoft.NFramework.IoC.Compressor.Config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NSoft.NFramework.IoC.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NSoft.NFramework.IoC.Deflate.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NSoft.NFramework.IoC.DynamicProxy.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NSoft.NFramework.IoC.FluentValidator.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="NSoft.NFramework.IoC.SharpBZip2.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Nini\Config\DotNetConsoleTests.exe.config" />
+    <None Include="UnitTest_Files\bookmark.zip">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logging.nlog.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UnitTest_Files\bookmark.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="UnitTest_Files\bookmark2.htm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

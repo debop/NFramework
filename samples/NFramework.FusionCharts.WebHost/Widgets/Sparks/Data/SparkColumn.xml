@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart palette='2' caption='Revenue' subcaption='12 months' numberPrefix='$' highColor='00CC33' lowColor='CC0000'>
+	<dataset>
+		<set value='783000' />
+		<set value='201000' />
+		<set value='515000' />
+		<set value='115900' />
+		<set value='388000' />
+		<set value='433000' />
+		<set value='910000' />
+		<set value='198000' />
+		<set value='183300' />
+		<set value='162000' />
+		<set value='159400' />
+		<set value='185000' />
+	</dataset>
+</chart>

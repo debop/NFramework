@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Northwind"
+				   default-lazy="true">
+
+	<class name="Territory" table="Territories" dynamic-insert="true" dynamic-update="true">
+        
+		<id name="Id" column="TerritoryId" type="String">
+			<generator class="assigned" />
+		</id>
+
+		<property name="Description" column="TerritoryDescription" type="String" />
+
+		<many-to-one name="Region" class="Region" column="RegionId" fetch="select" />
+
+	</class>
+
+</hibernate-mapping>

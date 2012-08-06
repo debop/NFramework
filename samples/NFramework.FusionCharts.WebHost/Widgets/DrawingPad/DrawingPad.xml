@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart bgColor='E1F5FF' autoScale='1'>
+	<annotations>
+		<annotationGroup id='Grp1'>
+			<annotation type='rectangle' x='30' y='100' toXPos='110' toYPos='220' radius='5' color='453269' />
+			<annotation type='rectangle' x='235' y='100' toXPos='315' toYPos='220' radius='5' color='453269' />
+			<annotation type='rectangle' x='440' y='100' toXPos='520' toYPos='220' radius='5' color='453269' />
+
+		</annotationGroup>
+		<annotationGroup id='Grp2'>
+			<annotation type='text' x='70' y='155' fontSize='12' isBold='1' label='Chart' color='FFFFFF' />
+			<annotation type='text' x='275' y='140' fontSize='12' isBold='1' label='Scripts' color='FFFFFF' />
+			<annotation type='text' x='275' y='170' label='ASP/PHP/.NET/.. pages' color='EFEBF5' wrap='1' wrapWidth='60' />
+			<annotation type='text' x='480' y='155' fontSize='12' isBold='1' label='Database' color='FFFFFF' />
+
+		</annotationGroup>
+		<annotationGroup id='Grp3'>
+			<annotation type='text' x='70' y='65' label='1. HTML provides the URL of XML data document to chart' wrap='1' wrapWidth='100' color='453269' />
+			<annotation type='text' x='170' y='130' label='2. Chart sends a request to the specified URL for XML data' wrap='1' wrapWidth='100' color='453269' />
+			<annotation type='text' x='380' y='130' label='3. These pages now interact with the database' wrap='1' wrapWidth='100' color='453269' />
+			<annotation type='text' x='380' y='200' label='4. Data returned back to the scipts in native objects' wrap='1' wrapWidth='100' color='453269' />
+			<annotation type='text' x='275' y='255' label='5. Scripts convert it into XML and finally output it' wrap='1' wrapWidth='100' color='453269' />
+			<annotation type='text' x='170' y='200' label='6. XML data is returned to the chart' wrap='1' wrapWidth='100' color='453269' />
+			<annotation type='text' x='70' y='250' label='7. Chart is finally rendered' wrap='1' wrapWidth='100' color='453269' />
+		</annotationGroup>
+		<annotationGroup id='Grp4'>
+			<!--arrow for process 2-->
+			<annotation type='line' x='120' y='160' toX='220' color='453269' />
+			<annotation type='line' x='215' y='155' toX='220' toY='160' color='453269' />
+			<annotation type='line' x='215' y='165' toX='220' toY='160' color='453269' />
+
+			<!--arrow for process 6-->
+			<annotation type='line' x='120' y='175' toX='220' color='453269' />
+			<annotation type='line' x='125' y='170' toX='120' toY='175' color='453269' />
+			<annotation type='line' x='125' y='180' toX='120' toY='175' color='453269' />
+
+			<!--arrow for process 3-->
+			<annotation type='line' x='325' y='155' toX='435' color='453269' />
+			<annotation type='line' x='430' y='150' toX='435' toY='155' color='453269' />
+			<annotation type='line' x='430' y='160' toX='435' toY='155' color='453269' />
+
+			<!--arrow for process 4-->
+			<annotation type='line' x='325' y='170' toX='435' color='453269' />
+			<annotation type='line' x='330' y='165' toX='325' toY='170' color='453269' />
+			<annotation type='line' x='330' y='175' toX='325' toY='170' color='453269' />
+
+		</annotationGroup>
+		<annotationGroup id='Grp5'>
+			<annotation type='text' label='FusionCharts dataURL method' fontSize='16' fontColor='666666' isBold='1' x='270' y='20' />
+		</annotationGroup>
+	</annotations>
+	<styles>
+		<definition>
+			<style name='Shadow1' type='shadow' distance='7' />
+			<style name='Shadow2' type='shadow' strength='3' />
+			<style name='Shadow3' type='shadow' alpha='0' />
+			<style name='Anim1' type='animation' param='_x' start='-50' wait='0' duration='1' easing='Bounce' />
+			<style name='Anim2' type='animation' param='_y' start='-30' wait='1' duration='1' easing='Bounce' />
+			<style name='Anim3' type='animation' param='_xScale' start='0' end='100' wait='2' duration='0.5' />
+			<style name='Anim4' type='animation' param='_alpha' start='0' wait='2' duration='1' />
+			<style name='Anim5' type='animation' param='_y' start='-50' wait='2' duration='1' />
+
+		</definition>
+
+		<application>
+			<apply toObject='Grp1' styles='Shadow1, Anim1' />
+			<apply toObject='Grp2' styles='Shadow2, Anim2' />
+			<apply toObject='Grp3' styles='Shadow3,Anim5' />
+			<apply toObject='Grp4' styles='Anim3, Anim4' />
+		</application>
+	</styles>
+</chart>

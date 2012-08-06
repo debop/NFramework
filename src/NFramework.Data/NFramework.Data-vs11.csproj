@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{EB7BEB5B-6813-4A60-B453-93060BE22C30}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Data</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Data</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect, Version=2.0.1.0, Culture=neutral, PublicKeyToken=a64e1179c81b1e25, processorArchitecture=MSIL">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\lib\net-4.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\lib\net-4.0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\lib\net-4.0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractNamedParameter.cs" />
+    <Compile Include="AdoDataAdapter.cs" />
+    <Compile Include="AdoParameter.cs" />
+    <Compile Include="AdoPoco\AdoProviderBase.cs" />
+    <Compile Include="AdoPoco\AdoProviderBase.Query.cs" />
+    <Compile Include="AdoPoco\AdoProviderTool.cs" />
+    <Compile Include="AdoPoco\AdoProviderFactory.cs" />
+    <Compile Include="AdoPoco\AdoTransaction.cs" />
+    <Compile Include="AdoPoco\IAdoProvider.cs" />
+    <Compile Include="AdoPoco\IAdoTransaction.cs" />
+    <Compile Include="AdoPoco\Impl\MySqlProvider.cs" />
+    <Compile Include="AdoPoco\Impl\OracleProvider.cs" />
+    <Compile Include="AdoPoco\Impl\PostgreSqlProvider.cs" />
+    <Compile Include="AdoPoco\Impl\SqlCeProvider.cs" />
+    <Compile Include="AdoPoco\Impl\SqLiteProvider.cs" />
+    <Compile Include="AdoPoco\Impl\SqlServerProvider.cs" />
+    <Compile Include="AdoPoco\SqlBuilder.cs" />
+    <Compile Include="AdoResultRow.cs" />
+    <Compile Include="AdoResultSet.cs" />
+    <Compile Include="AnsiString.cs" />
+    <Compile Include="DatabaseKind.cs" />
+    <Compile Include="DataObjectBase.cs" />
+    <Compile Include="DataObjectTool.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.ExecuteInstanceWhileAsync.cs" />
+    <Compile Include="IAdoParameter.cs" />
+    <Compile Include="IDataObject.cs" />
+    <Compile Include="INamedParameter.cs" />
+    <Compile Include="IRepository.cs" />
+    <Compile Include="Mappers\CapitalizeNameMapper.cs" />
+    <Compile Include="Mappers\INameMap.cs" />
+    <Compile Include="Mappers\INameMapper.cs" />
+    <Compile Include="Mappers\NameMap.cs" />
+    <Compile Include="Mappers\NameMapMapper.cs" />
+    <Compile Include="Mappers\NameMapperBase.cs" />
+    <Compile Include="Mappers\NameMappingUtil.cs" />
+    <Compile Include="Mappers\SameNameMapper.cs" />
+    <Compile Include="Mappers\TrimNameMapper.cs" />
+    <Compile Include="NamedParameterBase.cs" />
+    <Compile Include="PagingDataTable.cs" />
+    <Compile Include="Persisters\AdoPersisterBase.cs" />
+    <Compile Include="Persisters\CapitalizeReaderPersister.cs" />
+    <Compile Include="Persisters\CapitalizeRowPersister.cs" />
+    <Compile Include="Persisters\IAdoPersister.cs" />
+    <Compile Include="Persisters\IReaderPersister.cs" />
+    <Compile Include="Persisters\IRowPersister.cs" />
+    <Compile Include="Persisters\ReaderPersister.cs" />
+    <Compile Include="Persisters\RowPersister.cs" />
+    <Compile Include="Persisters\SameReaderPersister.cs" />
+    <Compile Include="Persisters\SameRowPersister.cs" />
+    <Compile Include="Persisters\TrimReaderPersister.cs" />
+    <Compile Include="Persisters\TrimRowPersister.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryProviders\Impl\DynamicQueryProvider.cs" />
+    <Compile Include="QueryProviders\Impl\DynamicQueryProviderBase.cs" />
+    <Compile Include="QueryProviders\Impl\IniAdoQueryProvider.cs" />
+    <Compile Include="QueryProviders\Impl\IniNHibernateQueryProvider.cs" />
+    <Compile Include="QueryProviders\Impl\IniQueryProviderBase.cs" />
+    <Compile Include="QueryProviders\IIniQueryProvider.cs" />
+    <Compile Include="QueryProviders\QueryProviderTool.cs" />
+    <Compile Include="QueryProviders\QueryTable.cs" />
+    <Compile Include="AdoRepository.cs" />
+    <Compile Include="AdoRepositoryFactory.cs" />
+    <Compile Include="AdoRepositoryImpl.cs" />
+    <Compile Include="AdoRepositoryImplBase.cs" />
+    <Compile Include="IAdoRepository.cs" />
+    <Compile Include="IAdoRepositoryFactory.cs" />
+    <Compile Include="SqlServer\BulkDeleter.cs" />
+    <Compile Include="SqlServer\ISqlRepository.cs" />
+    <Compile Include="SqlServer\SqlCommandAsync.cs" />
+    <Compile Include="SqlServer\SqlCommandSet.cs" />
+    <Compile Include="SqlServer\SqlRepositoryImpl.cs" />
+    <Compile Include="SqlServer\SqlTool.cs" />
+    <Compile Include="SqlServer\SqlTool.DbType.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.DataSet.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.ExecuteInstance.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.ExecuteInstanceAsync.cs" />
+    <Compile Include="SqlSR.cs" />
+    <Compile Include="Tools\AdoTool.Map.cs" />
+    <Compile Include="Tools\AdoTool.MapReader.cs" />
+    <Compile Include="Tools\AdoTool.MapReader.Parallel.cs" />
+    <Compile Include="Tools\AdoTool.MapTable.cs" />
+    <Compile Include="Tools\AdoTool.MapTable.Parallel.cs" />
+    <Compile Include="Tools\AdoTool.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.ExecuteAsync.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.ExecuteInstanceAsParallelAsync.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.ExecuteInstanceIfAsync.cs" />
+    <Compile Include="Tools\AdoTool.DbParameter.cs" />
+    <Compile Include="Tools\AdoTool.Database.cs" />
+    <Compile Include="Tools\AdoTool.DataTable.cs" />
+    <Compile Include="Tools\AdoTool.Query.cs" />
+    <Compile Include="Extensions\AdoRepositoryEx.cs" />
+    <Compile Include="Tools\AdoTool.ResultSet.cs" />
+    <Compile Include="Tools\AdoTool.Transactions.cs" />
+    <Compile Include="Tools\AdoWith.cs" />
+    <Compile Include="Tools\DataReaderTool.cs" />
+    <Compile Include="Tools\DbFunc.cs" />
+    <Compile Include="Tools\DbFunc.Transaction.cs" />
+    <Compile Include="Tools\DbFunc.Xml.cs" />
+    <Compile Include="Tools\SqlCeTool.cs" />
+    <Compile Include="Tools\SQLServerSetUpTool.cs" />
+    <Compile Include="WindsorInstallers\AdoWindsorInstaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

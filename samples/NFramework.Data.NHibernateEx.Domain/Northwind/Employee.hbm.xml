@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Northwind">
+
+	<class name="Employee" table="Employees" dynamic-insert="true" dynamic-update="true" lazy="true">
+
+		<id name="Id" column="EmployeeId" type="Int32" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<component name="FullName" class="Name">
+			<property name="LastName" type="String" not-null="true" length="20" />
+			<property name="FirstName" type="String" not-null="true" length="10" />
+		</component>
+
+		<property column="Title" type="String" name="Title" length="30" />
+		<property column="TitleOfCourtesy" type="String" name="TitleOfCourtesy" length="25" />
+		<property column="BirthDate" type="DateTime" name="BirthDate" />
+		<property column="HireDate" type="DateTime" name="HireDate" />
+
+		<component name="AddressInfo" class="AddressInfo">
+			<property name="Address" type="String" length="60" />
+			<property name="City" type="String" length="15" />
+			<property name="Region" type="String" length="15" />
+			<property name="PostalCode" type="String" length="10" />
+			<!--
+			<property column="Country" type="String" name="Country" length="15" />
+			-->
+			<!-- Country 를 Enum값으로 표현한 CountryCode 로 매핑한다. -->
+			<property name="Country" column="Country"
+					  type="NSoft.NFramework.Data.NHibernateEx.Mappers.EnumStringMapper`1[[NSoft.NFramework.Data.NHibernateEx.Domain.Northwind.CountryCode, NSoft.NFramework.Data.NHibernateEx.Domain]], NSoft.NFramework.Data.NHibernateEx" />
+		</component>
+
+		<property name="HomePhone" type="String" length="24" />
+		<property name="Extension" type="String" length="4" />
+		<!-- MS SQL 의 이미지는 OLE BMP라 앞에 몇 바이트를 없애야 제대로 보일것이다.-->
+		<property name="Photo" type="System.Byte[]" lazy="true" />
+		<property name="Notes" type="StringClob" />
+		<property name="PhotoPath" type="String" length="255" />
+
+		<!-- 상사 -->
+		<many-to-one name="ReportsTo" column="ReportsTo" class="Employee" lazy="proxy" fetch="select" />
+
+		<!-- 부하직원 -->
+		<bag name="StaffMembers" inverse="true" lazy="true" cascade="save-update">
+			<key column="ReportsTo" />
+			<one-to-many class="Employee" />
+		</bag>
+
+		<bag name="Orders" table="Orders" inverse="true" lazy="true" cascade="all" fetch="select">
+			<key column="EmployeeId" />
+			<one-to-many class="Order" />
+		</bag>
+
+		<!-- 
+			Employee 와 Territory의 many-to-many association 
+	  
+			inverse=false 이므로 Employee 조작시 
+			EmployeeTerritories 정보는 DB 에서 개개별로 관리되는 것이 아니라 모두 삭제되었다가 다시 저장된다.
+		 -->
+		<bag name="Territories" table="EmployeeTerritories" inverse="false" lazy="true" cascade="all" fetch="select">
+			<key column="EmployeeID" />
+			<many-to-many class="Territory" column="TerritoryID" />
+		</bag>
+
+	</class>
+</hibernate-mapping>

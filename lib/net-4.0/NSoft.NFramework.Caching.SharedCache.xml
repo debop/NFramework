@@ -1,0 +1,424 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Caching.SharedCache</name>
+  </assembly>
+  <members>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheConfig.Region">
+      <summary>
+            캐시 영역 명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheConfig.Properties">
+      <summary>
+            Cache 관련 속성들 (ConnectionString, Expiration 등)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheSectionHandler">
+      <summary>
+            SharedCacheClient 의 환경설정 정보를 읽어드립니다.
+            </summary>
+      <example>
+        <code>
+          <configSections>
+            <section name="sharedCache" type="NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheSectionHandler, NSoft.NFramework.Caching.SharedCache" />
+          </configSections>
+          <sharedCache>
+            <!-- region 은 Unique 해야 합니다. expiration: TimeSpan, compressThreshold:byte단위-->
+            <cache region="NSoft.NFramework" expiration="02:00:00" compressThreshold="40960" />
+            <cache region="NAccesss" expiration="02:00:00" compressThreshold="40960" />
+          </sharedCache>
+        </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+      <summary>
+            구성 섹션 처리기를 만듭니다.
+            </summary>
+      <returns>
+            만들어진 섹션 처리기 개체입니다.
+            </returns>
+      <param name="parent">부모 개체입니다.</param>
+      <param name="configContext">구성 컨텍스트 개체입니다.</param>
+      <param name="section">섹션 XML 노드입니다.</param>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient">
+      <summary>
+            SharedCache 를 캐시 저장소로 사용하는 Cache Client입니다.
+            참고 : http://www.sharedcache.com/cms/
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Get(System.Object)">
+      <summary>
+            Get the object from the Cache
+            </summary>
+      <param name="key" />
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Put(System.Object,System.Object)">
+      <summary />
+      <param name="key" />
+      <param name="value" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Remove(System.Object)">
+      <summary>
+            Remove an item from the Cache.
+            </summary>
+      <param name="key">The Id of the Item in the Cache to remove.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Clear">
+      <summary>
+            Clear the Cache
+            </summary>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Destroy">
+      <summary>
+            Clean up.
+            </summary>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Lock(System.Object)">
+      <summary>
+            If this is a clustered cache, lock the item
+            </summary>
+      <param name="key">The Key of the Item in the Cache to lock.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Unlock(System.Object)">
+      <summary>
+            If this is a clustered cache, unlock the item
+            </summary>
+      <param name="key">The Key of the Item in the Cache to unlock.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.NextTimestamp">
+      <summary>
+            Generate a timestamp
+            </summary>
+      <returns />
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Region">
+      <summary>
+            캐시 영역
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Expiry">
+      <summary>
+            기본 유효기간
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.CompressThreshold">
+      <summary>
+            압축 수행을 위한 최소 크기 (byte)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient.Timeout">
+      <summary>
+            Get a reasonable "lock timeout"
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheEntry">
+      <summary>
+            SharedCache 시스템에 저장될 항목을 표현합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheEntry.Id">
+      <summary>
+            Cache Entry Key
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheEntry.LastUpdateDate">
+      <summary>
+            Cache Update Date
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheEntry.IsCompressed">
+      <summary>
+            압축 여부
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheEntry.Value">
+      <summary>
+            캐시 값
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider">
+      <summary>
+            SharedCache 를 저장소로 사용하는 Cache Provider입니다. <see cref="T:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheClient" />를 제공합니다.
+            참고 : http://www.sharedcache.com/cms/
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider.BuildCache(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            Configure the cache
+            </summary>
+      <param name="regionName">the name of the cache region</param>
+      <param name="properties">configuration settings</param>
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider.NextTimestamp">
+      <summary>
+            generate a timestamp
+            </summary>
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider.Start(System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            Callback to perform any necessary initialization of the underlying cache implementation during ISessionFactory construction.
+            </summary>
+      <param name="properties">current configuration settings</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider.Stop">
+      <summary>
+            Callback to perform any necessary cleanup of the underlying cache implementation during <see cref="M:NHibernate.ISessionFactory.Close" />.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.SharedCacheRepository">
+      <summary>
+            SharedCache 를 캐시 저장소로 사용하는 Repository 입니다. 
+            <see cref="P:NSoft.NFramework.Caching.AbstractCacheRepository.Serializer" />를 <see cref="T:NSoft.NFramework.Json.BsonSerializer" /> 등을 사용하게 되면, 저장 항목이 <see cref="T:System.SerializableAttribute" />로 지정되지 않아도 됩니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheRepository.Get(System.String)">
+      <summary>
+            캐시에 저장된 항목을 반환합니다.
+            </summary>
+      <param name="key">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheRepository.Set(System.String,System.Object,System.TimeSpan)">
+      <summary>
+            캐시에 항목을 저장합니다.
+            </summary>
+      <param name="key">
+      </param>
+      <param name="item">
+      </param>
+      <param name="validFor">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheRepository.Remove(System.String)">
+      <summary>
+            캐시에서 항목을 제거합니다.
+            </summary>
+      <param name="key">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheRepository.Clear">
+      <summary>
+            캐시의 모든 항목을 삭제합니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.Web.SharedCacheOutputCacheProvider">
+      <summary>
+            .NET 4.0 이상에서 ASP.NET Page의 OutputCache를 SharedCache에 저장합니다.
+            참고:
+                 http://www.4guysfromrolla.com/articles/061610-1.aspx
+                 http://weblogs.asp.net/gunnarpeipman/archive/2009/11/19/asp-net-4-0-writing-custom-output-cache-providers.aspx
+                 http://weblogs.asp.net/scottgu/archive/2010/01/27/extensible-output-caching-with-asp-net-4-vs-2010-and-net-4-0-series.aspx
+            </summary>
+      <example>
+        <code>
+          <system.web>
+            <compilation debug="true" targetFramework="4.0" />
+            <caching>
+              <outputCache defaultProvider="SharedCacheOutputCacheProvider">
+                <providers>
+                  <add name="SharedCacheOutputCacheProvider" type="NSoft.NFramework.Caching.SharedCache.Web.SharedCacheOutputCacheProvider, NSoft.NFramework.Caching.SharedCache" />
+                </providers>
+              </outputCache>
+            </caching>
+          </system.web>
+        </code>
+      </example>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.Web.SharedCachePageStatePersister">
+      <summary>
+            SharedCache 캐시 시스템에 Page 상태 정보를 저장하는 Persister 입니다.
+            참고 : http://www.sharedcache.com/cms/
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.Web.SharedCachePageStatePersister.LoadFromRepository">
+      <summary>
+            ViewState 저장소로부터 저장된 ViewState 정보를 가져옵니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.Web.SharedCachePageStatePersister.SaveToRepository">
+      <summary>
+            Page의 ViewState 정보를 특정 저장소에 저장하고, 저장 토큰 값을 <see cref="P:NSoft.NFramework.Web.PageStatePersisters.AbstractServerPageStatePersister.StateValue" />에 저장합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.SharedCache.Web.SharedCachePageStatePersister.CacheRepository">
+      <summary>
+            Memcached 캐시 서버를 저장소로 사용하는 Cache Repository 입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.Web.SharedCacheSessionStateStoreProvider">
+      <summary>
+            SessionState 정보를 SharedCache (http://www.sharedcache.com) 시스템에 저장하도록 합니다.
+            예제 : http://msdn.microsoft.com/en-us/library/ms178589.aspx
+            </summary>
+      <example>
+        <code>
+            // web.config 에서 다음과 같이 환경 설정하면 됩니다.
+            <system.web><sessionState cookieless="true" regenerateExpiredSessionId="true" mode="Custom" customProvider="SharedCacheSessionStateStoreProvider"><providers><add name="SharedCacheSessionStateStoreProvider" type="NSoft.NFramework.Caching.SharedCache.Web.SharedCacheSessionStateStoreProvider, NSoft.NFramework.Caching.SharedCache" /></providers></sessionState></system.web></code>
+      </example>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.SharedCache.SharedCacheTool">
+      <summary>
+            SharedCache를 위한 Extension Methods
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.ItemCount(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String)">
+      <summary>
+            캐시된 요소의 갯수
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="serverName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TotalSize(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String)">
+      <summary>
+            캐시 서버의 요소가 차지하는 총 크기 (byte 단위)
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="serverName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.ExistsKey(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String)">
+      <summary>
+            SharedCache에 해당 키에 해당하는 값이 존재하는지 확인합니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="key">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.GetKeys(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.Func{System.String,System.Boolean})">
+      <summary>
+            저장된 아이템의 Key들을 조회합니다.
+            </summary>
+      <param name="sharedCacke">
+      </param>
+      <param name="keyPredicate">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.ItemUsageList(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.Func{System.String,System.Boolean},System.Func{System.Int64,System.Boolean})">
+      <summary>
+            저장된 아이템의 사용 횟수를 반환합니다. (key-사용횟수)
+            </summary>
+      <param name="sharedCacke">
+      </param>
+      <param name="keyPredicate">key filter</param>
+      <param name="usagePredicate">usage filter (예: x=&gt; x&gt;0)</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.GetOrAdd``1(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String,System.Func{``0})">
+      <summary>
+            SharedCache에 해당 키에 해당하는 값이 있으면 그 값을 반환하고, 없으면, <paramref name="valueFactory" />로 값을 생성해서 값을 저장 후 그 값을 반환합니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="sharedCache">
+      </param>
+      <param name="key">
+      </param>
+      <param name="valueFactory">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryAdd(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String,System.Object,System.Nullable{System.DateTime},System.Nullable{SharedCache.WinServiceCommon.IndexusMessage.CacheItemPriority})">
+      <summary>
+            캐시 저장소에 특정 키의 값을 저장합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryGet(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String,System.Object@)">
+      <summary>
+            SharedCache에 특정 키의 값을 가져옵니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="key">
+      </param>
+      <param name="value">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryGet``1(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String,``0@)">
+      <summary>
+            SharedCache에 특정 키의 값을 가져옵니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="key">
+      </param>
+      <param name="value">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryRemove(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.String)">
+      <summary>
+            지정된 키에 해당하는 Item을 삭제합니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="key">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryMultiAdd(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.Collections.Generic.IEnumerable{System.Collections.Generic.KeyValuePair{System.String,System.Byte[]}})">
+      <summary>
+            여러 개의 항목을 캐시에 추가합니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="items">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryMultiDelete(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>
+            여러 개의 항목을 캐시에서 제거합니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="keys">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.SharedCache.SharedCacheTool.TryMultiGet(SharedCache.WinServiceCommon.Provider.Cache.IndexusProviderBase,System.Collections.Generic.IEnumerable{System.String},System.Collections.Generic.IDictionary{System.String,System.Byte[]}@)">
+      <summary>
+            여러 개의 항목을 캐시에서 가져옵니다.
+            </summary>
+      <param name="sharedCache">
+      </param>
+      <param name="keys">
+      </param>
+      <param name="items">
+      </param>
+      <returns>
+      </returns>
+    </member>
+  </members>
+</doc>

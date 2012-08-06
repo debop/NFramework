@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.DataServices.WinForm"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<!--
+			테스트 프로그램
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+
+	<property name="assembly.description" value="NSoft.NFramework DataService WinForm Client"/>
+
+	<!-- 테스트용 Assembly는 CLS 일 필요도 없고, Sign도 필요 없다.-->
+	<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+	<property name="sign" value="false" overwrite="true"/>
+
+
+	<target name="init" depends="common.init">
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<include name="System"/>
+			<include name="System.Configuration"/>
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.Deployment"/>
+			<include name="System.Drawing"/>
+			<include name="System.ServiceModel"/>
+			<include name="System.Web.Services"/>
+			<include name="System.Windows.Forms"/>
+			<include name="System.Xml"/>
+			<include name="System.Xml.Linq" />
+			<include name="Microsoft.CSharp" />
+
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+
+			<include name="ICSharpCode.SharpZipLib.dll"/>
+			
+			<include name="Newtonsoft.Json.dll"/>
+			<include name="NLog.dll"/>
+			
+			<include name="NSoft.NFramework.Core.dll"/>
+			<include name="NSoft.NFramework.Data.dll" />
+			<include name="NSoft.NFramework.DataServices.dll"/>
+			<include name="NSoft.NFramework.DataServices.Messages.dll"/>
+			<include name="NSoft.NFramework.Web.dll"/>
+			
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.settings"/>
+		</resourcefileset>
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+
+		<target name="build"
+			depends="generate-assemblyinfo common.compile-exe"
+			description="Build ${project::get-name()}">
+	</target>
+</project>

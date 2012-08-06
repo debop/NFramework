@@ -1,0 +1,893 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NSoft.NFramework.Data.OdpNet</name>
+    </assembly>
+    <members>
+        <member name="T:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.Configuration.OracleConnectionData">
+            <summary>
+            Oracle 전용 Connection 정보
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.Configuration.OracleConnectionSettings">
+            <summary>
+            Oracle 용 configuration section
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.Configuration.OracleConnectionSettings.SectionName">
+            <summary>
+            The section name ( "oracleConnectionSettings" )
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.Configuration.OraclePackageData">
+            <summary>
+            <para>Represents the package information to use when calling a stored procedure for Oracle.</para>
+            </summary>
+            <remarks>
+            <para>
+            A package name can be appended to the stored procedure name of a command if the prefix of the stored procedure
+            matchs the prefix defined. This allows the caller of the stored procedure to use stored procedures
+            in a more database independent fashion.
+            </para>
+            </remarks>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.IOraclePackage">
+            <summary>
+            오라클 패키지 매핑을 표현합니다.
+            </summary>
+            <remarks>
+            IOraclePackage는 Oracle stored procedure 명을 package를 포함한 전체 명칭으로 변환하는데 사용됩니다.
+            </remarks>
+            <seealso cref="!:OracleDatabase"/>
+        </member>
+        <member name="P:NSoft.NFramework.Data.OdpNet.IOraclePackage.Name">
+            <summary>
+            패키지 명
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Data.OdpNet.IOraclePackage.Prefix">
+            <summary>
+            패키지 접두사
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.Configuration.OraclePackageData.Prefix">
+            <summary>
+            패키지 접두사
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase">
+            <summary>
+            Microsoft Enterprise Libary DAAB의 <see cref="T:Microsoft.Practices.EnterpriseLibrary.Data.Database"/>를 상속받아 Oracle을 위한 Database 를 표현합니다. <br/>
+            Oracle.DataAccess.dll (ODP.NET)을 사용합니다.
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.RefCursorName">
+            <summary>
+            The default ref cursor name used for all stored procedures that use ref cursors.
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AllPrefix">
+            <summary>
+            Packages with this prefix will apply the package name to all stored procedure names.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddInParameter(System.Data.Common.DbCommand,System.String,Oracle.DataAccess.Client.OracleDbType)">
+            <summary>
+            Adds a new In <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The command to add the in parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:Oracle.DataAccess.Client.OracleDbType"/>
+            values.</param>
+            <remarks>
+            This version of the method is used when you can have the same
+            parameter object multiple times with different values.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddInParameter(System.Data.Common.DbCommand,System.String,Oracle.DataAccess.Client.OracleDbType,System.Object)">
+            <summary>
+            Adds a new In <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The commmand to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:Oracle.DataAccess.Client.OracleDbType"/>
+            values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddInParameter(System.Data.Common.DbCommand,System.String,Oracle.DataAccess.Client.OracleDbType,System.String,System.Data.DataRowVersion)">
+            <summary>
+            Adds a new In <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:Oracle.DataAccess.Client.OracleDbType"/>
+            values.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the value.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddOutParameter(System.Data.Common.DbCommand,System.String,Oracle.DataAccess.Client.OracleDbType,System.Int32)">
+            <summary>
+            Adds a new Out <see cref="T:System.Data.Common.DbParameter"/> object to the given
+            <paramref name="command"/>.
+            </summary>
+            <param name="command">The command to add the out parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:Oracle.DataAccess.Client.OracleDbType"/>
+            values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddParameter(System.Data.Common.DbCommand,System.String,Oracle.DataAccess.Client.OracleDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object to
+            the command.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:System.Data.DbType"/> values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the
+            parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual
+            Basic) values.</param>
+            <param name="precision">The maximum number of digits used to
+            represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which
+            <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddParameter(System.Data.Common.DbCommand,System.String,Oracle.DataAccess.Client.OracleDbType,System.Data.ParameterDirection,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object to
+            the command.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:Oracle.DataAccess.Client.OracleDbType"/>
+            values.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.AddParameter(System.Data.Common.DbCommand,System.String,System.Data.DbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object to the command.
+            </summary>
+            <param name="command">The command to add the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:System.Data.DbType"/> values.</param>
+            <param name="size">The maximum size of the data within the column.</param>
+            <param name="direction">One of the <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual Basic) values.</param>
+            <param name="precision">The maximum number of digits used to represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column mapped to the DataSet and used for loading or returning the <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ConfigureParameter(Oracle.DataAccess.Client.OracleParameter,System.String,Oracle.DataAccess.Client.OracleDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Configures a given <see cref="T:System.Data.Common.DbParameter"/>.
+            </summary>
+            <param name="parameter">The parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:Oracle.DataAccess.Client.OracleDbType"/>
+            values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the
+            parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual
+            Basic) values.</param>
+            <param name="precision">The maximum number of digits used to
+            represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which
+            <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.CreateParameter(System.String,Oracle.DataAccess.Client.OracleDbType,System.Int32,System.Data.ParameterDirection,System.Boolean,System.Byte,System.Byte,System.String,System.Data.DataRowVersion,System.Object)">
+            <summary>
+            Adds a new instance of a <see cref="T:System.Data.Common.DbParameter"/> object.
+            </summary>
+            <param name="name">The name of the parameter.</param>
+            <param name="dbType">One of the <see cref="T:System.Data.DbType"/> values.</param>
+            <param name="size">The maximum size of the data within the
+            column.</param>
+            <param name="direction">One of the
+            <see cref="T:System.Data.ParameterDirection"/> values.</param>
+            <param name="nullable">A value indicating whether the
+            parameter accepts <see langword="null"/> (<b>Nothing</b> in Visual
+            Basic) values.</param>
+            <param name="precision">The maximum number of digits used to
+            represent the <paramref name="value"/>.</param>
+            <param name="scale">The number of decimal places to which
+            <paramref name="value"/> is resolved.</param>
+            <param name="sourceColumn">The name of the source column
+            mapped to the DataSet and used for loading or returning the
+            <paramref name="value"/>.</param>
+            <param name="sourceVersion">One of the
+            <see cref="T:System.Data.DataRowVersion"/> values.</param>
+            <param name="value">The value of the parameter.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.DeriveParameters(System.Data.Common.DbCommand)">
+            <summary>
+            Retrieves parameter information from the stored procedure specified in the <see cref="T:System.Data.Common.DbCommand"/> and populates the Parameters collection of the specified <see cref="T:System.Data.Common.DbCommand"/> object.
+            </summary>
+            <param name="discoveryCommand">The <see cref="T:System.Data.Common.DbCommand"/> to do the discovery.</param>
+            <remarks>
+            The <see cref="T:System.Data.Common.DbCommand"/> must be an instance of a <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> object.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ExecuteReader(System.Data.Common.DbCommand)">
+            <summary>
+            Creates an <see cref="T:Oracle.DataAccess.Client.OracleDataReader"/> based on the <paramref name="command"/>.
+            </summary>
+            <param name="command">The command wrapper to execute.</param>
+            <returns>
+            An <see cref="T:Oracle.DataAccess.Client.OracleDataReader"/> object.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	<paramref name="command"/> can not be <see langword="null"/> (Nothing in Visual Basic).
+            </exception>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ExecuteReader(System.Data.Common.DbCommand,System.Data.Common.DbTransaction)">
+            <summary>
+            Creates an <see cref="T:Oracle.DataAccess.Client.OracleDataReader"/> based on the <paramref name="command"/>.
+            </summary>
+            <param name="command">The command wrapper to execute.</param>
+            <param name="transaction">The transaction to participate in when executing this reader.</param>
+            <returns>
+            An <see cref="T:Oracle.DataAccess.Client.OracleDataReader"/> object.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	<para><paramref name="command"/> can not be <see langword="null"/> (Nothing in Visual Basic).</para>
+            	<para>- or -</para>
+            	<para><paramref name="transaction"/> can not be <see langword="null"/> (Nothing in Visual Basic).</para>
+            </exception>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ExecuteXmlReader(System.Data.Common.DbCommand)">
+            <summary>
+            Executes the <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> and returns a new <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            <param name="command">The <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> to execute.</param>
+            <returns>An <see cref="T:System.Xml.XmlReader"/> object.</returns>
+            <remarks>
+            Unlike other Execute... methods that take a <see cref="T:System.Data.Common.DbCommand"/> instance, this method
+            does not set the command behavior to close the connection when you close the reader.
+            That means you'll need to close the connection yourself, by calling the
+            command.Connection.Close() method.
+            <para>
+            There is one exception to the rule above. If you're using <see cref="T:System.Transactions.TransactionScope"/> to provide
+            implicit transactions, you should NOT close the connection on this reader when you're
+            done. Only close the connection if <see cref="T:System.Transactions.Transaction"/>.Current is null.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ExecuteXmlReader(System.Data.Common.DbCommand,System.Data.Common.DbTransaction)">
+            <summary>
+            Executes the <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> in a transaction and returns a new <see cref="T:System.Xml.XmlReader"/>.
+            </summary>
+            <param name="command">The <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> to execute.</param>
+            <param name="transaction">The <see cref="T:System.Data.IDbTransaction"/> to execute the command within.</param>
+            <returns>An <see cref="T:System.Xml.XmlReader"/> object.</returns>
+            <remarks>
+            Unlike other Execute... methods that take a <see cref="T:System.Data.Common.DbCommand"/> instance, this method
+            does not set the command behavior to close the connection when you close the reader.
+            That means you'll need to close the connection yourself, by calling the
+            command.Connection.Close() method.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ExecuteDataSet(System.Data.Common.DbCommand)">
+            <summary>
+            Executes a command and returns the results in a new <see cref="T:System.Data.DataSet"/>.
+            </summary>
+            <param name="command">The command to execute to fill the <see cref="T:System.Data.DataSet"/></param>
+            <returns>
+            A <see cref="T:System.Data.DataSet"/> filed with records and, if necessary, schema.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	<paramref name="command"/> can not be <see langword="null"/> (Nothing in Visual Basic).
+            </exception>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ExecuteDataSet(System.Data.Common.DbCommand,System.Data.Common.DbTransaction)">
+            <summary>
+            Executes a command and returns the result in a new <see cref="T:System.Data.DataSet"/>.
+            </summary>
+            <param name="command">The command to execute to fill the <see cref="T:System.Data.DataSet"/></param>
+            <param name="transaction">The transaction to participate in when executing this reader.</param>
+            <returns>
+            A <see cref="T:System.Data.DataSet"/> filed with records and, if necessary, schema.
+            </returns>
+            <exception cref="T:System.ArgumentNullException">
+            	<paramref name="command"/> can not be <see langword="null"/> (<b>Nothing</b> in Visual Basic).
+            </exception>
+            <exception cref="T:System.ArgumentNullException">
+            	<para><paramref name="command"/> can not be <see langword="null"/> (<b>Nothing</b> in Visual Basic).</para>
+            	<para>- or -</para>
+            	<para><paramref name="transaction"/> can not be <see langword="null"/> (<b>Nothing</b> in Visual Basic).</para>
+            </exception>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.LoadDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String[])">
+            <summary>
+            Loads a <see cref="T:System.Data.DataSet"/> from a <see cref="T:System.Data.Common.DbCommand"/>.
+            </summary>
+            <param name="command">The command to execute to fill the <see cref="T:System.Data.DataSet"/>.</param>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> to fill.</param>
+            <param name="tableNames">An array of table name mappings for the <see cref="T:System.Data.DataSet"/>.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.LoadDataSet(System.Data.Common.DbCommand,System.Data.DataSet,System.String[],System.Data.Common.DbTransaction)">
+            <summary>
+            Loads a <see cref="T:System.Data.DataSet"/> from a <see cref="T:System.Data.Common.DbCommand"/> in a transaction.
+            </summary>
+            <param name="command">The command to execute to fill the <see cref="T:System.Data.DataSet"/>.</param>
+            <param name="dataSet">The <see cref="T:System.Data.DataSet"/> to fill.</param>
+            <param name="tableNames">An array of table name mappings for the <see cref="T:System.Data.DataSet"/>.</param>
+            <param name="transaction">The <see cref="T:System.Data.IDbTransaction"/> to execute the command in.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.GetParameterValue(System.Data.Common.DbCommand,System.String)">
+            <summary>
+            Gets a parameter value.
+            </summary>
+            <param name="command">The command that contains the parameter.</param>
+            <param name="name">The name of the parameter.</param>
+            <returns>The value of the parameter.</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.SetParameterValue(System.Data.Common.DbCommand,System.String,System.Object)">
+            <summary>
+            Sets a parameter value.
+            </summary>
+            <param name="command">The command with the parameter.</param>
+            <param name="parameterName">The parameter name.</param>
+            <param name="value">The parameter value.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.GetStoredProcCommand(System.String,System.Object[])">
+            <summary>
+            Creates a <see cref="T:System.Data.Common.DbCommand"/> for a stored procedure.
+            </summary>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <param name="parameterValues">The list of parameters for the procedure.</param>
+            <returns>
+            The <see cref="T:System.Data.Common.DbCommand"/> for the stored procedure.
+            </returns>
+            <remarks>
+            The parameters for the stored procedure will be discovered and the values are assigned in positional order.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.GetStoredProcCommand(System.String)">
+            <summary>
+            Creates a <see cref="T:System.Data.Common.DbCommand"/> for a stored procedure.
+            </summary>
+            <param name="storedProcedureName">The name of the stored procedure.</param>
+            <returns>
+            The <see cref="T:System.Data.Common.DbCommand"/> for the stored procedure.
+            </returns>
+            <remarks>
+            The parameters for the stored procedure will be discovered and the values are assigned in positional order.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.SetUpRowUpdatedEvent(System.Data.Common.DbDataAdapter)">
+            <summary>
+            Sets the RowUpdated event for the data adapter.
+            </summary>
+            <param name="adapter">The <see cref="T:System.Data.Common.DbDataAdapter"/> to set the event.</param>
+            <remarks>The <see cref="T:System.Data.Common.DbDataAdapter"/> must be an <see cref="T:Oracle.DataAccess.Client.OracleDataAdapter"/>.</remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.SameNumberOfParametersAndValues(System.Data.Common.DbCommand,System.Object[])">
+            <summary>
+            Determines if the number of parameters in the command matches the array of parameter values.
+            </summary>
+            <param name="command">The <see cref="T:System.Data.Common.DbCommand"/> containing the parameters.</param>
+            <param name="values">The array of parameter values.</param>
+            <returns>
+            	<see langword="true"/> if the number of parameters and values match; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.CheckIfOracleCommand(System.Data.Common.DbCommand)">
+            <summary>
+            Checks if oracle command.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.DoExecuteXmlReader(Oracle.DataAccess.Client.OracleCommand)">
+            <summary>
+            Does the execute XML reader.
+            </summary>
+            <param name="oracleCommand">The oracle command.</param>
+            <returns></returns>
+            <remarks>
+            Execute the actual XML Reader call.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.PrepareCWRefCursor(System.Data.Common.DbCommand)">
+            <summary>
+            Prepares the CW ref cursor.
+            </summary>
+            <param name="command">The command.</param>
+            <remarks>
+            This is a private method that will build the Oracle package name if your stored procedure
+            has proper prefix and postfix.
+            This functionality is include for
+            the portability of the architecture between SQL and Oracle datbase.
+            This method also adds the reference cursor to the command writer if not already added. This
+            is required for Oracle .NET managed data provider.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.GetParameterTypeRegistry(System.String)">
+            <summary>
+            Gets the parameter type registry for the specified command.
+            </summary>
+            <param name="commandText">The command text.</param>
+            <returns>Existing or new registry</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.RegisterParameterType(System.Data.Common.DbCommand,System.String,System.Data.DbType)">
+            <summary>
+            Registers the type of the parameter in a parameter registry.
+            </summary>
+            <param name="command">The command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="dbType">Type of the parameter.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.OnOracleRowUpdated(System.Object,Oracle.DataAccess.Client.OracleRowUpdatedEventArgs)">
+            <summary>
+            Called when a dataset row is updated.
+            </summary>
+            <param name="sender">The sender.</param>
+            <param name="args">The <see cref="T:Oracle.DataAccess.Client.OracleRowUpdatedEventArgs"/> instance containing the event data.</param>
+            <remarks>
+            Listens for the RowUpdate event on a data adapter to support UpdateBehavior.Continue
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.TranslatePackageSchema(System.String)">
+            <summary>
+            Translates the package schema.
+            </summary>
+            <param name="storedProcedureName">Name of the stored procedure.</param>
+            <returns></returns>
+            <remarks>
+            Looks into configuration and gets the information on how the command wrapper should be updated if calling a package on this
+            connection.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ConvertBoolToShort(System.Object)">
+            <summary>
+            Converts a Boolean object to a short or DBNull if null.
+            </summary>
+            <remarks>This is specifically used in the conversion of a Boolean to OracleDbType.Int16.
+            Contrary to most interpretations of a boolean value a value of 0 (zero) stored in a Database
+            is generally regarded as representing false.</remarks>
+            <param name="value">The boolean value.</param>
+            <returns>short integer of 0 for false and 1 for true</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ConvertShortToBool(System.Object)">
+            <summary>
+            Converts a short object to Boolean.
+            </summary>
+            <remarks>This is specifically used in the conversion of OracleDbType.Int16 back to Boolean</remarks>
+            <param name="value">The short value.</param>
+            <returns>Boolean object or DBNull</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ConvertGuidToByteArray(System.Object)">
+            <summary>
+            Converts a GUID object to a byte array or DBNull if null.
+            </summary>
+            <remarks>This is specifically used in the conversion of a Guid to OracleDbType.Raw</remarks>
+            <param name="value">The Guid value.</param>
+            <returns>byte array or DBNull</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.ConvertByteArrayToGuid(System.Object)">
+            <summary>
+            Converts a byte array object to GUID.
+            </summary>
+            <remarks>This is specifically used in the conversion of OracleDbType.Raw back to Guid</remarks>
+            <param name="value">The value.</param>
+            <returns>Guid object or DBNull</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase.QueryProcedureNeedsCursorParameter(System.Data.Common.DbCommand)">
+            <summary>
+            Queries the procedure to see if it needs a cursor parameter.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabaseAssembler">
+            <summary>
+            <see cref="T:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase"/> 인스턴스를 빌드하기 위한 Assembler입니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabaseAssembler.Assemble(System.String,System.Configuration.ConnectionStringSettings,Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource)">
+            <summary>
+            Builds an instance of the concrete subtype of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Data.Database"/> the receiver knows how to build, based on
+            the provided connection string and any configuration information that might be contained by the
+            <paramref name="configurationSource"/>.
+            </summary>
+            <param name="name">The name for the new database instance.</param>
+            <param name="connectionStringSettings">The connection string for the new database instance.</param>
+            <param name="configurationSource">The source for any additional configuration information.</param>
+            <returns>The new database instance.</returns>
+        </member>
+        <member name="P:NSoft.NFramework.Data.OdpNet.IOdpNetRepository.Db">
+            <summary>
+            DAAB의 ODP.NET Oracle 용 Database 인스턴스
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync">
+            <summary>
+             Oracle Database 에 대한 OdpNet용 DbCommand를 비동기 방식으로 수행하도록 해주는 Class 입니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="cmd"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="cmd"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="query"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="query"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsyncBySqlString(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="sqlString"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsyncBySqlString(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="sqlString"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsyncByProcedure(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="spName"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsyncByProcedure(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="spName"/>를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1"/>로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsListAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            Multi-ResultSet일 경우에 DataTable 컬렉션으로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteDataTableAsListAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            Multi-ResultSet일 경우에 DataTable 컬렉션으로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteNonQueryAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <see cref="T:Oracle.DataAccess.Client.OracleCommand"/>을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="cmd">실행할 SqlComnnad 인스턴스</param>
+            <param name="parameters">파리미터 정보</param>
+            <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteNonQueryAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="query"/>을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="query">실행할 쿼리문 또는 Procecedure 명</param>
+            <param name="parameters">파리미터 정보</param>
+            <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteNonQueryBySqlStringAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="sqlString"/>을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="sqlString">실행할 쿼리문</param>
+            <param name="parameters">파리미터 정보</param>
+            <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteNonQueryByProcedureAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="spName"/>을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="spName">실행할 프로시져 명</param>
+            <param name="parameters">파리미터 정보</param>
+            <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteReaderAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="cmd"/> 를 비동기 방식으로 실행하여, <see cref="T:System.Threading.Tasks.Task`1"/>를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="cmd">실행할 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> 인스턴스</param>
+            <param name="parameters">Command Parameters</param>
+            <returns><see cref="T:Oracle.DataAccess.Client.OracleDataReader"/>를 결과로 반환하는 <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteReaderAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="query"/> 를 비동기 방식으로 실행하여, <see cref="T:System.Threading.Tasks.Task`1"/>를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="query">실행할 SQL 문</param>
+            <param name="parameters">Command Parameters</param>
+            <returns><see cref="T:Oracle.DataAccess.Client.OracleDataReader"/>를 결과로 반환하는 <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteReaderBySqlStringAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="sqlString"/> 를 비동기 방식으로 실행하여, <see cref="T:System.Threading.Tasks.Task`1"/>를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="sqlString">실행할 SQL 문</param>
+            <param name="parameters">Command Parameters</param>
+            <returns><see cref="T:Oracle.DataAccess.Client.OracleDataReader"/>를 결과로 반환하는 <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteReaderByProcedureAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="spName"/> 를 비동기 방식으로 실행하여, <see cref="T:System.Threading.Tasks.Task`1"/>를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="spName">실행할 Procedure 명</param>
+            <param name="parameters">Command Parameters</param>
+            <returns><see cref="T:Oracle.DataAccess.Client.OracleDataReader"/>를 결과로 반환하는 <see cref="T:System.Threading.Tasks.Task"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteScalarAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="cmd"/> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="cmd">실행할 OracleCommand 인스턴스</param>
+            <param name="parameters">Command Parameters</param>
+            <returns>Scalar 값을 결과로 가지는 Task의 인스턴스</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteScalarAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="query"/> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="query">실행할 쿼리문 또는 Procedure 명</param>
+            <param name="parameters">Command Parameters</param>
+            <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteScalarBySqlStringAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="sqlString"/> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="sqlString">실행할 쿼리문</param>
+            <param name="parameters">Command Parameters</param>
+            <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteScalarByProcedureAsync(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="spName"/> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1"/>를 빌드합니다.
+            </summary>
+            <param name="db">DAAB의 MySQL 용 Database</param>
+            <param name="spName">실행할 쿼리문</param>
+            <param name="parameters">Command Parameters</param>
+            <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteMapObject``1(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,System.Func{``0},NSoft.NFramework.Data.Mappers.INameMapper,System.Int32,System.Int32,System.Action{System.Data.IDataReader,``0},NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="oracleCommand"/>를 실행하여, 결과 셋을 Persistent Object의 컬렉션으로 매핑합니다.
+            </summary>
+            <typeparam name="T">Persistent Object의 수형</typeparam>
+            <param name="odpNetDatabase">OdpNetDatabase 인스턴스</param>
+            <param name="oracleCommand">OracleCommand 인스턴스</param>
+            <param name="mapObjectFactory">PersistentObject 생성 Factory</param>
+            <param name="nameMapper">NameMapper 인스턴스</param>
+            <param name="firstResult">첫번째 결과 인덱스 (0부터 시작)</param>
+            <param name="maxResults">최대 결과 갯수</param>
+            <param name="additionalMapping">부가적인 매핑 작업을 수행할 델리게이트</param>
+            <param name="parameters">OracleCommand에 설정할 Parameter 정보</param>
+            <returns>DataReader로부터 인스턴싱된 Persistent Object의 컬렉션을 결과로 반환하는 Task</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.ExecuteMapObject``1(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand,System.Func{``0},NSoft.NFramework.Data.Mappers.INameMap,System.Int32,System.Int32,System.Action{System.Data.IDataReader,``0},NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="oracleCommand"/>를 실행하여, 결과 셋을 Persistent Object의 컬렉션으로 매핑합니다.
+            </summary>
+            <typeparam name="T">Persistent Object의 수형</typeparam>
+            <param name="odpNetDatabase">OdpNetDatabase 인스턴스</param>
+            <param name="oracleCommand">OracleCommand 인스턴스</param>
+            <param name="mapObjectFactory">PersistentObject 생성 Factory</param>
+            <param name="nameMap">NameMap 인스턴스</param>
+            <param name="firstResult">첫번째 결과 인덱스 (0부터 시작)</param>
+            <param name="maxResults">최대 결과 갯수</param>
+            <param name="additionalMapping">부가적인 매핑 작업을 수행할 델리게이트</param>
+            <param name="parameters">OracleCommand에 설정할 Parameter 정보</param>
+            <returns>DataReader로부터 인스턴싱된 Persistent Object의 컬렉션을 결과로 반환하는 Task</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.GetOracleCommand(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String)">
+            <summary>
+            쿼리 문 또는 Procedure Name을 실행할 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/>를 생성합니다.
+            </summary>
+            <param name="db">DAAB db</param>
+            <param name="query">수행할 쿼리문 또는 Procedure Name</param>
+            <returns>생성한 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.GetOracleCommand(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,System.Boolean)">
+            <summary>
+            쿼리 문 또는 Procedure Name을 실행할 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/>를 생성합니다.
+            </summary>
+            <param name="db">DAAB OdpNetDatabase</param>
+            <param name="query">수행할 쿼리문 또는 Procedure Name</param>
+            <param name="discoverParams">Procedure일 경우 Parameter 빌드</param>
+            <returns>생성한 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/></returns>
+            <seealso cref="!:AdoRepositoryImplBase.GetCommand(string,bool)"/>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.GetSqlStringOracleCommand(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String)">
+            <summary>
+            쿼리 문 <paramref name="sqlString"/>을 수행할 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/>를 생성합니다.
+            </summary>
+            <param name="db">DAAB OdpNetDatabase</param>
+            <param name="sqlString">수행할 쿼리문</param>
+            <returns>생성한 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetCommandAsync.GetProcedureOracleCommand(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.String,System.Boolean)">
+            <summary>
+            Procedure <paramref name="spName"/>를 수행할 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/> 를 생성합니다.
+            </summary>
+            <param name="db">DAAB OdpNetDatabase</param>
+            <param name="spName">Procedure name</param>
+            <param name="discoverParams">discover parameters</param>
+            <returns>생성한 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/></returns>
+        </member>
+        <member name="T:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl">
+            <summary>
+            Oracle Database용 AdoRepository 입니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.#ctor">
+            <summary>
+            생성자
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.#ctor(System.String)">
+            <summary>
+            생성자
+            </summary>
+            <param name="dbName"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.ExecuteDataSet(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            <paramref name="cmd"/>를 실행하여, 결과를 DataSet으로 반환합니다.
+            </summary>
+            <param name="cmd">실행할 <see cref="T:System.Data.Common.DbCommand"/> instance.</param>
+            <param name="firstResult">첫번째 레코드의 인덱스 (0부터 시작)</param>
+            <param name="maxResults">최대 레코드 수 (0 이면 무시하고, 마지막 레코드까지 가져온다</param>
+            <param name="parameters">collectio of parameters of Command</param>
+            <returns>결과 셋이 담긴 DataSet</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.ExecuteDataTableAsList(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            여러 ResultSet을 반환할 수 있으므로, DataTable의 컬렉션으로 반환합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.ExecuteDataTable(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+            <summary>
+            지정된 Command를 실행하여, DataTable을 빌드합니다.
+            </summary>
+            <param name="cmd">실행할 Select용 Command</param>
+            <param name="firstResult">첫번째 레코드의 인덱스 (0부터 시작)</param>
+            <param name="maxResults">최대 레코드 수 (0 이면 무시하고, 마지막 레코드까지 가져온다</param>
+            <param name="parameters">DbCommand의 Parameter 정보</param>
+            <returns>instance of <see cref="T:System.Data.DataTable"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.ExecuteNonQueryInternal(System.Data.Common.DbCommand)">
+            <summary>
+            지정된 Command의 ExecuteNonQuery 메소드를 실행합니다.
+            </summary>
+            <param name="cmd">실행할 Command 객체</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.ExecuteScalarInternal(System.Data.Common.DbCommand)">
+            <summary>
+            지정된 Command의 ExecuteScalar 메소드를 실행합니다.
+            </summary>
+            <param name="cmd">실행할 Command 객체</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.ExecuteReaderInternal(System.Data.Common.DbCommand)">
+            <summary>
+            지정된 Command의 ExecuteReader 메소드를 실행합니다.
+            </summary>
+            <param name="cmd"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NSoft.NFramework.Data.OdpNet.OdpNetRepositoryImpl.Db">
+            <summary>
+            DAAB의 Oracle 용 Database 인스턴스
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.Data.OdpNet.OdpNetTool.RefCursorName">
+            <summary>
+            The default ref cursor name used for all stored procedures that use ref cursors.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetTool.AssertIsOracleCommand(System.Data.Common.DbCommand)">
+            <summary>
+            <paramref name="cmd"/>의 수형이 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/>수형인지 확인합니다.
+            </summary>
+            <param name="cmd">수형 확인할 DbCommand 인스턴스</param>
+            <exception cref="T:System.InvalidOperationException"><paramref name="cmd"/>의 수형이 <see cref="T:Oracle.DataAccess.Client.OracleCommand"/>가 아닐 때</exception>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetTool.ClearAllPools">
+            <summary>
+            모든 Oracle Connection Pool을 제거합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetTool.CreateOracleConnection(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.Boolean@)">
+            <summary>
+            Oracle Connection을 비동기 방식으로 엽니다.
+            </summary>
+            <param name="db">DAAB OdpNetDatabase 인스턴스</param>
+            <param name="newConnectionCreated">새로운 Connenction이 생성되었는지 여부</param>
+            <returns>새로 연결된 <see cref="T:Oracle.DataAccess.Client.OracleConnection"/>의 인스턴스, 만약 연결에 실패했다면 null을 반환합니다.</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetTool.OpenConnection(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,System.Int32)">
+            <summary>
+            Oracle 연결이 성공하지 못하는 경우가 많아, 재시도 횟수 만큼 간격을 두고 연결을 시도합니다.
+            Oracle DB의 Process 수를 기본(40)에서 100 이상으로 늘려주면 연결이 성공할 확률이 높습니다.
+            </summary>
+            <param name="db">DAAB OdpNetDatabase 인스턴스</param>
+            <param name="tryCount">연결 실패 시, 재 시도 횟수</param>
+            <returns>새로 연결된 <see cref="T:Oracle.DataAccess.Client.OracleConnection"/>의 인스턴스, 만약 연결에 실패했다면 null을 반환합니다.</returns>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetTool.PrepareCWRefCursor(NSoft.NFramework.Data.OdpNet.EnterpriseLibrary.OdpNetDatabase,Oracle.DataAccess.Client.OracleCommand)">
+            <summary>
+            Prepares the CW ref cursor.
+            </summary>
+            <param name="command">The command.</param>
+            <remarks>
+            This is a private method that will build the Oracle package name if your stored procedure
+            has proper prefix and postfix.
+            This functionality is include for
+            the portability of the architecture between SQL and Oracle datbase.
+            This method also adds the reference cursor to the command writer if not already added. This
+            is required for Oracle .NET managed data provider.
+            </remarks>
+        </member>
+        <member name="M:NSoft.NFramework.Data.OdpNet.OdpNetTool.QueryProcedureNeedsCursorParameter(Oracle.DataAccess.Client.OracleCommand)">
+            <summary>
+            Queries the procedure to see if it needs a cursor parameter.
+            </summary>
+            <param name="command">The command.</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

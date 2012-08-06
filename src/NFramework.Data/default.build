@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.Data"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+	
+	<!--
+		단위 프로젝트에서 설정해 줄 것
+		
+		assembly.version		: 기본적으로 solution.version을 따라간다.
+		assembly.description	:
+		
+		build.unsafe			: true|false
+		
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+
+	<target name="init" depends="common.init">
+		<property name="assembly.description" value="NSoft.NFramework Data Library"/>
+
+		<property name="assembly.is-cls-compliant" value="true" overwrite="true"/>		
+		<property name="build.unsafe" value="true"/>
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+			
+			<include name="System"/>
+			<include name="System.Configuration"/>
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.Data.SqlClient" />
+			<include name="System.Drawing" />
+			<include name="System.Messaging" />
+			<include name="System.Numerics.dll" /> 
+			<include name="System.Web"/>
+			<include name="System.Xml"/>
+			<include name="System.Xml.Linq"/>
+			
+			
+
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+			
+            <include name="Fasterflect.dll" />
+			<include name="FluentValidation.dll" />
+		
+			<include name="Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+			<include name="Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+			
+			<include name="Newtonsoft.Json.dll" />
+
+			<include name="NLog.dll"/>
+            
+            <include name="NSoft.NFramework.dll" />
+			<include name="NSoft.NFramework.Web.dll" />
+
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+		</resourcefileset>
+
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-dll common.obfuscator"
+			description="Build ${project::get-name()}">
+		
+		<copy file="${build.dir}/${project::get-name()}.dll" tofile="${lib.framework.dir}/${project::get-name()}.dll" />
+		<copy file="${build.dir}/${project::get-name()}.xml" tofile="${lib.framework.dir}/${project::get-name()}.xml" />
+		
+		<property name="output.filename.pdb" value="${build.dir}/${project::get-name()}.pdb" />
+		<if test="${file::exists(output.filename.pdb)}">
+			<copy file="${build.dir}/${project::get-name()}.pdb" tofile="${lib.framework.dir}/${project::get-name()}.pdb" />
+		</if>
+	</target>
+	
+</project>

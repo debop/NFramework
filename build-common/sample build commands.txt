@@ -1,0 +1,38 @@
+## 
+##	NAnt 를 이용하여 빌드할 때 자주 사용하는 예제 입니다.
+##	
+##
+
+# 초기화 (빌드된 결과물을 모두 삭제한다.)
+NAnt cleanall
+
+# 기본 빌드 (Debug 모드)
+NAnt > build.log
+
+## 테스트 수행 안하고 Debug 모드로 빌드하기
+NAnt quick build > build.log
+
+# 빌드 후 테스트 하기
+NAnt test build	> build.log
+
+
+# Release 모드 (기존 컴파일된 것 제거)
+#
+NAnt clean release build > release-build.log
+
+
+# 빌드 및 ZIP 파일 만들기 
+#
+NAnt clean package > build.log
+
+
+# 도움말 빌드 (테스트 없이, release 모드로 빌드하고, Document를 빌드합니다.) 
+# 도움말은 Sandcastle Help File Builder를 이용합니다. 
+#
+NAnt quick release build releaseDocs 
+
+# Document 만 빌드 (Release 모드로 빌드가 되어 있어야 합니다.
+NAnt releaseDocs
+
+
+

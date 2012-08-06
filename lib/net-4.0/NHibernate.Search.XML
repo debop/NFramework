@@ -1,0 +1,1541 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NHibernate.Search</name>
+    </assembly>
+    <members>
+        <member name="T:NHibernate.Search.IFullTextFilter">
+            <summary>
+            Represents a full text filter that is about to be applied.
+            Used to inject parameters
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextFilter.SetParameter(System.String,System.Object)">
+            <summary>
+            Assigns a parameter to the filter.
+            <para>
+            The .NET version differs from java, we do not locate setter methods, but find properties
+            that have the FilterParameter attribute set.
+            </para>
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextFilter.GetParameter(System.String)">
+            <summary>
+            Returns the value for a named parameter.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NHibernate.Search.Query.FullTextFilterImpl.Name">
+            <summary>
+            Gets or sets the name of the filter.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Query.FullTextFilterImpl.Parameters">
+            <summary>
+            Gets the collection of parameters
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.NHSConfiguration">
+            <summary>
+            The NHibernate Search configuration implementation.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.INHSConfiguration">
+            <summary>
+            Contract for configuration sources.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.INHSConfiguration.GetProperty(System.String)">
+            <summary>
+            If property exists in the <see cref="P:NHibernate.Search.Cfg.INHSConfiguration.Properties"/> dictionary, it returns the value.
+            Otherwise, GetProperty will return null.
+            </summary>
+            <param name="name">
+            The name of the property.
+            </param>
+            <returns>
+            The property value.
+            </returns>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.INHSConfiguration.Properties">
+            <summary>
+            Configured properties
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.INHSConfiguration.SessionFactoryName">
+            <summary>
+            Gets SessionFactoryName.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfiguration.GetProperty(System.String)">
+            <summary>
+            The get property.
+            </summary>
+            <param name="name">
+            The name.
+            </param>
+            <returns>
+            The get property.
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfiguration.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.NHSConfiguration"/> class.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfiguration.#ctor(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.NHSConfiguration"/> class.
+            </summary>
+            <param name="navigator">
+            The navigator.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfiguration.Parse(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            Parses the configuration, producing a property dictionary.
+            </summary>
+            <param name="navigator">
+            The XPath navigator to use.
+            </param>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.NHSConfiguration.Properties">
+            <summary>
+            Gets Properties.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.NHSConfiguration.SessionFactoryName">
+            <summary>
+            Gets SessionFactoryName.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.String2FieldBridgeAdaptor">
+            <summary>
+            Bridge to use a StringBridge as a FieldBridge
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.IFieldBridge">
+            <summary>
+            Link between a .NET property and a Lucene Document
+            Usually a .NET property will be linked to a Document Field
+            </summary>
+            TODO: should show Field or document - document is nice since I can save an object into several fields
+        </member>
+        <member name="M:NHibernate.Search.Bridge.IFieldBridge.Set(System.String,System.Object,Lucene.Net.Documents.Document,Lucene.Net.Documents.Field.Store,Lucene.Net.Documents.Field.Index,System.Nullable{System.Single})">
+            <summary>
+            Manipulate the document to index the given value.
+            A common implementation is to add a Field <code>name</code> to the given document following
+            the parameters (<code>store</code>, <code>index</code>, <code>boost</code>) if the
+            <code>value</code> is not null
+            </summary>
+            <param name="name"></param>
+            <param name="value"></param>
+            <param name="document"></param>
+            <param name="store"></param>
+            <param name="index"></param>
+            <param name="boost"></param>
+        </member>
+        <member name="T:NHibernate.Search.Store.IIndexShardingStrategy">
+            <summary>
+            Defines how a given virtual index shards data into different <see cref="T:NHibernate.Search.Store.IDirectoryProvider"/>s
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Store.IIndexShardingStrategy.Initialize(System.Object,NHibernate.Search.Store.IDirectoryProvider[])">
+            <summary>
+            Provides access to sharding properties (under the suffix sharding_strategy)
+            and provide access to all the <see cref="T:NHibernate.Search.Store.IDirectoryProvider"/>s for a given index.
+            </summary>
+            <param name="properties"></param>
+            <param name="providers"></param>
+        </member>
+        <member name="M:NHibernate.Search.Store.IIndexShardingStrategy.GetDirectoryProvidersForAllShards">
+            <summary>
+            Ask for all shards (eg to query or optimize)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.Store.IIndexShardingStrategy.GetDirectoryProviderForAddition(System.Type,System.Object,System.String,Lucene.Net.Documents.Document)">
+            <summary>
+            Return the <see cref="T:NHibernate.Search.Store.IDirectoryProvider"/> where the given entity will be indexed
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <param name="idInString"></param>
+            <param name="document"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.Store.IIndexShardingStrategy.GetDirectoryProvidersForDeletion(System.Type,System.Object,System.String)">
+            <summary>
+            Return the <see cref="T:NHibernate.Search.Store.IDirectoryProvider"/>(s) where the given entity is stored and where the deletion operation needs to be applied
+            id and idInString can be null. If null, all the directory providers containing entity types should be returned
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <param name="idInString"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.ITwoWayStringBridge">
+            <summary>
+            IStringBridge allowing a translation from the string back to the object
+            ObjectToString( StringToObject( string ) ) and StringToObject( objectToString( object ) )
+            should be "idempotent". More precisely,
+            
+            ObjectToString( stringToObject( string ) ).Equals(string) for string not null
+            StringToObject( objectToString( object ) ).Equals(object) for object not null 
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.IStringBridge">
+            <summary>
+            Transform an object into a string representation
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Bridge.IStringBridge.ObjectToString(System.Object)">
+            <summary>
+            Convert the object representation to a String
+            The return String must not be null, it can be empty though</summary>
+            <param name="?"></param>
+        </member>
+        <member name="M:NHibernate.Search.Bridge.ITwoWayStringBridge.StringToObject(System.String)">
+            <summary>
+            Convert the string representation to an object
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.WorkType">
+            <summary>
+            Enumeration of different types of Lucene work. This enumeration is used to specify the type of
+            index operation to be executed.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Backend.WorkType.Purge">
+            <summary>
+            Used to remove a specific instance of a class from an index.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Backend.WorkType.PurgeAll">
+            <summary>
+            Used to remove all instances of a class from an index.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Backend.WorkType.Index">
+            <summary>
+            Used for batch indexing.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Reader.IReaderProvider">
+            <summary>
+            Responsible for providing and managing the lifecycle of a read-only reader
+            <para>
+            Note that the reader must be closed once opened.
+            The ReaderProvider implementation must have a no-arg constructor
+            </para>
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Reader.IReaderProvider.Destroy">
+            <summary>
+            Called when a <see cref="T:NHibernate.Search.ISearchFactory"/> is destroyed. This method typically releases resources.
+            It is guaranteed to be executed after readers are released by queries (assuming no user error). 
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Engine.EntityInfo.Clazz">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Engine.EntityInfo.Id">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Engine.EntityInfo.Projection">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Engine.EntityInfo.IndexesOfThis">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.NHSConfigCollection">
+            <summary>
+            The NHibernate Search config collection implementation.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.INHSConfigCollection">
+            <summary>
+            INHSConfigCollection contains a dictionary of instantiated <see cref="T:NHibernate.Search.Cfg.INHSConfiguration"/> 
+            objects. The API expects the key to be the NHibernate session factory name. 
+            </summary>
+            <remarks>
+            The default concrete implementation is <see cref="T:NHibernate.Search.Cfg.NHSConfigCollection"/>.
+            </remarks>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.INHSConfigCollection.GetConfiguration(System.String)">
+            <summary>
+            Gets the <see cref="T:NHibernate.Search.Cfg.INHSConfiguration"/> for the specified key.
+            </summary>
+            <param name="sessionFactoryName">
+            The NHibernate session factory name.
+            </param>
+            <returns>
+            If collection has an instance of <see cref="T:NHibernate.Search.Cfg.INHSConfiguration"/> for the named session factory, then return that instance.
+            Otherwise, if collection has a default configuration, then return that instance.
+            Otherwise, return null.
+            </returns>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.INHSConfigCollection.HasDefaultConfiguration">
+            <summary>
+            As a convenience, we will treat an INHSConfiguration with an empty key 
+            as the default confguration.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.INHSConfigCollection.DefaultConfiguration">
+            <summary>
+            If collection has a default configuration, then return that instance.
+            Otherwise, return null.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.NHSConfigCollection"/> class.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.#ctor(System.Xml.XmlReader)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.NHSConfigCollection"/> class. 
+            </summary>
+            <param name="configurationReader">
+            The XML reader.
+            </param>
+            <remarks>
+            The nhs-configuration.xsd is applied to the XML.
+            </remarks>
+            <exception cref="T:NHibernate.Search.Cfg.SearchConfigurationException">
+            When nhs-configuration.xsd can't be applied.
+            </exception>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.GetConfiguration(System.String)">
+            <summary>
+            The get configuration.
+            </summary>
+            <param name="sessionFactoryName">
+            The session factory name.
+            </param>
+            <returns>
+            Named configuration or the default if not found.
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.GetSettings">
+            <summary>
+            The get settings.
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.CreateConfigReaderSettings">
+            <summary>
+            The create config reader settings.
+            </summary>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.CreateXmlReaderSettings(System.Xml.Schema.XmlSchema)">
+            <summary>
+            The create xml reader settings.
+            </summary>
+            <param name="xmlSchema">
+            The xml schema.
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.ReadXmlSchemaFromEmbeddedResource(System.String)">
+            <summary>
+            The read xml schema from embedded resource.
+            </summary>
+            <param name="resourceName">
+            The resource name.
+            </param>
+            <returns>
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.ConfigSettingsValidationEventHandler(System.Object,System.Xml.Schema.ValidationEventArgs)">
+            <summary>
+            The config settings validation event handler.
+            </summary>
+            <param name="sender">
+            The sender.
+            </param>
+            <param name="e">
+            The e.
+            </param>
+            <exception cref="T:NHibernate.Search.Cfg.SearchConfigurationException">
+            </exception>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.NHSConfigCollection.Parse(System.Xml.XPath.XPathNavigator)">
+            <summary>
+            The parse.
+            </summary>
+            <param name="navigator">
+            The navigator.
+            </param>
+            <exception cref="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException">
+            </exception>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.NHSConfigCollection.HasDefaultConfiguration">
+            <summary>
+            Gets a value indicating whether HasDefaultConfiguration.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Cfg.NHSConfigCollection.DefaultConfiguration">
+            <summary>
+            Gets DefaultConfiguration.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.FilterParameterAttribute">
+            <summary>
+            Defines a parameter on a filter
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.FieldBridgeAttribute">
+            <summary>
+            Specifies a given field bridge implementation
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Util.ScopedAnalyzer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Util.ScopedAnalyzer.GlobalAnalyzer">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Reader.SharedReaderProvider">
+            <summary>
+            Share readers per SearchFactory, reusing them iff they are still valid.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Reader.SharedReaderProvider.activeSearchIndexReaders">
+            <summary>
+            Contain the active (ie non obsolete IndexReader for a given Directory
+            There may be no entry (warm up)
+            <p/>
+            protected by semaphoreIndexReaderLock
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Reader.SharedReaderProvider.searchIndexReaderSemaphores">
+            <summary>
+            contains the semaphore and the directory provider per IndexReader opened
+            all read / update have to be protected by semaphoreIndexReaderLock
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Reader.SharedReaderProvider.semaphoreIndexReaderLock">
+            <summary>
+            nonfair lock. Need to be acquired on indexReader acquisition or release (semaphore)
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Reader.SharedReaderProvider.perDirectoryProviderManipulationLocks">
+            <summary>
+            non fair list of locks to block per IndexReader only
+            Locks have to be acquired at least for indexReader retrieval and switch
+            ie for all activeSearchIndexReaders manipulation
+            this map is read only after initialization, no need to synchronize
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.IFullTextQuery">
+            <summary>
+            The base interface for lucene powered searches.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetSort(Lucene.Net.Search.Sort)">
+            <summary>
+            Allows to let lucene sort the results. This is useful when you have
+            additional sort requirements on top of the default lucene ranking.
+            Without lucene sorting you would have to retrieve the full result set and
+            order the hibernate objects.
+            </summary>
+            <param name="sort">The lucene sort object.</param>
+            <returns>this for method chaining</returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetFilter(Lucene.Net.Search.Filter)">
+            <summary>
+            Allows to use lucene filters.
+            Semi-deprecated? a preferred way is to use the [FullTextFilterDef] attribute approach.
+            </summary>
+            <param name="filter">The lucene filter.</param>
+            <returns>this for method chaining</returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetCriteriaQuery(NHibernate.ICriteria)">
+            <summary>
+            <para>
+            Defines the Database Query used to load the Lucene results.
+            Useful to load a given object graph by refining the fetch modes.
+            </para>
+            No projection (criteria.SetProjection() ) allowed, the root entity must be the only returned type
+            No where restriction can be defined either.
+            </summary>
+            <param name="criteria">The criteria to apply.</param>
+            <returns>this for method chaining</returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetProjection(System.String[])">
+            <summary>
+            Defines the Lucene field names projected and returned in a query result
+            Each field is converted back to it's object representation, an object[] being returned for each "row"
+            (similar to an HQL or a Criteria API projection).
+            <para>
+            A projectable field must be stored in the Lucene index and use a <see cref="T:NHibernate.Search.Bridge.ITwoWayFieldBridge"/>
+            Unless notified in their documentation, all built-in bridges are two-way. All <see cref="T:NHibernate.Search.Attributes.DocumentIdAttribute"/> fields are projectable by design.
+            </para>
+            If the projected field is not a projectable field, null is returned in the object[]
+            </summary>
+            <param name="fields"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.EnableFullTextFilter(System.String)">
+            <summary>
+            Enable a given filter by its name. Returns a <see cref="T:NHibernate.Search.IFullTextFilter"/> object that allows filter parameter injection
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.DisableFullTextFilter(System.String)">
+            <summary>
+            Disable a given filter by its name
+            </summary>
+            <param name="name"></param>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetFirstResult(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="firstResult"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetMaxResults(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="maxResults"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetFetchSize(System.Int32)">
+            <summary>
+            
+            </summary>
+            <param name="fetchSize"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextQuery.SetResultTransformer(NHibernate.Transform.IResultTransformer)">
+            <summary>
+            
+            </summary>
+            <param name="transformer"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NHibernate.Search.IFullTextQuery.ResultSize">
+             <summary>
+             Returns the number of hits for this search
+             </summary>
+             <remarks>
+             Caution:
+             The number of results might be slightly different from
+            <code>List().size()</code> because List() if the index is
+             not in sync with the database at the time of query.
+             </remarks>
+        </member>
+        <member name="M:NHibernate.Search.Query.FullTextQueryImpl.#ctor(Lucene.Net.Search.Query,System.Type[],NHibernate.ISession,NHibernate.Engine.Query.ParameterMetadata)">
+            <summary>
+            classes must be immutable
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Query.FullTextQueryImpl.Enumerable``1">
+            <summary>
+            Return an interator on the results.
+            Retrieve the object one by one (initialize it during the next() operation)
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Filter.FilterKey">
+            <summary>
+            The key object must implement equals / hashcode so that 2 keys are equals if and only if
+            the given Filter types are the same and the set of parameters are the same.
+            <para>
+            The FilterKey creator (ie the @Key method) does not have to inject <code>impl</code>
+            It will be done by Hibernate Search
+            </para>
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Filter.FilterKey.Impl">
+            <summary>
+            Represent the @FullTextFilterDef.impl class
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Reader.ReaderProviderHelper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.IBackendQueueProcessorFactory">
+            <summary>
+            Build stateful backend processor
+            Must have a no arg constructor
+            The factory typically prepare or pool the resources needed by the queue processor
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Backend.IBackendQueueProcessorFactory.GetProcessor(System.Collections.Generic.IList{NHibernate.Search.Backend.LuceneWork})">
+            <summary>
+            Return a runnable implementation responsible for processing the queue to a given backend
+            </summary>
+            <param name="queue"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NHibernate.Search.Engine.DocumentBuilder">
+            <summary>
+            Set up and provide a manager for indexes classes
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Engine.DocumentBuilder.AddToWorkQueue(System.Type,System.Object,System.Object,NHibernate.Search.Backend.WorkType,System.Collections.Generic.List{NHibernate.Search.Backend.LuceneWork},NHibernate.Search.Engine.ISearchFactoryImplementor)">
+            <summary>
+            This add the new work to the queue, so it can be processed in a batch fashion later
+            </summary>
+        </member>
+        <!-- 잘못된 형식의 XML 주석은 "T:NHibernate.Search.Attributes.ContainedInAttribute" 멤버에 대해 무시됩니다. -->
+        <member name="T:NHibernate.Search.Query.ScrollableResultsImpl">
+            <summary>
+            TODO: Where is (I)ScrollableResults
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.SearchConfigurationException">
+            <summary>
+            The search configuration exception.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.SearchConfigurationException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.SearchConfigurationException"/> class.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.SearchConfigurationException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.SearchConfigurationException"/> class.
+            </summary>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.SearchConfigurationException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.SearchConfigurationException"/> class.
+            </summary>
+            <param name="message">
+            The message.
+            </param>
+            <param name="inner">
+            The inner.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.SearchConfigurationException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.SearchConfigurationException"/> class.
+            </summary>
+            <param name="innerException">
+            The inner exception.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.SearchConfigurationException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.SearchConfigurationException"/> class.
+            </summary>
+            <param name="info">
+            The info.
+            </param>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="T:NHibernate.Search.Backend.WorkQueue">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Backend.Impl.PostTransactionWorkQueueSynchronization.#ctor(NHibernate.Search.Backend.IQueueingProcessor,NHibernate.Util.WeakHashtable)">
+            in transaction work
+        </member>
+        <member name="T:NHibernate.Search.Attributes.AnalyzerAttribute">
+            <summary>
+            Defines an analyzer for a given entity, method or field.
+            The order of precedence is
+            - FieldAttribute
+            - field / method
+            - entity
+            - default
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Util.TypeHelper">
+            <summary>
+            Utilities for types
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Util.TypeHelper.LuceneTypeName(System.Type)">
+            <summary>
+            Includes the name of the type and it's assembly so we load it, but are not tied to the specific version
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.Store.IDirectoryProvider.Initialize(System.String,System.Collections.Generic.IDictionary{System.String,System.String},NHibernate.Search.Engine.ISearchFactoryImplementor)">
+            <summary>
+            get the information to initialize the directory and build its hashCode/equals method
+            </summary>
+            <param name="directoryProviderName"></param>
+            <param name="indexProps"></param>
+            <param name="searchFactory"></param>
+        </member>
+        <member name="M:NHibernate.Search.Store.IDirectoryProvider.Start">
+            <summary>
+            Executed after initialize, this method set up the heavy process of starting up the DirectoryProvider
+            IO processing as well as backgroup processing are expected to be set up here
+            </summary>
+            TODO stop() method, for now use finalize() 
+        </member>
+        <member name="P:NHibernate.Search.Store.IDirectoryProvider.Directory">
+            <summary>
+            Returns an initialized Lucene Directory. This method call <b>must</b> be threadsafe
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.Impl.Lucene.LuceneBackendQueueProcessor">
+            <summary>
+            Apply the operations to Lucene directories avoiding deadlocks
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Backend.Impl.Lucene.LuceneBackendQueueProcessor.Run(System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="ignore">Ignored, used to keep the delegate signature that WaitCallback requires</param>
+        </member>
+        <member name="M:NHibernate.Search.Backend.Impl.Lucene.LuceneBackendQueueProcessor.DeadLockFreeQueue(System.Collections.Generic.List{NHibernate.Search.Backend.Impl.Lucene.LuceneWorker.WorkWithPayload})">
+            <summary>
+            one must lock the directory providers in the exact same order to avoid
+            dead lock between concurrent threads or processes
+            To achieve that, the work will be done per directory provider
+            We rely on the both the DocumentBuilder.GetHashCode() and the GetWorkHashCode() to 
+            sort them by predictive order at all times, and to put deletes before adds
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.ProjectionConstants.THIS">
+            <summary>
+            Represents the Hibernate Entity returned in a search.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.ProjectionConstants.DOCUMENT">
+            <summary>
+            The Lucene document returned by a search.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.ProjectionConstants.SCORE">
+            <summary>
+            The legacy document's score from a search.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.ProjectionConstants.BOOST">
+            <summary>
+            The boost value of the Lucene document.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.ProjectionConstants.ID">
+            <summary>
+            Object id property
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.ProjectionConstants.DOCUMENT_ID">
+            <summary>
+            Lucene Document id
+            </summary>
+            <remarks>
+            Experimental: If you use this feature, please speak up in the forum
+            Expert: Lucene document id can change overtime between 2 different IndexReader opening.
+            </remarks>
+        </member>
+        <member name="T:NHibernate.Search.Event.FullTextIndexCollectionEventListener">
+            <summary>
+            Support collection event listening
+            </summary>
+            HACK: Deprecate as soon as we target Core 3.3 and merge back into the superclass
+        </member>
+        <member name="M:NHibernate.Search.Event.FullTextIndexEventListener.ProcessWork(System.Object,System.Object,NHibernate.Search.Backend.WorkType,NHibernate.Event.AbstractEvent)">
+            <summary>
+            Does the work, after checking that the entity type is indeed indexed.
+            </summary>
+            <param name="entity"></param>
+            <param name="id"></param>
+            <param name="workType"></param>
+            <param name="e"></param>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException">
+            <summary>
+            The ambiguous search cfg exception.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.AmbiguousSearchCfgException.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException"/> class.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.AmbiguousSearchCfgException.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException"/> class.
+            </summary>
+            <param name="message">
+            The message.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.AmbiguousSearchCfgException.#ctor(System.String,System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException"/> class.
+            </summary>
+            <param name="message">
+            The message.
+            </param>
+            <param name="inner">
+            The inner.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.AmbiguousSearchCfgException.#ctor(System.Exception)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException"/> class.
+            </summary>
+            <param name="innerException">
+            The inner exception.
+            </param>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.AmbiguousSearchCfgException.#ctor(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            Initializes a new instance of the <see cref="T:NHibernate.Search.Cfg.AmbiguousSearchCfgException"/> class.
+            </summary>
+            <param name="info">
+            The info.
+            </param>
+            <param name="context">
+            The context.
+            </param>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.ITwoWayFieldBridge">
+            <summary>
+            An IFieldBridge able to convert the index representation back into an object without losing information
+            
+            Any bridge expected to process a document id should implement this interface
+            EXPERIMENTAL Consider this interface as private
+            </summary>
+            TODO: rework the interface inheritance there are some common concepts with StringBridge
+        </member>
+        <member name="M:NHibernate.Search.Bridge.ITwoWayFieldBridge.Get(System.String,Lucene.Net.Documents.Document)">
+            <summary>
+            Build the element object from the Document
+            </summary>
+            <param name="value"></param>
+            <param name="document"></param>
+            <returns>The return value is the Entity id</returns>
+        </member>
+        <member name="M:NHibernate.Search.Bridge.ITwoWayFieldBridge.ObjectToString(System.Object)">
+            <summary>
+            Convert the object representation to a String
+            The return String must not be null, it can be empty though
+            EXPERIMENTAL API subject to change in the future
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NHibernate.Search.Backend.Work">
+            <summary>
+            work unit. Only make sense inside the same session since it uses the scope principle
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Reader.CacheableMultiReader">
+            <summary>
+            MultiReader ensuring equals returns true if the underlying readers are the same (and in the same order)
+            Especially useful when using <see cref="T:Lucene.Net.Search.CachingWrapperFilter"/>
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.IParameterizedBridge">
+            <summary>
+            Allow parameter injection to a given bridge
+            </summary>
+        </member>
+        <!-- 잘못된 형식의 XML 주석은 "T:NHibernate.Search.Store.FSSlaveDirectoryProvider" 멤버에 대해 무시됩니다. -->
+        <member name="P:NHibernate.Search.Store.FSSlaveDirectoryProvider.TriggerTask.Abandon">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Engine.ISearchFactoryImplementor">
+            <summary>
+            Interface which gives access to the different directory providers and their configuration.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.ISearchFactory">
+            <summary>
+            Provide application wide operations as well as access to the underlying Lucene resources.
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.ISearchFactory.GetDirectoryProviders(System.Type)">
+            <summary>
+            Provide access to the DirectoryProviders (hence the Lucene Directories)
+            for a given entity
+            In most cases, the returned type will be a one element array.
+            But if the given entity is configured to use sharded indexes, then multiple
+            elements will be returned. In this case all of them should be considered.
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.ISearchFactory.Optimize">
+            <summary>
+            Optimize all indexes
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.ISearchFactory.Optimize(System.Type)">
+            <summary>
+            Optimize the index holding <code>entityType</code>
+            </summary>
+            <param name="entityType"></param>
+        </member>
+        <member name="P:NHibernate.Search.ISearchFactory.ReaderProvider">
+            <summary>
+            Provide the configured readerProvider strategy,
+            hence access to a Lucene IndexReader
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Filter.StandardFilterKey">
+            <summary>
+            Implements a filter key using all injected parameters to compute
+            equals and hashCode
+            <para>
+            The order the parameters are added is significant.
+            </para>
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.IWorker">
+            <summary>
+            Perform work for a given session. This implementation has to be multi threaded
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Backend.IWorker.PerformWork(NHibernate.Search.Backend.Work,NHibernate.Engine.ISessionImplementor)">
+            <summary>
+            Perform the work on the session
+            </summary>
+            <param name="work"></param>
+            <param name="session"></param>
+        </member>
+        <member name="M:NHibernate.Search.Backend.IWorker.Initialize(System.Collections.IDictionary,NHibernate.Search.Impl.SearchFactoryImpl)">
+            <summary>
+            Initialize the worker
+            </summary>
+            <param name="props"></param>
+            <param name="searchFactory"></param>
+        </member>
+        <member name="M:NHibernate.Search.Mapping.AttributeBased.AttributeSearchMappingBuilder.GetAttributeName(System.Reflection.MemberInfo,System.String)">
+            <summary>
+            Get the attribute name out of the member unless overridden by name
+            </summary>
+            <param name="member"></param>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.FieldAttribute">
+            <summary>
+            Mark a property as indexable
+            </summary>
+            <remarks>We allow multiple instances of this attribute rather than having a Fields as per Java</remarks>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FieldAttribute.Name">
+            <summary>
+            Field name, default to the property name
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FieldAttribute.Store">
+            <summary>
+            Should the value be stored in the document
+            defaults to no.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FieldAttribute.Index">
+            <summary>
+            Defines how the Field should be indexed
+            defaults to tokenized
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FieldAttribute.Analyzer">
+            <summary>
+            Define an analyzer for the field, default to
+            the inherited analyzer
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FieldAttribute.FieldBridge">
+            <summary>
+            Field bridge used. Default is autowired.
+            </summary>
+            TODO: Not sure if this is correct
+        </member>
+        <member name="T:NHibernate.Search.Attributes.IndexedEmbeddedAttribute">
+            <summary>
+            Specifies that an association (ToOne or Embedded) is to be indexed in the root entity index
+            </summary>
+            <remarks>
+            It allows queries involving associated objects restrictions
+            </remarks>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.IndexedEmbeddedAttribute.Prefix">
+            <summary>
+            Field name prefix
+            Default to 'propertyname.'
+            </summary>
+        </member>
+        <!-- 잘못된 형식의 XML 주석은 "P:NHibernate.Search.Attributes.IndexedEmbeddedAttribute.Depth" 멤버에 대해 무시됩니다. -->
+        <member name="P:NHibernate.Search.Attributes.IndexedEmbeddedAttribute.TargetElement">
+            <summary>
+            Overrides the type of an association. If a collection, overrides the type of the collection generics
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.Index">
+            <summary>
+            Defines how an Field should be indexed
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Attributes.Index.No">
+            <summary>
+            Do not index the field value. This field can thus not be searched,
+            but one can still access its contents provided it is {@link Store stored}.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Attributes.Index.Tokenized">
+            <summary>
+            Index the field's value so it can be searched. An Analyzer will be used
+            to tokenize and possibly further normalize the text before its
+            terms will be stored in the index. This is useful for common text.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Attributes.Index.UnTokenized">
+            <summary>
+            Index the field's value without using an Analyzer, so it can be searched.
+            As no analyzer is used the value will be stored as a single term. This is
+            useful for unique Ids like product numbers.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Attributes.Index.NoNorms">
+            <summary>
+            Index the field's value without an Analyzer, and disable
+            the storing of norms.  No norms means that index-time boosting
+            and field length normalization will be disabled.  The benefit is
+            less memory usage as norms take up one byte per indexed field
+            for every document in the index.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.FullTextFilterDefAttribute">
+            <summary>
+            Defines a FullTextFilter that can be optionally applied to every FullText Queries
+            While not related to a specific indexed entity, the annotation has to be set on one of them
+            </summary>
+            <remarks>We allow multiple instances of this attribute rather than having a FullTextFilterDefsAttribute as per Java</remarks>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FullTextFilterDefAttribute.Name">
+            <summary>
+            Filter name. Must be unique accross all mappings for a given persistence unit
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FullTextFilterDefAttribute.Impl">
+             <summary>
+             Either implements <see cref="T:Lucene.Net.Search.Filter"/>
+             or contains a <see cref="T:NHibernate.Search.Attributes.FactoryAttribute"/> method returning one.
+             The Filter generated must be thread-safe
+            
+             If the filter accept parameters, an <see cref="T:NHibernate.Search.Attributes.KeyAttribute"/> method must be present as well.
+             </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.FullTextFilterDefAttribute.Cache">
+            <summary>
+            Enable caching for this filter (default true).
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.DocumentIdAttribute">
+            <summary>
+            Declare a field as the document id. If set to a property, the property will be used
+            Note that <see cref="T:NHibernate.Search.Attributes.FieldBridgeAttribute"/> must return the Entity id
+            </summary>
+            TODO: If set to a class, the class itself will be passed to the FieldBridge
+        </member>
+        <member name="T:NHibernate.Search.Attributes.ClassBridgeAttribute">
+            <summary>
+            This annotation allows a user to apply an implementation
+            class to a Lucene document to manipulate it in any way
+            the user sees fit.
+            </summary>
+            <remarks>
+            We allow multiple instances of this attribute rather than having a ClassBridgesAttribute as per Java
+            </remarks>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Name">
+            <summary>
+            Field name, default to the property name.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Store">
+            <summary>
+            Should the value be stored in the document, defaults to no.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Index">
+            <summary>
+            Defines how the Field should be indexed defaults to tokenized.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Analyzer">
+            <summary>
+            Define an analyzer for the field, default to the inherited analyzer.
+            </summary>
+            <remarks>The Java uses an Analyzer annotation here, we can't do that, so just supply the analyzer's type</remarks>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Boost">
+            <summary>
+            A float value of the amount of lucene defined boost to apply to a field.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Impl">
+            <summary>
+            User supplied class to manipulate document in
+            whatever mysterious ways they wish to.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ClassBridgeAttribute.Parameters">
+            <summary>
+            Array of fields to work with. The imnpl class
+            above will work on these fields.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Store.Optimization.IOptimizerStrategy">
+            <summary>
+            Defines the index optimizer strategy
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Store.Optimization.IOptimizerStrategy.Initialize(NHibernate.Search.Store.IDirectoryProvider,System.Collections.Generic.IDictionary{System.String,System.String},NHibernate.Search.Engine.ISearchFactoryImplementor)">
+            <summary>
+            
+            </summary>
+            <param name="directoryProvider"></param>
+            <param name="indexProperties"></param>
+            <param name="searchFactoryImplementor"></param>
+        </member>
+        <member name="M:NHibernate.Search.Store.Optimization.IOptimizerStrategy.OptimizationForced">
+            <summary>
+            
+            </summary>
+            <remarks>Has to be called in a thread safe way</remarks>
+        </member>
+        <member name="M:NHibernate.Search.Store.Optimization.IOptimizerStrategy.AddTransaction(System.Int64)">
+            <summary>
+            
+            </summary>
+            <remarks>Has to be called in a thread safe way</remarks>
+            <param name="theOperations"></param>
+        </member>
+        <member name="M:NHibernate.Search.Store.Optimization.IOptimizerStrategy.Optimize(NHibernate.Search.Backend.Workspace)">
+            <summary>
+            
+            </summary>
+            <remarks>Has to be called in a thread safe way</remarks>
+            <param name="workspace"></param>
+        </member>
+        <member name="P:NHibernate.Search.Store.Optimization.IOptimizerStrategy.NeedOptimization">
+            <summary>
+            
+            </summary>
+            <remarks>Has to be called in a thread safe way</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.DirectoryProviderHelper.GetSourceDirectory(System.String,System.String,System.String,System.Collections.IDictionary)">
+            <summary>
+            Build a directory name out of a root and relative path, guessing the significant part
+            and checking for the file availability
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Store.DirectoryProviderFactory">
+            <summary>
+            Creates a Lucene directory provider.
+            <para>
+            Lucene directory providers are configured through properties
+            <list>
+            <item>hibernate.search.default.* and</item>
+            <item>hibernate.search.&lt;indexname&gt;.*</item>
+            </list>
+            &lt;indexname&gt; properties have precedence over default
+            </para>
+            <para>
+            The implementation is described by
+            hibernate.search.[default|indexname].directory_provider
+            </para>
+            If none is defined the default value is FSDirectory
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.AutoRegisterListeners">
+            <summary>
+            Enable listeners auto registration in Hibernate Annotations and EntityManager. Default to true.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.IndexingStrategy">
+            <summary>
+            Defines the indexing strategy, default <code>event</code>
+            Other options <code>manual</code>
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.AnalyzerClass">
+            <summary>
+            Lucene analyzer
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.WorkerBatchSize">
+            <summary>
+            Defines the maximum number of indexing operation batched per transaction
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.WorkerThreadPoolSize">
+            <summary>
+            Thread pool size, default 1
+            </summary>
+            <remarks>Only used when execution is async</remarks>
+        </member>
+        <member name="F:NHibernate.Search.Environment.WorkerWorkQueueSize">
+            <summary>
+            Size of the buffer queue (besides the thread pool size), default infinite
+            </summary>
+            <remarks>Only used when execution is async</remarks>
+        </member>
+        <member name="F:NHibernate.Search.Environment.ReaderPrefix">
+            <summary>
+            The reader prefix
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.ReaderStrategy">
+            <summary>
+            Define the strategy used.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Environment.FilterCachingStrategy">
+            <summary>
+            Filter caching strategy class (must have a no-arg constructor and implements <see cref="T:NHibernate.Search.Filter.IFilterCachingStrategy"/>)
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.Impl.BatchedQueueingProcessor">
+            <summary>
+             Batch work until <c>ExecuteQueue</c> is called.
+             The work is then executed synchronously or asynchronously
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.IQueueingProcessor">
+            <summary>
+             Pile work operations
+             No thread safety has to be implemented, the queue being thread scoped already
+             The implementation must be "stateless" wrt the queue through (ie not store the queue state)
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Filter.IFilterCachingStrategy">
+            <summary>
+            Defines the caching filter strategy
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Filter.IFilterCachingStrategy.Initialize(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <summary>
+            initialize the strategy from the properties
+            The Properties must not be changed
+            </summary>
+            <param name="properties"></param>
+        </member>
+        <member name="M:NHibernate.Search.Filter.IFilterCachingStrategy.GetCachedFilter(NHibernate.Search.Filter.FilterKey)">
+            <summary>
+            Retrieve the cached filter for a given key or null if not cached
+            </summary>
+            <param name="key"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.Filter.IFilterCachingStrategy.AddCachedFilter(NHibernate.Search.Filter.FilterKey,Lucene.Net.Search.Filter)">
+            <summary>
+            Propose a candidate filter for caching
+            </summary>
+            <param name="key"></param>
+            <param name="filter"></param>
+        </member>
+        <member name="T:NHibernate.Search.Bridge.TwoWayString2FieldBridgeAdaptor">
+            <summary>
+            Bridge to use a TwoWayStringBridge as a TwoWayFieldBridge
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Store.Optimization.IncrementalOptimizerStrategy">
+            <summary>
+            Optimization strategy triggered after a certain amount of operations
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.IFullTextSession">
+            <summary>
+            Extends the NHibernate <see cref="T:NHibernate.ISession"/> with full text search and indexing capabilities
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextSession.CreateFullTextQuery(Lucene.Net.Search.Query,System.Type[])">
+            <summary>
+            Create a <see cref="T:NHibernate.IQuery"/> on top of a native Lucene <see cref="T:Lucene.Net.Search.Query"/> returning
+            the matching object of type <c>entities</c> and their respective subbclasses.
+            If no entity is provided, no type filtering is done.
+            </summary>
+            <param name="luceneQuery"></param>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextSession.Index(System.Object)">
+            <summary>
+            Force the (re)indexing of a given <b>managed</b> object.
+            Indexation is batched per transaction</summary>
+            <param name="entity"></param>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextSession.Purge(System.Type,System.Object)">
+            <summary>
+            Purge the instance with the specified identity from the index, but not the database.
+            </summary>
+            <param name="clazz"></param>
+            <param name="id"></param>
+        </member>
+        <member name="M:NHibernate.Search.IFullTextSession.PurgeAll(System.Type)">
+            <summary>
+            Purge all instances from the index, but not the database.
+            </summary>
+            <param name="clazz"></param>
+        </member>
+        <member name="P:NHibernate.Search.IFullTextSession.SearchFactory">
+            <summary>
+            Provide access to the associated search factory, allowing to perform
+            index wide operation
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Impl.FullTextSessionImpl.Merge``1(``0)">
+            <summary>
+            Copy the state of the given object onto the persistent object with the same
+                        identifier. If there is no persistent instance currently associated with
+                        the session, it will be loaded. Return the persistent instance. If the
+                        given instance is unsaved, save a copy of and return it as a newly persistent
+                        instance. The given instance does not become associated with the session.
+                        This operation cascades to associated instances if the association is mapped
+                        with <tt>cascade="merge"</tt>.<br/>
+                        The semantics of this method are defined by JSR-220.
+            </summary>
+            <param name="entity">a detached instance with state to be copied </param>
+            <returns>
+            an updated persistent instance 
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Impl.FullTextSessionImpl.Merge``1(System.String,``0)">
+            <summary>
+            Copy the state of the given object onto the persistent object with the same
+                        identifier. If there is no persistent instance currently associated with
+                        the session, it will be loaded. Return the persistent instance. If the
+                        given instance is unsaved, save a copy of and return it as a newly persistent
+                        instance. The given instance does not become associated with the session.
+                        This operation cascades to associated instances if the association is mapped
+                        with <tt>cascade="merge"</tt>.<br/>
+                        The semantics of this method are defined by JSR-220.
+                        <param name="entityName">Name of the entity.</param><param name="entity">a detached instance with state to be copied </param>
+            <returns>
+            an updated persistent instance 
+            </returns>
+            </summary>
+            <returns/>
+        </member>
+        <member name="M:NHibernate.Search.Impl.FullTextSessionImpl.QueryOver``1(System.String)">
+            <summary>
+            Creates a new <c>IQueryOver{T};</c> for the entity class.
+            </summary>
+            <typeparam name="T">The entity class</typeparam><param name="entityName">The name of the entity to Query</param>
+            <returns>
+            An IQueryOver{T} object
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Impl.FullTextSessionImpl.QueryOver``1(System.String,System.Linq.Expressions.Expression{System.Func{``0}})">
+            <summary>
+            Creates a new <c>IQueryOver{T}</c> for the entity class.
+            </summary>
+            <typeparam name="T">The entity class</typeparam><param name="entityName">The name of the entity to Query</param><param name="alias">The alias of the entity</param>
+            <returns>
+            An IQueryOver{T} object
+            </returns>
+        </member>
+        <member name="M:NHibernate.Search.Impl.FullTextSessionImpl.CreateFullTextQuery(Lucene.Net.Search.Query,System.Type[])">
+            <summary>
+            Execute a Lucene query and retrieve managed objects of type entities (or their indexed subclasses
+            If entities is empty, include all indexed entities
+            </summary>
+            <param name="luceneQuery"></param>
+            <param name="entities">entities must be immutable for the lifetime of the query object</param>
+            <returns></returns>
+        </member>
+        <member name="M:NHibernate.Search.Impl.FullTextSessionImpl.Index(System.Object)">
+            <summary>
+            (re)index an entity.
+            Non indexable entities are ignored
+            The entity must be associated with the session
+            </summary>
+            <param name="entity">The entity to index - must not be null</param>
+            <returns></returns>
+        </member>
+        <member name="T:NHibernate.Search.Cfg.CfgXmlHelper">
+            <summary>
+            Helper to parse nhv-configuration XmlNode.
+            </summary>
+        </member>
+        <member name="F:NHibernate.Search.Cfg.CfgXmlHelper.CfgSchemaXMLNS">
+            <summary>The XML Namespace for the nhibernate-configuration</summary>
+        </member>
+        <member name="F:NHibernate.Search.Cfg.CfgXmlHelper.CfgSectionName">
+            <summary>
+            The XML node name for hibernate configuration section in the App.config/Web.config and
+            for the hibernate.cfg.xml .
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.BoostAttribute">
+            <summary>
+            Applies a boost factor on a field or whole entity
+            </summary>
+        </member>
+        <!-- 잘못된 형식의 XML 주석은 "T:NHibernate.Search.Store.FSMasterDirectoryProvider" 멤버에 대해 무시됩니다. -->
+        <member name="P:NHibernate.Search.Store.FSMasterDirectoryProvider.CopyDirectory.InProgress">
+            <summary>
+            Is the copy still executing
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Store.FSMasterDirectoryProvider.TriggerTask.Abandon">
+            <summary>
+            
+            </summary>
+        </member>
+        <!-- 잘못된 형식의 XML 주석은 "T:NHibernate.Search.Backend.LuceneIndexingParameters" 멤버에 대해 무시됩니다. -->
+        <member name="M:NHibernate.Search.Backend.LuceneIndexingParameters.#ctor">
+            <summary>
+            Constructor which instantiates a new parameter object with the the default values.
+            </summary>    
+        </member>
+        <member name="T:NHibernate.Search.Attributes.ParameterAttribute">
+            <summary>
+            Parameter (basically key/value pattern)
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Attributes.ParameterAttribute.#ctor(System.String,System.Object)">
+            <summary>
+            
+            </summary>
+            <param name="Name"></param>
+            <param name="Value"></param>
+            <remarks>Parameter names are capitalized so they appear nice in Intellisense</remarks>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ParameterAttribute.Name">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ParameterAttribute.Value">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Attributes.ParameterAttribute.Owner">
+            <summary>
+            The bridge that owns this parameter
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Backend.Workspace">
+            <summary>
+            Lucene workspace
+            This is not intended to be used in a multithreaded environment
+            <p/>
+            One cannot execute modification through an IndexReader when an IndexWriter has been acquired on the same underlying directory
+            One cannot get an IndexWriter when an IndexReader have been acquired and modified the same underlying directory
+            The recommended approach is to execute all the modifications on the IndexReaders, {@link #Dispose()} }, and acquire the
+            index writers
+            </summary>
+            TODO introduce the notion of read only IndexReader? We cannot enforce it because Lucene use abstract classes, not interfaces
+        </member>
+        <member name="M:NHibernate.Search.Backend.Workspace.Dispose">
+            <summary>
+            release resources consumed in the workspace if any
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Backend.Workspace.GetIndexWriter(NHibernate.Search.Store.IDirectoryProvider,System.Type,System.Boolean)">
+            <summary>
+            Retrieve a read/write <see cref="T:Lucene.Net.Index.IndexWriter"/>
+            </summary>
+            <param name="provider"></param>
+            <param name="entity"></param>
+            <param name="modificationOperation"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NHibernate.Search.Backend.Workspace.IsBatch">
+            <summary>
+            Flag indicating if the current work should be executed the Lucene parameters for batch indexing.
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Backend.Workspace.DPStatistics.OptimizationForced">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:NHibernate.Search.Backend.Workspace.DPStatistics.Operations">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Reader.NotSharedReaderProvider">
+            <summary>
+            Open a reader each time
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Query.IteratorImpl">
+            <summary>
+            I would guess for .NET we want this to implemnt IEnumerable
+            </summary>
+        </member>
+        <member name="M:NHibernate.Search.Cfg.CfgHelper.LoadConfiguration">
+            <summary>
+            Return NHibernate.Search Configuration. Loaded using the <c>&lt;nhs-configuration&gt;</c> section
+            from the application config file, if found, or the file <c>nhsearch.cfg.xml</c> if the
+            <c>&lt;nhs-configuration&gt;</c> section is not present.
+            If neither is present, then a blank NHSConfiguration is returned.
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.KeyAttribute">
+            <summary>
+            Marks a method as a key constructor for a given type.
+            A key is an object that uniquely identify a given object type and a given set of parameters
+            <para>
+            The key object must implement equals / hashcode so that 2 keys are equals iif
+            the given target object types are the same, the set of parameters are the same.
+            </para>
+            KeyAttribute currently works for <see cref="P:NHibernate.Search.Attributes.FullTextFilterDefAttribute.Impl"/>
+            </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.FactoryAttribute">
+             <summary>
+             Marks a method as a factory method for a given type.
+             A factory method is called whenever a new instance of a given
+             type is requested.
+             The factory method is used with a higher priority than a plain no-arg constructor when present
+            
+             Factory currently works for classes supplied to <see cref="P:NHibernate.Search.Attributes.FullTextFilterDefAttribute.Impl"/>.
+             </summary>
+        </member>
+        <member name="T:NHibernate.Search.Attributes.DateBridgeAttribute">
+            <summary>
+            Defines the temporal resolution of a given field
+            Date are stored as String in GMT
+            </summary>
+        </member>
+    </members>
+</doc>

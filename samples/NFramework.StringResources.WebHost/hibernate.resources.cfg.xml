@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+
+	<bytecode-provider type="lcg"/>
+	<reflection-optimizer use="true" />
+	
+	<session-factory name="StringResources">
+
+		<property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
+		<property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+		<property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+
+		<property name="connection.connection_string_name">StringResourcesDB</property>
+		<property name="connection.isolation">ReadCommitted</property>
+
+		<property name="show_sql">true</property>
+		<!-- ConnectionString에 User Instance 속성이 True이면 default_schema를 정의하면 안된다. -->
+		<!--<property name="default_schema">StringResourcesDB.dbo</property>-->
+
+		<!-- For NH 2.1.0 -->
+		<!--<property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>-->
+		<!--<property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>-->
+		
+
+
+		<!-- 캐시 관련 -->
+		<!--
+		<property name="cache.provider_class">NHibernate.Caches.Prevalence.PrevalenceCacheProvider, NHibernate.Caches.Prevalence</property>
+		<property name="cache.provider_class">NHibernate.Caches.SysCache.SysCacheProvider, NHibernate.Caches.SysCache</property>
+		<property name="cache.provider_class">NHibernate.Caches.MemCache.MemCacheProvider, NHibernate.Caches.MemCache</property>
+		-->
+
+		<!--
+			MemCacheProvider 사용시 use_second_level_cache : false 일때만 작동
+			SysCacheProvider 사용시 use_second_level_cache : true/false 모두 작동
+		-->
+		<property name="cache.region_prefix">NSoft.NFramework.StringResources</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.use_query_cache">true</property>
+
+		<!-- Second Cache Provider -->
+		<property name="cache.provider_class">NHibernate.Cache.HashtableCacheProvider, NHibernate</property>
+
+		<!-- Indexus.NET SharedCache 3.0.5.1을 사용하는 Provider를 NSoft.NFramework에서 제공합니다. NHContrib에서 제공하는 것은 버그가 있어서요 -->
+		<!--<property name="cache.provider_class">NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider, NSoft.NFramework.Caching.SharedCache.NHCaches</property>-->
+
+		<!--<property name="cache.provider_class">NHibernate.Caches.SysCache.SysCacheProvider, NHibernate.Caches.SysCache</property>-->
+		<!-- IndeXus.Net Shared Cache 를 이용합니다. 이를 위해 IndeXus.Net Shared Cache 가 install되어 있어야 합니다.-->
+		<!--<property name="cache.provider_class">NHibernate.Caches.SharedCache.SharedCacheProvider, NHibernate.Caches.SharedCache</property>-->
+		<!--<property name="cache.provider_class">NHibernate.Caches.Velocity.VelocityProvider, NHibernate.Caches.Velocity</property>-->
+
+
+		<!-- FluentNHibernate 에서는 IoC config 에서 assembly 파일을 지정합니다. -->
+		<!--
+		<mapping assembly="NSoft.NFramework.StringResources" />
+		<class-cache class="NSoft.NFramework.StringResources.NHibernate.NHResource, NSoft.NFramework.StringResources" usage="read-only" include="all"/>
+		-->
+		
+		<!-- event listener 추가 -->
+		<listener type="pre-insert" class="NSoft.NFramework.Data.NHibernateEx.EventListeners.UpdateTimestampEventListener, NSoft.NFramework.Data.NHibernateEx"/>
+		<listener type="pre-update" class="NSoft.NFramework.Data.NHibernateEx.EventListeners.UpdateTimestampEventListener, NSoft.NFramework.Data.NHibernateEx"/>
+
+	</session-factory>
+</hibernate-configuration>

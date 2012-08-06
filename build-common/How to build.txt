@@ -1,0 +1,145 @@
+모든 빌드는 NAnt 0.86 Beta1 으로 실행됩니다.
+NAnt 최신 버전은 http://nant.sourceforge.net/ 에서 다운로드 할 수 있습니다. (Tools\NAnt 에 있습니다. - 0.86 Beta1)
+
+.NET 3.5 지원을 한다면 NAnt 0.68 b2 nightly build 를 사용하시는 것을 추천합니다.
+
+RCL-NET trunk에는 AssemblyInfo.cs가 없습니다. Visual Studio.NET을 이용하여 프로젝트를 빌드하고자 한다면 먼저 nant build 를 수행하셔야 합니다.
+
+
+Possible problem with 3.5
+=========================
+if you get the following error: 
+"The SDK for the 'net-3.5' framework is not available or not configured."
+then you probably need to fix the sdkInstallRoot in your nant.exe.config file to point to the correct location in the registry
+See the following article for more info:
+http://www.timbarcz.com/blog/NantSetupForVisualStudio2008AndNet35.aspx
+
+Possible problem with WCF facility build
+========================================
+
+If you bump into the following message "System.ServiceModel.CommunicationException : The TransportManager failed to listen on the supplied URI using the NetTcpPortSharing service: failed to start the service because it is disabled. An administrator can enable it by running 'sc.exe config NetTcpPortSharing start= demand'
+
+Run the following from the command line:
+
+> sc.exe config NetTcpPortSharing start= demand
+
+
+
+
+The following are some useful tips if things go wrong for some reason.
+
+Where to start the build?
+=========================
+
+Use the default.build in the root directory. It compiles everything in the right order, copies dependencies and so on.
+
+Simply type
+
+  > nant
+This will create a Debug build of the project
+
+Use the following to build the trunk before attempting to load any solutions in your IDE for the first time, otherwise you may have reference problems:
+
+  > nant rebuild, or
+  > nant quick rebuild
+
+
+Database tests
+==============
+
+If you have MS SQL Server installed (default instance) just create two databases:
+
+- test
+- test2
+
+If not, and you want to run the database tests, you must set the connection string, dialect and driver through NAnt defines. Otherwise you can disable the tests (see below).
+
+The basic NHibernate settings can be set as NAnt arguments:
+
+- ar.dialect sets the NHibernate dialect
+
+    > -D:ar.dialect=NHibernate.Dialect.MsSql2000Dialect
+
+- ar.connection.driver_class sets the driver
+
+    > -D:ar.connection.driver_class=NHibernate.Driver.SqlClientDriver
+
+- ar.connection.connection_string{1,2} set the connection strings for the test and test2 databases
+
+    > -D:ar.connection.connection_string.1="Data Source=.;Initial Catalog=test;Integrated Security=SSPI;"
+    > -D:ar.connection.connection_string.2="Data Source=.;Initial Catalog=test2;Integrated Security=SSPI;"
+
+
+MSDTC
+=====
+The Distributed Transaction Coordinator (msdtc) is required for some of the tests.
+If the service is not running by default on your machine, you'd need to start it to make tests pass
+so, simply start it before running nant, and stop it afterwards:
+
+    > net start msdtc
+    > nant ...
+    > net stop msdtc
+
+
+Build options
+=============
+
+Build option selectors
+------------------------
+
+Selectors are pseudo-targets, used to configure some part of the build.
+They need to be put before real build targets.
+
+debug:		"nant debug build" will build the project in debug configuration"
+release:	"nant release rebuild" will rebuild the entire project in release configuration
+quick: 		"nant quick build" will run the build without tests and generally will try to skip as much as possible to speed up the build.
+
+
+Running the tests
+-------------------
+It's strongly advised to use the NUnit console test runner (nunit-console.exe) for running the tests.
+If you do not have NUnit installed the build script will fall back to using NAnt's <nunit2> task, which may or may not work for you.
+The build will search for nunit-console.exe on the path, in case you don't have it on the path you can specify it's location by
+setting the NAnt property -D:nunit-console=<full path to nunit-console.exe>.
+
+Building without running the tests
+-------------------
+
+  > nant -D:common.testrunner.enabled=false
+
+
+Compiling a version not strongly signed
+---------------------------------------
+
+  > nant -D:sign=false
+
+ 
+Allowing partial trust
+----------------------
+
+  > nant -D:assembly.allow-partially-trusted-callers=true
+
+
+Building the Castle MSI installer
+----------------------
+
+  > nant installer
+  
+You need to have installed the tools following for running this task:
+- Sandcastle
+  http://www.microsoft.com/downloads/details.aspx?FamilyId=E82EA71D-DA89-42EE-A715-696E3A4873B2&displaylang=en
+
+- Sandcastle Help File Builder
+  http://www.codeplex.com/SHFB
+
+- HTML Help 1.x compiler
+  http://www.microsoft.com/downloads/details.aspx?familyid=00535334-c8a6-452f-9aa0-d597d16580cc&displaylang=en
+
+- WiX v3.
+  http://wix.sourceforge.net/downloadv3.html
+
+
+More questions? 
+===============
+
+Please direct more questions to our devel mailing list or our forum at http://www.castleproject.org/

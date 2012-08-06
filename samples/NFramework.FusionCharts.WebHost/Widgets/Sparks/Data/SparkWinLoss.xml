@@ -1,0 +1,18 @@
+﻿<chart caption='Yankees' subcaption='Current season'>
+	<dataset>
+		<set value='W' />
+		<set value='W' />
+		<set value='D' />
+		<set value='L' />
+		<set value='W' />
+		<set value='W' />
+		<set value='L' />
+		<set value='L' />
+		<set value='W' />
+		<set value='L' />
+		<set value='W' scoreless='1' />
+		<set value='L' />
+		<set value='W' />
+		<set value='W' />
+	</dataset>
+</chart>

@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings">
+
+    <!-- 회사 -->
+    <class name="LocaledCompany" table="LocaledCompany" dynamic-insert="true" dynamic-update="true" mutable="false" schema-action="none">
+
+        <cache region="RealAdmin" usage="read-write" />
+
+        <id name="Id" column="CompanyId" type="Int32" unsaved-value="0">
+            <generator class="native" />
+        </id>
+
+        <property name="Code" column="CompanyCode" type="String" length="128" not-null="true"/>
+        <property name="Name" column="CompanyName" type="String" not-null="true" />
+        <property name="IsActive" type="Boolean" />
+
+        <property name="Description" type="String" length="9999" />
+        <property name="ExAttr" type="String" length="9999" />
+
+        <property name="UpdateTimestamp" type="Timestamp" />
+
+        <bag name="Users" inverse="true" lazy="true" cascade="all">
+            <key column="CompanyId" />
+            <one-to-many class="LocaledUser"/>
+        </bag>
+
+        <!-- 다국어 정보 -->
+        <map name="LocaleMap" table="LocaledCompanyLocale"  access="field.camelcase-underscore" inverse="false" lazy="false" cascade="none" >
+
+            <key column="CompanyId" foreign-key="FK_CompanyLocale_Company" />
+            <index column="LocaleKey" type="NSoft.NFramework.Data.NHibernateEx.Domain.UserTypes.CultureUserType, NSoft.NFramework.Data.NHibernateEx" />
+
+            <composite-element class="LocaledCompanyLocale">
+                <property name="Name" column="CompanyName" type="String" not-null="true" />
+                <property name="Description" type="String" length="9999" />
+                <property name="ExAttr" type="String" length="9999" />
+            </composite-element>
+        </map>
+
+        <!-- 메타 데이타 -->
+        <map name="MetadataMap" table="LocaledCompanyMetadata" access="field.camelcase-underscore" inverse="false" lazy="false" cascade="none">
+
+            <key column="CompanyId" foreign-key="FK_CompanyMetadata_Company" />
+            <index column="MetadataKey" type="String" length="255" />
+
+            <composite-element class="NSoft.NFramework.Data.NHibernateEx.Domain.MetadataValue, NSoft.NFramework.Data.NHibernateEx">
+                <property name="Value" column="MetadataValue" type="String" length="9999" />
+                <property name="ValueType" column="MetadataValueType" type="String" length="1024" />
+            </composite-element>
+        </map>
+    </class>
+
+    <!--
+		schema-action="none" 이 class 에 매핑된 테이블에 대해서만 작동하고, association되는 테이블에 대해서는 작동하지 않습니다!!!
+		그래서 테이블로 생성되는 CompanyLocale을 drop하고, View로 생성합니다.
+	-->
+    <database-object>
+        <create>
+            create view LocaledCompany
+            as
+            select * from sysobjects;
+            go
+        </create>
+        <drop>
+            if OBJECT_ID('LocaledCompany') is not null
+            drop view LocaledCompany;
+            go
+        </drop>
+        <dialect-scope name="NHibernate.Dialect.MsSql2000Dialect"/>
+        <dialect-scope name="NHibernate.Dialect.MsSql2005Dialect"/>
+        <dialect-scope name="NHibernate.Dialect.MsSql2008Dialect"/>
+    </database-object>
+
+    <database-object>
+        <create>
+            drop table LocaledCompanyLocale;
+            go
+
+            create view LocaledCompanyLocale
+            as
+            select * from sysobjects;
+            go
+        </create>
+        <drop>
+            if OBJECT_ID('LocaledCompanyLocale') is not null
+            drop view LocaledCompanyLocale;
+            go
+        </drop>
+        <dialect-scope name="NHibernate.Dialect.MsSql2000Dialect"/>
+        <dialect-scope name="NHibernate.Dialect.MsSql2005Dialect"/>
+        <dialect-scope name="NHibernate.Dialect.MsSql2008Dialect"/>
+    </database-object>
+
+    <database-object>
+        <create>
+            drop table LocaledCompanyMetadata;
+            go
+
+            create view LocaledCompanyMetadata
+            as
+            select * from sysobjects;
+            go
+        </create>
+        <drop>
+            if OBJECT_ID('LocaledCompanyMetadata') is not null
+            drop view LocaledCompanyMetadata;
+            go
+        </drop>
+        <dialect-scope name="NHibernate.Dialect.MsSql2000Dialect"/>
+        <dialect-scope name="NHibernate.Dialect.MsSql2005Dialect"/>
+        <dialect-scope name="NHibernate.Dialect.MsSql2008Dialect"/>
+    </database-object>
+
+</hibernate-mapping>

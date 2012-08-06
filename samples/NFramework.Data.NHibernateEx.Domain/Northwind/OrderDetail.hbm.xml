@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Northwind">
+
+	<class name="OrderDetail" table="`Order Details`" dynamic-insert="true" dynamic-update="true">
+
+		<!--
+	<composite-id name="Id" class="OrderDetailIdentity">
+	  <key-property name="OrderId" column="OrderId" type="Int32"/>
+	  <key-property name="ProductId" column="ProductId" type="Int32"/>
+	</composite-id>
+	
+	<many-to-one name="Order" column="OrderId" class="Order" not-null="true" lazy="false"/>
+	<many-to-one name="Product" column="ProductId" class="Product" not-null="true" lazy="false"/>
+	
+	-->
+
+		<composite-id>
+			<key-many-to-one name="Order" column="OrderID" class="Order" lazy="proxy" />
+			<key-many-to-one name="Product" column="ProductID" class="Product" lazy="proxy" />
+		</composite-id>
+
+		<property name="UnitPrice" type="Decimal" not-null="true" />
+		<property name="Quantity" type="Int32" not-null="true" />
+		<property name="Discount" type="Single" not-null="true" />
+
+	</class>
+
+</hibernate-mapping>

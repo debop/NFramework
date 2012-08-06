@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2F0D237C-72A2-4CC1-81C1-D89EFE6A63DB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Caching</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Caching.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\lib\net-4.0\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Enyim.Caching">
+      <HintPath>..\..\lib\net-4.0\Enyim.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\lib\net-4.0\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\net-4.0\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharedCache.WinServiceCommon">
+      <HintPath>..\..\lib\net-4.0\SharedCache.WinServiceCommon.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\..\lib\net-4.0\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Domain\DtoMappingFixture.cs" />
+    <Compile Include="Domain\Model\ChildDto.cs" />
+    <Compile Include="Memcached\CacheItems\CacheItemBase.cs" />
+    <Compile Include="Memcached\CacheItems\TaskCacheItem.cs" />
+    <Compile Include="Memcached\Memcached\MemcachedClientFixture.cs" />
+    <Compile Include="Memcached\NHCaches\MemcachedCacheClientFixture.cs" />
+    <Compile Include="Memcached\NHCaches\MemcachedCacheProviderFixture.cs" />
+    <Compile Include="Memcached\NHCaches\NHDatabaseTestFixtureBase.cs" />
+    <Compile Include="Memcached\NHCaches\NHRepositoryTestFixtureBase.cs" />
+    <Compile Include="Memcached\NHCaches\SecondCacheTestCase.cs" />
+    <Compile Include="Memcached\Repositories\MemcachedRespositoryFixture.cs" />
+    <Compile Include="Memcached\Tools\MemcachedToolFixture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SharedCache\Benchmark\BenchmarkFixture.cs" />
+    <Compile Include="SharedCache\CacheItems\CacheItemBase.cs" />
+    <Compile Include="SharedCache\CacheItems\TaskCacheItem.cs" />
+    <Compile Include="Domain\Model\Child.cs" />
+    <Compile Include="Domain\Model\ChildMap.cs" />
+    <Compile Include="Domain\Model\Parent.cs" />
+    <Compile Include="Domain\Model\ParentDTO.cs" />
+    <Compile Include="Domain\Model\ParentMap.cs" />
+    <Compile Include="Domain\NHDatabaseTestFixtureBase.cs" />
+    <Compile Include="Domain\NHRepositoryTestFixtureBase.cs" />
+    <Compile Include="Domain\SecondCacheTestCase.cs" />
+    <Compile Include="SharedCache\NHCaches\NHDatabaseTestFixtureBase.cs" />
+    <Compile Include="SharedCache\NHCaches\NHRepositoryTestFixtureBase.cs" />
+    <Compile Include="SharedCache\NHCaches\SecondCacheTestCase.cs" />
+    <Compile Include="SharedCache\NHCaches\SharedcacheClientTestCase.cs" />
+    <Compile Include="SharedCache\NHCaches\SharedCacheProviderTestCase.cs" />
+    <Compile Include="SharedCache\Repositories\SharedCacheRepositoryFixture.cs" />
+    <Compile Include="SharedCache\SharedCacheTestCase.cs" />
+    <Compile Include="SharedCache\SharedCacheToolFixture.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NFramework.Caching.Memcached\NFramework.Caching.Memcached-vs11.csproj">
+      <Project>{630E2001-DE0C-4E47-B29A-EC516BBD8E2D}</Project>
+      <Name>NFramework.Caching.Memcached-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Caching.SharedCache\NFramework.Caching.SharedCache-vs11.csproj">
+      <Project>{65A1D582-0B6C-4EDB-A22F-1C0ADB9151EE}</Project>
+      <Name>NFramework.Caching.SharedCache-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Data.NHibernateEx\NFramework.Data.NHibernateEx-vs11.csproj">
+      <Project>{C19799F1-C38E-4478-A122-C958153F0AD6}</Project>
+      <Name>NFramework.Data.NHibernateEx-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{EB7BEB5B-6813-4A60-B453-93060BE22C30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="default.build" />
+    <None Include="NSoft.NFramework.Caching.IoC.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="hibernate.cfg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="logging.nlog.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SharedCache\Web\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

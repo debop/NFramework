@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5AA0B365-0DDD-485F-A62D-EB202F01FECB}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.StringResources</RootNamespace>
+    <AssemblyName>NSoft.NFramework.StringResources</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\lib\net-4.0\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\lib\net-4.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\lib\net-4.0\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\ExpressionField.cs" />
+    <Compile Include="Core\IExpressionField.cs" />
+    <Compile Include="Core\ResourceEnumConverter.cs" />
+    <Compile Include="Core\ResourceReaderBase.cs" />
+    <Compile Include="Factory\DefaultResourceProviderFactory.cs" />
+    <Compile Include="Factory\IResourceProviderFactory.cs" />
+    <Compile Include="Factory\ResourceProviderFactoryBase.cs" />
+    <Compile Include="IStringResourceProvider.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Providers\Ado\AdoResourceProvider.cs" />
+    <Compile Include="Providers\Ado\AdoResourceReader.cs" />
+    <Compile Include="Providers\Ado\AdoResourceRepository.cs" />
+    <Compile Include="Providers\ExternalResourceProvider.cs" />
+    <Compile Include="Providers\File\FileResourceHandler.cs" />
+    <Compile Include="Providers\File\FileResourceProvider.cs" />
+    <Compile Include="Providers\File\FileResourceReader.cs" />
+    <Compile Include="Providers\LocalResourceProvider.cs" />
+    <Compile Include="Providers\NHibernate\INhResourceRepository.cs" />
+    <Compile Include="Providers\NHibernate\NHResource.cs" />
+    <Compile Include="Providers\NHibernate\NHResourceMap.cs" />
+    <Compile Include="Providers\NHibernate\NHResourceProvider.cs" />
+    <Compile Include="Providers\NHibernate\NHResourceReader.cs" />
+    <Compile Include="Providers\NHibernate\NHResourceRepository.cs" />
+    <Compile Include="Providers\ParameterizedResourceProvider.cs" />
+    <Compile Include="Providers\ResourceProviderBase.cs" />
+    <Compile Include="Providers\ResourceProviderDecorator.cs" />
+    <Compile Include="ResourceProvider.cs" />
+    <Compile Include="StringResourceTool.cs" />
+    <Compile Include="StringResourceReaderBase.cs" />
+    <Compile Include="WebResourceExpressionBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+    <None Include="Providers\NHibernate\Windsor.NHibernate.config" />
+    <None Include="Providers\NHibernate\Windsor.ResourceProviders.config" />
+    <None Include="Windsor.ResourceProviders.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework.Data.NHibernateEx\NFramework.Data.NHibernateEx-vs11.csproj">
+      <Project>{c19799f1-c38e-4478-a122-c958153f0ad6}</Project>
+      <Name>NFramework.Data.NHibernateEx-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{eb7beb5b-6813-4a60-b453-93060be22c30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

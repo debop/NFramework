@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.StringResources.Tests"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+	
+	<property name="assembly.description" value="Unit Testing for NSoft.NFramework.StringResources"/>
+	<property name="sign" value="false"/>
+
+	<target name="init" depends="common.init">
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<include name="System"/>
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.Web"/>
+			<include name="System.Xml"/>
+			<include name="System.Xml.Linq"/>
+			
+			
+
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+
+			<include name="FluentNHibernate.dll" />
+			<include name="Iesi.Collections.dll"/>
+			<include name="NHibernate.dll"/>
+
+			<include name="NSoft.NFramework.dll"/>
+			<include name="NSoft.NFramework.Data.dll"/>
+			<include name="NSoft.NFramework.Data.NHibernateEx.dll"/>
+			<include name="NSoft.NFramework.StringResources.dll"/>
+
+			<!-- Sample Resources -->
+			<include name="NSoft.NFramework.StringResources.Sample.ExtResources.dll"/>
+			
+			<include name="NLog.dll"/>
+			<include name="NUnit.Framework.dll"/>
+			<include name="SharpTestEx.dll" />
+			
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.hbm.xml"/>
+		</resourcefileset>
+		
+		<!-- copy the config file for testing -->
+		<copy todir="${build.dir}" overwrite="true">
+			<fileset basedir="${src.dir}">
+				<include name="**/*.xml"/>
+				<include name="**/*.config"/>
+				<include name="**/*.ini"/>
+				<exclude name="app.config"/>	<!-- common.init 에서 자동으로 생성해준다-->
+			</fileset>
+		</copy>
+		
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-tests common.run-tests"
+			description="Build ${project::get-name()}">
+			<echo message="${project::get-name()} TEST 완료"/>
+	</target>
+
+</project>

@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart palette='2' piefillAlpha='34' pieBorderThickness='3' hoverFillColor='FDCEDA' pieBorderColor='FFFFFF' baseFontSize='9' useHoverColor='1' showLabels='1' caption='Organization Chart'>
+	<category label='CEO' hoverText='&lt;B&gt;&lt;U&gt;Chief Technology Officer&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. Lucas Smith&lt;BR&gt;Joined: 1988&lt;BR&gt;More details can come here...' fillColor='DBFF6C' link='n-http://www.InfoSoftGlobal.com/FusionCharts?Details=CTO'>
+		<category label='CTO' hoverText='&lt;B&gt;&lt;U&gt;Chief Technology Officer&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. Ed Harley&lt;BR&gt;Joined: 1988&lt;BR&gt;More details can come here...' fillColor='DBFF6C' link='n-http://www.InfoSoftGlobal.com/FusionCharts?Details=CTO'>
+			<category label='Proj. Manager' hoverText='&lt;B&gt;&lt;U&gt;Project Manager&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. Daniel Edwards'>
+				<category label='Design' hoverText='&lt;B&gt;&lt;U&gt;Design Team&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;LI&gt;Akhil Dhanuka&lt;BR&gt;Atrayee&lt;BR&gt;Samit Basak&lt;/LI&gt;' />
+				<category label='Coding' hoverText='&lt;B&gt;&lt;U&gt;Coding Team&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;LI&gt;Sanket Kumar&lt;BR&gt;Folko&lt;BR&gt;George Baker&lt;BR&gt;Andrew Hall&lt;BR&gt;Chris Schofield &lt;/LI&gt;' />
+				<category label='Validate' hoverText='&lt;B&gt;&lt;U&gt;Validation Team&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;LI&gt; Raju Sharma &lt;BR&gt;Ravi Srivastav &lt;/LI&gt;' />
+			</category>
+			<category label='Q &amp; A Manager' hoverText='&lt;B&gt;&lt;U&gt;Q &amp; A Manager&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. Lee Chong'>
+				<category label='Testing Team' hoverText='&lt;B&gt;&lt;U&gt;Testing Team&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;LI&gt; Nik Arora &lt;BR&gt;Jee Chou&lt;/LI&gt;' />
+			</category>
+			<category label='Architect' hoverText='&lt;B&gt;&lt;U&gt;System Architecture Manager&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. Rajiv Kumar'>
+				<category label='Study' hoverText='&lt;B&gt;&lt;U&gt;System Requirement Study Team&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;LI&gt; Raju Sharma &lt;BR&gt;Ravi Srivastav &lt;/LI&gt;' />
+				<category label='Design' hoverText='&lt;B&gt;&lt;U&gt;Design Team&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;&lt;LI&gt; Raju Sharma &lt;BR&gt;Ravi Srivastav &lt;BR&gt;Robin Smith &lt;BR&gt;Harry Tofel &lt;/LI&gt;' />
+			</category>
+
+		</category>
+		<category label='CFO' hoverText='&lt;B&gt;&lt;U&gt;Chief Financial Officer&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. John Smith&lt;BR&gt;Joined: 1987&lt;BR&gt;More details can come here...' fillColor='FBE299' link='n-http://www.InfoSoftGlobal.com/FusionCharts?Details=CFO'>
+			<category label='Payables' hoverText='Accounts Payable Team'>
+				<category label='Salary' hoverText='Team for salary accounts maintenance and upkeep' />
+				<category label='Purchase' hoverText='Team for accounting of  purchase of S/w and goods' />
+				<category label='Other' hoverText='Other Payments' />
+			</category>
+			<category label='Receivables' hoverText='Accounts Receivables Team'>
+				<category label='SW1' hoverText='Online Software Receipts Accounts' />
+				<category label='SW2' hoverText='Physical Software Receipts Accounts' />
+				<category label='SER1' hoverText='Services Collection' />
+				<category label='SER2' hoverText='Services Collection (Physical)' />
+				<category label='OTR' hoverText='Subscription and Other Collections' />
+			</category>
+		</category>
+		<category label='CIO' hoverText='&lt;B&gt;&lt;U&gt;Chief Information Officer&lt;/U&gt;&lt;/B&gt;&lt;BR&gt;Mr. David Brown&lt;BR&gt;Joined: 1992&lt;BR&gt;More details can come here...' fillColor='DAEDFC' link='n-http://www.InfoSoftGlobal.com/FusionCharts?Details=CIO'>
+			<category label='PR' hoverText='PR Team'>
+				<category label='Packaging' hoverText='Packaging Staff' />
+				<category label='Inv Rel.' hoverText='Investor Relations Upkeep' />
+				<category label='Marketing' hoverText='Marketing &amp; Sales' />
+			</category>
+			<category label='HR' hoverText='HR Team'>
+				<category label='Selection' hoverText='Selection of Candidates' />
+				<category label='Deploying' hoverText='Deploying at required site' />
+			</category>
+		</category>
+	</category>
+	<styles>
+		<definition>
+			<style name='myHTMLFont' type='font' isHTML='1' />
+			<style name='captionFont' type='font' size='16' />
+
+		</definition>
+		<application>
+			<apply toObject='TOOLTIP' styles='myHTMLFont' />
+			<apply toObject='CAPTION' styles='captionFont' />
+		</application>
+	</styles>
+</chart>

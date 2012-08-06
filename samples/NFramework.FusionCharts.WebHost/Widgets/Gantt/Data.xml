@@ -1,0 +1,51 @@
+﻿<chart DateFormat="yyyy-MM-dd" Caption="Chart with DataTable" SubCaption="소제목입니다.">
+	<categories LegendBgColor="FFFFFF" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1">
+		<category LegendBgColor="FFFFFF" Label="2" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-02-01 00:00:00" End="2007-02-28 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="3" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-03-01 00:00:00" End="2007-03-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="4" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-04-01 00:00:00" End="2007-04-30 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="5" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-05-01 00:00:00" End="2007-05-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="6" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-06-01 00:00:00" End="2007-06-30 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="7" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-07-01 00:00:00" End="2007-07-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="8" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-08-01 00:00:00" End="2007-08-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="9" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-09-01 00:00:00" End="2007-09-30 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="10" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-10-01 00:00:00" End="2007-10-01 00:00:00" />
+	</categories>
+	<processes HeaderText="What to do?" headerAlign="right" headerVAlign="bottom" headerFontSize="18" Align="right" FontSize="12" IsBold="1">
+		<process LegendBgColor="FFFFFF" Label="Identify Customers" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Survey 50 Customers" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Interpret Requirements" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Study Competition" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Documentation of features" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Brainstorm concepts" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Design &amp; Code" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="테스트 / QA" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="Documentation of product" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process LegendBgColor="FFFFFF" Label="배포" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+	</processes>
+	<datatable headerVAlign="bottom">
+		<datacolumn HeaderText="작업자" headerAlign="right" headerVAlign="bottom" headerFontSize="18" Align="left" FontSize="12">
+			<text Label="홍길동" Link="'mailto\x3a홍길동\x40realweb21.com'" />
+			<text Label="David" Link="'mailto\x3aDavid\x40realweb21.com'" />
+			<text Label="Mary" Link="'mailto\x3aMary\x40realweb21.com'" />
+			<text Label="Andrew" Link="'mailto\x3aAndrew\x40realweb21.com'" />
+			<text Label="김갑동" Link="'mailto\x3a김갑동\x40realweb21.com'" />
+			<text Label="Sharon" Link="'mailto\x3aSharon\x40realweb21.com'" />
+			<text Label="Neil" Link="'mailto\x3aNeil\x40realweb21.com'" />
+			<text Label="Harry" Link="'mailto\x3aHarry\x40realweb21.com'" />
+			<text Label="Chris" Link="'mailto\x3aChris\x40realweb21.com'" />
+			<text Label="Rechard" Link="'mailto\x3aRechard\x40realweb21.com'" />
+		</datacolumn>
+	</datatable>
+	<tasks>
+		<task Start="2007-02-04 00:00:00" End="2007-02-10 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-02-09 00:00:00" End="2007-02-20 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-02-20 00:00:00" End="2007-03-04 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-03-02 00:00:00" End="2007-03-22 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-03-22 00:00:00" End="2007-04-06 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-04-06 00:00:00" End="2007-06-05 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-07-21 00:00:00" End="2007-08-20 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-07-29 00:00:00" End="2007-08-24 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-08-25 00:00:00" End="2007-09-04 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+		<task Start="2007-09-01 00:00:00" End="2007-10-01 00:00:00" Animation="1" Color="8A2BE2" BorderThickness="1" ShowLabel="1" />
+	</tasks>
+</chart>

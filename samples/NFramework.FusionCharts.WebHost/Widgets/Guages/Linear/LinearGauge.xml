@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart lowerLimit='0' upperLimit='100' lowerLimitDisplay='Bad' upperLimitDisplay='Good' palette='1' numberSuffix='%' chartRightMargin='20' editMode='1' decimals='0'>
+	<colorRange>
+		<color minValue='0' maxValue='75' code='FF654F' label='Bad' />
+		<color minValue='75' maxValue='90' code='F6BD0F' label='Moderate' />
+		<color minValue='90' maxValue='100' code='8BBA00' label='Good' />
+	</colorRange>
+	<pointers>
+		<pointer value='92' />
+	</pointers>
+	<styles>
+		<definition>
+			<style type='font' name='myValueFont' bgColor='F1f1f1' borderColor='999999' />
+		</definition>
+		<application>
+			<apply toObject='Value' styles='myValueFont' />
+		</application>
+	</styles>
+</chart>

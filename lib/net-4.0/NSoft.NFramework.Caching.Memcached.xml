@@ -1,0 +1,428 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Caching.Memcached</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheConfig">
+      <summary>
+            Memcached Cache 에 대한 환경 설정 값을 나타냅니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheConfig.Region">
+      <summary>
+            캐시 영역 명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheConfig.Properties">
+      <summary>
+            Cache 관련 속성들 (ConnectionString, Expiration 등)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheSectionHandler">
+      <summary>
+        <see cref="T:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient" />를 위한 환경설정 정보를 Configuration 파일에서 읽어서 반환합니다.
+            </summary>
+      <example>
+        <code>
+          <configSections>
+            <section name="memcachedCache" type="NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheSectionHandler, NSoft.NFramework.Caching.Memcached" />
+          </configSections>
+          <membaseCache>
+            <!-- region 은 Unique 해야 합니다. expiration: Timespan , compressThreshold:byte단위-->
+            <cache region="NSoft.NFramework" expiration="01:00:00" compressThreshold="40960" />
+            <cache region="NAccounts" expiration="01:00:00" compressThreshold="40960" />
+          </membaseCache>
+        </code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheSectionHandler.Create(System.Object,System.Object,System.Xml.XmlNode)">
+      <summary>
+            구성 섹션 처리기를 만듭니다.
+            </summary>
+      <returns>
+            만들어진 섹션 처리기 개체입니다.
+            </returns>
+      <param name="parent">부모 개체입니다.</param>
+      <param name="configContext">구성 컨텍스트 개체입니다.</param>
+      <param name="section">섹션 XML 노드입니다.</param>
+      <filterpriority>2</filterpriority>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient">
+      <summary>
+            Memcached를 캐시 저장소로 사용하는 NHibernate 2nd Cache의 Client 클래스입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Get(System.Object)">
+      <summary>
+            Get the object from the Cache
+            </summary>
+      <param name="key" />
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Put(System.Object,System.Object)">
+      <summary>
+            항목을 캐시에 저장
+            </summary>
+      <param name="key" />
+      <param name="value" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Remove(System.Object)">
+      <summary>
+            Remove an item from the Cache.
+            </summary>
+      <param name="key">The Key of the Item in the Cache to remove.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Clear">
+      <summary>
+            Clear the Cache
+            </summary>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Destroy">
+      <summary>
+            Clean up.
+            </summary>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Lock(System.Object)">
+      <summary>
+            If this is a clustered cache, lock the item
+            </summary>
+      <param name="key">The Key of the Item in the Cache to lock.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Unlock(System.Object)">
+      <summary>
+            If this is a clustered cache, unlock the item
+            </summary>
+      <param name="key">The Key of the Item in the Cache to unlock.</param>
+      <exception cref="T:NHibernate.Cache.CacheException" />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.NextTimestamp">
+      <summary>
+            Generate a timestamp
+            </summary>
+      <returns />
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Region">
+      <summary>
+            캐시 영역
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Expiry">
+      <summary>
+            기본 유효기간
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.CompressThreshold">
+      <summary>
+            압축 수행을 위한 최소 크기 (byte)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Repository">
+      <summary>
+            Memcached CacheRepository
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.Timeout">
+      <summary>
+            Get a reasonable "lock timeout"
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheClient.RegionName">
+      <summary>
+            Gets the name of the cache region
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheProvider">
+      <summary>
+            Memcached 를 NHibernate 2nd 캐시 저장소로 사용하도록 하는 Cache Provider입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheProvider.BuildCache(System.String,System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            Configure the cache
+            </summary>
+      <param name="regionName">the name of the cache region</param>
+      <param name="properties">configuration settings</param>
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheProvider.NextTimestamp">
+      <summary>
+            generate a timestamp
+            </summary>
+      <returns />
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheProvider.Start(System.Collections.Generic.IDictionary{System.String,System.String})">
+      <summary>
+            Callback to perform any necessary initialization of the underlying cache implementation
+                        during ISessionFactory construction.
+            </summary>
+      <param name="properties">current configuration settings</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.NHCaches.MemcachedCacheProvider.Stop">
+      <summary>
+            Callback to perform any necessary cleanup of the underlying cache implementation
+                        during <see cref="M:NHibernate.ISessionFactory.Close" />.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.MemcachedRepository">
+      <summary>
+            Memcached 캐시 서버를 저장소로 사용하는 Cache Repository 입니다.
+            참고: https://github.com/enyim/EnyimMemcached/wiki/MemcachedClient-Usage
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedRepository.Get(System.String)">
+      <summary>
+            캐시에 저장된 항목을 반환합니다.
+            </summary>
+      <param name="key">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedRepository.Set(System.String,System.Object,System.TimeSpan)">
+      <summary>
+            캐시에 항목을 저장합니다.
+            </summary>
+      <param name="key">
+      </param>
+      <param name="item">
+      </param>
+      <param name="validFor">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedRepository.Remove(System.String)">
+      <summary>
+            캐시에서 항목을 제거합니다.
+            </summary>
+      <param name="key">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedRepository.Clear">
+      <summary>
+            캐시의 모든 항목을 삭제합니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.Web.MemcachedOutputCacheProvider">
+      <summary>
+            ASP.NET 웹 Page의 Output Cache를 Memcached 서버에 저장해주는 OutputCacheProvider입니다.
+            </summary>
+      <summary>
+            .NET 4.0 이상에서 ASP.NET 웹 Page의 Output Cache를 Memcached 서버에 저장해주는 OutputCacheProvider입니다.
+            참고:
+                 http://www.4guysfromrolla.com/articles/061610-1.aspx
+                 http://weblogs.asp.net/gunnarpeipman/archive/2009/11/19/asp-net-4-0-writing-custom-output-cache-providers.aspx
+                 http://weblogs.asp.net/scottgu/archive/2010/01/27/extensible-output-caching-with-asp-net-4-vs-2010-and-net-4-0-series.aspx
+            </summary>
+      <example>
+        <code>
+          <system.web>
+            <compilation debug="true" targetFramework="4.0" />
+            <caching>
+              <outputCache defaultProvider="MemcachedOutputCacheProvider">
+                <providers>
+                  <add name="MemcachedOutputCacheProvider" type="NSoft.NFramework.Caching.Memcached.Web.MemcachedOutputCacheProvider, NSoft.NFramework.Memcached" />
+                </providers>
+              </outputCache>
+            </caching>
+          </system.web>
+        </code>
+      </example>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.Web.MemcachedPageStatePersister">
+      <summary>
+            ASP.NET Web Page 상태 정보를 Memcached 캐시 서버에 저장해주는 클래스입니다. <br />
+            참고 : https://github.com/enyim/EnyimMemcached/wiki/MemcachedClient-Usage
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.Web.MemcachedPageStatePersister.LoadFromRepository">
+      <summary>
+            ViewState 저장소로부터 저장된 ViewState 정보를 가져옵니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.Web.MemcachedPageStatePersister.SaveToRepository">
+      <summary>
+            Page의 ViewState 정보를 특정 저장소에 저장하고, 저장 토큰 값을 <see cref="P:NSoft.NFramework.Web.PageStatePersisters.AbstractServerPageStatePersister.StateValue" />에 저장합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.Web.MemcachedPageStatePersister.CacheRepository">
+      <summary>
+            Memcached 캐시 서버를 저장소로 사용하는 Cache Repository 입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Caching.Memcached.Web.MemcachedSessionStateStoreProvider">
+      <summary>
+            ASP.NET 웹 Application의 세션 정보를 Memcached 캐시 서버에 저장해주는 클래스입니다. <br />
+            참고 : https://github.com/enyim/EnyimMemcached/wiki/MemcachedClient-Usage
+            참고 : http://msdn.microsoft.com/en-us/library/ms178589.aspx
+            </summary>
+      <example>
+        <code>
+            // web.config 에서 다음과 같이 환경 설정하면 됩니다.
+            <system.web><sessionState cookieless="true" regenerateExpiredSessionId="true" mode="Custom" customProvider="MemcachedSessionStateStoreProvider"><providers><add name="MemcachedSessionStateStoreProvider" type="NSoft.NFramework.Memcached.Web.MemcachedSessionStateStoreProvider, NSoft.NFramework.Memcached" /></providers></sessionState></system.web></code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.GetClient(System.String)">
+      <summary>
+            지정한 Bucket명에 해당하는 Bucket과 통신하는 <see cref="T:Enyim.Caching.MemcachedClient" /> 인스턴스를 반환합니다.
+            </summary>
+      <param name="sectionName">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.GetValue(Enyim.Caching.MemcachedClient,System.String)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <returns>저장된 캐시 값</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.GetValue(Enyim.Caching.MemcachedClient,System.String,System.DateTime)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="newExpiresAt">새로운 유효기간</param>
+      <returns>저장된 캐시 값</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.GetValue``1(Enyim.Caching.MemcachedClient,System.String)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <returns>저장된 캐시 값</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.GetValue``1(Enyim.Caching.MemcachedClient,System.String,System.DateTime)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="newExpiresAt">새로운 유효기간</param>
+      <returns>저장된 캐시 값</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.GetValue(Enyim.Caching.MemcachedClient,System.Collections.Generic.IEnumerable{System.String})">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="keys">캐시 키</param>
+      <returns>저장된 캐시 키-값의 Dictionary</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.SetValue(Enyim.Caching.MemcachedClient,System.String,System.Object)">
+      <summary>
+            지정된 정보를 캐시에 저장합니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장할 값</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.SetValue(Enyim.Caching.MemcachedClient,System.String,System.Object,System.DateTime)">
+      <summary>
+            지정된 정보를 캐시에 저장합니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장할 값</param>
+      <param name="expiresAt">삭제 시각</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.SetValue(Enyim.Caching.MemcachedClient,System.String,System.Object,System.TimeSpan)">
+      <summary>
+            지정된 정보를 캐시에 저장합니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장할 값</param>
+      <param name="validFor">유효기간</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TryGetValue(Enyim.Caching.MemcachedClient,System.String,System.Object@)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장된 값</param>
+      <returns>조회 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TryGetValue(Enyim.Caching.MemcachedClient,System.String,System.Nullable{System.DateTime},System.Object@)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="newExpiresAt">새로운 유효기간</param>
+      <param name="value">저장된 값</param>
+      <returns>조회 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TryGetValue``1(Enyim.Caching.MemcachedClient,System.String,``0@)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <typeparam name="T">저장된 값의 수형</typeparam>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장된 값</param>
+      <returns>조회 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TryGetValue``1(Enyim.Caching.MemcachedClient,System.String,System.Nullable{System.DateTime},``0@)">
+      <summary>
+            캐시에 저장된 정보를 가져옵니다.
+            </summary>
+      <typeparam name="T">저장된 값의 수형</typeparam>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="newExpiresAt">새로운 유효기간</param>
+      <param name="value">저장된 값</param>
+      <returns>조회 결과</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TrySetValue(Enyim.Caching.MemcachedClient,System.String,System.Object)">
+      <summary>
+            지정된 정보를 캐시에 저장합니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장할 값</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TrySetValue(Enyim.Caching.MemcachedClient,System.String,System.Object,System.DateTime)">
+      <summary>
+            지정된 정보를 캐시에 저장합니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장할 값</param>
+      <param name="expiresAt">삭제 시각</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.TrySetValue(Enyim.Caching.MemcachedClient,System.String,System.Object,System.TimeSpan)">
+      <summary>
+            지정된 정보를 캐시에 저장합니다.
+            </summary>
+      <param name="client">MemcachedClient 인스턴스</param>
+      <param name="key">캐시 키</param>
+      <param name="value">저장할 값</param>
+      <param name="validFor">유효기간</param>
+    </member>
+    <member name="M:NSoft.NFramework.Caching.Memcached.MemcachedTool.FlushAllItems(Enyim.Caching.MemcachedClient)">
+      <summary>
+        <paramref name="client" />에 해당하는 버킷의 모든 엔티티 정보를 삭제합니다.
+            </summary>
+      <param name="client">
+      </param>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.MemcachedTool.Client">
+      <summary>
+            기본 <see cref="T:Enyim.Caching.MemcachedClient" /></summary>
+    </member>
+    <member name="P:NSoft.NFramework.Caching.Memcached.MemcachedTool.DefaultExpiry">
+      <summary>
+            기본 유효기간 (1 시간) 
+            </summary>
+    </member>
+  </members>
+</doc>

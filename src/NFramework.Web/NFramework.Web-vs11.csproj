@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D7E756A7-CF16-438E-96AD-AD7470F26948}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Web</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AjaxControlToolkit">
+      <HintPath>..\..\lib\net-4.0\AjaxControlToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\..\lib\net-4.0\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\..\NFramework-svn\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\..\NFramework-svn\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\lib\net-4.0\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\..\NFramework-svn\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="RealWeb.Portal.Controls">
+      <HintPath>..\..\lib\net-4.0\RealWeb.Portal.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\net-4.0\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Web.UI">
+      <HintPath>..\..\lib\net-4.0\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Access\AccessIdentity.cs" />
+    <Compile Include="Access\AccessPrincipal.cs" />
+    <Compile Include="Access\IAccessIdentity.cs" />
+    <Compile Include="Enums\ActorKind.cs" />
+    <Compile Include="Components\FileItem.cs" />
+    <Compile Include="Components\LocaleItem.cs" />
+    <Compile Include="Enums\EntityEditMode.cs" />
+    <Compile Include="Enums\MessageBoxDisplayKind.cs" />
+    <Compile Include="HttpHandlers\RouteHandlers\IndexRouteHandler.cs" />
+    <Compile Include="HttpHandlers\RouteHandlers\MainPageRouteHandler.cs" />
+    <Compile Include="HttpHandlers\RouteHandlers\RouteHandlerBase.cs" />
+    <Compile Include="HttpHandlers\RouteHandlers\RouteHandler.cs" />
+    <Compile Include="Enums\MessageButtons.cs" />
+    <Compile Include="Pages\AbstractMasterPage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DefaultControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DefaultMasterPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\DefaultPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EntityGridControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EntityGridPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\EntityTreeControl.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\IEntityGridPage.cs" />
+    <Compile Include="Pages\IEntityTreeControl.cs" />
+    <Compile Include="Pages\NHibernateEntityGridControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NHibernateEntityGridPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\NonAuthenticationPageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Pages\PageBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Enums\SelectionItemMode.cs" />
+    <Compile Include="Enums\SelectionItemDisplayMode.cs" />
+    <Compile Include="Routing\IgnoreRouteCollection.cs" />
+    <Compile Include="Routing\IgnoreRouteElement.cs" />
+    <Compile Include="Routing\IRouteService.cs" />
+    <Compile Include="Routing\RouteChildElement.cs" />
+    <Compile Include="Routing\RouteCollection.cs" />
+    <Compile Include="Routing\RouteConfigElement.cs" />
+    <Compile Include="Routing\RouteTableRegister.cs" />
+    <Compile Include="Routing\RouteTableSection.cs" />
+    <Compile Include="Services\AuthenticationService\AuthenticationServiceBase.cs" />
+    <Compile Include="Services\AuthenticationService\AuthorizationService.cs" />
+    <Compile Include="Services\AuthenticationService\IAuthenticationService.cs" />
+    <Compile Include="Services\FileService\DefaultFileReceiver.cs" />
+    <Compile Include="Services\FileService\DefaultFileSender.cs" />
+    <Compile Include="Services\FileService\DefaultFileService.cs" />
+    <Compile Include="Services\FileService\FileReceiverBase.cs" />
+    <Compile Include="Services\FileService\Repositories\DefaultFileRepository.cs" />
+    <Compile Include="Services\FileService\Repositories\FileRepositoryBase.cs" />
+    <Compile Include="Services\FileService\Repositories\FtpFileRepository.cs" />
+    <Compile Include="Services\FileService\Repositories\IFileRepository.cs" />
+    <Compile Include="Services\FileService\FileSenderBase.cs" />
+    <Compile Include="Services\FileService\FileServiceBase.cs" />
+    <Compile Include="Services\FileService\IFileReceiver.cs" />
+    <Compile Include="Services\FileService\IFileSender.cs" />
+    <Compile Include="Services\FileService\IFileService.cs" />
+    <Compile Include="Services\MenuService\DefaultMenuService.cs" />
+    <Compile Include="Services\MenuService\IMenuService.cs" />
+    <Compile Include="Services\MenuService\SiteMapMenuService.cs" />
+    <Compile Include="Services\RoleService\IRoleService.cs" />
+    <Compile Include="Services\RoleService\RoleServiceBase.cs" />
+    <Compile Include="Services\RouteService\DefaultRouteService.cs" />
+    <Compile Include="Services\RouteService\IRouteService.cs" />
+    <Compile Include="Services\RouteService\RouteServiceBase.cs" />
+    <Compile Include="SR.cs" />
+    <Compile Include="WebAppContext.cs" />
+    <Compile Include="WebAppContext.Current.cs" />
+    <Compile Include="WebAppContext.Services.cs" />
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="Tools\NetworkDriveTool.cs" />
+    <Compile Include="Tools\WebAppTool.ClientScript.cs" />
+    <Compile Include="Tools\WebAppTool.cs" />
+    <Compile Include="Tools\WebAppTool.Enums.cs" />
+    <Compile Include="Tools\WebAppTool.Locale.cs" />
+    <Compile Include="Tools\WebAppTool.MessageBox.cs" />
+    <Compile Include="Tools\WebAppTool.Resource.cs" />
+    <Compile Include="Tools\WebAppTool.Theme.cs" />
+    <Compile Include="Tools\WebAppTool.Uri.cs" />
+    <Compile Include="UserControls\ComboBoxes\CodeAndNamedEntityComboBoxBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\ComboBoxes\EntityComboBoxBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\EntityEditUserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\EntityTreeViewUserControlBase.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserControls\IEntityEditUserControl.cs" />
+    <Compile Include="UserControls\IEntityTreeViewUserControl.cs" />
+    <Compile Include="Components\MenuItem.cs" />
+    <Compile Include="Components\ThemeItem.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework.Data.NHibernateEx\NFramework.Data.NHibernateEx-vs11.csproj">
+      <Project>{c19799f1-c38e-4478-a122-c958153f0ad6}</Project>
+      <Name>NFramework.Data.NHibernateEx-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{eb7beb5b-6813-4a60-b453-93060be22c30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework.StringResources\NFramework.StringResources-vs11.csproj">
+      <Project>{5AA0B365-0DDD-485F-A62D-EB202F01FECB}</Project>
+      <Name>NFramework.StringResources-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework.Web.TelerikEx\NFramework.Web.TelerikEx-vs11.csproj">
+      <Project>{e7baf30e-3e06-46ba-b2fe-96dadccabf00}</Project>
+      <Name>NFramework.Web.TelerikEx-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="HttpApplications\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

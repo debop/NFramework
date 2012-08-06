@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings">
+
+	<!-- 사용자 -->
+	<class name="LocaledUser" table="LocaledUser" dynamic-insert="true" dynamic-update="true" mutable="false" schema-action="none">
+
+		<id name="Id" column="UserId" type="Int32" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<many-to-one name="Company" class="LocaledCompany" column="CompanyId" lazy="proxy" fetch="select" foreign-key="FK_User_Company" />
+		<property name="Code" column="UserCode" type="String" length="128" not-null="true"/>
+
+		<property name="Name" column="UserName" type="String" not-null="true" />
+		<property name="IsActive" type="Boolean" />
+
+		<property name="Description" type="String" length="9999" />
+		<property name="ExAttr" type="String" length="9999" />
+
+		<property name="JsonData" type="NSoft.NFramework.Data.NHibernateEx.Domain.UserTypes.JsonSerializableUserType, NSoft.NFramework.Data.NHibernateEx">
+			<column name="JSON_DATA" />
+		</property>
+		
+		<property name="UpdateTimestamp" type="Timestamp" />
+
+		<!-- 다국어 정보 -->
+		<map name="LocaleMap" table="LocaledUserLocale" generic="true" inverse="false" lazy="false" cascade="none" mutable="false" >
+
+			<key column="UserId" foreign-key="FK_UserLocale_User" />
+			<index column="LocaleKey" type="NSoft.NFramework.Data.NHibernateEx.Domain.UserTypes.CultureUserType, NSoft.NFramework.Data.NHibernateEx" />
+
+			<composite-element class="LocaledUserLocale">
+				<property name="Name" column="UserName" type="String" not-null="true" />
+				<property name="Description" type="String" length="9999" />
+				<property name="ExAttr" type="String" length="9999" />
+			</composite-element>
+		</map>
+
+		<!-- 메타 데이타 -->
+		<map name="MetadataMap" table="LocaledUserMetadata" access="field.camelcase-underscore" generic="true" inverse="false" lazy="false" cascade="none" mutable="false">
+
+			<key column="UserIdId" foreign-key="FK_UserMetadata_User" />
+			<index column="MetadataKey" type="String" length="255" />
+
+			<composite-element class="NSoft.NFramework.Data.NHibernateEx.Domain.MetadataValue, NSoft.NFramework.Data.NHibernateEx">
+				<property name="Value" column="MetadataValue" type="String" length="9999" />
+				<property name="ValueType" column="MetadataValueType" type="String" length="1024" />
+			</composite-element>
+		</map>
+	</class>
+
+	<!--
+		schema-action="none" 이 class 에 매핑된 테이블에 대해서만 작동하고, association되는 테이블에 대해서는 작동하지 않습니다!!!
+		그래서 테이블로 생성되는 CompanyLocale을 drop하고, View로 생성합니다.
+	-->
+	<database-object>
+		<create>
+			create view [dbo].[LocaledUser]
+			as
+				select * from sysobjects;
+			go
+		</create>
+		<drop>
+            if OBJECT_ID('LocaledUser') is not null
+            drop view [LocaledUser];
+            go
+        </drop>
+		<dialect-scope name="NHibernate.Dialect.MsSql2000Dialect"/>
+		<dialect-scope name="NHibernate.Dialect.MsSql2005Dialect"/>
+		<dialect-scope name="NHibernate.Dialect.MsSql2008Dialect"/>
+	</database-object>
+	
+	<database-object>
+		<create>
+            drop table LocaledUserLocale;
+            go
+
+            create view LocaledUserLocale
+            as
+            select * from sysobjects;
+            go
+        </create>
+		<drop>
+            if OBJECT_ID('LocaledUserLocale') is not null
+            drop view LocaledUserLocale;
+            go
+        </drop>
+		<dialect-scope name="NHibernate.Dialect.MsSql2000Dialect"/>
+		<dialect-scope name="NHibernate.Dialect.MsSql2005Dialect"/>
+		<dialect-scope name="NHibernate.Dialect.MsSql2008Dialect"/>
+	</database-object>
+
+	<database-object>
+		<create>
+            drop table LocaledUserMetadata;
+            go
+
+            create view LocaledUserMetadata
+            as
+            select * from sysobjects;
+            go
+        </create>
+		<drop>
+            if OBJECT_ID('LocaledUserMetadata') is not null
+            drop view LocaledUserMetadata;
+            go
+        </drop>
+		<dialect-scope name="NHibernate.Dialect.MsSql2000Dialect"/>
+		<dialect-scope name="NHibernate.Dialect.MsSql2005Dialect"/>
+		<dialect-scope name="NHibernate.Dialect.MsSql2008Dialect"/>
+	</database-object>
+		
+</hibernate-mapping>

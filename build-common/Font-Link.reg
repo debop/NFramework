@@ -1,0 +1,12 @@
+﻿Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
+"Andale Mono"="NanumGothicCoding.ttf,NanumGothicCoding"
+"Bitstream Vera Sans Mono"="NanumGothicCoding.ttf,NanumGothicCoding"
+"Consolas"="NanumGothicCoding.ttf,NanumGothicCoding"
+"Lucida Console"="NanumGothic.ttf,NanumGothic"
+"Lucida Sans Typewriter"="NanumGothicCoding.ttf,NanumGothicCoding"
+"Lucida Sans Unicode"="Malgun Gothic.ttf,맑은 고딕"
+"Lucida Grande"="NanumGothic.ttf,NanumGothic"
+"Monaco"="Gulim.ttc,돋움체"
+"Segoe UI Mono"="NanumGothicCoding.ttf,NanumGothicCoding"

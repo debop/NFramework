@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain">
+	
+	<class name="Role" table="NH_ASP_Roles" dynamic-insert="true" dynamic-update="true">
+		
+		<id name="Id" column="RoleId" type="Int32" unsaved-value="0">
+			<generator class="native" />
+		</id>
+		
+		<property name="Name" type="String" />
+		<property name="IsActive" type="Boolean" />
+
+		<many-to-one name="Entity" class="AnotherEntity" cascade="all">
+			<column name="EntityId" />
+		</many-to-one>
+
+		<many-to-one name="ParentRole" cascade="all">
+			<column name="ParentId" />
+		</many-to-one>
+	</class>
+</hibernate-mapping>

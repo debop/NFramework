@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NSoft.NFramework.Web.Mvc</name>
+    </assembly>
+    <members>
+        <member name="T:NSoft.NFramework.Web.Mvc.JsonNetResult">
+            <summary>
+            Newtonsoft.Json.dll 라이브러리를 이용하여 Action 결과를 JSON Serialization/Deserialization 을 수행합니다.
+            ASP.NET MVC 3 기본 직렬화 방식인 JavaScriptSerializer 보다 4배 이상 빠르다.
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.Mvc.JsonNetResult.ContentEncoding">
+            <summary>
+            HttpResponse의 ContentEncoding 설정 (기본은 web.config의 Response ContentEncoding을 사용한다)
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.Mvc.JsonNetResult.ContentType">
+            <summary>
+            Response ContentType (기본은 "application/json")
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.Mvc.JsonNetResult.Result">
+            <summary>
+            실제 ActionResult 결과 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.Mvc.JsonNetResult.SerializerSettings">
+            <summary>
+            Json 직렬화 설정
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.Mvc.JsonNetResult.Formatting">
+            <summary>
+            Json 직렬화 결과 Text 포맷 종류
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Web.Mvc.RssActionResult`1">
+            <summary>
+            RSS 형식의 결과를 반환합니다.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NSoft.NFramework.Web.Mvc.RssActionResult`1.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Enables processing of the result of an action method by a custom type that inherits from the <see cref="T:System.Web.Mvc.ActionResult"/> class.
+            </summary>
+            <param name="context">The context in which the result is executed. The context information includes the controller, HTTP content, request context, and route data.</param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.Mvc.SimplifiedRedirectResult.ExecuteResult(System.Web.Mvc.ControllerContext)">
+            <summary>
+            Enables processing of the result of an action method by a custom type that inherits from the <see cref="T:System.Web.Mvc.ActionResult"/> class.
+            </summary>
+            <param name="context">The context in which the result is executed. The context information includes the controller, HTTP content, request context, and route data.</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:NSoft.NFramework.Web.Mvc.WebApi.JavaScriptSerializerFormatter" -->
+        <!-- Badly formed XML comment ignored for member "T:NSoft.NFramework.Web.Mvc.WebApi.JsonNetFormatter" -->
+        <member name="F:NSoft.NFramework.Web.Mvc.MvcTool.DefaultJsonSerializerSettings">
+            <summary>
+            Json 직렬화의 기본 설정
+            </summary>
+        </member>
+    </members>
+</doc>

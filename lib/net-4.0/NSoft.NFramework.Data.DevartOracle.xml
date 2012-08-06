@@ -1,0 +1,384 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Data.DevartOracle</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase">
+      <summary>
+            Devart dotConnector for Oracle 을 사용하여, Microsoft Enterprise Library의 DAAB 의 Database를 구현했습니다.
+            </summary>
+      <example>
+        <code>
+            // 환경 설정 파일에 DAAB 관련해서 OracleDatabase를 추가하면 됩니다.
+            <dataConfiguration defaultDatabase="LOCAL_XE"><providerMappings><add name="Devart.Data.Oracle" databaseType="NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleProvider, NSoft.NFramework.Data.DevartOracle" /></providerMappings></dataConfiguration></code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase.#ctor(System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="connectionString">DB 연결 문자열</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase.CreateConnection">
+      <summary>
+            새로운 Oracle Connection 인스턴스를 생성합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase.DeriveParameters(System.Data.Common.DbCommand)">
+      <summary>
+            Procedure의 Parameter 정보를 로드합니다.
+            </summary>
+      <param name="discoveryCommand">
+      </param>
+    </member>
+    <member name="P:NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase.ParameterToken">
+      <summary>
+            Parameter Token Character (':')
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.DevartOracle.IOracleRepository">
+      <summary>
+            Oracle용 Repository의 Interface입니다. <see cref="T:NSoft.NFramework.Data.IAdoRepository" />를 상속받습니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync">
+      <summary>
+        <see cref="T:Devart.Data.Oracle.OracleCommand" />를 비동기 방식으로 수행하는 메소드를 제공합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="oraCommand" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="oraCommand" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="query" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="query" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsyncBySqlString(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsyncBySqlString(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsyncByProcedure(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsyncByProcedure(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsListAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+            Multi-ResultSet일 경우에 DataTable 컬렉션으로 반환합니다.
+            NOTE: Oracle에서는 Multi-ResultSet 작업을 위해서 SQL 문이 상당히 복잡합니다. 차라리 ExecuteDataTableAsync를 여러개 호출하세요.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteDataTableAsListAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,System.Nullable{System.Int32},System.Nullable{System.Int32},NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+            Multi-ResultSet일 경우에 DataTable 컬렉션으로 반환합니다.
+            NOTE: Oracle에서는 Multi-ResultSet 작업을 위해서 SQL 문이 상당히 복잡합니다. 차라리 ExecuteDataTableAsync를 여러개 호출하세요.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteNonQueryAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <see cref="T:Devart.Data.Oracle.OracleCommand" />을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="oraCommand">실행할 <see cref="T:Devart.Data.Oracle.OracleCommand" /> 인스턴스</param>
+      <param name="parameters">파리미터 정보</param>
+      <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteNonQueryAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="query" />을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="query">실행할 쿼리문 또는 Procecedure 명</param>
+      <param name="parameters">파리미터 정보</param>
+      <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteNonQueryBySqlStringAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" />을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="sqlString">실행할 쿼리문</param>
+      <param name="parameters">파리미터 정보</param>
+      <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteNonQueryByProcedureAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" />을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="spName">실행할 프로시져 명</param>
+      <param name="parameters">파리미터 정보</param>
+      <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteReaderAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="oraCommand" /> 를 이용하여, <see cref="T:System.Threading.Tasks.Task`1" />를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="oraCommand">실행할 OracleCommand 인스턴스</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>OracleDataReader를 결과로 반환하는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteReaderAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="query" /> 를 실행하여, <see cref="T:System.Threading.Tasks.Task`1" />를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="query">실행할 쿼리문 또는 Procedure 명</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 셋을 가지는 IDataReader를 결과로 가지는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteReaderBySqlStringAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" /> 를 실행하여, <see cref="T:System.Threading.Tasks.Task`1" />를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="sqlString">실행할 쿼리문</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 셋을 가지는 IDataReader를 결과로 가지는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteReaderByProcedureAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" /> 를 실행하여, <see cref="T:System.Threading.Tasks.Task`1" />를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="spName">실행할 프로시져 명</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 셋을 가지는 IDataReader를 결과로 가지는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteScalarAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="oraCommand" /> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="oraCommand">실행할 OracleCommand 인스턴스</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteScalarAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="query" /> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="query">실행할 쿼리문 또는 Procedure 명</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteScalarBySqlStringAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" /> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="sqlString">실행할 쿼리문</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteScalarByProcedureAsync(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" /> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="oraDatabase">Devart dotConnector for Oracle을 이용하여 생성한 OracleProvider</param>
+      <param name="spName">실행할 쿼리문</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteMapObject``1(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,System.Func{``0},NSoft.NFramework.Data.Mappers.INameMapper,System.Int32,System.Int32,System.Action{System.Data.IDataReader,``0},NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="oraCommand" />를 실행하여, 결과 셋을 Persistent Object의 컬렉션으로 매핑합니다.
+            </summary>
+      <typeparam name="T">Persistent Object의 수형</typeparam>
+      <param name="oraDatabase">OracleProvider 인스턴스</param>
+      <param name="oraCommand">OracleCommand 인스턴스</param>
+      <param name="mapObjectFactory">PersistentObject 생성 Factory</param>
+      <param name="nameMapper">NameMapper 인스턴스</param>
+      <param name="firstResult">첫번째 결과 인덱스 (0부터 시작)</param>
+      <param name="maxResults">최대 결과 갯수</param>
+      <param name="additionalMapping">부가적인 매핑 작업을 수행할 델리게이트</param>
+      <param name="parameters">OracleCommand에 설정할 Parameter 정보</param>
+      <returns>DataReader로부터 인스턴싱된 Persistent Object의 컬렉션을 결과로 반환하는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.ExecuteMapObject``1(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,Devart.Data.Oracle.OracleCommand,System.Func{``0},NSoft.NFramework.Data.Mappers.INameMap,System.Int32,System.Int32,System.Action{System.Data.IDataReader,``0},NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="oraCommand" />를 실행하여, 결과 셋을 Persistent Object의 컬렉션으로 매핑합니다.
+            </summary>
+      <typeparam name="T">Persistent Object의 수형</typeparam>
+      <param name="oraDatabase">OracleProvider 인스턴스</param>
+      <param name="oraCommand">OracleCommand 인스턴스</param>
+      <param name="mapObjectFactory">PersistentObject 생성 Factory</param>
+      <param name="nameMap">NameMap 인스턴스</param>
+      <param name="firstResult">첫번째 결과 인덱스 (0부터 시작)</param>
+      <param name="maxResults">최대 결과 갯수</param>
+      <param name="additionalMapping">부가적인 매핑 작업을 수행할 델리게이트</param>
+      <param name="parameters">OracleCommand에 설정할 Parameter 정보</param>
+      <returns>DataReader로부터 인스턴싱된 Persistent Object의 컬렉션을 결과로 반환하는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.GetOracleCommand(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String)">
+      <summary>
+            쿼리 문 또는 Procedure Name을 실행할 <see cref="T:Devart.Data.Oracle.OracleCommand" />를 생성합니다.
+            </summary>
+      <param name="oraDatabase">DAAB OracleProvider</param>
+      <param name="query">수행할 쿼리문 또는 Procedure Name</param>
+      <returns>생성한 <see cref="T:Devart.Data.Oracle.OracleCommand" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.GetOracleCommand(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,System.Boolean)">
+      <summary>
+            쿼리 문 또는 Procedure Name을 실행할 <see cref="T:Devart.Data.Oracle.OracleCommand" />를 생성합니다.
+            </summary>
+      <param name="oraDatabase">DAAB OracleProvider</param>
+      <param name="query">수행할 쿼리문 또는 Procedure Name</param>
+      <param name="discoverParams">Procedure일 경우 Parameter 빌드</param>
+      <returns>생성한 <see cref="T:Devart.Data.Oracle.OracleCommand" /></returns>
+      <seealso cref="!:AdoRepositoryImplBase.GetCommand(string,bool)" />
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.GetSqlStringOracleCommand(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String)">
+      <summary>
+            쿼리 문 <paramref name="sqlString" />을 수행할 <see cref="T:Devart.Data.Oracle.OracleCommand" />를 생성합니다.
+            </summary>
+      <param name="oraDatabase">DAAB OracleProvider</param>
+      <param name="sqlString">수행할 쿼리문</param>
+      <returns>생성한 <see cref="T:Devart.Data.Oracle.OracleCommand" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleCommandAsync.GetProcedureOracleCommand(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.String,System.Boolean)">
+      <summary>
+            Procedure <paramref name="spName" />를 수행할 <see cref="T:Devart.Data.Oracle.OracleCommand" /> 를 생성합니다.
+            </summary>
+      <param name="oraDatabase">DAAB OracleProvider</param>
+      <param name="spName">Procedure name</param>
+      <param name="discoverParams">discover parameters</param>
+      <returns>생성한 <see cref="T:Devart.Data.Oracle.OracleCommand" /></returns>
+    </member>
+    <member name="T:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl">
+      <summary>
+            Oracle 전용 IAdoRepository 입니다. (Devart dotConnecor for Oracle 라이브러리를 사용했습니다.)
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.ExecuteDataSet(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="cmd" />를 실행하여, 결과를 DataSet으로 반환합니다.
+            </summary>
+      <param name="cmd">실행할 <see cref="T:System.Data.Common.DbCommand" /> instance.</param>
+      <param name="firstResult">첫번째 레코드의 인덱스 (0부터 시작)</param>
+      <param name="maxResults">최대 레코드 수 (0 이면 무시하고, 마지막 레코드까지 가져온다</param>
+      <param name="parameters">collectio of parameters of Command</param>
+      <returns>결과 셋이 담긴 DataSet</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.ExecuteDataTableAsList(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+            여러 ResultSet을 반환할 수 있으므로, DataTable의 컬렉션으로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.ExecuteDataTable(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+            지정된 Command를 실행하여, DataTable을 빌드합니다.
+            </summary>
+      <param name="cmd">실행할 Select용 Command</param>
+      <param name="firstResult">첫번째 레코드의 인덱스 (0부터 시작)</param>
+      <param name="maxResults">최대 레코드 수 (0 이면 무시하고, 마지막 레코드까지 가져온다</param>
+      <param name="parameters">DbCommand의 Parameter 정보</param>
+      <returns>instance of <see cref="T:System.Data.DataTable" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.ExecuteNonQueryInternal(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command의 ExecuteNonQuery 메소드를 실행합니다.
+            </summary>
+      <param name="cmd">실행할 Command 객체</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.ExecuteScalarInternal(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command의 ExecuteScalar 메소드를 실행합니다.
+            </summary>
+      <param name="cmd">실행할 Command 객체</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.ExecuteReaderInternal(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command의 ExecuteInstance 메소드를 실행합니다.
+            </summary>
+      <param name="cmd">실행할 Command 객체</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Data.DevartOracle.OracleRepositoryImpl.Db">
+      <summary>
+            Microsoft EnterpriseLibrary DAAB를 지원하기 위한 Oracle용 Database 입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.DevartOracle.OracleTool">
+      <summary>
+            Oracle DB를 사용하기 위한 Utility class입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleTool.AssertIsOracleCommand(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command 인스턴스의 형식이 <see cref="T:Devart.Data.Oracle.OracleCommand" /> 형식인지 검사합니다. 아니면 예외를 발생시킵니다.
+            </summary>
+      <param name="cmd">검사할 DbCommand 인스턴스</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleTool.ClearAllPools">
+      <summary>
+            모든 Oracle Connection Pool을 제거합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleTool.CreateOracleConnection(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.Boolean@)">
+      <summary>
+            Oracle Connection을 비동기 방식으로 엽니다.
+            </summary>
+      <param name="db">DAAB OracleProvider 인스턴스</param>
+      <param name="newConnectionCreated">새로운 Connenction이 생성되었는지 여부</param>
+      <returns>새로 연결된 <see cref="T:Devart.Data.Oracle.OracleConnection" />의 인스턴스, 만약 연결에 실패했다면 null을 반환합니다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleTool.OpenConnection(NSoft.NFramework.Data.DevartOracle.EnterpriseLibrary.OracleDatabase,System.Int32)">
+      <summary>
+            Oracle 연결이 성공하지 못하는 경우가 많아, 재시도 횟수 만큼 간격을 두고 연결을 시도합니다.
+            Oracle DB의 Process 수를 기본(40)에서 100 이상으로 늘려주면 연결이 성공할 확률이 높습니다.
+            </summary>
+      <param name="db">DAAB OracleProvider 인스턴스</param>
+      <param name="tryCount">연결 실패 시, 재 시도 횟수</param>
+      <returns>새로 연결된 <see cref="T:Devart.Data.Oracle.OracleConnection" />의 인스턴스, 만약 연결에 실패했다면 null을 반환합니다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleTool.TypeToOracleDbType(System.Type)">
+      <summary>
+        <paramref name="type" />에 해당하는 <see cref="T:Devart.Data.Oracle.OracleDbType" />을 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.DevartOracle.OracleTool.DbTypeToOracleDbType(System.Data.DbType)">
+      <summary>
+        <paramref name="dbType" />에 해당하는 <see cref="T:Devart.Data.Oracle.OracleDbType" />을 반환합니다.
+            </summary>
+    </member>
+  </members>
+</doc>

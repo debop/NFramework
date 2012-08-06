@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart lowerLimit='0' upperLimit='120' lowerLimitDisplay='Low' upperLimitDisplay='High' palette='1' numberSuffix='dB' chartRightMargin='20'>
+	<colorRange>
+		<color minValue='0' maxValue='60' code='FF0000' />
+		<color minValue='60' maxValue='90' code='FFFF00' />
+		<color minValue='90' maxValue='120' code='00FF00' />
+	</colorRange>
+	<value>102</value>
+</chart>

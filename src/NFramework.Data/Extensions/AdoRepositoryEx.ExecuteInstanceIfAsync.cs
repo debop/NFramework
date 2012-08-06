@@ -1,0 +1,118 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Threading.Tasks;
+using NSoft.NFramework.Data.Mappers;
+using NSoft.NFramework.Data.Persisters;
+
+namespace NSoft.NFramework.Data {
+    /// <summary>
+    /// ADO.NET DataReader, DataTable 을 Persistent object로 매핑하는 작업을 비동기적으로 수행할 수 있도록 하는 Extension Method
+    /// </summary>
+    public static partial class AdoRepositoryEx {
+        /// <summary>
+        /// <see cref="IAdoRepository.ExecuteInstance{T}(System.Func{System.Data.IDataReader,T},System.Data.Common.DbCommand,NFramework.Data.IAdoParameter[])"/> 를 비동기적으로 수행하여, 
+        /// DataReader로부터 <paramref name="filter"/> 에 만족하는 레코드만 T 수형의 인스턴스를 매핑한다.
+        /// </summary>
+        /// <typeparam name="T">결과 셋으로 표현할 엔티티의 수형</typeparam>
+        /// <param name="repository"><see cref="IAdoRepository"/></param>
+        /// <param name="targetFactory">대상 객체 생성용 Factory</param>
+        /// <param name="nameMapper">DB 컬럼명- 클래스 속성명 매퍼</param>
+        /// <param name="filter">매핑할 Row를 선별할 필터 함수</param>
+        /// <param name="query">실행할 SQL문 또는 Procedure Name</param>
+        /// <param name="parameters">패러미터</param>
+        /// <returns>매핑한 엔티티 컬렉션을 결과값으로 가지는 Task</returns>
+        public static Task<IEnumerable<T>> ExecuteInstanceIfAsync<T>(this IAdoRepository repository,
+                                                                     Func<T> targetFactory,
+                                                                     INameMapper nameMapper,
+                                                                     Func<IDataReader, bool> filter,
+                                                                     string query,
+                                                                     params IAdoParameter[] parameters) where T : class {
+            targetFactory.ShouldNotBeNull("targetFactory");
+            nameMapper.ShouldNotBeNull("nameMapper");
+            filter.ShouldNotBeNull("filter");
+
+            return Task.Factory.StartNew(() => {
+                                             using(var reader = repository.ExecuteReader(query, parameters))
+                                                 return reader.MapIf<T>(targetFactory, nameMapper, filter, null);
+                                         });
+        }
+
+        /// <summary>
+        /// <see cref="IAdoRepository.ExecuteInstance{T}(System.Func{System.Data.IDataReader,T},System.Data.Common.DbCommand,NFramework.Data.IAdoParameter[])"/> 를 비동기적으로 수행하여, 
+        /// DataReader로부터 <paramref name="filter"/> 에 만족하는 레코드만 T 수형의 인스턴스를 매핑한다.
+        /// </summary>
+        /// <typeparam name="T">결과 셋으로 표현할 엔티티의 수형</typeparam>
+        /// <param name="repository"><see cref="IAdoRepository"/></param>
+        /// <param name="targetFactory">대상 객체 생성용 Factory</param>
+        /// <param name="nameMap">DB 컬럼명- 클래스 속성명 매핑 정보</param>
+        /// <param name="filter">매핑할 Row를 선별할 필터 함수</param>
+        /// <param name="query">실행할 SQL문 또는 Procedure Name</param>
+        /// <param name="parameters">패러미터</param>
+        /// <returns>매핑한 엔티티 컬렉션을 결과값으로 가지는 Task</returns>
+        public static Task<IEnumerable<T>> ExecuteInstanceIfAsync<T>(this IAdoRepository repository,
+                                                                     Func<T> targetFactory,
+                                                                     INameMap nameMap,
+                                                                     Func<IDataReader, bool> filter,
+                                                                     string query,
+                                                                     params IAdoParameter[] parameters) where T : class {
+            nameMap.ShouldNotBeNull("nameMap");
+            filter.ShouldNotBeNull("filter");
+
+            return Task.Factory.StartNew(() => {
+                                             using(var reader = repository.ExecuteReader(query, parameters))
+                                                 return reader.MapIf<T>(targetFactory, nameMap, filter, null);
+                                         });
+        }
+
+        /// <summary>
+        /// <see cref="IAdoRepository.ExecuteInstance{T}(System.Func{System.Data.IDataReader,T},System.Data.Common.DbCommand,NFramework.Data.IAdoParameter[])"/> 를 비동기적으로 수행하여, 
+        /// DataReader로부터 <paramref name="filter"/> 에 만족하는 레코드만 T 수형의 인스턴스를 매핑한다.
+        /// </summary>
+        /// <typeparam name="T">결과 셋으로 표현할 엔티티의 수형</typeparam>
+        /// <param name="repository"><see cref="IAdoRepository"/></param>
+        /// <param name="persister">대상 객체를 빌드하는 Persister</param>
+        /// <param name="filter">매핑할 Row를 선별할 필터 함수</param>
+        /// <param name="query">실행할 SQL문 또는 Procedure Name</param>
+        /// <param name="parameters">패러미터</param>
+        /// <returns>매핑한 엔티티 컬렉션을 결과값으로 가지는 Task</returns>
+        public static Task<IEnumerable<T>> ExecuteInstanceIfAsync<T>(this IAdoRepository repository,
+                                                                     IReaderPersister<T> persister,
+                                                                     Func<IDataReader, bool> filter,
+                                                                     string query,
+                                                                     params IAdoParameter[] parameters) where T : class {
+            persister.ShouldNotBeNull("persister");
+            filter.ShouldNotBeNull("filter");
+
+            return Task.Factory.StartNew(() => {
+                                             using(var reader = repository.ExecuteReader(query, parameters))
+                                                 return reader.MapIf<T>(persister, filter, null);
+                                         });
+        }
+
+        /// <summary>
+        /// <see cref="IAdoRepository.ExecuteInstance{T}(System.Func{System.Data.IDataReader,T},System.Data.Common.DbCommand,NFramework.Data.IAdoParameter[])"/> 를 비동기적으로 수행하여, 
+        /// DataReader로부터 <paramref name="filter"/> 에 만족하는 레코드만 T 수형의 인스턴스를 매핑한다.
+        /// </summary>
+        /// <typeparam name="T">결과 셋으로 표현할 엔티티의 수형</typeparam>
+        /// <param name="repository"><see cref="IAdoRepository"/></param>
+        /// <param name="mapFunc">매핑 함수</param>
+        /// <param name="filter">매핑할 Row를 선별할 필터 함수</param>
+        /// <param name="query">실행할 SQL문 또는 Procedure Name</param>
+        /// <param name="parameters">패러미터</param>
+        /// <returns>매핑한 엔티티 컬렉션을 결과값으로 가지는 Task</returns>
+        public static Task<IEnumerable<T>> ExecutInstanceIfTask<T>(this IAdoRepository repository,
+                                                                   Func<IDataReader, T> mapFunc,
+                                                                   Func<IDataReader, bool> filter,
+                                                                   string query,
+                                                                   params IAdoParameter[] parameters) where T : class {
+            mapFunc.ShouldNotBeNull("mapFunc");
+            filter.ShouldNotBeNull("filter");
+
+            return Task.Factory.StartNew(() => {
+                                             using(var reader = repository.ExecuteReader(query, parameters))
+                                                 return reader.MapIf<T>(mapFunc, filter);
+                                         });
+        }
+    }
+}

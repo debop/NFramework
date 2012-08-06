@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{10182EA2-F39C-41B1-9C7C-B6A975DAFFB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Data.NHibernateEx.Domain</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Data.NHibernateEx.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Components.Validator">
+      <HintPath>..\..\lib\net-4.0\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\lib\net-4.0\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\lib\net-4.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\lib\net-4.0\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address.cs" />
+    <Compile Include="AddressMap.cs" />
+    <Compile Include="ChildMap.cs" />
+    <Compile Include="FSmsMap.cs" />
+    <Compile Include="FluentCustomer.cs" />
+    <Compile Include="FluentCustomerMap.cs" />
+    <Compile Include="Department.cs" />
+    <Compile Include="DepartmentMap.cs" />
+    <Compile Include="DepartmentMember.cs" />
+    <Compile Include="DepartmentMemberMap.cs" />
+    <Compile Include="NHEmployee.cs" />
+    <Compile Include="NHEmployeeMap.cs" />
+    <Compile Include="Fluents\FSimpleMessage.cs" />
+    <Compile Include="Fluents\FSimpleMessageXml.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerClassHierarchy\PersonalPlan.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerClassHierarchy\PlanBase.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerClassHierarchy\TablePerClassHierarchyMapping.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerClassHierarchy\TeamPlan.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerConcrete\FileBase.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerConcrete\FileInheritanceMapping.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerConcrete\IssueFile.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerConcrete\RiskFile.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerSubclass\FAnimal.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerSubclass\FDog.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerSubclass\FPig.cs" />
+    <Compile Include="Fluents\InheritanceMappings\TablePerSubclass\TablePerSubclassMapping.cs" />
+    <Compile Include="Fluents\Timesheets\ITimephasedRule.cs" />
+    <Compile Include="Fluents\Timesheets\ITimeSheet.cs" />
+    <Compile Include="Fluents\Timesheets\ProjectTaskTimephasedRule.cs" />
+    <Compile Include="Fluents\Timesheets\ProjectTaskTimephasedRuleMap.cs" />
+    <Compile Include="Fluents\Timesheets\ProjectTaskTimeSheet.cs" />
+    <Compile Include="Fluents\Timesheets\ProjectTaskTimeSheetMap.cs" />
+    <Compile Include="Fluents\Timesheets\TimephasedRuleBase.cs" />
+    <Compile Include="Fluents\Timesheets\TimephasedRuleBaseMap.cs" />
+    <Compile Include="Fluents\Timesheets\TimeSheetBase.cs" />
+    <Compile Include="Fluents\Timesheets\TimeSheetBaseMap.cs" />
+    <Compile Include="Fluents\Timesheets\TimesheetTool.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\LocaledMetadataTreeNode.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\LocaledMetadataTreeNodeMapping.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\FLocaledTreeNode.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\FLocaledTreeNodeMapping.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\FTreeNode.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\FTreeNodeMap.cs" />
+    <Compile Include="Fluents\TreeNodeMappings\FTreeNodePositionMap.cs" />
+    <Compile Include="Fluents\UserTypeMappings\SerializedEntity.cs" />
+    <Compile Include="Fluents\UserTypeMappings\SerializedEntityMap.cs" />
+    <Compile Include="Fluents\UserTypeMappings\UserTypeEntity.cs" />
+    <Compile Include="Fluents\UserTypeMappings\UserTypeEntityMapping.cs" />
+    <Compile Include="Fluents\Validators\FluentCustomerValidator.cs" />
+    <Compile Include="Fluents\Validators\PersonValidator.cs" />
+    <Compile Include="Child.cs" />
+    <Compile Include="Company.cs" />
+    <Compile Include="CompanyMap.cs" />
+    <Compile Include="Fluents\AspNetProviders\AnotherEntity.cs" />
+    <Compile Include="Fluents\AspNetProviders\Role.cs" />
+    <Compile Include="Fluents\AspNetProviders\Timesheet.cs" />
+    <Compile Include="Fluents\AspNetProviders\User.cs" />
+    <Compile Include="Fluents\AspNetProviders\UserComponent.cs" />
+    <Compile Include="Fluents\AspNetProviders\UserComponent2.cs" />
+    <Compile Include="Fluents\AspNetProviders\UserDto.cs" />
+    <Compile Include="Fluents\AspNetProviders\UserDto2.cs" />
+    <Compile Include="FSms.cs" />
+    <Compile Include="FUser.cs" />
+    <Compile Include="FUserMap.cs" />
+    <Compile Include="Hbm\Mappings\JoinedSubclass\Animal.cs" />
+    <Compile Include="Hbm\Mappings\JoinTable\JoinMaster.cs" />
+    <Compile Include="Hbm\Mappings\LocaledEntities\LocaledCompany.cs" />
+    <Compile Include="Hbm\Mappings\LocaledEntities\LocaledUser.cs" />
+    <Compile Include="Hbm\Mappings\MasterDetails\Detail.cs" />
+    <Compile Include="Hbm\Mappings\MasterDetails\Master.cs" />
+    <Compile Include="Hbm\Mappings\MasterDetails\SubDetail.cs" />
+    <Compile Include="Hbm\Mappings\OneToOne\Project.cs" />
+    <Compile Include="Hbm\Mappings\OneToOne\ProjectField.cs" />
+    <Compile Include="Locale.cs" />
+    <Compile Include="LocaleMap.cs" />
+    <Compile Include="Northwind\AddressInfo.cs" />
+    <Compile Include="Northwind\Category.cs" />
+    <Compile Include="Northwind\CountryCode.cs" />
+    <Compile Include="Northwind\Customer.cs" />
+    <Compile Include="Northwind\CustomerOrderHistory.cs" />
+    <Compile Include="Northwind\Employee.cs" />
+    <Compile Include="Northwind\Name.cs" />
+    <Compile Include="Northwind\Order.cs" />
+    <Compile Include="Northwind\OrderDetail.cs" />
+    <Compile Include="Northwind\Product.cs" />
+    <Compile Include="Northwind\Region.cs" />
+    <Compile Include="Northwind\Shipper.cs" />
+    <Compile Include="Northwind\Supplier.cs" />
+    <Compile Include="Northwind\Territory.cs" />
+    <Compile Include="ParentMap.cs" />
+    <Compile Include="Parent.cs" />
+    <Compile Include="ParentDTO.cs" />
+    <Compile Include="PeriodTime.cs" />
+    <Compile Include="Person.cs" />
+    <Compile Include="PersonMap.cs" />
+    <Compile Include="Picture.cs" />
+    <Compile Include="PictureMap.cs" />
+    <Compile Include="Process.cs" />
+    <Compile Include="ProcessMap.cs" />
+    <Compile Include="FluentProduct.cs" />
+    <Compile Include="FluentProductMap.cs" />
+    <Compile Include="FluentProject.cs" />
+    <Compile Include="FluentProjectField.cs" />
+    <Compile Include="FluentProjectFieldMap.cs" />
+    <Compile Include="FluentProjectMap.cs" />
+    <Compile Include="SerializedObjectEntity.cs" />
+    <Compile Include="SerializedObjectEntityMap.cs" />
+    <Compile Include="SimpleMessage.cs" />
+    <Compile Include="SimpleMessageXml.cs" />
+    <Compile Include="SimpleObject.cs" />
+    <Compile Include="SimpleObjectMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerClassHierarchy\CPersonalPlan.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerClassHierarchy\CPersonalPlanMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerClassHierarchy\CPlanBase.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerClassHierarchy\CPlanBaseMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerClassHierarchy\CTeamPlan.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerClassHierarchy\CTeamPlanMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerConcreteClass\CFileBase.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerConcreteClass\CFileBaseMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerConcreteClass\CIssueFile.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerConcreteClass\CIssueFileMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerConcreteClass\CRiskFile.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerConcreteClass\CRiskFileMap.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerSubclass\CAnimal.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerSubclass\CDog.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerSubclass\CPig.cs" />
+    <Compile Include="Loquacious\InheritanceMappings\TablePerSubclass\JoinedSubclassMap.cs" />
+    <Compile Include="Loquacious\JoinMappings\CJoinEntity.cs" />
+    <Compile Include="Loquacious\JoinMappings\CJoinEntityMap.cs" />
+    <Compile Include="Loquacious\OneToOneMappings\COneToOneMainEntity.cs" />
+    <Compile Include="Loquacious\OneToOneMappings\COneToOneMainEntityMap.cs" />
+    <Compile Include="Loquacious\OneToOneMappings\COneToOneSubEntity.cs" />
+    <Compile Include="Loquacious\OneToOneMappings\COneToOneSubEntityMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CAddress.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CAddressMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CCompany.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CCompanyMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CCustomer.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CCustomerMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CEmployee.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CEmployeeMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CoreTask.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CoreTaskMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CoreUser.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CoreUserMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CPicture.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CPictureMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CProduct.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CProductMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CStore.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CStoreMap.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CUser.cs" />
+    <Compile Include="Loquacious\SimpleMappings\CUserMap.cs" />
+    <Compile Include="Loquacious\TreeNodeMappings\CITreeNodePositionMap.cs" />
+    <Compile Include="Loquacious\TreeNodeMappings\CTreeNodeEntity.cs" />
+    <Compile Include="Loquacious\TreeNodeMappings\CTreeNodeEntityMap.cs" />
+    <Compile Include="Loquacious\UserTypeMappings\CSerializedEntity.cs" />
+    <Compile Include="Loquacious\UserTypeMappings\CSerializedEntityMap.cs" />
+    <Compile Include="Loquacious\UserTypeMappings\CUserTypeEntity.cs" />
+    <Compile Include="Loquacious\UserTypeMappings\CUserTypeEntityMap.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Sms.cs" />
+    <Compile Include="SmsMap.cs" />
+    <Compile Include="Store.cs" />
+    <Compile Include="StoreMap.cs" />
+    <Compile Include="User.cs" />
+    <Compile Include="UserDto.cs" />
+    <Compile Include="UserMap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NFramework.Data.NHibernateEx\NFramework.Data.NHibernateEx-vs11.csproj">
+      <Project>{c19799f1-c38e-4478-a122-c958153f0ad6}</Project>
+      <Name>NFramework.Data.NHibernateEx-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{eb7beb5b-6813-4a60-b453-93060be22c30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Department.hbm.xml" />
+    <Content Include="Fluents\AspNetProviders\AnotherEntity.hbm.xml" />
+    <Content Include="Fluents\AspNetProviders\Role.hbm.xml" />
+    <Content Include="Fluents\AspNetProviders\TimeSheet.hbm.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Fluents\AspNetProviders\User.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Category.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Customer.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Employee.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Order.hbm.xml" />
+    <EmbeddedResource Include="Northwind\OrderDetail.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Product.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Region.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Shipper.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Supplier.hbm.xml" />
+    <EmbeddedResource Include="Northwind\Territory.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\JoinedSubclass\Animal.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\JoinTable\JoinMaster.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\LocaledEntities\LocaledCompany.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\LocaledEntities\LocaledUser.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\MasterDetails\MasterDetail.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\OneToOne\Project.hbm.xml" />
+    <EmbeddedResource Include="Hbm\Mappings\OneToOne\ProjectField.hbm.xml" />
+    <EmbeddedResource Include="Northwind\CustomerOrderHistory.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Loquacious\CollectionMappings\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

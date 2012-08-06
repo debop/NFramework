@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart palette="3" lowerLimit='0' upperLimit='100' caption='Revenue' subcaption='US $ (1,000s)' numberPrefix='$' numberSuffix='K' showValue='1'>
+	<colorRange>
+		<color minValue='0' maxValue='50' color='A6A6A6' />
+		<color minValue='50' maxValue='75' color='CCCCCC' />
+		<color minValue='75' maxValue='100' color='E1E1E1' />
+	</colorRange>
+	<value>78.9</value>
+	<target>80</target>
+</chart>

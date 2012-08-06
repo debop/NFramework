@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.Caching.Tests"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<!--
+		단위 프로젝트에서 설정해 줄 것
+		
+		assembly.version		: 기본적으로 solution.version 을 따라간다.
+		assembly.description	:
+		
+		build.unsafe			: true|false
+		
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+	
+	<target name="init" depends="common.init">
+		<property name="assembly.description" value="캐시 테스트"/>
+		
+			<!-- 테스트용 Assembly는 CLS 일 필요도 없고, Sign도 필요 없다.-->
+		<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+		<property name="sign" value="false" overwrite="true"/>
+		
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<include name="System" />
+			<include name="System.Configuration" />
+			<include name="System.Core" />
+			<include name="System.Data" />
+			<include name="System.Web" />
+			<include name="System.Xml" />
+
+			
+            <include name="AutoMapper.dll" />
+			
+			<include name="Enyim.Caching.dll" />
+			<include name="FluentNHibernate.dll" />
+			
+			<include name="ICSharpCode.SharpZipLib.dll"/>
+			<include name="Iesi.Collections.dll"/>
+			
+			<include name="NHibernate.dll" />
+
+			<include name="Newtonsoft.Json.dll" />
+
+			<include name="NSoft.NFramework.dll"/>
+			<include name="NSoft.NFramework.Data.dll"/>
+			<include name="NSoft.NFramework.Data.NHibernateEx.dll"/>
+			<include name="NSoft.NFramework.Caching.Memcached.dll"/>
+			<include name="NSoft.NFramework.Caching.SharedCache.dll"/>
+			<include name="NSoft.NFramework.Web.dll"/>
+			
+			<include name="NLog.dll"/>
+			<include name="NUnit.Framework.dll" />
+
+			<include name="SharedCache.WinServiceCommon.dll" />
+			<include name="SharpTestsEx.dll" />
+
+			<include name="System.Data.SQLite.dll" />
+			
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.hbm.xml"/>
+			<include name="**/*.config"/>
+		</resourcefileset>
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-tests common.run-tests"
+			description="Build ${project::get-name()}">
+			<echo message="${project::get-name()} TEST 완료"/>
+	</target>
+
+</project>

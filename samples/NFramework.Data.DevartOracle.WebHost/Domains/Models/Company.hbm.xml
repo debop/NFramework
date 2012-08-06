@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.DevartOracle.WebHost"
+				   namespace="NSoft.NFramework.Data.DevartOracle.WebHost.Domains.Models">
+
+	<!-- access를 field로 했을 경우 SQLite가 제대로 되는지 확인한다. -->
+	<class name="Company" table="NH_COMPANY" dynamic-insert="true" dynamic-update="true">
+
+		<id name="Id" column="COMPANY_ID" type="Int64" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<natural-id>
+			<property name="Code" column="COMPANY_CODE" type="AnsiString" length="32" />
+		</natural-id>
+		<property name="Name" column="COMPANY_NAME" type="String" length="255" />
+
+		<property name="UpdateTimestamp" type="Timestamp" />
+
+		<!--
+		<bag name="Users" access="field.camelcase-underscore" inverse="true" lazy="true" cascade="all,delete">
+			<key column="COMPANY_ID" />
+			<one-to-many class="User" />
+		</bag>
+		-->
+	</class>
+</hibernate-mapping>

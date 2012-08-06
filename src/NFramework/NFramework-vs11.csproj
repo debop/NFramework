@@ -1,0 +1,741 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework</RootNamespace>
+    <AssemblyName>NSoft.NFramework</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AntiXssLibrary">
+      <HintPath>..\..\lib\net-4.0\AntiXssLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\..\lib\net-4.0\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\..\lib\net-4.0\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\lib\net-4.0\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase">
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Caching\AbstractCacheRepository.cs" />
+    <Compile Include="Caching\CacheRepositoryEx.cs" />
+    <Compile Include="Caching\ConcurrentCacheRepository.cs" />
+    <Compile Include="Caching\ICacheRepository.cs" />
+    <Compile Include="Collections\BinaryHeap.cs" />
+    <Compile Include="Collections\BinaryHeapPriorityQueue.cs" />
+    <Compile Include="Collections\BinaryTree.cs" />
+    <Compile Include="Collections\BinaryTreeNode.cs" />
+    <Compile Include="Collections\C5\Arrays\ArrayList.cs" />
+    <Compile Include="Collections\C5\Arrays\CircularQueue.cs" />
+    <Compile Include="Collections\C5\Arrays\HashedArrayList.cs" />
+    <Compile Include="Collections\C5\Arrays\SortedArray.cs" />
+    <Compile Include="Collections\C5\Collections.cs" />
+    <Compile Include="Collections\C5\Comparers\Comparer.cs" />
+    <Compile Include="Collections\C5\Comparers\ComparerFactory.cs" />
+    <Compile Include="Collections\C5\Comparers\EqualityComparer.cs" />
+    <Compile Include="Collections\C5\Debug.cs" />
+    <Compile Include="Collections\C5\Dictionaries.cs" />
+    <Compile Include="Collections\C5\Enums.cs" />
+    <Compile Include="Collections\C5\Events.cs" />
+    <Compile Include="Collections\C5\Exceptions.cs" />
+    <Compile Include="Collections\C5\Formatting.cs" />
+    <Compile Include="Collections\C5\Hashers.cs" />
+    <Compile Include="Collections\C5\Hashing\HashBag.cs" />
+    <Compile Include="Collections\C5\Hashing\HashDictionary.cs" />
+    <Compile Include="Collections\C5\Hashing\HashTable.cs" />
+    <Compile Include="Collections\C5\Heaps\IntervalHeap.cs" />
+    <Compile Include="Collections\C5\Interfaces.cs" />
+    <Compile Include="Collections\C5\LinkedLists\HashedLinkedList.cs" />
+    <Compile Include="Collections\C5\LinkedLists\LinkedList.cs" />
+    <Compile Include="Collections\C5\Logger.cs" />
+    <Compile Include="Collections\C5\MappedEnumerators.cs" />
+    <Compile Include="Collections\C5\Random.cs" />
+    <Compile Include="Collections\C5\Records.cs" />
+    <Compile Include="Collections\C5\Sorting.cs" />
+    <Compile Include="Collections\C5\Trees\RedBlackTreeBag.cs" />
+    <Compile Include="Collections\C5\Trees\RedBlackTreeDictionary.cs" />
+    <Compile Include="Collections\C5\Trees\RedBlackTreeSet.cs" />
+    <Compile Include="Collections\C5\ViewSupport.cs" />
+    <Compile Include="Collections\C5\WrappedArray.cs" />
+    <Compile Include="Collections\C5\Wrappers.cs" />
+    <Compile Include="Collections\CollectionTool.cs" />
+    <Compile Include="Collections\Concurrent\BlockingQueue.cs" />
+    <Compile Include="Collections\Concurrent\BoundedBuffer.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentBlockingQueue.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentBlockingStack.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentMultiMap.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentMultiSet.cs" />
+    <Compile Include="Collections\Concurrent\ConcurrentSkipList.cs" />
+    <Compile Include="Collections\Concurrent\LockFreeStack.cs" />
+    <Compile Include="Collections\Concurrent\ThreadSafeQueue.cs" />
+    <Compile Include="Collections\Concurrent\ThreadSafeStack.cs" />
+    <Compile Include="Collections\DoubleQueue.cs" />
+    <Compile Include="Collections\FrequencyTable.cs" />
+    <Compile Include="Collections\FrequencyTableEntry.cs" />
+    <Compile Include="Collections\PowerCollections\Algorithms.cs" />
+    <Compile Include="Collections\PowerCollections\Bag.cs" />
+    <Compile Include="Collections\PowerCollections\BigList.cs" />
+    <Compile Include="Collections\PowerCollections\CollectionBase.cs" />
+    <Compile Include="Collections\PowerCollections\Comparers.cs" />
+    <Compile Include="Collections\PowerCollections\Deque.cs" />
+    <Compile Include="Collections\PowerCollections\DictionaryBase.cs" />
+    <Compile Include="Collections\PowerCollections\Hash.cs" />
+    <Compile Include="Collections\PowerCollections\ListBase.cs" />
+    <Compile Include="Collections\PowerCollections\MultiDictionary.cs" />
+    <Compile Include="Collections\PowerCollections\MultiDictionaryBase.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedBag.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedDictionary.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedMultiDictionary.cs" />
+    <Compile Include="Collections\PowerCollections\OrderedSet.cs" />
+    <Compile Include="Collections\PowerCollections\Pair.cs" />
+    <Compile Include="Collections\PowerCollections\ReadOnlyCollectionBase.cs" />
+    <Compile Include="Collections\PowerCollections\ReadOnlyDictionaryBase.cs" />
+    <Compile Include="Collections\PowerCollections\ReadOnlyListBase.cs" />
+    <Compile Include="Collections\PowerCollections\ReadOnlyMultiDictionaryBase.cs" />
+    <Compile Include="Collections\PowerCollections\RedBlack.cs" />
+    <Compile Include="Collections\PowerCollections\Set.cs" />
+    <Compile Include="Collections\PowerCollections\Strings.cs" />
+    <Compile Include="Collections\PowerCollections\Triple.cs" />
+    <Compile Include="Collections\PowerCollections\Util.cs" />
+    <Compile Include="Collections\TraversalMethod.cs" />
+    <Compile Include="Collections\Vertex.cs" />
+    <Compile Include="Collections\WeakReferenceDictionary.cs" />
+    <Compile Include="Collections\WeakReferenceWrapper.cs" />
+    <Compile Include="Compressions\CompressAdapter.cs" />
+    <Compile Include="Compressions\CompressorEx.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptorEx.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptorEx.cs" />
+    <Compile Include="Diagnostics\IInstancePerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\InstancePerformanceCounterProviderBase.cs" />
+    <Compile Include="Diagnostics\IPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\PerformanceCounterProviderBase.cs" />
+    <Compile Include="Diagnostics\PerformanceCounterTool.cs" />
+    <Compile Include="Diagnostics\Providers\AspNetApplicationsPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\AspNetPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\ClrDataPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\ClrLockAndThreadPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\ClrMemoryPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\MemoryPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\ProcessorPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\Providers\SystemPerformanceCounterProvider.cs" />
+    <Compile Include="Diagnostics\ProcessTool.cs" />
+    <Compile Include="IPagingInfo.cs" />
+    <Compile Include="LinqEx\ExpandableQuery.cs" />
+    <Compile Include="LinqEx\ExpandableQueryProvider.cs" />
+    <Compile Include="LinqEx\ExpressionExpander.cs" />
+    <Compile Include="LinqEx\ExpressionTool.cs" />
+    <Compile Include="LinqEx\ExpressionVisitor.cs" />
+    <Compile Include="LinqEx\IndexableAttribute.cs" />
+    <Compile Include="LinqEx\IndexableCollection.cs" />
+    <Compile Include="LinqEx\IndexableCollectionExtension.cs" />
+    <Compile Include="LinqEx\PredicateBuilder.cs" />
+    <Compile Include="Networks\Ftp\FtpAsync.cs" />
+    <Compile Include="Networks\Ftp\FtpClient.cs" />
+    <Compile Include="Networks\Ftp\FtpDirectory.cs" />
+    <Compile Include="Networks\Ftp\FtpEntryKind.cs" />
+    <Compile Include="Networks\Ftp\FtpException.cs" />
+    <Compile Include="Networks\Ftp\FtpFileInfo.cs" />
+    <Compile Include="Networks\Http\HtmlTool.cs" />
+    <Compile Include="Networks\Http\HttpClient.cs" />
+    <Compile Include="Networks\Http\HttpConsts.cs" />
+    <Compile Include="Networks\Http\HttpTool.cs" />
+    <Compile Include="Networks\NetworkException.cs" />
+    <Compile Include="Networks\Smtp\MailSender.cs" />
+    <Compile Include="Networks\NetTool.cs" />
+    <Compile Include="Networks\XmlHttp\XmlHttpClient.cs" />
+    <Compile Include="Networks\XmlHttp\XmlHttpClient.Static.cs" />
+    <Compile Include="Networks\XmlHttp\XmlHttpMethods.cs" />
+    <Compile Include="Networks\XmlHttp\XmlHttpTool.cs" />
+    <Compile Include="Nini\Config\AliasText.cs" />
+    <Compile Include="Nini\Config\ArgvConfigSource.cs" />
+    <Compile Include="Nini\Config\ConfigBase.cs" />
+    <Compile Include="Nini\Config\ConfigCollection.cs" />
+    <Compile Include="Nini\Config\ConfigSourceBase.cs" />
+    <Compile Include="Nini\Config\DotNetConfigSource.cs" />
+    <Compile Include="Nini\Config\IConfig.cs" />
+    <Compile Include="Nini\Config\IConfigSource.cs" />
+    <Compile Include="Nini\Config\IniConfig.cs" />
+    <Compile Include="Nini\Config\IniConfigSource.cs" />
+    <Compile Include="Nini\Config\RegistryConfigSource.cs" />
+    <Compile Include="Nini\Config\XmlConfigSource.cs" />
+    <Compile Include="Nini\Ini\IniDocument.cs" />
+    <Compile Include="Nini\Ini\IniException.cs" />
+    <Compile Include="Nini\Ini\IniItem.cs" />
+    <Compile Include="Nini\Ini\IniReader.cs" />
+    <Compile Include="Nini\Ini\IniSection.cs" />
+    <Compile Include="Nini\Ini\IniSectionCollection.cs" />
+    <Compile Include="Nini\Ini\IniWriter.cs" />
+    <Compile Include="Nini\Util\ArgvParser.cs" />
+    <Compile Include="Nini\Util\OrderedList.cs" />
+    <Compile Include="Nini\Util\OrderedListEnumerator.cs" />
+    <Compile Include="Collections\Concurrent\ProducerConsumerCollectionTool.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncAutoResetEvent.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncCountdownEvent.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncLock.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncManualResetEvent.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncReaderWriterLock.cs" />
+    <Compile Include="Parallelism\Tools\APM\SocketAsync.cs" />
+    <Compile Include="Reflections\DynamicPropertyComparer.cs" />
+    <Compile Include="Serializations\Serializers\AbstractSerializerDecorator.cs" />
+    <Compile Include="Threading\AbstractThread.cs" />
+    <Compile Include="Threading\AbstractWorkerThread.cs" />
+    <Compile Include="Threading\CountdownLatch.cs" />
+    <Compile Include="Collections\INode.cs" />
+    <Compile Include="Collections\IQueue.cs" />
+    <Compile Include="Collections\IStack.cs" />
+    <Compile Include="Collections\MultiMap.cs" />
+    <Compile Include="Collections\MultiSet.cs" />
+    <Compile Include="Collections\Node.cs" />
+    <Compile Include="Collections\NodeCollection.cs" />
+    <Compile Include="Collections\PascalSet.cs" />
+    <Compile Include="Collections\Set.cs" />
+    <Compile Include="Collections\SkipList.cs" />
+    <Compile Include="Collections\WeakReferenceMap.cs" />
+    <Compile Include="Compressions\Compressor.cs" />
+    <Compile Include="Compressions\Compressors\AbstractCompressor.cs" />
+    <Compile Include="Compressions\Compressors\CloneCompressor.cs" />
+    <Compile Include="Compressions\Compressors\DeflateCompressor.cs" />
+    <Compile Include="Compressions\Compressors\DummyCompressor.cs" />
+    <Compile Include="Compressions\Compressors\GZipCompressor.cs" />
+    <Compile Include="Compressions\Compressors\IonicBZip2Compressor.cs" />
+    <Compile Include="Compressions\Compressors\IonicDeflateCompressor.cs" />
+    <Compile Include="Compressions\Compressors\IonicGZipCompressor.cs" />
+    <Compile Include="Compressions\Compressors\IonicZlibCompressor.cs" />
+    <Compile Include="Compressions\Compressors\SevenZipCompressor.cs" />
+    <Compile Include="Compressions\Compressors\SharpBZip2Compressor.cs" />
+    <Compile Include="Compressions\Compressors\SharpGZipCompressor.cs" />
+    <Compile Include="Compressions\CompressorTool.cs" />
+    <Compile Include="Compressions\ICompressor.cs" />
+    <Compile Include="Compressions\SevenZip\Common\CRC.cs" />
+    <Compile Include="Compressions\SevenZip\Common\InBuffer.cs" />
+    <Compile Include="Compressions\SevenZip\Common\OutBuffer.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZMA\LzmaBase.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZMA\LzmaDecoder.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZMA\LzmaEncoder.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZ\IMatchFinder.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZ\LzBinTree.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZ\LzInWindow.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\LZ\LzOutWindow.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\RangeCoder\RangeCoder.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\RangeCoder\RangeCoderBit.cs" />
+    <Compile Include="Compressions\SevenZip\Compress\RangeCoder\RangeCoderBitTree.cs" />
+    <Compile Include="Compressions\SevenZip\ICoder.cs" />
+    <Compile Include="Configurations\AssemblyQualifiedTypeNameConverter.cs" />
+    <Compile Include="Configurations\NamedConfigurationElement.cs" />
+    <Compile Include="Configurations\NamedElement.cs" />
+    <Compile Include="Configurations\SerializableConfigurationSection.cs" />
+    <Compile Include="Cryptography\Aria\AriaEngine.cs" />
+    <Compile Include="Cryptography\Aria\Padding\AnsiX923Padding.cs" />
+    <Compile Include="Cryptography\Aria\Padding\BlockPadding.cs" />
+    <Compile Include="Cryptography\CryptoTool.Convert.cs" />
+    <Compile Include="Cryptography\CryptoTool.cs" />
+    <Compile Include="Cryptography\EncryptionStringFormat.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptors\MD5HashEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptors\SHA1HashEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptors\SHA256HashEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptors\SHA384HashEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptors\SHA512HashEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptors\AriaSymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptors\DesSymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptors\RC2SymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptors\RijndaelSymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\SymmetricEncryptors\TripleDesSymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\HashEncryptor.cs" />
+    <Compile Include="Cryptography\Encryptors\HashEncryptor.cs" />
+    <Compile Include="Cryptography\IHashEncryptor.cs" />
+    <Compile Include="Cryptography\InitVector.cs" />
+    <Compile Include="Cryptography\ISymmetricEncryptor.cs" />
+    <Compile Include="Cryptography\KeySize.cs" />
+    <Compile Include="OrderDirection.cs" />
+    <Compile Include="InversionOfControl\WindsorInstallers\CompressorInstaller.cs" />
+    <Compile Include="InversionOfControl\WindsorInstallers\EncryptorInstaller.cs" />
+    <Compile Include="InversionOfControl\WindsorInstallers\SerializerInstaller.cs" />
+    <Compile Include="Threading\ThinEvent.cs" />
+    <Compile Include="Threading\ThreadTool.cs" />
+    <Compile Include="Threading\WorkerProgressChangedEventArgs.cs" />
+    <Compile Include="Threading\WorkerThreadEventArgs.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarDateAdd.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarDateDiff.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarExtensions.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarPeriodCollector.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarPeriodCollectorContext.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarPeriodCollectorFilter.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarVisitor.cs" />
+    <Compile Include="TimePeriods\Calendars\CalendarVisitorFilter.cs" />
+    <Compile Include="TimePeriods\Calendars\DateAdd.cs" />
+    <Compile Include="TimePeriods\Calendars\DateDiff.cs" />
+    <Compile Include="TimePeriods\Calendars\ICalendarPeriodCollectionFilter.cs" />
+    <Compile Include="TimePeriods\Calendars\ICalendarVisitorContext.cs" />
+    <Compile Include="TimePeriods\Calendars\ICalendarVisitorFilter.cs" />
+    <Compile Include="TimePeriods\Calendars\Seekers\DaySeeker.cs" />
+    <Compile Include="TimePeriods\Calendars\Seekers\DaySeekerContext.cs" />
+    <Compile Include="TimePeriods\Clocks\AbstractClock.cs" />
+    <Compile Include="TimePeriods\Clocks\ClockProxy.cs" />
+    <Compile Include="TimePeriods\Clocks\StaticClock.cs" />
+    <Compile Include="TimePeriods\Clocks\SystemClock.cs" />
+    <Compile Include="TimePeriods\Components\DayHourRange.cs" />
+    <Compile Include="TimePeriods\Components\DayRangeInMonth.cs" />
+    <Compile Include="TimePeriods\Components\HourRangeInDay.cs" />
+    <Compile Include="TimePeriods\Components\MonthRangeInYear.cs" />
+    <Compile Include="TimePeriods\Components\YearAndHalfYear.cs" />
+    <Compile Include="TimePeriods\Components\YearAndMonth.cs" />
+    <Compile Include="TimePeriods\Components\YearAndQuarter.cs" />
+    <Compile Include="TimePeriods\Components\YearAndWeek.cs" />
+    <Compile Include="TimePeriods\DateTimeSet.cs" />
+    <Compile Include="TimePeriods\Enums\DurationFormatKind.cs" />
+    <Compile Include="TimePeriods\Enums\IntervalEdge.cs" />
+    <Compile Include="TimePeriods\Enums\MonthKind.cs" />
+    <Compile Include="TimePeriods\Enums\PeriodFlags.cs" />
+    <Compile Include="TimePeriods\Enums\PeriodKind.cs" />
+    <Compile Include="TimePeriods\Enums\PeriodRelation.cs" />
+    <Compile Include="TimePeriods\Enums\QuarterKind.cs" />
+    <Compile Include="TimePeriods\Enums\SeekBoundaryMode.cs" />
+    <Compile Include="TimePeriods\Enums\SeekDirection.cs" />
+    <Compile Include="TimePeriods\Enums\WeekOfYearRuleKind.cs" />
+    <Compile Include="TimePeriods\Enums\YearHalfYear.cs" />
+    <Compile Include="TimePeriods\Enums\YearKind.cs" />
+    <Compile Include="TimePeriods\ICalendarTimeRange.cs" />
+    <Compile Include="TimePeriods\IClock.cs" />
+    <Compile Include="TimePeriods\IDateTimeSet.cs" />
+    <Compile Include="TimePeriods\ITimeBlock.cs" />
+    <Compile Include="TimePeriods\ITimeCalendar.cs" />
+    <Compile Include="TimePeriods\ITimeFormatter.cs" />
+    <Compile Include="TimePeriods\ITimeInterval.cs" />
+    <Compile Include="TimePeriods\ITimeLine.cs" />
+    <Compile Include="TimePeriods\ITimeLineMoment.cs" />
+    <Compile Include="TimePeriods\ITimeLineMomentCollection.cs" />
+    <Compile Include="TimePeriods\ITimePeriod.cs" />
+    <Compile Include="TimePeriods\ITimePeriodChain.cs" />
+    <Compile Include="TimePeriods\ITimePeriodCollection.cs" />
+    <Compile Include="TimePeriods\ITimePeriodContainer.cs" />
+    <Compile Include="TimePeriods\ITimePeriodMapper.cs" />
+    <Compile Include="TimePeriods\ITimeRange.cs" />
+    <Compile Include="TimePeriods\IYearAndWeekOfYear.cs" />
+    <Compile Include="TimePeriods\PeriodContext.cs" />
+    <Compile Include="TimePeriods\TimeBlock.cs" />
+    <Compile Include="TimePeriods\TimeCalendar.cs" />
+    <Compile Include="TimePeriods\TimeCalendarConfig.cs" />
+    <Compile Include="TimePeriods\TimeFormatter.cs" />
+    <Compile Include="TimePeriods\TimeInterval.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeGapCalculator.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeLine.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeLineMomentComparer.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeLineTool.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeLineMoment.cs" />
+    <Compile Include="TimePeriods\TimeLines\TimeLineMomentCollection.cs" />
+    <Compile Include="TimePeriods\TimePeriodBase.cs" />
+    <Compile Include="TimePeriods\TimePeriodChain.cs" />
+    <Compile Include="TimePeriods\TimePeriodCollection.cs" />
+    <Compile Include="TimePeriods\TimePeriodCombiner.cs" />
+    <Compile Include="TimePeriods\TimePeriodContainer.cs" />
+    <Compile Include="TimePeriods\TimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\CalendarTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\DayRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\DayRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\DayTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HalfyearRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HalfyearRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HalfyearTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HourRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HourRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\HourTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MinuteRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MinuteRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MinuteTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MonthRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MonthRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\MonthTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\QuarterRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\QuarterRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\QuarterTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\WeekRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\WeekRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\WeekTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\YearCalendarTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\YearRange.cs" />
+    <Compile Include="TimePeriods\TimeRanges\YearRangeCollection.cs" />
+    <Compile Include="TimePeriods\TimeRanges\YearTimeRange.cs" />
+    <Compile Include="TimePeriods\TimeSpec.cs" />
+    <Compile Include="TimePeriods\TimeStrings.cs" />
+    <Compile Include="TimePeriods\Tools\DurationUtil.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Calendar.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Collections.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Compare.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Const.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Current.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.DateTime.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Linq.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Math.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Period.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Relation.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Trim.cs" />
+    <Compile Include="TimePeriods\Tools\TimeTool.Validation.cs" />
+    <Compile Include="TimePeriods\Tools\WeekTool.cs" />
+    <Compile Include="Tools\BitTool.cs" />
+    <Compile Include="Tools\CommandLineParser.cs" />
+    <Compile Include="Tools\DateTool.cs" />
+    <Compile Include="AbstractAsyncResult.cs" />
+    <Compile Include="TimePeriods\PeriodInvoker.cs" />
+    <Compile Include="TimePeriods\PeriodTimeFormat.cs" />
+    <Compile Include="Reflections\ObjectTool.cs" />
+    <Compile Include="UnitTesting\ParallelTestTool.cs" />
+    <Compile Include="Util\AsmInfo.cs" />
+    <Compile Include="Util\EnumComparer.cs" />
+    <Compile Include="Util\EventArgsOfT.cs" />
+    <Compile Include="Util\EnumComparerOfT.cs" />
+    <Compile Include="Util\DisposableAction.cs" />
+    <Compile Include="Util\DisposableActionOfT.cs" />
+    <Compile Include="DynamicProxy\DynamicProxyTool.cs" />
+    <Compile Include="DynamicProxy\DynamicProxyTool.Factory.cs" />
+    <Compile Include="DynamicProxy\EditableObjectInterceptor.cs" />
+    <Compile Include="DynamicProxy\NotifyPropertyChangedInterceptor.cs" />
+    <Compile Include="FileOpenMode.cs" />
+    <Compile Include="InversionOfControl\ConfigurationObjectAttribute.cs" />
+    <Compile Include="InversionOfControl\ConfigurationObjectConverter.cs" />
+    <Compile Include="InversionOfControl\ContainerSelector.cs" />
+    <Compile Include="InversionOfControl\IoC.cs" />
+    <Compile Include="InversionOfControl\UriTypeConverter.cs" />
+    <Compile Include="IO\FileTool.Async.cs" />
+    <Compile Include="IO\FileTool.cs" />
+    <Compile Include="Json\BsonSerializer.cs" />
+    <Compile Include="Json\CompressBsonSerializerOfT.cs" />
+    <Compile Include="Json\CompressJsonSerializerOfT.cs" />
+    <Compile Include="Json\IJsonSerializer.cs" />
+    <Compile Include="Json\JsonByteSerializer.cs" />
+    <Compile Include="Json\JsonTool.cs" />
+    <Compile Include="Json\JsonTool.Map.cs" />
+    <Compile Include="LinqEx\DynamicQuery.cs" />
+    <Compile Include="LinqEx\EnumerableTool.cs" />
+    <Compile Include="LinqEx\EnumerableTool.DataStructure.cs" />
+    <Compile Include="LinqEx\EnumerableTool.Enumerable.cs" />
+    <Compile Include="LinqEx\EnumerableTool.List.cs" />
+    <Compile Include="LinqEx\LinqTool.Arithmetic.cs" />
+    <Compile Include="LinqEx\LinqTool.Expr.cs" />
+    <Compile Include="LinqEx\LinqTool.Math.cs" />
+    <Compile Include="LinqEx\LinqTool.List.cs" />
+    <Compile Include="LinqEx\LinqTool.Partitioning.cs" />
+    <Compile Include="LinqEx\LinqTool.Pipeline.cs" />
+    <Compile Include="LinqEx\LinqTool.Task.cs" />
+    <Compile Include="LinqEx\PartitioningMethod.cs" />
+    <Compile Include="Parallelism\DataStructures\AbstractStream.cs" />
+    <Compile Include="Parallelism\DataStructures\ActionCountdownEvent.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncBarrier.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncCache.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncCall.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncCallOfT.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncProducerConsumerCollection.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncReadWriter.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\AsyncSemaphore.cs" />
+    <Compile Include="Parallelism\DataStructures\Async\HtmlAsyncCache.cs" />
+    <Compile Include="Parallelism\DataStructures\ConcurrentSortedQueue.cs" />
+    <Compile Include="Parallelism\DataStructures\Future\FutureCache.cs" />
+    <Compile Include="Parallelism\DataStructures\Future\FutureSpeculativeCache.cs" />
+    <Compile Include="Parallelism\DataStructures\Future\FutureWebCache.cs" />
+    <Compile Include="Parallelism\DataStructures\ObjectPool.cs" />
+    <Compile Include="Parallelism\DataStructures\ObservableConcurrentCollection.cs" />
+    <Compile Include="Parallelism\DataStructures\ObservableConcurrentDictionary.cs" />
+    <Compile Include="Parallelism\DataStructures\Pipeline.cs" />
+    <Compile Include="Parallelism\DataStructures\PipelineOfT.cs" />
+    <Compile Include="Parallelism\DataStructures\ProduceOrConsumeOnlyCollectionOfT.cs" />
+    <Compile Include="Parallelism\DataStructures\ProducerConsumerCollectionBase.cs" />
+    <Compile Include="Parallelism\DataStructures\ProducerConsumerCollectionWrapper.cs" />
+    <Compile Include="Parallelism\DataStructures\ReductionVariable.cs" />
+    <Compile Include="Parallelism\DataStructures\SerialTaskQueue.cs" />
+    <Compile Include="Parallelism\DataStructures\SpinLockClass.cs" />
+    <Compile Include="Parallelism\DataStructures\TransferStream.cs" />
+    <Compile Include="Parallelism\Drawing\FastBitmap.cs" />
+    <Compile Include="Parallelism\Drawing\PixelData.cs" />
+    <Compile Include="Parallelism\ParallelLinqOptions.cs" />
+    <Compile Include="Parallelism\Tools\ParallelTool.cs" />
+    <Compile Include="Parallelism\Tools\ParallelTool.ForRange.cs" />
+    <Compile Include="Parallelism\Tools\ParallelTool.Map.cs" />
+    <Compile Include="Parallelism\Tools\ParallelTool.Speculative.cs" />
+    <Compile Include="Parallelism\Tools\ParallelTool.Wavefront.cs" />
+    <Compile Include="Parallelism\Tools\ParallelTool.While.cs" />
+    <Compile Include="Parallelism\Partitioners\BlockingCollectionPartitioner.cs" />
+    <Compile Include="Parallelism\Partitioners\ChunkPartitioner.cs" />
+    <Compile Include="Parallelism\Partitioners\PartitionerTool.cs" />
+    <Compile Include="Parallelism\Partitioners\SingleItemPartitioner.cs" />
+    <Compile Include="Parallelism\TaskSchedulerSynchronizationContext.cs" />
+    <Compile Include="Parallelism\TaskSchedulers\ThreadPerTaskScheduler.cs" />
+    <Compile Include="Parallelism\Tools\AggregateExceptionTool.cs" />
+    <Compile Include="Parallelism\Tools\APM\CompressorAsync.cs" />
+    <Compile Include="Parallelism\Tools\APM\DelegateAsync.cs" />
+    <Compile Include="Parallelism\Tools\APM\DnsAsync.cs" />
+    <Compile Include="Parallelism\Tools\APM\FileAsync.cs" />
+    <Compile Include="Parallelism\Tools\APM\StreamAsync.cs" />
+    <Compile Include="Parallelism\Tools\APM\WebRequestAsync.cs" />
+    <Compile Include="Collections\Concurrent\BlockingCollectionTool.cs" />
+    <Compile Include="Parallelism\Tools\CancellationTokenTool.cs" />
+    <Compile Include="Parallelism\Tools\CompletedTask.cs" />
+    <Compile Include="Parallelism\Tools\CompletedTaskOfT.cs" />
+    <Compile Include="Parallelism\DelegateBaseObserver.cs" />
+    <Compile Include="Parallelism\Tools\DelegateTool.cs" />
+    <Compile Include="Parallelism\Tools\EAP\EventAsyncPattern.cs" />
+    <Compile Include="Parallelism\Tools\EAP\PingAsync.cs" />
+    <Compile Include="Parallelism\Tools\EAP\SmtpClientAsync.cs" />
+    <Compile Include="Parallelism\Tools\EAP\WebClientAsync.cs" />
+    <Compile Include="Parallelism\Tools\LazyTool.cs" />
+    <Compile Include="Parallelism\Tools\PLinqTool.cs" />
+    <Compile Include="Parallelism\Tools\PLinqTool.Generate.cs" />
+    <Compile Include="Parallelism\Tools\PLinqTool.Pipe.cs" />
+    <Compile Include="Parallelism\Tools\SortedTopN.cs" />
+    <Compile Include="Parallelism\Tools\TaskCompletionSourceTool.cs" />
+    <Compile Include="Parallelism\Tools\TaskFactoryTool.cs" />
+    <Compile Include="Parallelism\Tools\TaskFactoryTool.Delayed.cs" />
+    <Compile Include="Parallelism\Tools\TaskFactoryTool.From.cs" />
+    <Compile Include="Parallelism\Tools\TaskSchedulerTool.cs" />
+    <Compile Include="Parallelism\Tools\TaskTool.cs" />
+    <Compile Include="Reflections\DynamicAccessorFactory.cs" />
+    <Compile Include="Reflections\DynamicAccessorOfT.cs" />
+    <Compile Include="Reflections\DynamicAccessorTool.cs" />
+    <Compile Include="Reflections\FasterflectTool.Constructor.cs" />
+    <Compile Include="Reflections\ReflectionTool.ToString.cs" />
+    <Compile Include="Reflections\DynamicAccessor.cs" />
+    <Compile Include="Reflections\IDynamicAccessor.cs" />
+    <Compile Include="Reflections\IDynamicAccessorOfT.cs" />
+    <Compile Include="Reflections\ReflectionTool.cs" />
+    <Compile Include="Reflections\TypeConvertableDynamicAccessor.cs" />
+    <Compile Include="Reflections\TypeConvertableDynamicAccessorOfT.cs" />
+    <Compile Include="ResourceProviders\IResourceProvider.cs" />
+    <Compile Include="ResourceProviders\ResourceProvider.cs" />
+    <Compile Include="ResourceProviders\ResourceProviderBase.cs" />
+    <Compile Include="ResourceProviders\ResourceProviderOfT.cs" />
+    <Compile Include="Serializations\ISerializedObject.cs" />
+    <Compile Include="Serializations\SerializationMethod.cs" />
+    <Compile Include="Serializations\SerializationOptions.cs" />
+    <Compile Include="Serializations\SerializedObjects\AbstractSerializedObject.cs" />
+    <Compile Include="Serializations\SerializedObjects\BinarySerializedObject.cs" />
+    <Compile Include="Serializations\SerializedObjects\BsonSerializedObject.cs" />
+    <Compile Include="Serializations\SerializedObjects\JsonSerializedObject.cs" />
+    <Compile Include="Serializations\SerializedObjects\SoapSerializedObject.cs" />
+    <Compile Include="Serializations\SerializedObjects\XmlSerializedObject.cs" />
+    <Compile Include="Serializations\SerializedObjectTool.cs" />
+    <Compile Include="Serializations\Serializers\AbstractSerializer.cs" />
+    <Compile Include="Serializations\Serializers\AbstractSerializerOfT.cs" />
+    <Compile Include="Serializations\Serializers\BinarySerializer.cs" />
+    <Compile Include="Serializations\Serializers\BinarySerializerOfT.cs" />
+    <Compile Include="Json\BsonSerializerOfT.cs" />
+    <Compile Include="Serializations\Serializers\CloneSerializer.cs" />
+    <Compile Include="Serializations\Serializers\CompressSerializer.cs" />
+    <Compile Include="Serializations\Serializers\CompressSerializerOfT.cs" />
+    <Compile Include="Serializations\Serializers\EncryptSerializer.cs" />
+    <Compile Include="Serializations\Serializers\EncryptSerializerOfT.cs" />
+    <Compile Include="Json\JsonByteSerializerOfT.cs" />
+    <Compile Include="Serializations\SerializerTool.cs" />
+    <Compile Include="Serializations\SerializerTool.Factory.cs" />
+    <Compile Include="UnitTesting\CrossThreadRunner.cs" />
+    <Compile Include="UnitTesting\OperationTimer.cs" />
+    <Compile Include="UnitTesting\TagAttribute.cs" />
+    <Compile Include="UnitTesting\TestTool.cs" />
+    <Compile Include="Threading\ThreadSafeRandom.cs" />
+    <Compile Include="Tools\CodecTool.cs" />
+    <Compile Include="Tools\DictionaryTool.cs" />
+    <Compile Include="LinqEx\LinqTool.cs" />
+    <Compile Include="Tools\MimetypeTool.cs" />
+    <Compile Include="Reflections\ObjectDumper.cs" />
+    <Compile Include="Tools\ResourceTool.cs" />
+    <Compile Include="Tools\TypeTool.cs" />
+    <Compile Include="LinqEx\PivotBuilder.cs" />
+    <Compile Include="Util\StackTracer.cs" />
+    <Compile Include="Validations\ValidatorFactory.cs" />
+    <Compile Include="Validations\ValidatorTool.cs" />
+    <Compile Include="DefaultAsyncResult.cs" />
+    <Compile Include="IPagingListOfT.cs" />
+    <Compile Include="IYearMonth.cs" />
+    <Compile Include="IYearMonthWeek.cs" />
+    <Compile Include="Util\With.cs" />
+    <Compile Include="Util\With.OperationTimer.cs" />
+    <Compile Include="NamedIndexer.cs" />
+    <Compile Include="IYearWeek.cs" />
+    <Compile Include="MemberNamingRule.cs" />
+    <Compile Include="Quarters.cs" />
+    <Compile Include="DateRangeKind.cs" />
+    <Compile Include="IO\ValueStream.cs" />
+    <Compile Include="PagingListOfT.cs" />
+    <Compile Include="ValueObjectBase.cs" />
+    <Compile Include="DateValue.cs" />
+    <Compile Include="IValueObject.cs" />
+    <Compile Include="TimeValue.cs" />
+    <Compile Include="ValueObjectEqualityComparer.cs" />
+    <Compile Include="ValueObjectEqualityComparerOfT.cs" />
+    <Compile Include="Web\AbstractOutputCacheProvider.cs" />
+    <Compile Include="Web\AbstractSessionStateStoreProvider.cs" />
+    <Compile Include="Web\IOutputCacheProvider.cs" />
+    <Compile Include="Web\WebClientFactory.cs" />
+    <Compile Include="Web\Caching\SysCacheOutputCacheProvider.cs" />
+    <Compile Include="Web\Caching\SysCacheRepository.cs" />
+    <Compile Include="Web\ControlAdapters\AspImageControlAdapter.cs" />
+    <Compile Include="Web\HttpHandlers\AbstractHttpAsyncHandler.cs" />
+    <Compile Include="Web\HttpHandlers\AbstractHttpHandler.cs" />
+    <Compile Include="Web\HttpHandlers\MultiFileHttpHandler.cs" />
+    <Compile Include="Web\HttpHandlers\PerformanceCounterHandlerBase.cs" />
+    <Compile Include="Web\HttpHandlers\StaticFileHttpHandler.cs" />
+    <Compile Include="Web\HttpModules\AbstractHttpModule.cs" />
+    <Compile Include="Web\HttpModules\AsyncAccessLogModule.cs" />
+    <Compile Include="Web\HttpApplications\AsyncHttpApplicationBase.cs" />
+    <Compile Include="Web\HttpModules\PageAccessLogModule.cs" />
+    <Compile Include="Web\HttpModules\PagePerformanceModule.cs" />
+    <Compile Include="Web\HttpApplications\WindsorHttpApplication.cs" />
+    <Compile Include="Web\HttpModules\Ranks\UriExecutionTime.cs" />
+    <Compile Include="Web\HttpModules\Ranks\UriExecutionTimeRankModule.cs" />
+    <Compile Include="Web\HttpModules\UserLocalizationModule.cs" />
+    <Compile Include="Web\HttpModules\WindsorHttpModule.cs" />
+    <Compile Include="Web\HttpApplications\WindsorAsyncHttpApplication.cs" />
+    <Compile Include="Web\IPageStateEntity.cs" />
+    <Compile Include="Web\IServerPageStatePersister.cs" />
+    <Compile Include="Web\PageAdapters\IoCPageStateAdapter.cs" />
+    <Compile Include="Web\PageStatePersisters\AbstractServerPageStatePersister.cs" />
+    <Compile Include="Web\PageStatePersisters\CompressableSessionPageStatePersister.cs" />
+    <Compile Include="Web\PageStatePersisters\CompressHiddenFieldPersister.cs" />
+    <Compile Include="Web\PageStatePersisters\ConcurrentPageStatePersister.cs" />
+    <Compile Include="Web\PageStatePersisters\PageStateEntity.cs" />
+    <Compile Include="Web\PageStatePersisters\PageStatePersisterOfT.cs" />
+    <Compile Include="Web\PageStatePersisters\PageStateTool.cs" />
+    <Compile Include="Web\PageStatePersisters\SysCachePageStatePersister.cs" />
+    <Compile Include="Web\Tools\AntiXssTool.cs" />
+    <Compile Include="Web\Tools\ClientScriptUtils.cs" />
+    <Compile Include="Web\Tools\CookieChunker.cs" />
+    <Compile Include="Web\Tools\CookieTool.cs" />
+    <Compile Include="Web\Tools\UrlBuilder.cs" />
+    <Compile Include="Web\Tools\VirtualPathUtilityBase.cs" />
+    <Compile Include="Web\Tools\VirtualPathUtilityWrapper.cs" />
+    <Compile Include="Web\Tools\WebControlUtils.cs" />
+    <Compile Include="Web\Tools\WebTool.cs" />
+    <Compile Include="Web\Tools\WebTool.Mimetype.cs" />
+    <Compile Include="Web\Tools\WebTool.Session.cs" />
+    <Compile Include="Web\WebCompressionKind.cs" />
+    <Compile Include="Xml\XLinqTool.cs" />
+    <Compile Include="YearMonth.cs" />
+    <Compile Include="YearWeek.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reflections\ObjectMapper.MapObject.cs" />
+    <Compile Include="Reflections\ObjectMapper.MapProperty.cs" />
+    <Compile Include="Reflections\FasterflectTool.cs" />
+    <Compile Include="Reflections\FasterflectTool.Method.cs" />
+    <Compile Include="Reflections\MapPropertyOptions.cs" />
+    <Compile Include="Reflections\ObjectMapper.cs" />
+    <Compile Include="Reflections\ObjectMapper.Map.cs" />
+    <Compile Include="Serializations\ISerializer.cs" />
+    <Compile Include="Serializations\ISerializerOfT.cs" />
+    <Compile Include="Tools\ArrayTool.cs" />
+    <Compile Include="Tools\AssemblyTool.cs" />
+    <Compile Include="Tools\BooleanTool.cs" />
+    <Compile Include="Tools\CultureTool.cs" />
+    <Compile Include="Tools\EnumTool.cs" />
+    <Compile Include="Tools\GuidTool.cs" />
+    <Compile Include="Tools\HexTextTool.cs" />
+    <Compile Include="IO\StreamTool.cs" />
+    <Compile Include="Tools\StringTool.Algorithm.cs" />
+    <Compile Include="Tools\StringTool.Encode.cs" />
+    <Compile Include="Tools\StringTool.Unicode.cs" />
+    <Compile Include="Util\ILocalData.cs" />
+    <Compile Include="Util\Local.cs" />
+    <Compile Include="Tools\ActivatorTool.cs" />
+    <Compile Include="SR.cs" />
+    <Compile Include="Tools\ConfigTool.cs" />
+    <Compile Include="ConvertTool.AsValue.cs" />
+    <Compile Include="ConvertTool.cs" />
+    <Compile Include="Util\Guard.ShouldBe.cs" />
+    <Compile Include="Util\Guard.cs" />
+    <Compile Include="HashTool.cs" />
+    <Compile Include="Tools\StringTool.Convert.cs" />
+    <Compile Include="Tools\StringTool.cs" />
+    <Compile Include="Tools\SingletonTool.cs" />
+    <Compile Include="Xml\XmlDoc.cs" />
+    <Compile Include="Xml\XmlSerializerOfT.cs" />
+    <Compile Include="Xml\XmlTool.cs" />
+    <Compile Include="Xml\XmlTool.Serializer.cs" />
+    <Compile Include="Xml\XStreamReader.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="InversionOfControl\IoC.Proxy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Diagnostics\PerformanceCounters.txt" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

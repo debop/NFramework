@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RWXMLDS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" dir="0" cnn="" commandTimeout="90" tranx="1" cursor="3" isolation="4096">
+	<ERRORS />
+	<REQUEST id="0" qtype="1" rtype="2" pageSize="-1" pageNo="-1" sort="">
+		<QUERY>
+			SELECT COUNT(*) AS CustomerCount FROM Customers
+		</QUERY>
+		<PARAMS />
+		<VALUES />
+		<PREQUERIES />
+		<POSTQUERIES />
+	</REQUEST>
+	<REQUEST id="1" qtype="1" rtype="0" pageSize="-1" pageNo="-1" sort="">
+		<QUERY>
+			UPDATE Orders SET Freight = Freight + @FreightDelta
+		</QUERY>
+		<PARAMS>
+			<P paramType="Currency">FreightDelta</P>
+		</PARAMS>
+		<VALUES>
+			<V>
+				<P>0.1</P>
+			</V>
+			<V>
+				<P>-0.1</P>
+			</V>
+		</VALUES>
+		<PREQUERIES />
+		<POSTQUERIES />
+	</REQUEST>
+</RWXMLDS>

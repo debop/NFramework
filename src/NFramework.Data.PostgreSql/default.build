@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.Data.PostgreSql"
+		 default="build"
+		 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<!--
+		단위 프로젝트에서 설정해 줄 것
+		
+		assembly.version		: 기본적으로 solution.version 을 따라간다.
+		assembly.description	:
+		
+		build.unsafe			: true|false
+		
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+	
+	<target name="init" depends="common.init">
+		<property name="assembly.description" value="NSoft.NFramework Data Library for PostgreSql"/>
+		
+		<!-- EntLibContrib.Data.MySql 이 signing이 되어 있지 않다 -->
+		<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+		<property name="sign" value="false" overwrite="true"/>
+		
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<include name="System"/>
+			<include name="System.Configuration"/>
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.Transactions"/>
+			<include name="System.Web"/>
+			<include name="System.Xml"/>
+
+			<include name="Microsoft.Practices.EnterpriseLibrary.Common.dll"/>
+			<include name="Microsoft.Practices.EnterpriseLibrary.Data.dll"/>
+
+			<include name="NLog.dll" />
+
+			<!-- PostgreSQL Driver -->
+			<include name="Mono.Security.dll" />
+			<include name="Npgsql.dll" />
+
+			<include name="Newtonsoft.Json.dll" />
+			<include name="NLog.dll" />
+
+			<include name="NSoft.NFramework.dll" />
+			<include name="NSoft.NFramework.Data.dll" />
+
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+			<include name="**/*.hbm.xml"/>
+			<include name="**/*.config"/>
+			<include name="**/*.licx"/>
+			<include name="**/*.config"/>
+		</resourcefileset>
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+	
+	<target name="build" 
+			depends="generate-assemblyinfo common.compile-dll common.obfuscator"
+			description="Build ${project::get-name()}">
+		<copy file="${build.dir}/${project::get-name()}.dll" tofile="${lib.framework.dir}/${project::get-name()}.dll" />
+		<copy file="${build.dir}/${project::get-name()}.xml" tofile="${lib.framework.dir}/${project::get-name()}.xml" />
+		<property name="output.filename.pdb" value="${build.dir}/${project::get-name()}.pdb" />
+		<if test="${file::exists(output.filename.pdb)}">
+			<copy file="${build.dir}/${project::get-name()}.pdb" tofile="${lib.framework.dir}/${project::get-name()}.pdb" />
+		</if>
+	</target>
+</project>

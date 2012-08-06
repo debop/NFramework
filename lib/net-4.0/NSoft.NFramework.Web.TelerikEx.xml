@@ -1,0 +1,315 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NSoft.NFramework.Web.TelerikEx</name>
+    </assembly>
+    <members>
+        <member name="T:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1">
+            <summary>
+            RadTreeView에 대한 처리를 도와주는 Adapter입니다.
+            </summary>
+            <typeparam name="T"><see cref="T:NSoft.NFramework.Data.NHibernateEx.Domain.ITreeNodeEntity`1"/></typeparam>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.CreateNode(`0)">
+            <summary>
+            새로운 RadTreeNode를 생성합니다.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.CreateNodeValue(`0)">
+            <summary>
+            엔티티로부터 TreeNode의 Value 속성을 생성합니다.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.NodeAdded(`0,Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            TreeNode가 추가되고, 후처리를 지정할 수 있습니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.AddNodes(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            <see cref="T:NSoft.NFramework.Data.NHibernateEx.Domain.ITreeNodeEntity`1"/> 형식의 정보를 TreeView의 Node로 빌드합니다.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.AddNodes(Telerik.Web.UI.IRadTreeNodeContainer,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            <paramref name="parent"/>에 Node를 추가합니다.
+            </summary>
+            <param name="parent"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.SelectFirstNode">
+            <summary>
+            TreeView 의 첫번째 RootNode가 선택되어 Focus를 가지도록 합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.FindNodeByItem(`0)">
+            <summary>
+            지정된 정보와 매핑된 TreeNode를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.TreeViewCtrl">
+            <summary>
+            RadControls for ASP.NET의 TreeView Control
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.TelerikEx.IRadTreeViewAdapter`1.SelectedNodeValue">
+            <summary>
+            선택된 TreeNode의 값 (선택된 값이 없을 때에는 null이다)
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.#ctor(Telerik.Web.UI.RadTreeView)">
+            <summary>
+            생성자
+            </summary>
+            <param name="treeViewCtrl"><c>RadTreeView</c></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.NodeAdded(`0,Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            TreeNode가 추가되고, 후처리를 지정할 수 있습니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.CreateNode(`0)">
+            <summary>
+            새로운 RadTreeNode를 생성합니다.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.CreateNodeValue(`0)">
+            <summary>
+            엔티티로부터 TreeNode의 Value 속성을 생성합니다.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.AddNodes(System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            <see cref="P:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.TreeViewCtrl"/>에 컬렉션을 바인딩합니다.
+            </summary>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.AddNodes(Telerik.Web.UI.IRadTreeNodeContainer,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            지정된 노드에 Tree를 추가합니다.
+            </summary>
+            <param name="parent"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.SelectFirstNode">
+            <summary>
+            TreeView 의 첫번째 RootNode가 선택되어 Focus를 가지도록 합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.FindNodeByItem(`0)">
+            <summary>
+            지정된 정보와 매핑된 TreeNode를 찾습니다.
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.TreeViewCtrl">
+            <summary>
+            TreeView Control
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.Web.TelerikEx.TreeView.RadTreeViewAdapterAdapterBase`1.SelectedNodeValue">
+            <summary>
+            선택된 TreeNode의 값 (선택된 값이 없을 때에는 null이다)
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.Web.TelerikEx.TreeView.TreeNodeEntityTreeViewAdapterAdapterBase`1">
+            <summary>
+            <see cref="T:NSoft.NFramework.Data.NHibernateEx.Domain.ITreeNodeEntity`1"/> 형태의 엔티티를 TreeView에 표현할 수 있도록 하는 Adapter 클래스입니다.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.TreeNodeEntityTreeViewAdapterAdapterBase`1.#ctor(Telerik.Web.UI.RadTreeView)">
+            <summary>
+            생성자
+            </summary>
+            <param name="treeViewCtrl"><c>RadTreeView</c></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TreeView.TreeNodeEntityTreeViewAdapterAdapterBase`1.AddNodes(Telerik.Web.UI.IRadTreeNodeContainer,System.Collections.Generic.IEnumerable{`0})">
+            <summary>
+            지정된 노드에 Tree를 추가합니다.
+            </summary>
+            <param name="parent"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FindNodes(Telerik.Web.UI.IRadTreeNodeContainer,System.Func{Telerik.Web.UI.RadTreeNode,System.Boolean})">
+            <summary>
+            Depth-First 탐색으로 특정 Node 와 그 자손 Node 들 중에 검사를 통과하는 Node들을 열거합니다.
+            </summary>
+            <param name="nodeContainer"></param>
+            <param name="predicate"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FirstOrDefaultByText(Telerik.Web.UI.IRadTreeNodeContainer,System.String,System.Boolean)">
+            <summary>
+            특정 Text를 가진 첫번째 TreeNode를 반환합니다. 없으면 null을 반환합니다.
+            </summary>
+            <param name="nodeContainer">RadTreeView</param>
+            <param name="nodeText">찾을 node text</param>
+            <param name="ignoreCase">대소문자 무시 여부</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FirstOrDefaultByText(System.Collections.Generic.IEnumerable{Telerik.Web.UI.RadTreeNode},System.String,System.Boolean)">
+            <summary>
+            특정 노드 Text을 가진 TreeNode를 찾습니다.
+            </summary>
+            <param name="nodes">RadTreeNode collection</param>
+            <param name="nodeText">찾을 node text</param>
+            <param name="ignoreCase">대소문자 무시 여부</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FirstOrDefaultByValue(Telerik.Web.UI.IRadTreeNodeContainer,System.String,System.Boolean)">
+            <summary>
+            특정 값을 가진 TreeNode를 찾습니다. 없으면 null을 반환합니다.
+            </summary>
+            <param name="nodeContainer">RadTreeView or RadTreeNode</param>
+            <param name="nodeValue">찾을 node value</param>
+            <param name="ignoreCase">대소문자 무시 여부</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FirstOrDefaultByValue(System.Collections.Generic.IEnumerable{Telerik.Web.UI.RadTreeNode},System.String,System.Boolean)">
+            <summary>
+            특정 노드 값을 가진 TreeNode를 찾습니다.
+            </summary>
+            <param name="nodes">RadTreeNode collection</param>
+            <param name="nodeValue">찾을 node value</param>
+            <param name="ignoreCase">대소문자 무시 여부</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FindRootNodes(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            특정 NodeContainer가 TreeView라면 자식 Nodes들을 열거하고, TreeNode라면, TreeNode가 속한 TreeView의 Root Nodes 들을 반환합니다.
+            </summary>
+            <param name="nodeContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.GetRootNodesOrSelfNode(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            지정한 Node Container가 TreeView라면 Nodes 들을 열거하고, TreeNode라면 자신을 반환한다.
+            </summary>
+            <param name="nodeContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FindLeafNodes(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            특정 NodeContainer의 자손 중 자식 노드가 없는 TreeNode들 (나무 잎) 을 열거합니다.
+            </summary>
+            <param name="nodeContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.GetNodesByDepthFirst(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            nodeContainer의 자신과 자손 TreeNode를 깊이 우선 탐색 방식으로 열거합니다.
+            </summary>
+            <param name="nodeContainer">기준 노드 또는 TreeView</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.GetNodesByBreadthFirst(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            nodeContainer의 자신과 자손 TreeNode를 폭 우선 탐색 방식으로 열거합니다.
+            </summary>
+            <param name="nodeContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.GetAncestorNodes(Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            특정 TreeNode부터 조상들의 노드들을 차례로 열거합니다.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.GetAncestorNodeAsStack(Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            최상위 조상이 Stack의 가장 위에 있고, 지정한 node가 가장 아래에 있도록 Stack을 만들어 반환합니다. 
+            Stack에서 하나씩 꺼내서 Expand 시키거나 Navigation할 때 필요합니다.
+            </summary>
+            <param name="node"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.GetDescendentNodes(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            깊이 우선 탐색을 통해, 현재 Node와 Node의 자손 Node들을 열거합니다. 열거 순서에 상관없으려면 node.GetAllNodes()를 사용하세요
+            </summary>
+            <param name="nodeContainer"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.ExpandNode(Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            특정 TreeNode를 Expand 시켜서, 노드의 자식들을 보이도록 합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.ExpandNode(Telerik.Web.UI.RadTreeNode,System.Boolean)">
+            <summary>
+            특정 TreeNode를 Expand 시켜서, 노드의 자식들을 보이도록 합니다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.FocusNode(Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            특정 노드에 Focus를 줍니다. Focus를 주려면, 현재 노드가 보여야 하므로, 부모 노드들을 모두 Expand 시킵니다.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.SelectNode(Telerik.Web.UI.RadTreeNode)">
+            <summary>
+            특정 노드를 선택 상태로 설정합니다.
+            </summary>
+            <param name="node"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.AddNodes``1(Telerik.Web.UI.IRadTreeNodeContainer,System.Func{``0,Telerik.Web.UI.RadTreeNode},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            특정 TreeNode의 자식으로 노드를 추가합니다.	NFramework.Data.NHibernateEx.Domain.ITreeNodeEntity를 구현한 클래스에 대해서는 BuildTreeNodes 함수를 사용하세요.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parent"></param>
+            <param name="nodeFactory"></param>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.AddNodes``1(Telerik.Web.UI.IRadTreeNodeContainer,System.Func{``0,Telerik.Web.UI.RadTreeNode},System.Action{``0,Telerik.Web.UI.RadTreeNode},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            특정 TreeNode의 자식으로 노드를 추가합니다.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parent"></param>
+            <param name="nodeFactory">노드 생성 메소드</param>
+            <param name="nodeAddedAction">노드 추가마다 호출되는 메소드</param>
+            <param name="items"></param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.BuildTreeNodes``1(Telerik.Web.UI.IRadTreeNodeContainer,System.Func{``0,Telerik.Web.UI.RadTreeNode},System.Func{``0,Telerik.Web.UI.RadTreeNode},System.Action{``0,Telerik.Web.UI.RadTreeNode},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            <see cref="T:NSoft.NFramework.Data.NHibernateEx.Domain.ITreeNodeEntity`1"/>를 구현한 엔티티들을 표현할 TreeNode를 생성하여 TreeView에 추가합니다.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parent">부모 노드 또는 TreeView</param>
+            <param name="nodeFactory">TreeNode를 생성하는 Factory 함수</param>
+            <param name="findNodeFunc">기존 TreeView에서 엔티티와 관련된 Node를 찾는 함수</param>
+            <param name="nodeAddedAction">TreeNode 하나를 추가할 때마다 수행하는 Action</param>
+            <param name="items">엔티티</param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.BuildTreeNodes``1(Telerik.Web.UI.IRadTreeNodeContainer,System.Func{``0,Telerik.Web.UI.RadTreeNode},System.Func{``0,Telerik.Web.UI.RadTreeNode},System.Action{``0,Telerik.Web.UI.RadTreeNode},System.Collections.Generic.IEnumerable{``0},System.Boolean)">
+            <summary>
+            <see cref="T:NSoft.NFramework.Data.NHibernateEx.Domain.ITreeNodeEntity`1"/>를 구현한 엔티티들을 표현할 TreeNode를 생성하여 TreeView에 추가합니다.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="parent">부모 노드 또는 TreeView</param>
+            <param name="nodeFactory">TreeNode를 생성하는 Factory 함수</param>
+            <param name="findNodeFunc">기존 TreeView에서 엔티티와 관련된 Node를 찾는 함수</param>
+            <param name="nodeAddedAction">TreeNode 하나를 추가할 때마다 수행하는 Action</param>
+            <param name="items">엔티티</param>
+            <param name="includeChildren">엔티티의 자손들도 Binding 할 것인가?</param>
+        </member>
+        <member name="M:NSoft.NFramework.Web.TelerikEx.TelerikTool.AsTextAndValue(Telerik.Web.UI.IRadTreeNodeContainer)">
+            <summary>
+            <see cref="!:nodeContainer"/>의 모든 Node에 대한 정보를 문자열로 표현하도록 합니다. 디버그 시에만 사용하세요.
+            </summary>
+            <param name="nodeContainer"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

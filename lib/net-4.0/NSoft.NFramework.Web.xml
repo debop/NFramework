@@ -1,0 +1,3345 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Web</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.Web.Access.AccessIdentity">
+      <summary>
+            사용자 계정에 대한 인증정보를 표현한 클래스입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Access.IAccessIdentity">
+      <summary>
+            사용자 계정 정보를 나타내는 인터페이스입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.CompanyCode">
+      <summary>
+            인증 사용자의 회사 Code
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.OrganizationCode">
+      <summary>
+            인증 사용자의 부서 Code
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.UserCode">
+      <summary>
+            인증 사용자의 사용자 Code
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.UserName">
+      <summary>
+            인증 사용자 이름 (Localized)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.LoginId">
+      <summary>
+            인증 사용자의 로그인 Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.LocaleKey">
+      <summary>
+            인증 사용자 LocaleKey
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.IAccessIdentity.Theme">
+      <summary>
+            사용자 테마
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.Name">
+      <summary>
+            현재 사용자의 이름을 가져옵니다.
+            </summary>
+      <returns>
+            코드를 실행하고 있는 사용자의 이름입니다.
+            </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.AuthenticationType">
+      <summary>
+            사용한 인증 형식을 가져옵니다.
+            </summary>
+      <returns>
+            사용자를 식별하는 데 사용되는 인증 형식입니다.
+            </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.IsAuthenticated">
+      <summary>
+            사용자가 인증되었는지 여부를 나타내는 값을 가져옵니다.
+            </summary>
+      <returns>
+            사용자가 인증되었으면 true이고, 그렇지 않으면 false입니다.
+            </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.CompanyCode">
+      <summary>
+            인증 사용자의 회사 Code
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.OrganizationCode">
+      <summary>
+            인증 사용자의 부서 Code
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.UserCode">
+      <summary>
+            인증 사용자의 사용자 Code
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.UserName">
+      <summary>
+            인증 사용자 이름 (Localized)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.LoginId">
+      <summary>
+            인증 사용자의 로그인 Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.LocaleKey">
+      <summary>
+            인증 사용자 LocaleKey
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessIdentity.Theme">
+      <summary>
+            사용자 테마
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Access.AccessPrincipal">
+      <summary>
+            사용자 인증 정보를 나타내는 Principal 클래스입니다.
+            </summary>
+      <remarks>
+            NOTE: Raise exception in ASP.NET Development Server 
+            <see cref="!:https://connect.microsoft.com/VisualStudio/feedback/details/302478/connection-get-localip-method-raise-exception-in-asp-net-development-server" /></remarks>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Access.AccessPrincipal.IsInRole(System.String)">
+      <summary>
+            현재 Principal이 지정된 역할에 속하는지 여부를 확인합니다.
+            </summary>
+      <returns>
+            현재 Principal이 지정된 역할의 멤버이면 true이고, 그렇지 않으면 false입니다.
+            </returns>
+      <param name="role">멤버 여부를 확인하기 위한 역할의 이름입니다. </param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Access.AccessPrincipal.Identity">
+      <summary>
+            현재 보안 주체(principal)의 ID를 가져옵니다.
+            </summary>
+      <returns>
+            현재 Principal과 관련된 <see cref="T:System.Security.Principal.IIdentity" /> 개체입니다.
+            </returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.FileItem">
+      <summary>
+            파일 정보를 표현합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.FileItem.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.FileItem.#ctor(System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="clientFileName">클라이언트 파일명</param>
+      <param name="serverFileName">서버에 저장된 파일명</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.FileItem.GetName">
+      <summary>
+            파일명
+            </summary>
+      <returns>파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.FileItem.GetExtension">
+      <summary>
+            파일 확장자명
+            </summary>
+      <returns>확장자</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.FileItem.ClientFileName">
+      <summary>
+            클라이언트 파일명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.FileItem.ServerFileName">
+      <summary>
+            서버 저장 파일명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.FileItem.ContentType">
+      <summary>
+            MIME content type
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.FileItem.ContentLength">
+      <summary>
+            파일 사이즈 (byte)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.LocaleItem">
+      <summary>
+            Localization 정보
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.LocaleItem.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.LocaleItem.#ctor(System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="localeKey">지역화코드</param>
+      <param name="localeKeyName">지역화명</param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.LocaleItem.LocaleKey">
+      <summary>
+            지역화코드 (en, ko, ko-KR)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.LocaleItem.LocaleKeyName">
+      <summary>
+            지역화명 (English, Korean)
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.MenuItem">
+      <summary>
+            메뉴 정보
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.MenuItem.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.MenuItem.#ctor(System.String,System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="id">Id</param>
+      <param name="name">메뉴명</param>
+      <param name="menuUrl">Url</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.MenuItem.ToString">
+      <summary>
+            객체를 표현한 문자열을 반환합니다.
+            </summary>
+      <returns>문자열</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.MenuItem.Id">
+      <summary>
+            Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.MenuItem.Name">
+      <summary>
+            메뉴명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.MenuItem.MenuUrl">
+      <summary>
+            Url
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.MenuItem.Parent">
+      <summary>
+            부모 노드
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.MenuItem.Children">
+      <summary>
+            자식들
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.MenuItem.NodePosition">
+      <summary>
+            TreeNode의 위치
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.ThemeItem">
+      <summary>
+            테마 정보를 표현합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.ThemeItem.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.ThemeItem.#ctor(System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="name">테마명</param>
+      <param name="assemblyName">테마 AssemblyName</param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.ThemeItem.Name">
+      <summary>
+            테마명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.ThemeItem.AssemblyName">
+      <summary>
+            테마 AssemblyName
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.ActorKind">
+      <summary>
+            행위를 수행하는 주체 (사용자, 부서, 회사, 그룹, 롤 등)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.ActorKind.Unkown">
+      <summary>
+            알 수 없음
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.ActorKind.User">
+      <summary>
+            사용자
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.ActorKind.Organization">
+      <summary>
+            조직
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.ActorKind.Company">
+      <summary>
+            회사
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.ActorKind.Group">
+      <summary>
+            그룹
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.ActorKind.Role">
+      <summary>
+            Role
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.EntityEditMode">
+      <summary>
+            엔티티 편집 모드 종류 (생성, 읽기, 수정, 삭제)
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.EntityEditMode.Undefiend">
+      <summary>
+            알 수 없음
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.EntityEditMode.Create">
+      <summary>
+            추가
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.EntityEditMode.Read">
+      <summary>
+            읽기
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.EntityEditMode.Update">
+      <summary>
+            수정
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.EntityEditMode.Delete">
+      <summary>
+            삭제
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.MessageBoxDisplayKind">
+      <summary>
+            메시지 출력 모드
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageBoxDisplayKind.JScriptAlert">
+      <summary>
+            javascript alert
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageBoxDisplayKind.Page">
+      <summary>
+            에러메시지 화면
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.MessageButtons">
+      <summary>
+            메시지 다이얼로그 창에 표시할 버튼의 종류
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.None">
+      <summary>
+            없음
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.Close">
+      <summary>
+            다이얼로그 창 닫기
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.Ok">
+      <summary>
+            확인
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.Back">
+      <summary>
+            뒤로
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.Login">
+      <summary>
+            로그인 페이지로 이동
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.OkCancel">
+      <summary>
+            확인, 닫기
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.OkBack">
+      <summary>
+            확안, 뒤로
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.MessageButtons.OkCancelBack">
+      <summary>
+            확인, 닫기, 뒤로
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.SelectionItemDisplayMode">
+      <summary>
+            선택한 항목을 어떤 UI 컨트롤에 출력할 것인가?
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.SelectionItemDisplayMode.Hide">
+      <summary>
+            출력 컨트롤을 숨긴다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.SelectionItemDisplayMode.TextBox">
+      <summary>
+            TextBox로 출력한다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.SelectionItemDisplayMode.Label">
+      <summary>
+            라벨로 출력한다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.SelectionItemDisplayMode.Div">
+      <summary>
+            Div 에 출력한다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.SelectionItemMode">
+      <summary>
+            요소 선택 시의 옵션. 단수 혹은 복수
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.SelectionItemMode.Single">
+      <summary>
+            단수로 선택
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.SelectionItemMode.Multiple">
+      <summary>
+            복수로 선택
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.IndexRouteHandler">
+      <summary>
+            Index 화면의 Route Handler
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandlerBase`1">
+      <summary>
+        <see cref="T:System.Web.Routing.IRouteHandler" />를 구현한 기본 추상 클래스입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandlerBase`1.GetVirtualPath">
+      <summary>
+            처리할 Handler 경로
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandlerBase`1.GetHttpHandler(System.Web.Routing.RequestContext)">
+      <summary>
+            해당 RequestContext에 대한 처리기 반환
+            </summary>
+      <param name="requestContext">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandlerBase`1.CheckPhysicalUrlAccess">
+      <summary>
+            접근여부 체크여부
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.IndexRouteHandler.IndexPageFormatString">
+      <summary>
+            경로
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.IndexRouteHandler.GetVirtualPath">
+      <summary>
+            처리할 Handler 경로
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.MainPageRouteHandler">
+      <summary>
+            MainPage 화면의 Route Handler
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.MainPageRouteHandler.GetVirtualPath">
+      <summary>
+            처리할 Handler 경로
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandler`1">
+      <summary>
+            기본 <see cref="T:System.Web.Routing.IRouteHandler" /> 구현 클래스입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandler`1.#ctor(System.String,System.Boolean)">
+      <summary>
+            생성자
+            </summary>
+      <param name="virtualPath">가상디렉터리</param>
+      <param name="checkPhysicalUrlAccess">접근권한 체크여부</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandler`1.GetVirtualPath">
+      <summary>
+            처리할 Handler 경로
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.HttpHandlers.RouteHandlers.RouteHandler`1.VirtualPath">
+      <summary>
+            가상디렉터리
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Pages.AbstractMasterPage">
+      <summary>
+            웹 어플리케이션의 기본 마스터 페이지입니다.
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.DefaultControlBase">
+      <summary>
+            웹 Application에서 사용하는 UserControl (ascx)의 기본 class
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.DefaultControlBase.SetTitle(System.Web.UI.WebControls.PlaceHolder)">
+      <summary>
+        <paramref name="placeHolder" />에 제목을 설정한다.
+            </summary>
+      <param name="placeHolder">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.DefaultControlBase.SetTitle(System.Web.UI.WebControls.PlaceHolder,System.Boolean)">
+      <summary>
+            지정된 <see cref="T:System.Web.UI.WebControls.PlaceHolder" />에 제목을 설정한다.
+            </summary>
+      <param name="placeHolder">
+      </param>
+      <param name="isContent">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.DefaultControlBase.GetStatusMessage(System.Int32,System.Int32)">
+      <summary>
+            상태 메시지 출력
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.DefaultMasterPageBase">
+      <summary>
+            Web Application의 기본 MasterPage 입니다.
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.DefaultPageBase">
+      <summary>
+            Web Application의 기본 Page class 입니다. 
+            모든 웹 Application Page는 이 클래스를 상속해야 합니다.
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.NonAuthenticationPageBase">
+      <summary>
+            보안 검사 (사용자 인증)을 수행하지 않고, 모든 요청에 응답하는 웹 페이지입니다.
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.PageBase">
+      <summary>
+            최상위 PageBase
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.PageBase.OnPreInit(System.EventArgs)">
+      <summary>
+            페이지를 초기화
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.PageBase.GetMasterPageFile">
+      <summary>
+            마스터 페이지를 리턴한다. OnInit 시 호출되어 할당함
+            </summary>
+      <returns>마스터 페이지 경로</returns>
+    </member>
+    <member name="P:RCL.Web.Pages.PageBase.AjaxManager">
+      <summary>
+            Page의 RadAjaxManager
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.NonAuthenticationPageBase.WriteAccessHistory">
+      <summary>
+            페이지 접근 이력을 작성합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.NonAuthenticationPageBase.LoginProcess">
+      <summary>
+            로그인 처리
+            </summary>
+      <returns>로그인 성공여부</returns>
+    </member>
+    <member name="M:RCL.Web.Pages.NonAuthenticationPageBase.OnInit(System.EventArgs)">
+      <summary>
+            페이지를 초기화
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.DefaultPageBase.OnInit(System.EventArgs)">
+      <summary>
+            페이지 초기화를 수행하는 메소드입니다.
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="P:RCL.Web.Pages.DefaultPageBase.CanAccess">
+      <summary>
+            접근권한 체크
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:RCL.Web.Pages.DefaultPageBase.IsSkipLoginProcess">
+      <summary>
+            로그인 프로세스 Skip 여부
+            </summary>
+      <remarks>
+            TODO: 페이지UI의 기능과 인증기능은 분리되어야 한다. (추후에 분리시킬 예정이며, 이 Property는 분리기능을 임시로 가능케 설정함)
+            (e.q. <see cref="T:RCL.Web.Pages.NHibernateEntityGridPageBase`1" />을 사용하는 페이지에서 인증을 원하는 않을 경우도 존재한다.)
+            </remarks>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:RCL.Web.Pages.EntityGridControlBase`1">
+      <summary>
+            엔티티 목록을 Grid로 표현할 때 기본이 되는 Control입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Pages.IEntityGridPage`1">
+      <summary>
+            엔티티 목록을 Grid로 표현하는 웹 페이지의 기본 인터페이스입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.GridSortExpr">
+      <summary>
+            Entity Grid의 정렬 항목
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.GridSortAsc">
+      <summary>
+            Entity Grid의 정렬 방식 (Ascending|Descending)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.PageIndex">
+      <summary>
+            Entity Grid의 Page Index (0부터 시작)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.PageSize">
+      <summary>
+            Entity Grid의 Page Size (한 페이지당 엔티티 갯수, 기본은 <see cref="P:NSoft.NFramework.Web.AppSettings.DefaultPageSize" />)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.SearchKey">
+      <summary>
+            검색 항목
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.SearchValue">
+      <summary>
+            검색 항목의 값 (여기에 값이 있으면, 검색으로 엔티티를 로드해야 함을 나타냅니다)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.Entities">
+      <summary>
+            Grid에 표시할 엔티티 컬렉션
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.EntityGrid">
+      <summary>
+            엔티티를 표현할 Grid 
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.GridPager">
+      <summary>
+            엔티티를 표현할 Grid의 Pager
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.GridLegend">
+      <summary>
+            엔티티를 표현할 Grid의 Legend
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Pages.IEntityGridPage`1.EntityEditControl">
+      <summary>
+            편집용 컨트롤
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.CanEditableGridItem(Telerik.Web.UI.GridItem)">
+      <summary>
+            Grid의 실제 레코드를 나타내는 Item인지 판단한다.
+            </summary>
+      <param name="item">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DisplayDefault">
+      <summary>
+            초기 화면 표시
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.ResetPageIndex(System.Nullable{System.Int32})">
+      <summary>
+            PageIndex를 지정된 값으로 설정합니다.
+            </summary>
+      <param name="pageIndex">설정할 PageIndex 값</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.ResetGridSort">
+      <summary>
+            Grid 정렬 방식 초기화
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.LoadAndBindEntity">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.LoadAndBindEntity(System.Action{System.Exception})">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+      <param name="exceptionAction">예외발생 시 수행할 Action</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.LoadEntity">
+      <summary>
+            엔티티 목록을 로드하여 <see cref="P:RCL.Web.Pages.EntityGridControlBase`1.Entities" />에 할당합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.BindEntity">
+      <summary>
+            로딩된 엔티티를 UI Control에 바인딩합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.OnInit(System.EventArgs)">
+      <summary>
+            Page 초기화 시 수행할 작업들
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.OnLoad(System.EventArgs)">
+      <summary>
+            Page Load 시 수행할 작업
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.Show">
+      <summary>
+            엔티티 편집용 컨트롤을 화면에 표시합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoRegisterEntityGridEventHandlers">
+      <summary>
+            Grid, Pager, EditContorl의 표준 이벤트에 대해 이벤트 핸들러를 자동으로 등록합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoGridItemCommand(Telerik.Web.UI.GridCommandEventArgs)">
+      <summary>
+            Grid Item에서 Command 가 발생했을 경우
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoGridItemDataBound(Telerik.Web.UI.GridItem)">
+      <summary>
+            Grid Item이 Binding될 때마다 발생하는 이벤트 핸들러
+            </summary>
+      <param name="item">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoGridSortCommand(System.String,Telerik.Web.UI.GridSortOrder)">
+      <summary>
+            Grid를 정렬합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoGridSortCommand(System.String,System.Nullable{System.Boolean})">
+      <summary>
+            Grid를 정렬합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoPageIndexChange(System.Int32)">
+      <summary>
+            Grid 의 Page 변경 시 작업
+            </summary>
+      <param name="pageIndex">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoSearchEntity(System.String,System.Object)">
+      <summary>
+            검색 작업 시
+            </summary>
+      <param name="key">
+      </param>
+      <param name="value">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoAddEntity">
+      <summary>
+            엔티티 추가 생성 시 작업
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoEditEntity(`0)">
+      <summary>
+            지정된 엔티티를 수정하도록 편집 Control을 화면에 띄웁니다. entity가 null인 경우 새로 생성하는 것입니다.
+            </summary>
+      <param name="entity">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoEntitySaved">
+      <summary>
+            엔티티가 추가 또는 갱신되어 실제 저장에 성공했을 때, 목록을 Refresh하기 위한 작업을 수행합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.DoRemoveEntity(System.String)">
+      <summary>
+            그리드의 Item 중 선택된 항목의 dataKey ("Id" 또는 "Code") 값을 추출해서, 해당 엔티티를 삭제합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridControlBase`1.RemoveEntitiesById(System.Collections.ICollection)">
+      <summary>
+            지정한 엔티티 ID를 가진 엔티티들을 삭제합니다.
+            </summary>
+      <param name="entityIds">삭제할 엔티티의 Identifier의 컬렉션</param>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.ConcreteType">
+      <summary>
+            엔티티의 형식
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.GridSortExpr">
+      <summary>
+            Entity Grid의 정렬 항목
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.GridSortAsc">
+      <summary>
+            Entity Grid의 정렬 방식 (Ascending|Descending)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.PageIndex">
+      <summary>
+            Entity Grid의 Page Index (0부터 시작)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.PageSize">
+      <summary>
+            Entity Grid의 Page Size (한 페이지당 엔티티 갯수, 기본은 <see cref="P:NSoft.NFramework.Web.AppSettings.DefaultPageSize" />)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.SearchKey">
+      <summary>
+            검색 항목
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.IsDisplayDefault">
+      <summary>
+            Loading 시 기본출력여부
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.SearchValue">
+      <summary>
+            검색 항목의 값 (여기에 값이 있으면, 검색으로 엔티티를 로드해야 함을 나타냅니다)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.Entities">
+      <summary>
+            Grid에 표시할 엔티티 컬렉션
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.EntityGrid">
+      <summary>
+            엔티티를 표현할 Grid 
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.GridPager">
+      <summary>
+            엔티티를 표현할 Grid의 Pager
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.GridLegend">
+      <summary>
+            엔티티를 표현할 Grid의 Legend
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridControlBase`1.EntityEditControl">
+      <summary>
+            편집용 컨트롤
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.EntityGridPageBase`1">
+      <summary>
+            엔티티 목록을 Grid로 표현할 때 기본이 되는 Page입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.CanEditableGridItem(Telerik.Web.UI.GridItem)">
+      <summary>
+            Grid의 실제 레코드를 나타내는 Item인지 판단한다.
+            </summary>
+      <param name="item">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DisplayDefault">
+      <summary>
+            초기 화면 표시
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.ResetPageIndex(System.Nullable{System.Int32})">
+      <summary>
+            PageIndex를 지정된 값으로 설정합니다.
+            </summary>
+      <param name="pageIndex">설정할 PageIndex 값</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.ResetGridSort">
+      <summary>
+            Grid 정렬 방식 초기화
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.LoadAndBindEntity">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.LoadAndBindEntity(System.Action{System.Exception})">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+      <param name="exceptionAction">예외발생 시 수행할 Action</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.LoadEntity">
+      <summary>
+            엔티티 목록을 로드하여 <see cref="P:RCL.Web.Pages.EntityGridPageBase`1.Entities" />에 할당합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.BindEntity">
+      <summary>
+            로딩된 엔티티를 UI Control에 바인딩합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.OnInit(System.EventArgs)">
+      <summary>
+            Page 초기화 시 수행할 작업들
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.OnLoad(System.EventArgs)">
+      <summary>
+            Page Load 시 수행할 작업
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoRegisterEntityGridEventHandlers">
+      <summary>
+            Grid, Pager, EditContorl의 표준 이벤트에 대해 이벤트 핸들러를 자동으로 등록합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoGridItemCommand(Telerik.Web.UI.GridCommandEventArgs)">
+      <summary>
+            Grid Item에서 Command 가 발생했을 경우
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoGridItemDataBound(Telerik.Web.UI.GridItem)">
+      <summary>
+            Grid Item이 Binding될 때마다 발생하는 이벤트 핸들러
+            </summary>
+      <param name="item">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoGridSortCommand(System.String,Telerik.Web.UI.GridSortOrder)">
+      <summary>
+            Grid를 정렬합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoGridSortCommand(System.String,System.Nullable{System.Boolean})">
+      <summary>
+            Grid를 정렬합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoPageIndexChange(System.Int32)">
+      <summary>
+            Grid 의 Page 변경 시 작업
+            </summary>
+      <param name="pageIndex">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoSearchEntity(System.String,System.Object)">
+      <summary>
+            검색 작업 시
+            </summary>
+      <param name="key">
+      </param>
+      <param name="value">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoAddEntity">
+      <summary>
+            엔티티 추가 생성 시 작업
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoEditEntity(`0)">
+      <summary>
+            지정된 엔티티를 수정하도록 편집 Control을 화면에 띄웁니다. entity가 null인 경우 새로 생성하는 것입니다.
+            </summary>
+      <param name="entity">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoEntitySaved">
+      <summary>
+            엔티티가 추가 또는 갱신되어 실제 저장에 성공했을 때, 목록을 Refresh하기 위한 작업을 수행합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.DoRemoveEntity(System.String)">
+      <summary>
+            그리드의 Item 중 선택된 항목의 dataKey ("Id" 또는 "Code") 값을 추출해서, 해당 엔티티를 삭제합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityGridPageBase`1.RemoveEntitiesById(System.Collections.ICollection)">
+      <summary>
+            지정한 엔티티 ID를 가진 엔티티들을 삭제합니다.
+            </summary>
+      <param name="entityIds">삭제할 엔티티의 Identifier의 컬렉션</param>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.ConcreteType">
+      <summary>
+            엔티티의 형식
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.GridSortExpr">
+      <summary>
+            Entity Grid의 정렬 항목
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.GridSortAsc">
+      <summary>
+            Entity Grid의 정렬 방식 (Ascending|Descending)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.PageIndex">
+      <summary>
+            Entity Grid의 Page Index (0부터 시작)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.PageSize">
+      <summary>
+            Entity Grid의 Page Size (한 페이지당 엔티티 갯수, 기본은 <see cref="P:NSoft.NFramework.Web.AppSettings.DefaultPageSize" />)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.SearchKey">
+      <summary>
+            검색 항목
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.SearchValue">
+      <summary>
+            검색 항목의 값 (여기에 값이 있으면, 검색으로 엔티티를 로드해야 함을 나타냅니다)
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.Entities">
+      <summary>
+            Grid에 표시할 엔티티 컬렉션
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.EntityGrid">
+      <summary>
+            엔티티를 표현할 Grid 
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.GridPager">
+      <summary>
+            엔티티를 표현할 Grid의 Pager
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.GridLegend">
+      <summary>
+            엔티티를 표현할 Grid의 Legend
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityGridPageBase`1.EntityEditControl">
+      <summary>
+            편집용 컨트롤
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.EntityTreeControl`1">
+      <summary>
+            TreeView 표현 컨트롤
+            </summary>
+      <typeparam name="T">ITreeNodeEntity</typeparam>
+    </member>
+    <member name="T:RCL.Web.Pages.IEntityTreeControl`1">
+      <summary>
+            트리 바인딩
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="E:RCL.Web.Pages.IEntityTreeControl`1.TreeNodeClick">
+      <summary>
+            TreeViewControl의 NodeClick 이벤트를 외부로 Bubbling하기 만든 이벤트입니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.IEntityTreeControl`1.TreeViewAdapter">
+      <summary>
+            TreeView에 표현해주는 Adapter입니다. Initialize시에 생성되어야 합니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.IEntityTreeControl`1.EntityTreeView">
+      <summary>
+            트리 뷰 컨트롤
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.IEntityTreeControl`1.SelectedNode">
+      <summary>
+            선택된 Node
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.IEntityTreeControl`1.SelectedParentNode">
+      <summary>
+            선택된 Node 의 Parent
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.OnInit(System.EventArgs)">
+      <summary>
+            OnInit
+            </summary>
+      <param name="e">EventArgs</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.OnLoad(System.EventArgs)">
+      <summary>
+            Page Load 시 수행할 작업
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.OnUnload(System.EventArgs)">
+      <summary>
+            OnUnload
+            </summary>
+      <param name="e">EventArgs</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.DisplayDefault">
+      <summary>
+            초기 화면 표시
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.LoadAndBindEntity">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.LoadAndBindEntity(System.Action{System.Exception})">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+      <param name="exceptionAction">예외발생 시 수행할 Action</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.LoadAndAddEntity(Telerik.Web.UI.IRadTreeNodeContainer,System.Action{System.Exception})">
+      <summary>
+             엔티티를 로드하고, IRadTreeNodeContainer에 자식노드로 추가한다.
+            </summary>
+      <param name="node">선택된 IRadTreeNodeContainer</param>
+      <param name="exceptionAction">예외발생 시 수행할 Action</param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.CreateTreeViewAdapter">
+      <summary>
+            IRadTreeViewAdapter 생성자
+            </summary>
+      <returns>IRadTreeViewAdapter</returns>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.LoadEntity">
+      <summary>
+            엔티티 목록을 로드하여 <see cref="P:RCL.Web.Pages.EntityTreeControl`1.Entities" />에 할당합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.LoadEntity(Telerik.Web.UI.IRadTreeNodeContainer)">
+      <summary>
+            현재 노드에 대한 자식 엔티티 목록을 로드하여 <see cref="P:RCL.Web.Pages.EntityTreeControl`1.Entities" />에 할당합니다.
+            </summary>
+      <param name="node">
+      </param>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.BindEntity">
+      <summary>
+            로딩된 엔티티를 UI Control에 바인딩합니다.
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Pages.EntityTreeControl`1.AddEntity(Telerik.Web.UI.IRadTreeNodeContainer)">
+      <summary>
+            parent Container에 <see cref="P:RCL.Web.Pages.EntityTreeControl`1.Entities" />값을 자식으로 추가한다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityTreeControl`1.ConcreteType">
+      <summary>
+            엔티티의 형식
+            </summary>
+    </member>
+    <member name="E:RCL.Web.Pages.EntityTreeControl`1.TreeNodeClick">
+      <summary>
+            TreeViewControl의 NodeClick 이벤트를 외부로 Bubbling하기 만든 이벤트입니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityTreeControl`1.TreeViewAdapter">
+      <summary>
+            TreeView에 표현해주는 Adapter입니다. Initialize시에 생성되어야 합니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityTreeControl`1.EntityTreeView">
+      <summary>
+            트리 뷰 컨트롤
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityTreeControl`1.Entities">
+      <summary>
+            TreeView에 바인딩할 엔티티 컬렉션
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityTreeControl`1.SelectedNode">
+      <summary>
+            선택된 Node
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Pages.EntityTreeControl`1.SelectedParentNode">
+      <summary>
+            선택된 Node 의 Parent
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Pages.NHibernateEntityGridControlBase`1">
+      <summary>
+            NHibernate용 엔티티를 Grid에 표시하고, 관리하는 웹 UserControl의 기본 페이지입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:RCL.Web.Pages.NHibernateEntityGridControlBase`1.RemoveEntitiesById(System.Collections.ICollection)">
+      <summary>
+            지정한 엔티티의 ID를 가진 NHibernate용 엔티티들을 삭제합니다.
+            </summary>
+      <param name="entityIds">삭제할 엔티티의 Identifier의 컬렉션</param>
+    </member>
+    <member name="T:RCL.Web.Pages.NHibernateEntityGridPageBase`1">
+      <summary>
+            NHibernate용 엔티티를 Grid에 표시하고, 관리하는 웹 Page의 기본 페이지입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="M:RCL.Web.Pages.NHibernateEntityGridPageBase`1.RemoveEntitiesById(System.Collections.ICollection)">
+      <summary>
+            지정한 엔티티의 ID를 가진 NHibernate용 엔티티들을 삭제합니다.
+            </summary>
+      <param name="entityIds">삭제할 엔티티의 Identifier의 컬렉션</param>
+    </member>
+    <member name="T:RCL.Web.Routing.IgnoreRouteCollection">
+      <summary>
+            Route에서 무시될 목록
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Routing.IgnoreRouteElement">
+      <summary>
+            RouteConfig 구성파일에서 무시될 Element 정보
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Routing.IgnoreRouteElement.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Routing.IgnoreRouteElement.#ctor(System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="elementName">경로를 식별하는 값</param>
+    </member>
+    <member name="P:RCL.Web.Routing.IgnoreRouteElement.Constraints">
+      <summary>
+            URL 매개 변수에 대해 유효한 값을 지정하는 식 사전을 가져오거나 설정합니다.
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Routing.RouteChildElement">
+      <summary>
+            RouteConfig 구성파일의 하위 Element
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Routing.RouteElementCollection">
+      <summary>
+            RouteConfig 구성정보
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Routing.RouteConfigElement">
+      <summary>
+            RouteConfig 구성파일의 Element 정보
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Routing.RouteConfigElement.#ctor(System.String,System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="newName">경로를 식별하는 값</param>
+      <param name="newUrl">경로의 URL 패턴</param>
+      <param name="routeHandlerType">RouteHandlerType</param>
+    </member>
+    <member name="M:RCL.Web.Routing.RouteConfigElement.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Routing.RouteConfigElement.#ctor(System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="elementName">경로를 식별하는 값</param>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.Name">
+      <summary>
+            경로를 식별하는 값입니다. 값은 null 또는 빈 문자열일 수 있습니다. 
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.Url">
+      <summary>
+            경로의 URL 패턴을 가져오거나 설정합니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.VirtualPath">
+      <summary>
+            실제 실행된 Handler의 경로
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.RouteHandlerType">
+      <summary>
+            RouteHandler Type
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.RouteType">
+      <summary>
+            RoteCollection 에 추가되어지는 Route의 타입
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.Defaults">
+      <summary>
+            URL에 모든 매개 변수가 포함되지 않을 경우 사용할 값을 가져오거나 설정합니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.Constraints">
+      <summary>
+            URL 매개 변수에 대해 유효한 값을 지정하는 식 사전을 가져오거나 설정합니다.
+            </summary>
+    </member>
+    <member name="P:RCL.Web.Routing.RouteConfigElement.DataTokens">
+      <summary>
+            경로 처리기에 전달되지만 경로가 URL 패턴과 일치하는지 여부를 확인하는 데 사용되지는 않는 사용자 지정 값을 가져오거나 설정합니다.
+            </summary>
+    </member>
+    <member name="T:RCL.Web.Routing.RouteTableRegister">
+      <summary>
+            RouteTable에 Route 정보 등록처리
+            </summary>
+    </member>
+    <member name="M:RCL.Web.Routing.RouteTableRegister.RegisterRoutes(System.Web.Routing.RouteCollection)">
+      <summary>
+            RouteCollection 에 Route 정보를 등록합니다.
+            </summary>
+      <param name="routes">RouteCollection</param>
+    </member>
+    <member name="M:RCL.Web.Routing.RouteTableRegister.RegisterRoutes(System.Web.Routing.RouteCollection,System.String)">
+      <summary>
+            RouteCollection 에 Route 정보를 등록합니다.
+            </summary>
+      <param name="routes">RouteCollection</param>
+      <param name="routeFile">Route Config 파일 경로</param>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase">
+      <summary>
+            ÀÎÁõ ¼­ºñ½º¸¦ Á¦°øÇÏ´Â Base ClassÀÔ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService">
+      <summary>
+            ÀÎÁõ¼­ºñ½º
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.VerifyUser(System.String,System.String)">
+      <summary>
+            »ç¿ëÀÚ °ËÁõÀ» ¼öÇàÇÕ´Ï´Ù.
+            </summary>
+      <param name="userId">·Î±×ÀÎId</param>
+      <param name="password">ºñ¹Ð¹øÈ£</param>
+      <returns>°ËÁõ¿©ºÎ</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.Login(System.String,System.String,System.Boolean)">
+      <summary>
+            ·Î±×ÀÎ Ã³¸®
+            </summary>
+      <param name="userName">·Î±×ÀÎId</param>
+      <param name="password">ºñ¹Ð¹øÈ£</param>
+      <param name="redirectDefault">±âº»ÆäÀÌÁö·Î ÀÌµ¿</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.CreateIdentity(System.String)">
+      <summary>
+            Identity Á¤º¸¸¦ »ý¼ºÇÏ¿© ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="loginId">·Î±×ÀÎId</param>
+      <returns>IAccessIdentity</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.CreatePrincipal(System.Security.Principal.IIdentity)">
+      <summary>
+            Principal Á¤º¸¸¦ »ý¼ºÇÏ¿© ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="identity">IIdentity</param>
+      <returns>IPrincipal</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.Logout(System.Boolean,System.Boolean)">
+      <summary>
+            ·Î±×¾Æ¿ôÇÑ´Ù.
+            </summary>
+      <param name="redirectLogin">·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿</param>
+      <param name="endReponse">ÇÁ·Î¼¼½º Á¾·á</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.RedirectToLoginPage(System.Boolean)">
+      <summary>
+            ·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿
+            </summary>
+      <param name="endReponse">ÇÁ·Î¼¼½º Á¾·á</param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.Identity">
+      <summary>
+            Á¢¼ÓÀÚ Á¤º¸
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.LoginUserName">
+      <summary>
+            Á¢¼ÓÀÚÀÇ Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.LoginUrl">
+      <summary>
+            ·Î±×ÀÎ Url
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.IAuthenticationService.DefaultUrl">
+      <summary>
+            ±âº» Url
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.ApplicationKey">
+      <summary>
+            ·Î±×ÀÎÁ¤º¸ÀÇ µ¥ÀÌÅÍ ÀúÀå¼ÒÀÇ KeyName
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.VerifyUser(System.String,System.String)">
+      <summary>
+            »ç¿ëÀÚ °ËÁõÀ» ¼öÇàÇÕ´Ï´Ù.
+            </summary>
+      <param name="userId">·Î±×ÀÎId</param>
+      <param name="password">ºñ¹Ð¹øÈ£</param>
+      <returns>°ËÁõ¿©ºÎ</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.Login(System.String,System.String,System.Boolean)">
+      <summary>
+            ·Î±×ÀÎ.
+            </summary>
+      <param name="userName">·Î±×ÀÎId</param>
+      <param name="password">ºñ¹Ð¹øÈ£</param>
+      <param name="redirectDefault">·Î±×ÀÎ ÈÄ ±âº»ÆäÀÌÁö ÀÌµ¿¿©ºÎ</param>
+      <remarks>»ç¿ëÀÚÀÎÁõ ¼öÇà ÈÄ, ÀÎÁõÁ¤º¸¸¦ ÀúÀåÇÕ´Ï´Ù.</remarks>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.ProcessingLogin">
+      <summary>
+            Á¢±ÙÁ¤º¸·Î ·Î±×ÀÎ Ã³¸®ÇÑ´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.ProcessingLogin(System.String)">
+      <summary>
+            ·Î±×ÀÎ Ã³¸®ÇÑ´Ù.
+            </summary>
+      <param name="userName">·Î±×ÀÎId</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.ProcessingLogin(System.String,System.String)">
+      <summary>
+            ·Î±×ÀÎ Ã³¸®ÇÑ´Ù.
+            </summary>
+      <param name="userName">·Î±×ÀÎId</param>
+      <param name="password">ºñ¹Ð¹øÈ£</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.Logout(System.Boolean,System.Boolean)">
+      <summary>
+            ·Î±×¾Æ¿ôÇÑ´Ù.
+            </summary>
+      <param name="redirectLogin">·Î±×ÀÎÆäÀÌÁö·Î ÀÌµ¿</param>
+      <param name="endReponse">ÇÁ·Î¼¼½º Á¾·á</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.RedirectToLoginPage(System.Boolean)">
+      <summary>
+            ·Î±×ÀÎ ÆäÀÌÁö·Î ÀÌµ¿
+            </summary>
+      <param name="endReponse">ÇÁ·Î¼¼½º Á¾·á</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.RedirectToDefaultPage(System.Boolean)">
+      <summary>
+            ±âº» ÆäÀÌÁö·Î ÀÌµ¿
+            </summary>
+      <param name="endReponse">ÇÁ·Î¼¼½º Á¾·á</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.CreateIdentity(System.String)">
+      <summary>
+            Identity Á¤º¸¸¦ »ý¼ºÇÏ¿© ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="loginId">·Î±×ÀÎId</param>
+      <returns>IAccessIdentity</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.CreatePrincipal(System.Security.Principal.IIdentity)">
+      <summary>
+            Principal Á¤º¸¸¦ »ý¼ºÇÏ¿© ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="identity">IIdentity</param>
+      <returns>IPrincipal</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.SetAuthData(System.String)">
+      <summary>
+            ·Î±×ÀÎ »ç¿ëÀÚÀÇ Á¤º¸¸¦ ÀúÀåÇÑ´Ù.
+            </summary>
+      <param name="loginId">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.ClearAuthData">
+      <summary>
+            ÀúÀåÇÑ ·Î±×ÀÎ »ç¿ëÀÚ Á¤º¸¸¦ ClearÇÕ´Ï´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.SetIdentity(NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            »ç¿ëÀÚ ÀÎÁõÁ¤º¸ÀÎ Identity¿¡ »ç¿ëÀÚ °´Ã¼ Á¤º¸¸¦ Ã¤¿î´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.ClearIdentity">
+      <summary>
+            »ç¿ëÀÚ ÀÎÁõÁ¤º¸ÀÎ Identity¿¡ »ç¿ëÀÚ °´Ã¼ Á¤º¸¸¦ Áö¿î´Ù.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.WriteLoginInfo">
+      <summary>
+            ·Î±×ÀÎÁ¤º¸¸¦ ÀÛ¼ºÇÑ´Ù.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.Identity">
+      <summary>
+            ·Î±×ÀÎÁ¤º¸¸¦ Ç¥ÇöÇÏ´Â °´Ã¼
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.LoginUserName">
+      <summary>
+            Á¢¼ÓÀÚÀÇ Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.LoginUrl">
+      <summary>
+            ·Î±×ÀÎ Url
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.AuthenticationService.AuthenticationServiceBase.DefaultUrl">
+      <summary>
+            ±âº» Url
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.AuthenticationService.AuthorizationService">
+      <summary>
+            ±ÇÇÑ °ü·Ã ¼­ºñ½º Á¦°ø ¼­ºñ½º
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository">
+      <summary>
+            파일저장소 관련 API 제공 서비스
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase">
+      <summary>
+            파일저장소 관련 API 제공 서비스
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository">
+      <summary>
+            파일저장소 관련 API 제공 서비스
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.DirectoryExists(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.CreateDirectory(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.FileExists(System.String)">
+      <summary>
+            파일 존재여부
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.DeleteFile(System.String[])">
+      <summary>
+            파일 삭제
+            </summary>
+      <param name="fileNames">삭제할 파일 목록</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.GetNewFileName(System.String)">
+      <summary>
+            지정된 파일명이 있다면 새로운 파일명을 생성한다.
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>새로운 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.SaveAs(System.IO.Stream,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <param name="stream">저장할 Stream</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.SaveAs(System.String,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <param name="srcFile">원본 파일경로</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.GetFiles(System.String)">
+      <summary>
+            저장한 폴더내에 있는 파일목록을 반환합니다.
+            </summary>
+      <param name="path">경로</param>
+      <returns>파일 목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.GetFileSize(System.String)">
+      <summary>
+            파일의 크기를 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>사이즈</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.GetFileStream(System.String)">
+      <summary>
+            파일의 Stream 을 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>Stream</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.RootPath">
+      <summary>
+            저장소 Root 경로
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.Username">
+      <summary>
+            접속계정 Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository.Password">
+      <summary>
+            접속계정 Password
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.DirectoryExists(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.CreateDirectory(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.FileExists(System.String)">
+      <summary>
+            파일 존재여부
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.DeleteFile(System.String[])">
+      <summary>
+            파일 삭제
+            </summary>
+      <param name="fileNames">삭제할 파일 목록</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.GetNewFileName(System.String)">
+      <summary>
+            지정된 파일명이 있다면 새로운 파일명을 생성한다.
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>새로운 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.SaveAs(System.IO.Stream,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.
+            </summary>
+      <param name="stream">저장할 Stream</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.SaveAs(System.String,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.
+            </summary>
+      <param name="srcFile">원본 파일경로</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.GetFiles(System.String)">
+      <summary>
+            저장한 폴더내에 있는 파일목록을 반환합니다.
+            </summary>
+      <param name="path">경로</param>
+      <returns>파일 목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.GetFileSize(System.String)">
+      <summary>
+            파일의 크기를 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>사이즈</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.GetFileStream(System.String)">
+      <summary>
+            파일의 Stream 을 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>Stream</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.GetFullPath(System.String)">
+      <summary>
+            Root 경로와 해당 경로를 Combine한 경로를 반환합니다.
+            </summary>
+      <param name="fileName">파일 경로</param>
+      <returns>전체경로</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.RootPath">
+      <summary>
+            저장소 Root 경로
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.Username">
+      <summary>
+            접속계정 Id
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.FileRepositoryBase.Password">
+      <summary>
+            접속계정 Password
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.#ctor(System.String,System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="rootPath">폴더 Root경로</param>
+      <param name="username">접속계정 Id</param>
+      <param name="password">접속계정 Password</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.DirectoryExists(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.CreateDirectory(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.FileExists(System.String)">
+      <summary>
+            파일 존재여부
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.DeleteFile(System.String[])">
+      <summary>
+            파일 삭제
+            </summary>
+      <param name="fileNames">삭제할 파일 목록</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.GetNewFileName(System.String)">
+      <summary>
+            지정된 파일명이 있다면 새로운 파일명을 생성한다.
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>새로운 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.SaveAs(System.IO.Stream,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <param name="stream">저장할 Stream</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.SaveAs(System.String,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <param name="srcFile">원본 파일경로</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.GetFiles(System.String)">
+      <summary>
+            저장한 폴더내에 있는 파일목록을 반환합니다.
+            </summary>
+      <param name="path">경로</param>
+      <returns>파일 목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.GetFileSize(System.String)">
+      <summary>
+            파일의 크기를 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>사이즈</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.GetFileStream(System.String)">
+      <summary>
+            파일의 Stream 을 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>Stream</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.DefaultFileRepository.GetFullPath(System.String)">
+      <summary>
+            Root 경로와 해당 경로를 Combine한 경로를 반환합니다.
+            </summary>
+      <param name="fileName">파일 경로</param>
+      <returns>전체경로</returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository">
+      <summary>
+            Ftp 파일 저장소
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.#ctor(System.String,System.String,System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="hostname">ftp host</param>
+      <param name="username">접속계정 Id</param>
+      <param name="password">접속계정 Password</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.DirectoryExists(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.CreateDirectory(System.String)">
+      <summary>
+            디렉터리 존재여부
+            </summary>
+      <param name="path">경로</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.FileExists(System.String)">
+      <summary>
+            파일 존재여부
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>존재여부</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.DeleteFile(System.String[])">
+      <summary>
+            파일 삭제
+            </summary>
+      <param name="fileNames">삭제할 파일 목록</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.GetNewFileName(System.String)">
+      <summary>
+            지정된 파일명이 있다면 새로운 파일명을 생성한다.
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>새로운 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.SaveAs(System.IO.Stream,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.
+            </summary>
+      <param name="stream">저장할 Stream</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.SaveAs(System.String,System.String,System.Boolean)">
+      <summary>
+            저장소에 저장한다.
+            </summary>
+      <param name="srcFile">원본 파일경로</param>
+      <param name="destFile">대상 파일경로</param>
+      <param name="overwrite">덮어쓰기 여부</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.GetFiles(System.String)">
+      <summary>
+            저장한 폴더내에 있는 파일목록을 반환합니다.
+            </summary>
+      <param name="path">경로</param>
+      <returns>파일 목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.GetFileSize(System.String)">
+      <summary>
+            파일의 크기를 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>사이즈</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.GetFileStream(System.String)">
+      <summary>
+            파일의 Stream 을 반환합니다.
+            </summary>
+      <param name="fileName">파일경로</param>
+      <returns>Stream</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.GetFullPath(System.String)">
+      <summary>
+            Root 경로와 해당 경로를 Combine한 경로를 반환합니다.
+            </summary>
+      <param name="fileName">파일 경로</param>
+      <returns>전체경로</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.Repositories.FtpFileRepository.RootPath">
+      <summary>
+            저장소 Root 경로
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.DefaultFileReceiver">
+      <summary>
+            Http File을 처리하는 Receiver
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.FileReceiverBase">
+      <summary>
+            Http File을 처리하는 Receiver
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.IFileReceiver">
+      <summary>
+            Http File을 처리하는 Receiver
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.IFileReceiver.SaveAs``1(``0,System.String)">
+      <summary>
+            파일을 저장합니다.
+            </summary>
+      <typeparam name="T">저장할 파일형식</typeparam>
+      <param name="file">파일정보</param>
+      <param name="filePath">저장될 파일경로</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.IFileReceiver.SaveAs``1(``0,System.String,System.Boolean)">
+      <summary>
+            파일을 저장합니다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <typeparam name="T">저장할 파일형식</typeparam>
+      <param name="file">파일정보</param>
+      <param name="filePath">저장될 파일경로</param>
+      <param name="overwrite">덮어쓰기여부(default:false)</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.IFileReceiver.DeleteFile(System.String[])">
+      <summary>
+            파일삭제
+            </summary>
+      <param name="filePaths">삭제할 파일 경로</param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.IFileReceiver.Repository">
+      <summary>
+            파일 저장소
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileReceiverBase.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileReceiverBase.#ctor(NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository)">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileReceiverBase.SaveAs``1(``0,System.String)">
+      <summary>
+            파일을 저장합니다.
+            </summary>
+      <typeparam name="T">저장할 파일형식</typeparam>
+      <param name="file">파일정보</param>
+      <param name="filePath">저장될 파일경로</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileReceiverBase.SaveAs``1(``0,System.String,System.Boolean)">
+      <summary>
+            파일을 저장합니다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <typeparam name="T">저장할 파일형식</typeparam>
+      <param name="file">파일정보</param>
+      <param name="filePath">저장될 파일경로</param>
+      <param name="overwrite">덮어쓰기여부(default:false)</param>
+      <returns>저장된 파일명</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileReceiverBase.DeleteFile(System.String[])">
+      <summary>
+            파일삭제
+            </summary>
+      <param name="filePaths">삭제할 파일 경로</param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.FileReceiverBase.Repository">
+      <summary>
+            파일 저장소
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.DefaultFileReceiver.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.DefaultFileReceiver.#ctor(NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository)">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.DefaultFileReceiver.SaveAs``1(``0,System.String,System.Boolean)">
+      <summary>
+            파일을 저장합니다.<br />
+            overwrite:false 인 경우 동일한 파일명이 있는경우 새로운 파일명으로 저장후 파일명을 반환합니다.
+            </summary>
+      <param name="file">파일정보</param>
+      <param name="filePath">저장될 파일경로</param>
+      <param name="overwrite">덮어쓰기여부(default:false)</param>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.DefaultFileSender">
+      <summary>
+            Http File을 처리하는 Sender
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.FileSenderBase">
+      <summary>
+            Http File을 처리하는 Sender
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.IFileSender">
+      <summary>
+            Http File을 처리하는 Sender
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.IFileSender.Download(System.Web.HttpContext,NSoft.NFramework.Web.FileItem,System.Boolean)">
+      <summary>
+            파일을 클라이언트에 내려준다.
+            </summary>
+      <param name="ctx">HttpContext</param>
+      <param name="fileItem">파일정보</param>
+      <param name="attach">파일 다운로드 방식</param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.IFileSender.Repository">
+      <summary>
+            파일 저장소
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.#ctor(NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository)">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.Download(System.Web.HttpContext,NSoft.NFramework.Web.FileItem,System.Boolean)">
+      <summary>
+            파일을 클라이언트에 내려준다.
+            </summary>
+      <param name="ctx">HttpContext</param>
+      <param name="fileItem">파일정보</param>
+      <param name="attach">파일 다운로드 방식</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.BuildHeader(System.Web.HttpContext,NSoft.NFramework.Web.FileItem,System.Boolean)">
+      <summary>
+            Header 값을 추가한다.
+            </summary>
+      <param name="ctx">HttpContext</param>
+      <param name="fileItem">클라이언트로 내려줄 파일 정보</param>
+      <param name="attach">Content-Disposition의 Type<br />
+            false : inline<br />
+            true : attachment</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.WriteFile(System.Web.HttpContext,System.String)">
+      <summary>
+            실제 파일 내용을 읽어 Response.OutputStream에 쓴다.
+            </summary>
+      <param name="ctx">HttpContext</param>
+      <param name="path">파일 경로</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.AddHeader(System.Web.HttpContext,NSoft.NFramework.Web.FileItem,System.Boolean)">
+      <summary>
+            Header 값을 추가한다.
+            </summary>
+      <param name="ctx">HttpContext</param>
+      <param name="fileItem">클라이언트로 내려줄 파일 정보</param>
+      <param name="attach">Content-Disposition의 Type<br />
+            false : inline<br />
+            true : attachment</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileSenderBase.DownloadFileName(System.String)">
+      <summary>
+            다운로드 파일명
+            </summary>
+      <param name="fileName">파일명</param>
+      <returns>다운로드 파일명</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.FileSenderBase.Repository">
+      <summary>
+            파일 저장소
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.DefaultFileSender.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.DefaultFileSender.#ctor(NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository)">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.DefaultFileService">
+      <summary>
+            HttpPostedFile을 이용한 기본 파일 서비스
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.FileServiceBase">
+      <summary>
+            파일 관련 서비스 Base
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.FileService.IFileService">
+      <summary>
+            파일 저장 및 다운로드 관련 서비스
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.IFileService.Receiver">
+      <summary>
+            HttpFile Receiver
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.IFileService.Sender">
+      <summary>
+            HttpFile Sender
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.FileServiceBase.#ctor(NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository)">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.FileServiceBase.Receiver">
+      <summary>
+            HttpFile Receiver
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.FileService.FileServiceBase.Sender">
+      <summary>
+            HttpFile Sender
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.FileService.DefaultFileService.#ctor(NSoft.NFramework.Web.Services.FileService.Repositories.IFileRepository)">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.MenuService.DefaultMenuService">
+      <summary>
+            기본 Menu에 대한 서비스를 제공합니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.MenuService.IMenuService">
+      <summary>
+            Menu에 대한 서비스를 제공합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.IMenuService.GetRootMenu(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            메뉴중 사용자가 권한이 있는 루트메뉴목록
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <returns>메뉴목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.IMenuService.FindAllMenuByProduct(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            메뉴중 사용자가 권한이 있는 메뉴목록
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <returns>메뉴목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.IMenuService.FindOneMenu(System.String,NSoft.NFramework.Web.Access.IAccessIdentity,System.String)">
+      <summary>
+            메뉴정보를 반환한다.
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <param name="menuId">메뉴Id</param>
+      <returns>메뉴</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.DefaultMenuService.GetRootMenu(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            메뉴중 사용자가 권한이 있는 루트메뉴목록
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <returns>메뉴목록</returns>ㅍ
+        </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.DefaultMenuService.FindAllMenuByProduct(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            제품메뉴중 사용자가 권한이 있는 메뉴목록
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <returns>메뉴목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.DefaultMenuService.FindOneMenu(System.String,NSoft.NFramework.Web.Access.IAccessIdentity,System.String)">
+      <summary>
+            메뉴정보를 반환한다.
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <param name="menuId">메뉴Id</param>
+      <returns>메뉴</returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.MenuService.SiteMapMenuService">
+      <summary>
+            Provider가 SiteMap으로 구현된 메뉴서비스
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.SiteMapMenuService.GetRootMenu(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            메뉴중 사용자가 권한이 있는 루트메뉴목록
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <returns>메뉴목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.SiteMapMenuService.FindAllMenuByProduct(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            제품메뉴중 사용자가 권한이 있는 메뉴목록
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <returns>메뉴목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.MenuService.SiteMapMenuService.FindOneMenu(System.String,NSoft.NFramework.Web.Access.IAccessIdentity,System.String)">
+      <summary>
+            메뉴정보를 반환한다.
+            </summary>
+      <param name="productId">제품Id</param>
+      <param name="identity">요청자 정보</param>
+      <param name="menuId">메뉴Id</param>
+      <returns>메뉴</returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.RoleService.IRoleService">
+      <summary>
+            Role에 대한 서비스를 제공합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RoleService.IRoleService.GetRoles(NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            사용자의 모든 Role정보를 반환합니다.
+            </summary>
+      <param name="identity">요청자 정보</param>
+      <returns>Role 목록</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RoleService.IRoleService.IsInRole(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            사용자의 해당 Role 소속여부를 판단합니다.
+            </summary>
+      <param name="roleName">Role Name</param>
+      <param name="identity">요청자 정보</param>
+      <returns>Role 소속 여부</returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.RoleService.RoleServiceBase">
+      <summary>
+            RoleServiceBase
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RoleService.RoleServiceBase.GetRoles(NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            »ç¿ëÀÚÀÇ ¸ðµç RoleÁ¤º¸¸¦ ¹ÝÈ¯ÇÕ´Ï´Ù.
+            </summary>
+      <param name="identity">¿äÃ»ÀÚ Á¤º¸</param>
+      <returns>Role ¸ñ·Ï</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RoleService.RoleServiceBase.IsInRole(System.String,NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            »ç¿ëÀÚÀÇ ÇØ´ç Role ¼Ò¼Ó¿©ºÎ¸¦ ÆÇ´ÜÇÕ´Ï´Ù.
+            </summary>
+      <param name="roleName">Role Name</param>
+      <param name="identity">¿äÃ»ÀÚ Á¤º¸</param>
+      <returns>Role ¼Ò¼Ó ¿©ºÎ</returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.RouteService.DefaultRouteService">
+      <summary>
+            기본 RouteService
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.RouteService.RouteServiceBase">
+      <summary>
+            RouteServiceBase
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Services.RouteService.IRouteService">
+      <summary>
+            RouteService
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RouteService.IRouteService.GetvirtualPathData(System.String)">
+      <summary>
+            name 에 대한 Route VirtualPathData를 반환합니다.
+            </summary>
+      <param name="name">이름</param>
+      <returns>VirtualPathData</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RouteService.IRouteService.GetVirtualPath(System.String)">
+      <summary>
+            name 에 대한 Route VirtualPath를 반환합니다.
+            </summary>
+      <param name="name">이름</param>
+      <returns>가상경로</returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.RouteService.IRouteService.Routes">
+      <summary>
+            Routing Route 정보
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RouteService.RouteServiceBase.GetvirtualPathData(System.String)">
+      <summary>
+        <paramref name="name" /> 에 대한 Route VirtualPathData를 반환합니다.
+            </summary>
+      <param name="name">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RouteService.RouteServiceBase.GetVirtualPath(System.String)">
+      <summary>
+            name 에 대한 Route VirtualPath를 반환합니다.
+            </summary>
+      <param name="name">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Services.RouteService.RouteServiceBase.Routes">
+      <summary>
+            Routing Route 정보
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Services.RouteService.DefaultRouteService.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Tools.NetworkDriveTool">
+      <summary>
+            네트웍크 드라이브 관련 Util
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.NetworkDriveTool.Connect(System.String,System.String,System.String,System.String)">
+      <summary>
+            공유 폴더에 대한 네트워크 연결을 만든다.
+            </summary>
+      <param name="remoteAccessUri">원격 공유폴더 경로</param>
+      <param name="remoteUserId">원격 사용자 아이디</param>
+      <param name="remotePassword">원격 비밀번호</param>
+      <param name="localDriveName">사용가능한 드라이브 명, NULL일때 시스템이 자동으로 설정한다.</param>
+    </member>
+    <member name="T:NSoft.NFramework.Web.Tools.WebAppTool">
+      <summary>
+            웹 Application에서 공통으로 사용할 Utility Class입니다.
+            </summary>
+      <summary>
+            웹 Application에서 공통으로 사용할 Utility Class입니다.
+            </summary>
+      <summary>
+            웹 Application에서 공통으로 사용할 Utility Class입니다.
+            </summary>
+      <summary>
+            웹 Application에서 공통으로 사용할 Utility Class입니다.
+            </summary>
+      <summary>
+            웹 Application에서 공통으로 사용할 Utility Class입니다.
+            </summary>
+      <summary>
+            웹 Application에서 공통으로 사용할 Utility Class입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.WrapScriptTag(System.String[])">
+      <summary>
+            Wraps the script tag.
+            </summary>
+      <param name="scripts">The scripts.</param>
+      <returns>The script.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.ToJsStringArray(System.String[])">
+      <summary>
+            Toes the js string array.
+            </summary>
+      <param name="strs">The STRS.</param>
+      <returns>The script.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.SetValue``1(System.String,``0,System.Nullable{System.DateTime},System.String)">
+      <summary>
+             입력
+            </summary>
+      <typeparam name="T">유형</typeparam>
+      <param name="name">명</param>
+      <param name="value">값</param>
+      <param name="expiredDate">만료일자(웹인 경우만 해당)</param>
+      <param name="domain">도메인(웹인 경우만 해당)</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.LoadValue``1(System.String)">
+      <summary>
+             값을 읽어온다.
+            </summary>
+      <typeparam name="T">유형</typeparam>
+      <param name="name">명</param>
+      <returns>값</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.LoadValue``1(System.String,``0)">
+      <summary>
+             값을 읽어온다.
+            </summary>
+      <typeparam name="T">유형</typeparam>
+      <param name="name">명</param>
+      <param name="defaultValue">기본값</param>
+      <returns>값</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.DeleteValue(System.String)">
+      <summary>
+             값을 제거한다.
+            </summary>
+      <param name="name">명</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.EnumHasFlag(System.Enum,System.Enum)">
+      <summary>
+            Flag 형식의 Enum 에서 특정 Enum값이 <paramref name="flag" /> enum값을 가지는지 파악합니다.
+            </summary>
+      <param name="value">
+      </param>
+      <param name="flag">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetLocales">
+      <summary>
+            지역화 목록을 반환합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.DisplayMessage(System.Web.UI.ITextControl,System.String,System.Drawing.Color)">
+      <summary>
+            메시지를 <c>ITextControl</c>에 출력한다.
+            </summary>
+      <param name="control">
+        <c>ITextControl</c>
+      </param>
+      <param name="message">메시지</param>
+      <param name="foreColor">색상</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.DisplayMessage(System.Web.UI.ITextControl,System.String,System.Boolean)">
+      <summary>
+            메시지를 <c>ITextControl</c>에 출력한다.
+            </summary>
+      <param name="control">
+        <c>ITextControl</c>
+      </param>
+      <param name="message">메시지</param>
+      <param name="error">오류메시지여부</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(System.String,System.String)">
+      <summary>
+            메시지 출력
+            </summary>
+      <param name="text">메시지</param>
+      <param name="returnUrl">이동할 url</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(System.String,RealWeb.Portal.Controls.MessageType,NSoft.NFramework.Web.MessageButtons)">
+      <summary>
+            메시지 출력
+            </summary>
+      <param name="text">
+      </param>
+      <param name="messageType">
+      </param>
+      <param name="messageButton">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(System.String,System.Web.UI.Page)">
+      <summary>
+            메시지 출력
+            page 가 null 이 아니면 RegisterStartupScript 로 스크립트 추가되어지므로 호출후 Response.End()등으로 실행중지시 출력되어지지 않습니다.
+            </summary>
+      <param name="text">
+      </param>
+      <param name="page">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(System.String,System.Web.UI.Control)">
+      <summary>
+            메시지 출력
+            ctl 가 null 이 아니면 RegisterStartupScript 로 스크립트 추가되어지므로 호출후 Response.End()등으로 실행중지시 출력되어지지 않습니다.
+            </summary>
+      <param name="text">
+      </param>
+      <param name="ctl">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(System.String,System.Web.UI.Page,System.String)">
+      <summary>
+            메시지 출력
+            </summary>
+      <param name="text">메시지</param>
+      <param name="page">출력할 페이지</param>
+      <param name="returnUrl">이동할 url</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(NSoft.NFramework.Web.MessageBoxDisplayKind,System.String,System.String,RealWeb.Portal.Controls.MessageType,NSoft.NFramework.Web.MessageButtons,System.Web.UI.Page,System.String,System.Boolean)">
+      <summary>
+            메시지 출력
+            page 가 null 이 아니면 RegisterStartupScript 로 스크립트 추가되어지므로 호출후 Response.End()등으로 실행중지시 출력되어지지 않습니다.
+            </summary>
+      <param name="messageBoxDisplayKind">출력타입</param>
+      <param name="title">메시지 캡션</param>
+      <param name="text">메시지</param>
+      <param name="messageType">메시지타입</param>
+      <param name="messageButton">버튼타입</param>
+      <param name="page">렌더링되는 페이지</param>
+      <param name="returnUrl">메시지출력후 이동할 url</param>
+      <param name="endResponse">프로세스 종료여부</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.MessageBox(NSoft.NFramework.Web.MessageBoxDisplayKind,System.String,System.String,RealWeb.Portal.Controls.MessageType,NSoft.NFramework.Web.MessageButtons,System.Web.UI.Control,System.String,System.Boolean)">
+      <summary>
+            메시지 출력
+            ctl 가 null 이 아니면 RegisterStartupScript 로 스크립트 추가되어지므로 호출후 Response.End()등으로 실행중지시 출력되어지지 않습니다.
+            </summary>
+      <param name="messageBoxDisplayKind">출력타입</param>
+      <param name="title">메시지 캡션</param>
+      <param name="text">메시지</param>
+      <param name="messageType">메시지타입</param>
+      <param name="messageButton">버튼타입</param>
+      <param name="ctl">렌더링되는 페이지</param>
+      <param name="returnUrl">메시지출력후 이동할 url</param>
+      <param name="endResponse">프로세스 종료여부</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetGlobalResourceString(System.String,System.String,System.String)">
+      <summary>
+            Global Resource String을 로드합니다.
+            </summary>
+      <param name="classKey">리소스 ClassKey</param>
+      <param name="resourceKey">리소스 ResourceKey</param>
+      <param name="defaultValue">리소스 기본값</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetLocalResourceString(System.String,System.String,System.String)">
+      <summary>
+            Local Resource String을 로드합니다.
+            </summary>
+      <param name="classKey">리소스 ClassKey</param>
+      <param name="resourceKey">리소스 ResourceKey</param>
+      <param name="defaultValue">리소스 기본값</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetClientImageUrl(System.String)">
+      <summary>
+            Client side용 image url를 만든다.
+            </summary>
+      <param name="imageFilename">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetImageUrl(System.String,System.String,System.Boolean)">
+      <summary>
+            Theme이 적용된 Image의 Url을 빌드한다.
+            </summary>
+      <param name="imageFilename">
+      </param>
+      <param name="localeKey">
+      </param>
+      <param name="isRunatServer">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetThemeAssemblyNames">
+      <summary>
+            테마 목록을 반환합니다.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetUri(System.String)">
+      <summary>
+            Url에서 ? 구분자로 호출하려는 서버페이지
+            </summary>
+      <param name="url">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetParamString(System.String)">
+      <summary>
+            Url에서 ? 구분자로 Parameter 반환한다.
+            </summary>
+      <param name="url">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetParams(System.String)">
+      <summary>
+            Url에서 ? 구분자로 Parameter 반환한다.
+            </summary>
+      <param name="url">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetParam(System.String)">
+      <summary>
+            Url에서 ? 구분자로 Parameter 반환한다.
+            </summary>
+      <param name="url">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.UrlParamConcat(System.String,System.String,System.String)">
+      <summary>
+            url0 + url1 + param 합하여 반환한다.
+            </summary>
+      <param name="url0">
+      </param>
+      <param name="url1">
+      </param>
+      <param name="param">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.UrlParamConcat(System.String,System.String)">
+      <summary>
+            url과 파라미터 값을 연결한다.
+            </summary>
+      <param name="url">
+      </param>
+      <param name="param">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.ParamUrlEncode(System.String)">
+      <summary>
+            url의 파라미터 값을 urlEncode
+            </summary>
+      <param name="url">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.ReplaceParamValue(System.String,System.String,System.Object)">
+      <summary>
+            파라미터 값을 변경한다.
+            </summary>
+      <param name="url">
+      </param>
+      <param name="keyName">
+      </param>
+      <param name="v">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.ReplaceParamValue(System.String,System.Collections.Specialized.NameValueCollection,System.Boolean)">
+      <summary>
+            url의 파람값들을 collection 값에 있는 파람값들로 교체한다.
+            </summary>
+      <param name="url">
+      </param>
+      <param name="cols">
+      </param>
+      <param name="isEnc">UrlEncode 여부</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.RemoveNullStringParam(System.String)">
+      <summary>
+            파라미터중 값이 없는 것은 제외시킨다.
+            </summary>
+      <param name="url">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.ResolveUrl(System.String)">
+      <summary>
+            URL을 요청 클라이언트에서 사용할 수 있는 URL로 변환합니다.(Page.ResolveUrl)
+            </summary>
+      <param name="relativeUrl">System.Web.UI.Control.TemplateSourceDirectory 속성과 관련된 URL입니다.</param>
+      <returns>변환된 URL입니다.</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.Tools.WebAppTool.GetScriptPath(System.String)">
+      <summary>
+            Script 전체 경로를 반환한다.
+            </summary>
+      <param name="virtualPath">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Tools.WebAppTool.CurrentPage">
+      <summary>
+            현재 활성화된 Page를 찾는다. (없으면 null을 반환한다.)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.Tools.WebAppTool.CurrentFileName">
+      <summary>
+            현재 처리처리중인 파일명을 반환합니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.CodeAndNamedEntityComboBoxBase`1">
+      <summary>
+        <see cref="T:NSoft.NFramework.Data.NHibernateEx.Domain.ICodeEntity" /> 을 상속받은 Entity 를 ComboBox에 표현하는 Control입니다.
+            </summary>
+      <typeparam name="T">엔티티 형식</typeparam>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.EntityComboBoxBase`1">
+      <summary>
+            Entity 를 ComboBox에 표현하는 Control입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.UserControlBase">
+      <summary>
+            웹 어플리케이션에서 사용하는 UserControl (*.ascx)의 기본 클래스입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.UserControlBase.SetTitle(System.Web.UI.WebControls.PlaceHolder)">
+      <summary>
+        <paramref name="placeHolder" />에 제목을 설정한다.
+            </summary>
+      <param name="placeHolder">PlaceHolder</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.UserControlBase.SetTitle(System.Web.UI.WebControls.PlaceHolder,System.Boolean)">
+      <summary>
+            지정된 <see cref="T:System.Web.UI.WebControls.PlaceHolder" />에 제목을 설정한다.
+            </summary>
+      <param name="placeHolder">
+      </param>
+      <param name="isContent">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.UserControlBase.GetStatusMessage(System.Int32,System.Int32)">
+      <summary>
+            상태 메시지 출력
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityComboBoxBase`1.DoSelectedEntityBind(`0)">
+      <summary>
+            지정된 엔티티를 선택된 아이템이 되도록 합니다.
+            </summary>
+      <param name="entity">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityComboBoxBase`1.DoComboBoxItemDataBound(Telerik.Web.UI.RadComboBoxItem)">
+      <summary>
+            ComboBox Item의 DataBound 시에 특정 속성을 바인팅합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityComboBoxBase`1.LoadEntity(System.Object)">
+      <summary>
+            선택된 값에 해당하는 Entity를 로드합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityComboBoxBase`1.LoadEntityPagingList(System.Object,System.Int32,System.Int32)">
+      <summary>
+            실제 Paging List로 로드하려고 할 때 호출하세요.
+            </summary>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityComboBoxBase`1.BindEntities(Telerik.Web.UI.ControlItemContainer,System.Collections.Generic.IEnumerable{`0})">
+      <summary>
+            로드된 엔티티들을 컨트롤에 바인딩 시킵니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.CodeAndNamedEntityComboBoxBase`1.DoSelectedEntityBind(`0)">
+      <summary>
+            지정된 엔티티(<paramref name="entity" />)를 선택된 아이템이 되도록 합니다.
+            </summary>
+      <param name="entity">선택할 엔티티</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.CodeAndNamedEntityComboBoxBase`1.DoComboBoxItemDataBound(Telerik.Web.UI.RadComboBoxItem)">
+      <summary>
+            ComboBox Item(<paramref name="item" />)의 DataBound 시에 특정 속성을 바인팅합니다.
+            </summary>
+      <param name="item">RadComboBoxItem</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.CodeAndNamedEntityComboBoxBase`1.LoadEntity(System.Object)">
+      <summary>
+            선택된 코드(<param name="value" />)값에 해당하는 Entity를 로드합니다.
+            </summary>
+      <param name="value">코드 값</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.CodeAndNamedEntityComboBoxBase`1.LoadEntityPagingList(System.Object,System.Int32,System.Int32)">
+      <summary>
+            지정된 회사의 모든 사용자 정보를 Paging 처리하여 로드합니다
+            실제 Paging List로 로드하려고 할 때 호출하세요.
+            </summary>
+      <param name="value">
+      </param>
+      <param name="pageIndex">
+      </param>
+      <param name="pageSize">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1">
+      <summary>
+            엔티티 편집용 UserControl의 기본 클래스입니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.IEntityEditUserControl`1">
+      <summary>
+            엔티티를 편집하기 위한 UserControl의 기본 인터페이스입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.Show(`0,`0)">
+      <summary>
+            엔티티 편집용 컨트롤을 화면에 표시합니다.
+            </summary>
+      <param name="entity">
+      </param>
+      <param name="parent">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.Save(System.Action{`0})">
+      <summary>
+            Entity 를 저장합니다.
+            </summary>
+      <param name="savedAction">저장완료후 Action</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.OnSaved(`0)">
+      <summary>
+            저장 이벤트 발생
+            </summary>
+      <param name="entity">저장된 객체</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.DoInitControls">
+      <summary>
+            Control 초기화를 수행합니다. 
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.DoBindControls">
+      <summary>
+            엔티티 정보를 UI Control에 바인딩합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.DoSaveOrUpdateEntity">
+      <summary>
+            엔티티 정보를 새로 추가하거나 갱신합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.EditEntity">
+      <summary>
+            편집할 엔티티 정보
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.EditMode">
+      <summary>
+            엔티티에 대한 편집 모드 (Create/Read/Update/Delete)
+            </summary>
+    </member>
+    <member name="E:NSoft.NFramework.Web.UserControls.EntityEditUserControlBase`1.Saved">
+      <summary>
+            엔티티 편집 완료 후 저장 시 발생하는 이벤트입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1">
+      <summary>
+            TreeView 표현 컨트롤
+            </summary>
+      <typeparam name="T">ITreeNodeEntity</typeparam>
+    </member>
+    <member name="T:NSoft.NFramework.Web.UserControls.IEntityTreeViewUserControl`1">
+      <summary>
+            트리 바인딩
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+    </member>
+    <member name="E:NSoft.NFramework.Web.UserControls.IEntityTreeViewUserControl`1.TreeNodeClick">
+      <summary>
+            TreeViewControl의 NodeClick 이벤트를 외부로 Bubbling하기 만든 이벤트입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.IEntityTreeViewUserControl`1.TreeViewAdapter">
+      <summary>
+            TreeView에 표현해주는 Adapter입니다. Initialize시에 생성되어야 합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.IEntityTreeViewUserControl`1.EntityTreeView">
+      <summary>
+            트리 뷰 컨트롤
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.IEntityTreeViewUserControl`1.SelectedNode">
+      <summary>
+            선택된 Node
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.IEntityTreeViewUserControl`1.SelectedParentNode">
+      <summary>
+            선택된 Node 의 Parent
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.OnInit(System.EventArgs)">
+      <summary>
+            OnInit
+            </summary>
+      <param name="e">EventArgs</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.OnLoad(System.EventArgs)">
+      <summary>
+            Page Load 시 수행할 작업
+            </summary>
+      <param name="e">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.OnUnload(System.EventArgs)">
+      <summary>
+            OnUnload
+            </summary>
+      <param name="e">EventArgs</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.DisplayDefault">
+      <summary>
+            초기 화면 표시
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.LoadAndBindEntity">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.LoadAndBindEntity(System.Action{System.Exception})">
+      <summary>
+             엔티티를 로드하고, UI Control에 바인딩 합니다. 
+            </summary>
+      <param name="exceptionAction">예외발생 시 수행할 Action</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.LoadAndAddEntity(Telerik.Web.UI.IRadTreeNodeContainer,System.Action{System.Exception})">
+      <summary>
+             엔티티를 로드하고, IRadTreeNodeContainer에 자식노드로 추가한다.
+            </summary>
+      <param name="node">선택된 IRadTreeNodeContainer</param>
+      <param name="exceptionAction">예외발생 시 수행할 Action</param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.CreateTreeViewAdapter">
+      <summary>
+            IRadTreeViewAdapter 생성자
+            </summary>
+      <returns>IRadTreeViewAdapter</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.LoadEntity">
+      <summary>
+            엔티티 목록을 로드하여 <see cref="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.Entities" />에 할당합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.LoadEntity(Telerik.Web.UI.IRadTreeNodeContainer)">
+      <summary>
+            현재 노드에 대한 자식 엔티티 목록을 로드하여 <see cref="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.Entities" />에 할당합니다.
+            </summary>
+      <param name="node">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.BindEntity">
+      <summary>
+            로딩된 엔티티를 UI Control에 바인딩합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.AddEntity(Telerik.Web.UI.IRadTreeNodeContainer)">
+      <summary>
+            parent Container에 <see cref="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.Entities" />값을 자식으로 추가한다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.ConcreteType">
+      <summary>
+            엔티티의 형식
+            </summary>
+    </member>
+    <member name="E:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.TreeNodeClick">
+      <summary>
+            TreeViewControl의 NodeClick 이벤트를 외부로 Bubbling하기 만든 이벤트입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.TreeViewAdapter">
+      <summary>
+            TreeView에 표현해주는 Adapter입니다. Initialize시에 생성되어야 합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.EntityTreeView">
+      <summary>
+            트리 뷰 컨트롤
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.Entities">
+      <summary>
+            TreeView에 바인딩할 엔티티 컬렉션
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.SelectedNode">
+      <summary>
+            선택된 Node
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.UserControls.EntityTreeViewUserControlBase`1.SelectedParentNode">
+      <summary>
+            선택된 Node 의 Parent
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.AppSettings">
+      <summary>
+            NSoft.NFramework Web Application 환경설정의 AppSettings 섹션에 정의된 설정 정보를 제공합니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.EnterpriseName">
+      <summary>
+            그룹 코드 (기업의 최상위 그룹)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ApplicationName">
+      <summary>
+            제품코드 예) RealBPM, RealBPA, RealEA
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.CompanyCode">
+      <summary>
+            접속자에 대한 기본 기업코드 (그룹의 계열사)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.NeedLogin">
+      <summary>
+            로그인 인증 필요여부
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.Impersonate">
+      <summary>
+            로그인 가장(Impersonate) 사용 여부 : true명 로그인 없이도 사용 가능, NeedLogin과 XOR 관계여야 함
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ImpersonateUserName">
+      <summary>
+            로그인 가장(Impersonate) 사용시 사용자명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ResourceGlossary">
+      <summary>
+            리소스 중 용어(Glossary)를 나타내는 클래스 Name (리소스 파일명)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ResourceMessages">
+      <summary>
+            리소스 중 메시지(Message) 정보를 나타내는 클래스 Name (리소스 파일명)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ResourceCommand">
+      <summary>
+            리소스 중 명령(Command) 정보를 나타내는 클래스 Name (리소스 파일명)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ResourceSitemap">
+      <summary>
+            리소스 중 사이트맵(Sitemap) 정보를 나타내는 클래스 Name (리소스 파일명)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.DefaultPageSize">
+      <summary>
+            목록화면의 기본 PageSize (default=10)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.DisplayDateStringFormat">
+      <summary>
+            기본 날짜 포맷 (default=yyyy-MM-dd) 
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ItemsPerRequest">
+      <summary>
+            컨트롤에서 한번의 요청에 추가적으로 보여주는 요소의 수 (default=10)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.LocaleKeys">
+      <summary>
+            시스템에서 지원하는 Locale 목록
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.UseUserLocale">
+      <summary>
+            사용자 Locale 정보를 사용할지 여부 (default=true)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.UserLocaleCookieName">
+      <summary>
+            사용자 Locale 설정 정보를 저장할 쿠키 명
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.DefaultThemeAssemblyName">
+      <summary>
+            NSoft 기본 테마
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.ThemeAssemblyNames">
+      <summary>
+            시스템에서 지원하는 테마 목록
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.LoginUrl">
+      <summary>
+            로그인 페이지 URL (default=~/Login)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.LogoutUrl">
+      <summary>
+            로그아웃 페이지 URL (default=~/Logout)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.DefaultUrl">
+      <summary>
+            기본 페이지 URL (default=~/Home)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.MessageBoxUrl">
+      <summary>
+            메시지 페이지 URL (default=~/Messages/MessagePage.aspx)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.MailHost">
+      <summary>
+            SMTP 메일 서버 (default=mail.NSoft21.com)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.MailPort">
+      <summary>
+            SMTP 메일 서버 Port (default=25)
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.MailSender">
+      <summary>
+            디버깅용 메일 발송자
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.MailReceipts">
+      <summary>
+            디버깅용 메일 수신자
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.FileRepositoryRootDirectory">
+      <summary>
+            파일 저장소 Root 경로
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.AppSettings.Delimiter">
+      <summary>
+            스트링기반 아이템컬렉션에서의 문자열 구분자
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.AppSettings.Default">
+      <summary>
+            환경설정(<see cref="T:NSoft.NFramework.Web.AppSettings" />)의 기본값입니다.
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.WebAppContext">
+      <summary>
+            Current Thread Context에서 유지할 정보를 제공합니다.
+            </summary>
+      <summary>
+            Current Thread Context에서 유지할 정보를 제공합니다.
+            </summary>
+      <summary>
+            Current Thread Context에서 유지할 정보를 제공합니다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.WebAppContext.ProductName">
+      <summary>
+            Current Product Name : NSoft.NFramework.Web
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.WebAppContext.Administrator">
+      <summary>
+            Administrator Name : admin
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Web.WebAppContext.Anonymous">
+      <summary>
+            Anonymous
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.WebAppContext.Current">
+      <summary>
+            Current Thread Context에 보관된 정보
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.WebAppContext.Current.Init">
+      <summary>
+            Current 정보를 초기화 한다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Web.WebAppContext.Current.SetCurrent(NSoft.NFramework.Web.Access.IAccessIdentity)">
+      <summary>
+            Current를 셋팅한다.
+            </summary>
+      <param name="identity">
+      </param>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Current.Identity">
+      <summary>
+            Current User Identity
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Current.ThemeName">
+      <summary>
+            Current User ThemeItem
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Current.LocaleKey">
+      <summary>
+            Current User ThemeItem
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Web.WebAppContext.Services">
+      <summary>
+            Business Logic Layer 의 서비스들입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Services.Authentication">
+      <summary>
+            인증 서비스
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Services.FileService">
+      <summary>
+            HttpFile관련 서비스
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Services.RouteService">
+      <summary>
+            Routing Service
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Services.MenuService">
+      <summary>
+            메뉴 서비스
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Web.WebAppContext.Services.RoleService">
+      <summary>
+            Role 서비스
+            </summary>
+    </member>
+  </members>
+</doc>

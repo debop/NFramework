@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<chart palette='2' caption='Cisco' setAdaptiveYMin='1'>
+	<dataset>
+		<set value='27.26' />
+		<set value='37.88' />
+		<set value='38.88' />
+		<set value='22.9' />
+		<set value='39.02' />
+		<set value='23.31' />
+		<set value='30.85' />
+		<set value='27.01' />
+		<set value='33.2' />
+		<set value='21.93' />
+		<set value='34.51' />
+		<set value='24.84' />
+		<set value='39.32' />
+		<set value='37.04' />
+		<set value='27.81' />
+		<set value='22.95' />
+		<set value='24.73' />
+		<set value='37.63' />
+		<set value='29.75' />
+		<set value='22.35' />
+		<set value='34.35' />
+		<set value='27.6' />
+		<set value='27.97' />
+		<set value='32.36' />
+		<set value='22.56' />
+		<set value='24.15' />
+		<set value='24.93' />
+		<set value='35.82' />
+		<set value='23.45' />
+		<set value='37.64' />
+		<set value='26.99' />
+		<set value='29.48' />
+		<set value='36.63' />
+		<set value='35.58' />
+		<set value='32.19' />
+		<set value='27.59' />
+		<set value='26.94' />
+		<set value='32.35' />
+		<set value='22.63' />
+		<set value='25.97' />
+		<set value='25.28' />
+		<set value='26.73' />
+		<set value='23.47' />
+		<set value='20.55' />
+		<set value='34.58' />
+		<set value='29.16' />
+		<set value='34.97' />
+		<set value='24.57' />
+		<set value='20.7' />
+		<set value='32.61' />
+	</dataset>
+</chart>

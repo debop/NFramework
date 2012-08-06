@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<!-- StringResources.xml -->
+<Nini>
+	<Section Name="Glossary">
+		<Key Name="HomePage" Value="Home Page (en) (OtherResources) (XML)" />
+		<Key Name="SiteMap" Value="Site Map (en) (OtherResources) (XML)" />
+		<Key Name="Welcome" Value="Welcome (en) (OtherResources) (XML)" />
+	</Section>
+
+	<Section Name="CommonTerms">
+		<Key Name="Hello" Value="Hello (en) (OtherResources) (XML)" />
+	</Section>
+</Nini>

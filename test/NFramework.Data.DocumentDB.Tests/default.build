@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<project name="NSoft.NFramework.Data.DocumentDB.Tests"
+				 default="build"
+				 xmlns="http://nant.sf.net/release/0.91/nant.xsd">
+
+	<!--
+		테스트용 프로젝트
+	-->
+
+	<property name="root.dir" value="../.."/>
+	<include buildfile="${root.dir}/build-common/common-project.xml"/>
+
+	<target name="init" depends="common.init">
+
+		<property name="assembly.description" value="Unit Test for NSoft.NFramework.Data.DocumentDB"/>
+
+		<!-- 테스트용 Assembly는 CLS 일 필요도 없고, Sign도 필요 없다.-->
+		<property name="assembly.is-cls-compliant" value="false" overwrite="true"/>
+		<property name="sign" value="false" overwrite="true"/>
+
+		<assemblyfileset id="project.references" basedir="${build.dir}" >
+
+			<include name="System"/>
+			<include name="System.Configuration" />
+			<include name="System.ComponentModel.Composition" />
+			<include name="System.Core"/>
+			<include name="System.Data"/>
+			<include name="System.Web"/>
+			<include name="System.Xml"/>
+			<include name="System.Xml.Linq" />
+			
+			
+
+			<include name="Castle.Core.dll"/>
+			<include name="Castle.Windsor.dll"/>
+			
+			<include name="Esent.Interop.dll" />
+			
+			<include name="FluentNHibernate.dll" />
+
+			<include name="ICSharpCode.NRefactory.dll" />
+			<include name="ICSharpCode.SharpZipLib.dll" />
+			
+			<include name="Iesi.Collections.dll"/>
+			
+			<include name="Lucene.Net.dll" />
+			<include name="Lucene.Net.Contrib.Spatial.dll" />
+			<include name="Lucene.Net.Contrib.SpellChecker.dll" />
+			
+			<!-- MongoDB Driver -->
+			<include name="MongoDB.Bson.dll" />
+			<include name="MongoDB.Driver.dll" />
+
+			<include name="Newtonsoft.Json.dll" />
+			<include name="NHibernate.dll"/>
+			<include name="NLog.dll"/>
+			<include name="NUnit.Framework.dll"/>
+			
+			<!-- RavenDB Driver -->
+			<include name="Raven.Abstraction.dll" />
+			<include name="Raven.Client.Embedded.dll" />
+			<include name="Raven.Client.Lightweight.dll" />
+			<include name="Raven.Database.dll" />
+			<include name="Raven.Mumin.dll" />
+			<include name="Raven.Storage.Escent.dll" />
+			<include name="Raven.Storage.Managed.dll" />
+
+			<include name="NSoft.NFramework.dll" />
+			<include name="NSoft.NFramework.Data.dll" />
+			<include name="NSoft.NFramework.Data.NHibernateEx.dll" />
+			<include name="NSoft.NFramework.Data.MongoDB.dll" />
+			<include name="NSoft.NFramework.Data.RavenDB.dll" />
+			<include name="NSoft.NFramework.Web.dll" />
+
+			<include name="SharpTestsEx.dll" />
+
+		</assemblyfileset>
+
+		<resourcefileset id="project.resources" dynamicprefix="true">
+			<include name="**/*.resx"/>
+		</resourcefileset>
+
+		<!-- copy the config file for testing -->
+		<copy todir="${build.dir}" overwrite="true">
+			<fileset basedir="${src.dir}">
+				<include name="**/*.xml"/>
+				<include name="**/*.config"/>
+				<include name="**/*.ini"/>
+				<exclude name="app.config"/>
+				<!-- common.init 에서 자동으로 생성해준다-->
+			</fileset>
+		</copy>
+
+	</target>
+
+	<target name="generate-assemblyinfo" depends="init common.generate-assemblyinfo" />
+
+	<target name="build"
+			depends="generate-assemblyinfo common.compile-tests common.run-tests"
+			description="Build ${project::get-name()}">
+		<echo message="${project::get-name()} TEST 완료"/>
+	</target>
+
+</project>

@@ -1,0 +1,47 @@
+﻿<chart DateFormat="yyyy-MM-dd" Caption="MultiTaskedProcess" SubCaption="소제목입니다.">
+	<categories LegendBgColor="FFFFFF" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1">
+		<category LegendBgColor="FFFFFF" Label="2" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-02-01 00:00:00" End="2007-02-28 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="3" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-03-01 00:00:00" End="2007-03-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="4" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-04-01 00:00:00" End="2007-04-30 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="5" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-05-01 00:00:00" End="2007-05-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="6" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-06-01 00:00:00" End="2007-06-30 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="7" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-07-01 00:00:00" End="2007-07-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="8" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-08-01 00:00:00" End="2007-08-31 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="9" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-09-01 00:00:00" End="2007-09-30 23:59:59" />
+		<category LegendBgColor="FFFFFF" Label="10" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" Start="2007-10-01 00:00:00" End="2007-10-01 00:00:00" />
+	</categories>
+	<processes HeaderText="What to do?" headerAlign="right" headerVAlign="bottom" headerFontSize="18" Align="right" FontSize="12" IsBold="1">
+		<process Id="Process0" LegendBgColor="FFFFFF" Label="Identify Customers" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process1" LegendBgColor="FFFFFF" Label="Survey 50 Customers" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process2" LegendBgColor="FFFFFF" Label="Interpret Requirements" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process3" LegendBgColor="FFFFFF" Label="Study Competition" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process4" LegendBgColor="FFFFFF" Label="Documentation of features" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process5" LegendBgColor="FFFFFF" Label="Brainstorm concepts" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process6" LegendBgColor="FFFFFF" Label="Design &amp; Code" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process7" LegendBgColor="FFFFFF" Label="테스트 / QA" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process8" LegendBgColor="FFFFFF" Label="Documentation of product" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+		<process Id="Process9" LegendBgColor="FFFFFF" Label="배포" Align="center" VAlign="middle" Font="Tahoma" FontColor="0372AB" FontSize="13" IsBold="1" IsItalic="1" IsUnderline="1" />
+	</processes>
+	<tasks ShowLabels="1">
+		<task Start="2007-02-04 00:00:00" End="2007-02-10 00:00:00" Id="Planed Task0" ProcessId="Process0" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-02-09 00:00:00" End="2007-02-20 00:00:00" Id="Actual Task0" ProcessId="Process0" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-02-09 00:00:00" End="2007-02-20 00:00:00" Id="Planed Task1" ProcessId="Process1" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-02-14 00:00:00" End="2007-03-02 00:00:00" Id="Actual Task1" ProcessId="Process1" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-02-20 00:00:00" End="2007-03-04 00:00:00" Id="Planed Task2" ProcessId="Process2" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-02-25 00:00:00" End="2007-03-14 00:00:00" Id="Actual Task2" ProcessId="Process2" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-03-02 00:00:00" End="2007-03-22 00:00:00" Id="Planed Task3" ProcessId="Process3" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-03-07 00:00:00" End="2007-04-01 00:00:00" Id="Actual Task3" ProcessId="Process3" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-03-22 00:00:00" End="2007-04-06 00:00:00" Id="Planed Task4" ProcessId="Process4" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-03-27 00:00:00" End="2007-04-16 00:00:00" Id="Actual Task4" ProcessId="Process4" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-04-06 00:00:00" End="2007-06-05 00:00:00" Id="Planed Task5" ProcessId="Process5" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-04-11 00:00:00" End="2007-06-15 00:00:00" Id="Actual Task5" ProcessId="Process5" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-07-21 00:00:00" End="2007-08-20 00:00:00" Id="Planed Task6" ProcessId="Process6" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-07-26 00:00:00" End="2007-08-30 00:00:00" Id="Actual Task6" ProcessId="Process6" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-07-29 00:00:00" End="2007-08-24 00:00:00" Id="Planed Task7" ProcessId="Process7" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-08-03 00:00:00" End="2007-09-03 00:00:00" Id="Actual Task7" ProcessId="Process7" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-08-25 00:00:00" End="2007-09-04 00:00:00" Id="Planed Task8" ProcessId="Process8" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-08-30 00:00:00" End="2007-09-14 00:00:00" Id="Actual Task8" ProcessId="Process8" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+		<task Start="2007-09-01 00:00:00" End="2007-10-01 00:00:00" Id="Planed Task9" ProcessId="Process9" Label="Planed" Animation="1" Color="8A2BE2" BorderThickness="1" Height="25%" TopPadding="22%" ShowLabel="1" />
+		<task Start="2007-09-06 00:00:00" End="2007-10-11 00:00:00" Id="Actual Task9" ProcessId="Process9" Label="Actual" Animation="1" Color="9ACD32" BorderThickness="1" Height="25%" TopPadding="70%" ShowLabel="1" />
+	</tasks>
+</chart>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A482CF83-1EA1-4D3A-A8D5-638C3348B5B0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Numerics</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Numerics.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="NCalc">
+      <HintPath>..\..\lib\net-4.0\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\net-4.0\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\..\lib\net-4.0\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractNumericTestCase.cs" />
+    <Compile Include="Distributions\Continuous\NormalFixture.cs" />
+    <Compile Include="Distributions\Discrete\DiscreteUniformFixture.cs" />
+    <Compile Include="Distributions\DistributionFixtureBase.cs" />
+    <Compile Include="Equations\MinimumFinderFixture.cs" />
+    <Compile Include="Equations\RootFinderFixture.cs" />
+    <Compile Include="Expressions\NCalcFixture.cs" />
+    <Compile Include="Integration\IntegrationFixture.cs" />
+    <Compile Include="Interpolation\InterpolationFixture.cs" />
+    <Compile Include="MathExFixture.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Randomizer\RandomizerFixture.cs" />
+    <Compile Include="Tools\AbstractMathToolFixtureBase.cs" />
+    <Compile Include="Tools\Generator.cs" />
+    <Compile Include="Tools\MathToolFixture.cs" />
+    <Compile Include="Tools\MathToolFixture.Kurtosis.cs" />
+    <Compile Include="Tools\MathToolFixture.Moment.cs" />
+    <Compile Include="Tools\MathToolFixture.MovingAverageCumulative.cs" />
+    <Compile Include="Tools\MathToolFixture.MovingAverageStandard.cs" />
+    <Compile Include="Tools\MathToolFixture.MovingAverageWeighted.cs" />
+    <Compile Include="Tools\MathToolFixture.MovingSum.cs" />
+    <Compile Include="Tools\MathToolFixture.Probability.cs" />
+    <Compile Include="Tools\MathToolFixture.Skewness.cs" />
+    <Compile Include="Tools\MathToolFixture.StDev.cs" />
+    <Compile Include="Tools\MathToolFixture.StDevBlock.cs" />
+    <Compile Include="Tools\MathToolFixture.StDevCumulative.cs" />
+    <Compile Include="Tools\MathToolFixture.Variance.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NFramework.Numerics\NFramework.Numerics-vs11.csproj">
+      <Project>{CCC76685-024B-4A9C-854E-DDE07AFCDBD5}</Project>
+      <Name>NFramework.Numerics-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="default.build" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logging.nlog.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

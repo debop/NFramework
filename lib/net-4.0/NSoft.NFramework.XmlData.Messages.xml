@@ -1,0 +1,1273 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>NSoft.NFramework.XmlData.Messages</name>
+    </assembly>
+    <members>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsArgument">
+            <summary>
+             <see cref="T:NSoft.NFramework.XmlData.Messages.XdsParameter"/> 에 대응되는 하나의 Argument 값이다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsArgument.#ctor">
+            <summary>
+            default constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsArgument.#ctor(System.Object)">
+            <summary>
+            Initialize a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/> with the specified argument
+            </summary>
+            <param name="argument">argument value</param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsArgument.Argument">
+            <summary>
+            인자 값
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsArgumentCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsArgumentCollection.AddArgument(System.Object)">
+            <summary>
+            Create a new argument with the specified argument and add to current collection.
+            </summary>
+            <param name="arg">value of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/></param>
+            <returns>index of collection</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsArgumentCollection.AddArgumentArray(System.Object[])">
+            <summary>
+            Add array of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/> which has the specified args to current collection.
+            </summary>
+            <param name="args">values of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/></param>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsParameter">
+            <summary>
+            Stored Procedure의 Parameter를 표현하는 Class (<P paramType="string">파라미터 이름</P>)
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsParameter.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsParameter.#ctor(System.String,System.String)">
+            <summary>
+            Initialize a new instance of XdsParameter with parameter name and type
+            </summary>
+            <param name="name"></param>
+            <param name="type"></param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsParameter.ParamName">
+            <summary>
+            Parameter Name
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsParameter.ParamType">
+            <summary>
+            Parameter Type Name
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsParameterCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsParameter"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsParameterCollection.AddParameter(System.String)">
+            <summary>
+            Add Parameter with parameter name
+            </summary>
+            <param name="paramName">parameter name</param>
+            <returns>new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsParameter"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsParameterCollection.AddParameter(System.String,System.String)">
+            <summary>
+            Add new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsParameter"/> with parameter name and type.
+            </summary>
+            <param name="paramName">parameter name</param>
+            <param name="paramType">parameter type name</param>
+            <returns>new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsParameter"/></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsQuery">
+            <summary>
+            단순 쿼리문을 나타내는 객체
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsQuery.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsQuery.#ctor(System.String,NSoft.NFramework.XmlData.Messages.XmlDataRequestKind)">
+            <summary>
+            Constructor with the specified query string, request type
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="requestKind">request type</param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsQuery.Query">
+            <summary>
+            Query String to execute
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsQuery.QType">
+            <summary>
+            Int Number of Request Type
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsQuery.RequestKind">
+            <summary>
+            Request Type
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsQueryCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsQuery"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsQueryCollection.AddQuery(System.String)">
+            <summary>
+            Add new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsQuery"/> that has the specified query string.
+            </summary>
+            <param name="query">query string to execute</param>
+            <returns>Return added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsQuery"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsQueryCollection.AddQuery(System.String,NSoft.NFramework.XmlData.Messages.XmlDataRequestKind)">
+            <summary>
+            Add new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsQuery"/> that has the specified query string and request type
+            </summary>
+            <param name="query">query string to execute</param>
+            <param name="requestKind">request type</param>
+            <returns>Return added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsQuery"/></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument">
+            <summary>
+            Request Document for Xml Data Service
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsDocumentBase">
+            <summary>
+            RealWeb XML Data 통신을 위한 기본 형식이다.
+            XmlHttp 통신을 통해 서버와 통신을 하면서 요청 정보 (Database Query or StoredProcedure)를 전달하고,
+            그 결과를 받는 일종의 XML-RPC 의 Database 특화 버전이라고 할 수 있다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.#ctor(NSoft.NFramework.XmlData.Messages.XmlDataDirectionKind)">
+            <summary>
+            Initialize a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsDocumentBase"/> with direction
+            </summary>
+            <param name="direction">direction of this instance.</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.ToString">
+            <summary>
+            문서 내용을 Xml Text로 변환한다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.ToString(System.Text.Encoding)">
+            <summary>
+            문서 내용을 Xml Text로 변환한다.
+            </summary>
+            <param name="enc">Encoding 방식</param>
+            <returns>Xml Text</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.Save(System.String)">
+            <summary>
+            Save content of current object to the specified file.
+            </summary>
+            <param name="filename">Full path of file to save.</param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.Dir">
+            <summary>
+            Direction of Document
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.Direction">
+            <summary>
+            Document Direction
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.ConnectionString">
+            <summary>
+            Connection string 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.CommandTimeout">
+            <summary>
+            ADO.NET Command 수행 제한 시간
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.tranx">
+            <summary>
+            Need Transaction? (if 0: no transaction, else need transaction)
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.Transaction">
+            <summary>
+            Need Transaction?
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.CursorLocation">
+            <summary>
+            ADO.NET Recordset Cursor 종류
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.IsolationLevel">
+            <summary>
+            격리 수준
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.IsoLevel">
+            <summary>
+            Isolation Level Hashcode.
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.parallel">
+            <summary>
+            비동기적 수행 벼부
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.IsParallelToolecute">
+            <summary>
+            비동기적 수행 여부
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsDocumentBase.Errors">
+            <summary>
+            Error information
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.#ctor">
+            <summary>
+            Initialize a new instance of XdsRequestDocument.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddQuery(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            Add simple query string to execute with response type and paging
+            </summary>
+            <param name="query">simple query string</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start from 1)</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddQuery(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            Add simple query string to execute with response type.
+            </summary>
+            <param name="query">simple query string</param>
+            <param name="responseKind">response type</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddQuery(System.String)">
+            <summary>
+            Add simple query string to execute.
+            </summary>
+            <param name="query">simple query string</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddStoredProc(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            Add procedure to execute with <see cref="T:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind"/>	and paging
+            </summary>
+            <param name="spName">procedure name</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start from 1)</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddStoredProc(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            Add procedure to execute with <see cref="T:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind"/>
+            </summary>
+            <param name="spName">procedure name</param>
+            <param name="responseKind">response type</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddStoredProc(System.String)">
+            <summary>
+            Add procedure to execute
+            </summary>
+            <param name="spName">procedure name</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddMethod(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            Add method name to execute
+            </summary>
+            <param name="method">method name</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start from 1)</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddMethod(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            Add method name to execute
+            </summary>
+            <param name="method">method name</param>
+            <param name="responseKind">response type</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.AddMethod(System.String)">
+            <summary>
+            Add method name to execute
+            </summary>
+            <param name="method">method name</param>
+            <returns>request index</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.LoadFromFile(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument"/> from the specified file.
+            </summary>
+            <param name="filename">full file path</param>
+            <returns>instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.Load(System.String)">
+            <summary>
+            Create a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument"/> from the specified xml string.
+            </summary>
+            <param name="xml">xml string</param>
+            <returns>instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestDocument"/></returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.Requests">
+            <summary>
+            단위 요청 정보의 컬렉션
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestDocument.Item(System.Int32)">
+            <summary>
+            Indexer
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem">
+            <summary>
+            Request 객체 (<REQUEST/>) - 단위 요청 정보
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItem.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItem.AddParamArray(System.String[])">
+            <summary>
+            Parameter를 추가한다.
+            </summary>
+            <param name="requestParamNames"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItem.AddValueArray(System.Object[][])">
+            <summary>
+            이차원 배열의 Arguement를 넣는다.
+            새로운 인자집합을 가진 Value 객체를 만들고 그것을 ValueCollection객체에 넣는다.
+            </summary>
+            <param paramName="args">argument set</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItem.AddValue(System.Object[])">
+            <summary>
+            Parameter의 값을 설정한다.
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.Query">
+            <summary>
+            수행할 SQL Query 문
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.Id">
+            <summary>
+            요청 순서를 나타내는 Index
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.QType">
+            <summary>
+            요청 종류 ( 0 : StoredProcedure, 1 : Query ) <seealso cref="T:NSoft.NFramework.XmlData.Messages.XmlDataRequestKind"/>의 서수형.
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.RequestKind">
+            <summary>
+            요청 종류 ( 0 : Query, 1 : StoredProcedure )
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.RType">
+            <summary>
+            응답 종류 (None(0), Dataset(1), Scalar(2), Xml(3)) <seealso cref="T:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind"/>
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.ResponseKind">
+            <summary>
+            응답 종류 (None(0), Dataset(1), Scalar(2), Xml(3)) <seealso cref="T:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind"/>
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.PageSize">
+            <summary>
+            페이징 기능시의 단위 페이지 크기
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.PageNo">
+            <summary>
+            페이징 기능 적용시의 결과로 받고자하는 페이지 번호 (0부터 시작)
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.Sort">
+            <summary>
+            정렬 적용 방법 (이제는 사용하지 않는다.)
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.Parameters">
+            <summary>
+            Stored Procedure의 인자 정보 Collection
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.Values">
+            <summary>
+            Parameters 대한 입력 값
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.PreQueries">
+            <summary>
+            실제 요청 작업 전에 수행할 선행 작업 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRequestItem.PostQueries">
+            <summary>
+            실제 요청 작업 후에 수행할 후행 작업 정보
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddRequestItem(System.String,NSoft.NFramework.XmlData.Messages.XmlDataRequestKind,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="requestKind">request type</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddRequestItem(System.String,NSoft.NFramework.XmlData.Messages.XmlDataRequestKind,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="requestKind">request type</param>
+            <param name="responseKind">response type</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddRequestItem(System.String,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddRequestItem(System.String)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddQuery(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddQuery(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="responseKind">response type</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddQuery(System.String,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddQuery(System.String)">
+            <summary>
+            서버에서 수행할 쿼리문을 요청문서에 등록한다.
+            </summary>
+            <param name="query">simple query string to execute</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddStoredProc(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 Procudure Name 을 요청문서에 등록한다.
+            </summary>
+            <param name="spName">Procedure name</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddStoredProc(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            서버에서 수행할 Procudure Name 을 요청문서에 등록한다.
+            </summary>
+            <param name="spName">Procedure name</param>
+            <param name="responseKind">response type</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddStoredProc(System.String,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 Procudure Name 을 요청문서에 등록한다.
+            </summary>
+            <param name="spName">Procedure name</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddStoredProc(System.String)">
+            <summary>
+            서버에서 수행할 Procudure Name 을 요청문서에 등록한다.
+            </summary>
+            <param name="spName">Procedure name</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddMethod(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 Method name 을 요청문서에 등록한다.
+            </summary>
+            <param name="method">method name to execute</param>
+            <param name="responseKind">response type</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddMethod(System.String,NSoft.NFramework.XmlData.Messages.XmlDataResponseKind)">
+            <summary>
+            서버에서 수행할 Method name 을 요청문서에 등록한다.
+            </summary>
+            <param name="method">method name to execute</param>
+            <param name="responseKind">response type</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddMethod(System.String,System.Int32,System.Int32)">
+            <summary>
+            서버에서 수행할 Method name 을 요청문서에 등록한다.
+            </summary>
+            <param name="method">method name to execute</param>
+            <param name="pageSize">page size</param>
+            <param name="pageNo">page number (start with 1)</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRequestItemCollection.AddMethod(System.String)">
+            <summary>
+            서버에서 수행할 Method name 을 요청문서에 등록한다.
+            </summary>
+            <param name="method">method name to execute</param>
+            <returns>index of added <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsValue">
+            <summary>
+            <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/>의 SET을 가진 것이다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsValue.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsValue.#ctor(System.Object[])">
+            <summary>
+            Constructor
+            </summary>
+            <param name="args">인자값</param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsValue.Arguments">
+            <summary>
+            인자 정보
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsValueCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsValue"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsValueCollection.AddValue(System.Object[])">
+            <summary>
+            <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/>의 배열을 하나의 Value Set으로 추가한다.
+            </summary>
+            <param name="args"><see cref="T:NSoft.NFramework.XmlData.Messages.XdsValue"/>의 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsArgument"/> 컬렉션</param>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsColumn">
+            <summary>
+            Database Query 수행 결과를 나타내는 ResultSet의 하나의 컬럼 값을 나타낸다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumn.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumn.#ctor(System.Object)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="column"></param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsColumn.Value">
+            <summary>
+            Value of Column
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsColumn.ValueToString">
+            <summary>
+            Return string that represent value of column
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsColumnCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsColumn"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumnCollection.AddColumn">
+            <summary>
+            Null 값을 가지는 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsColumn"/>을 추가한다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumnCollection.AddColumn(System.Object)">
+            <summary>
+            지정된 <paramref name="c"/>값을 가지는 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsColumn"/>을 추가한다.
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumnCollection.AddColumnArray(System.Object[])">
+            <summary>
+            지정된 값을 가지는 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsColumn"/>의 컬렉션을 추가한다.
+            </summary>
+            <param name="columns"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumnCollection.AddColumnArray(System.Data.DataRow)">
+            <summary>
+            지정된 <see cref="T:System.Data.DataRow"/>의 모든 컬럼 값을 이용하여 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsColumn"/>을 빌드하고, 컬렉션에 추가한다.
+            </summary>
+            <param name="row"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumnCollection.AddColumnArray(System.Data.IDataReader)">
+            <summary>
+            <see cref="T:System.Data.IDataReader"/>의 현재 레코드 정보 (<see cref="T:System.Data.IDataRecord"/>)로부터 값을 읽어 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsColumn"/>을 빌드하고 컬렉션에 추가한다.
+            </summary>
+            <param name="dr"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsColumnCollection.GetValues">
+            <summary>
+            컬렉션의 모든 <see cref="P:NSoft.NFramework.XmlData.Messages.XdsColumn.Value"/>를 1차원 배열로 만들어 반환한다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsField">
+            <summary>
+            Database 수행 결과를 나타내는 ResultSet의 컬럼 스키마 정보를 표현한다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsField.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsField.#ctor(System.String,System.String,System.Int32)">
+            <summary>
+            Initialize a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/> with the specified field name, type, size
+            </summary>
+            <param name="fieldName">field name</param>
+            <param name="fieldType">field type</param>
+            <param name="fieldSize">field size</param>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsField.Name">
+            <summary>
+            field name
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsField.TypeName">
+            <summary>
+            field type
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsField.Size">
+            <summary>
+            field size
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsFieldCollection">
+            <summary>
+            Collectio of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsFieldCollection"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsFieldCollection.AddField(System.String)">
+            <summary>
+            Add a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/> that has the specified field name.
+            </summary>
+            <param name="fieldName">field name</param>
+            <returns>added new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsFieldCollection.AddField(System.String,System.String,System.Int32)">
+            <summary>
+            Add a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/> that has the specified field name, type, size.
+            </summary>
+            <param name="fieldName">field name</param>
+            <param name="fieldType">field type</param>
+            <param name="size">field size</param>
+            <returns>added new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsFieldCollection.AddField(System.Data.DataColumn)">
+            <summary>
+            DataTable의 Column 정보를 나타내는 <see cref="T:System.Data.DataColumn"/> 파싱해서 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/>를 빌드해서 컬렉션에 추가한다.
+            </summary>
+            <param name="dataColumn">data column</param>
+            <returns></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsFieldCollection.AddFieldArray(System.String[])">
+            <summary>
+            주어진 필드명을 가지는 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/> 들을 생성하여 컬렉션에 추가한다.
+            </summary>
+            <param name="fieldNames"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsFieldCollection.AddFieldArray(NSoft.NFramework.XmlData.Messages.XdsField[])">
+            <summary>
+            Adds the elements of the specified collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/> to the end of the <see cref="T:NSoft.NFramework.XmlData.Messages.XdsFieldCollection"/>
+            </summary>
+            <param name="fields">collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsField"/></param>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsRecord">
+            <summary>
+            Database 수행 결과를 나타내는 ResultSet의 하나의 레코드를 표현한다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecord.#ctor">
+            <summary>
+            생성자
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecord.#ctor(System.Object[])">
+            <summary>
+            생성자
+            </summary>
+            <param name="columns">컬럼들의 값</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecord.#ctor(System.Data.DataRow)">
+            <summary>
+            <see cref="T:System.Data.DataRow"/>의 모든 컬럼 값으로 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/>를 생성한다.
+            </summary>
+            <param name="row"><see cref="T:System.Data.DataTable"/>의 하나의 Record</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecord.#ctor(System.Data.IDataReader)">
+            <summary>
+            <see cref="T:System.Data.IDataReader"/>의 현재 <see cref="T:System.Data.IDataRecord"/>의 모든 컬럼 값으로 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/>를 생성한다.
+            </summary>
+            <param name="dr"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecord.GetValues">
+            <summary>
+            결과 값들을 반환한다.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRecord.Columns">
+            <summary>
+            컬럼들
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsRecordCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecordCollection.AddColumnArray(System.Object[])">
+            <summary>
+            지정된 컬럼 값을 가지는 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/>를 생성해서 컬렉션에 추가한다.
+            </summary>
+            <param name="columns">컬럼 값</param>
+            <returns>추가된 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecordCollection.AddRecord(System.Data.DataRow)">
+            <summary>
+            <see cref="T:System.Data.DataRow"/>의 값으로부터 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/>를 생성해서 컬렉션에 추가한다.
+            </summary>
+            <param name="row"><see cref="T:System.Data.DataRow"/> to add</param>
+            <returns>추가된 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsRecordCollection.AddRecord(System.Data.IDataReader)">
+            <summary>
+            <see cref="T:System.Data.IDataReader"/>의 값으로부터 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/>를 생성해서 컬렉션에 추가한다.
+            </summary>
+            <param name="dr"><see cref="T:System.Data.IDataReader"/> to add</param>
+            <returns>추가된 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsRecord"/></returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsRecordCollection.Item(System.Int32,System.Int32)">
+            <summary>
+            결과 Record의 각각의 Column 값을 가져온다.
+            </summary>
+            <param name="row"></param>
+            <param name="column"></param>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsResponseDocument">
+            <summary>
+            Response Document for Xml Data Service 
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.#ctor">
+            <summary>
+            Initialize a new instance of XdsResponseDocument.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.AddResponseItem(NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>  with response type, request id, sequence id
+            </summary>
+            <param name="responseKind">response type</param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+            <returns>new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.AddResponseItem(NSoft.NFramework.XmlData.Messages.XdsResponseItem)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>
+            </summary>
+            <param name="responseItem">Instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> to add.</param>
+            <returns>index of collection, if <paramref name="responseItem"/> is null, return -1</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.AddResponseItem(System.Data.IDataReader,System.Int32,System.Int32)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with <see cref="T:System.Data.IDataReader"/>, request id, sequence id
+            </summary>
+            <param name="dr">Instance of <see cref="T:System.Data.IDataReader"/></param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+            <returns>index of collection</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.AddResponseItem(System.Data.DataView,System.Int32,System.Int32)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with <see cref="T:System.Data.DataView"/>, request id, sequence id
+            </summary>
+            <param name="dv">Instance of <see cref="T:System.Data.DataView"/></param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+            <returns>index of collection</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.AddResponseItemArray(System.Data.DataSet,System.Int32,System.Int32)">
+            <summary>
+            Add new collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with <see cref="T:System.Data.DataSet"/>, request id, sequence id
+            </summary>
+            <param name="ds">Instance of <see cref="T:System.Data.DataSet"/></param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.ToDataSet">
+            <summary>
+            Convert current object to <see cref="T:System.Data.DataSet"/>
+            </summary>
+            <returns>new instance of <see cref="T:System.Data.DataSet"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.ToDataSet(System.String)">
+            <summary>
+            Convert current object to <see cref="T:System.Data.DataSet"/> with the specified name
+            </summary>
+            <param name="dataSetName">name of dataset</param>
+            <returns>new instance of <see cref="T:System.Data.DataSet"/></returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.Responses">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.Item(System.Int32)">
+            <summary>
+            <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>를 반환한다.
+            </summary>
+            <param name="index"></param>
+            <returns></returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseDocument.HasError">
+            <summary>
+            요청사항 실행 결과 예외가 발생했는지를 나타낸다.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem">
+            <summary>
+            하나의 요청(<see cref="T:NSoft.NFramework.XmlData.Messages.XdsRequestItem"/>)에 대한 결과를 나타낸다.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.#ctor">
+            <summary>
+            Initialize a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.#ctor(NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            Initialize a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with response type ...
+            </summary>
+            <param name="responseKind">Response type</param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequence id (요청에 여러개의 parameter set이 있는 경우)</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.InitFields">
+            <summary>
+            Initialize parameters.
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.GetFieldOrder(System.String)">
+            <summary>
+            find order index of field which name is specified fieldname
+            </summary>
+            <param name="fieldName">field name</param>
+            <returns>field(column) index. if not exist the field, return -1.</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.ToArray(System.Boolean)">
+            <summary>
+            ResultSet 내용을 2차원 배열로 빌드하여 반환한다.
+            </summary>
+            <param name="withFieldName">Field name을 배열의 첫번째 행에 넣을 것인가?</param>
+            <returns>ResultSet 내용을 담은 2차원 배열</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.ToDataTable(System.String)">
+            <summary>
+            Response 객체를 DataTable로 만든다.
+            </summary>
+            <param name="tableName">table name for <see cref="T:System.Data.DataTable"/></param>
+            <returns>instance of <see cref="T:System.Data.DataTable"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Create(System.Data.DataSet)">
+            <summary>
+            <see cref="T:System.Data.DataSet"/> 으로부터 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection"/>을 빌드한다.
+            </summary>
+            <param name="ds">원본 <see cref="T:System.Data.DataSet"/></param>
+            <returns>Instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Create(System.Data.IDataReader)">
+            <summary>
+            <see cref="T:System.Data.IDataReader"/> 로부터 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>을 빌드한다.
+            </summary>
+            <param name="dr"></param>
+            <returns>Instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Create(System.Data.DataView)">
+            <summary>
+            <see cref="T:System.Data.DataView"/>로부터 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>을 빌드한다.
+            </summary>
+            <param name="dv">원본 <see cref="T:System.Data.DataView"/></param>
+            <returns>Instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/></returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.RequestId">
+            <summary>
+            요청 Id
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.ResponseId">
+            <summary>
+            응답 Id
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.SequenceId">
+            <summary>
+            요청에 대한 다중 결과 시의 시퀀스 Id
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.PageCount">
+            <summary>
+            결과 페이지 수
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.TotalRecordCount">
+            <summary>
+            전체 결과 레코드 수
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.PageSize">
+            <summary>
+            결과 페이징시의 페이지 크기
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.PageNo">
+            <summary>
+            결과 페이징시의 현재 페이지
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Sort">
+            <summary>
+            정렬 조건
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.RType">
+            <summary>
+            응답 종류 <c>XmlDataResponseKind</c> (None(0), Dataset(1), Scalar(2), Xml(3))
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.ResponseKind">
+            <summary>
+            Response Type
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Fields">
+            <summary>
+            결과 SET의 Field 정보 (DB 스키마 정보)
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Records">
+            <summary>
+            결과 SET 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Item(System.Int32,System.Int32)">
+            <summary>
+            결과 셋의 하나의 값을 반환한다.
+            </summary>
+            <param name="row">row index</param>
+            <param name="column">column index</param>
+            <returns>Value of Resultset</returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsResponseItem.Item(System.Int32,System.String)">
+            <summary>
+            결과 셋의 하나의 값을 반환한다.
+            </summary>
+            <param name="row">row index</param>
+            <param name="fieldName">filed name</param>
+            <returns>Value of Resultset</returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection">
+            <summary>
+            Collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection.AddResponseItem(NSoft.NFramework.XmlData.Messages.XdsResponseItem)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>
+            </summary>
+            <param name="responseItem">Instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> to add.</param>
+            <returns>index of collection, if <paramref name="responseItem"/> is null, return -1</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection.AddResponseItem(NSoft.NFramework.XmlData.Messages.XmlDataResponseKind,System.Int32,System.Int32)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/>  with response type, request id, sequence id
+            </summary>
+            <param name="responseKind">response type</param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+            <returns>new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/></returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection.AddResponseItem(System.Data.IDataReader,System.Int32,System.Int32)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with <see cref="T:System.Data.IDataReader"/>, request id, sequence id
+            </summary>
+            <param name="dr">Instance of <see cref="T:System.Data.IDataReader"/></param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+            <returns>index of collection</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection.AddResponseItem(System.Data.DataView,System.Int32,System.Int32)">
+            <summary>
+            Add new <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with <see cref="T:System.Data.DataView"/>, request id, sequence id
+            </summary>
+            <param name="dv">Instance of <see cref="T:System.Data.DataView"/></param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+            <returns>index of collection</returns>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsResponseItemCollection.AddResponseItemArray(System.Data.DataSet,System.Int32,System.Int32)">
+            <summary>
+            Add new collection of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsResponseItem"/> with <see cref="T:System.Data.DataSet"/>, request id, sequence id
+            </summary>
+            <param name="ds">Instance of <see cref="T:System.Data.DataSet"/></param>
+            <param name="requestId">request id</param>
+            <param name="sequenceId">sequece id of the specified request.</param>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.MsgConsts">
+            <summary>
+            Constants of Xml Data Message
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.MsgConsts.INVALID_ID">
+            <summary>
+            Invalid Identity Value of Object (-1)
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.MsgConsts.NO_PAGE_INDEX">
+            <summary>
+            No Page Index (0)
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.MsgConsts.NoRequestProvided">
+            <summary>
+            No Request Message provided.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsError">
+            <summary>
+            Error 정보를 나타내는 클래스
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XdsError.ErrorFormat">
+            <summary>
+            에러 메시지 포맷
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsError.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsError.#ctor(System.Int32,System.String,System.String,System.String)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="code">Error code</param>
+            <param name="msg">Error message</param>
+            <param name="stackTrace">Stack trace</param>
+            <param name="source">Error source</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsError.#ctor(System.Exception)">
+            <summary>
+            Initialize a new instance of <see cref="T:NSoft.NFramework.XmlData.Messages.XdsError"/> with <see cref="T:System.Exception"/>
+            </summary>
+            <param name="ex">instance of <see cref="T:System.Exception"/></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsError.ToString">
+            <summary>
+            Return string that represent current object
+            </summary>
+            <returns>string that represent current object</returns>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsError.Code">
+            <summary>
+            에러 코드
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsError.Message">
+            <summary>
+            에러 메시지
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsError.StackTrace">
+            <summary>
+            Stack Trace 정보
+            </summary>
+        </member>
+        <member name="P:NSoft.NFramework.XmlData.Messages.XdsError.Source">
+            <summary>
+            에러 소스
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XdsErrorCollection">
+            <summary>
+            예외정보를 나타내는 <see cref="T:NSoft.NFramework.XmlData.Messages.XdsError"/>의 컬렉션
+            </summary>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsErrorCollection.AddError(NSoft.NFramework.XmlData.Messages.XdsError)">
+            <summary>
+            Add <see cref="T:NSoft.NFramework.XmlData.Messages.XdsError"/> 
+            </summary>
+            <param name="item"></param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsErrorCollection.AddError(System.Exception)">
+            <summary>
+            Add <see cref="T:NSoft.NFramework.XmlData.Messages.XdsError"/> with the specified exception.
+            </summary>
+            <param name="ex">exception</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsErrorCollection.AddError(System.Int32,System.String,System.String)">
+            <summary>
+            Add <see cref="T:NSoft.NFramework.XmlData.Messages.XdsError"/> with the specified code, message, stacktrace
+            </summary>
+            <param name="code">error code number</param>
+            <param name="msg">error message</param>
+            <param name="stackTrace">stack trace</param>
+        </member>
+        <member name="M:NSoft.NFramework.XmlData.Messages.XdsErrorCollection.ToString">
+            <summary>
+            Return string that represent current object.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XmlDataDirectionKind">
+            <summary>
+            메시지 방향 종류 : 요청/응답 구분
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataDirectionKind.Request">
+            <summary>
+            요청 메시지임을 나타낸다.
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataDirectionKind.Response">
+            <summary>
+            응답 메시지임을 나타낸다.
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XmlDataRequestKind">
+            <summary>
+            Xml Data 요청의 종류를 나타냅니다. 요청은 StoredProcedure 호출, 일반 Query문 호출로 구분합니다.
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataRequestKind.StoredProc">
+            <summary>
+            Stored Procedure 실행 요청
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataRequestKind.Query">
+            <summary>
+            일반 SQL Query 문 실행 요청
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataRequestKind.Method">
+            <summary>
+            서버상에 정의된 Method를 호출한다. (ini 파일로 저장되어 있음)
+            </summary>
+        </member>
+        <member name="T:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind">
+            <summary>
+            요청에 대한 반환 형태를 나타냄
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind.None">
+            <summary>
+            결과값 필요 없음
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind.DataSet">
+            <summary>
+            DataSet 형태의 결과를 요청
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind.Scalar">
+            <summary>
+            Scalar 값 반환을 요청
+            </summary>
+        </member>
+        <member name="F:NSoft.NFramework.XmlData.Messages.XmlDataResponseKind.Xml">
+            <summary>
+            Xml 형식 반환을 요청
+            </summary>
+        </member>
+    </members>
+</doc>

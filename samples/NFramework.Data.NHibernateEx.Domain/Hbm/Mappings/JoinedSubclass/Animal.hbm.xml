@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings">
+	<!--
+		NOTE: joined-subclass 에 대한 예제입니다.
+	-->
+	
+	<class name="Animal" table="NH_Animal" dynamic-insert="true" dynamic-update="true">
+		
+		<id name="Id" column="animal_id" type="int" unsaved-value="0">
+			<generator class="native"/>
+		</id>
+
+		<property name="SerialNumber" length="128"/>
+		
+		<property name="BodyWeight" column="body_weight"/>
+		
+		<many-to-one name="Mother" column="mother_id" class="Animal" lazy="proxy"/>
+		<many-to-one name="Father" column="father_id" class="Animal" lazy="proxy"/>
+		
+		<property name="Description" length="9999"/>
+		
+		<bag name="Children" lazy="true">
+			<key column="ParentId" />
+			<one-to-many class="Animal" />
+		</bag>
+
+		<joined-subclass name="Reptile" table="NH_Animal_Repitile">
+			<key column="animal_id"/>
+			<property name="BodyTemperature"/>
+
+			<joined-subclass name="Lizard" table="NH_Animal_Lizard">
+				<key column="reptile_id"/>
+			</joined-subclass>
+		</joined-subclass>
+
+		<joined-subclass name="Mammal" table="NH_Animal_Mammal">
+			<key column="animal_id"/>
+			<property name="Pregnant"/>
+			<property name="BirthDate" type="DateTime"/>
+
+			<joined-subclass name="Dog" table="NH_Animal_Dog">
+				<key column="mammal_id"/>
+			</joined-subclass>
+
+			<joined-subclass name="Cat" table="NH_Animal_Cat">
+				<key column="mammal_id"/>
+			</joined-subclass>
+		</joined-subclass>
+	</class>
+</hibernate-mapping>

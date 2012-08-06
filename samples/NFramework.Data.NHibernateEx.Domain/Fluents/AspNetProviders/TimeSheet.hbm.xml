@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain">
+
+	<class name="Timesheet" table="NH_ASP_TIMESHEETS" dynamic-insert="true" dynamic-update="true">
+		
+		<id name="Id" column="TimesheetId" type="Int32" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<property name="SubmittedDate" />
+		<property name="Submitted" />
+
+		<bag name="Entries" access="field.camelcase-underscore" inverse="false" lazy="true" cascade="all-delete-orphan">
+			<key column="TimesheetID" />
+			<one-to-many class="TimesheetEntry" />
+		</bag>
+
+		<bag name="Users" table="TimeSheetUsers" cascade="all-delete-orphan" access="field.camelcase-underscore" >
+			<key column="TimesheetId" />
+			<many-to-many class="User" column="UserId" />
+		</bag>
+	</class>
+
+	<class name="TimesheetEntry" table="TimesheetEntries" dynamic-insert="true" dynamic-update="true">
+		<id name="Id" column="TimesheetEntryId" type="Int32" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<property name="EntryDate" type="DateTime" />
+		<property name="NumberOfHours" type="Int32" />
+		<property name="Comments" type="String" length="9999" />
+	</class>
+</hibernate-mapping>

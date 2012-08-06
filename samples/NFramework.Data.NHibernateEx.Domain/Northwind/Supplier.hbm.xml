@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Northwind">
+
+	<!-- 제품 공급자 -->
+	<class name="Supplier" table="Suppliers" dynamic-insert="true" dynamic-update="true">
+
+		<id name="Id" column="SupplierId" type="Int64" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<natural-id>
+			<property name="CompanyName" type="String" length="40" />
+		</natural-id>
+        
+		<property name="ContactName" type="String" length="20" />
+		<property name="ContactTitle" type="String" length="30" />
+
+		<component name="AddressInfo" class="AddressInfo">
+			<property name="Address" type="String" length="60" />
+			<property name="City" type="String" length="15" />
+			<property name="Region" type="String" length="15" />
+			<property name="PostalCode" type="String" length="10" />
+			<!--
+			<property column="Country" type="String" name="Country" length="15" />
+			-->
+            <!-- Country 를 Enum값으로 표현한 CountryCode 로 매핑한다. -->
+            <property name="Country" column="Country"
+					  type="NSoft.NFramework.Data.NHibernateEx.Mappers.EnumStringMapper`1[[NSoft.NFramework.Data.NHibernateEx.Domain.Northwind.CountryCode, NSoft.NFramework.Data.NHibernateEx.Domain]], NSoft.NFramework.Data.NHibernateEx" />
+		</component>
+
+		<property name="Phone" type="String" length="24" />
+		<property name="Fax" type="String" length="24" />
+		<property name="HomePage" type="String" />
+
+		<bag name="Products" inverse="true" lazy="true" cascade="all,delete-orphan">
+			<key column="SupplierId" />
+			<one-to-many class="Product" />
+		</bag>
+
+	</class>
+
+</hibernate-mapping>

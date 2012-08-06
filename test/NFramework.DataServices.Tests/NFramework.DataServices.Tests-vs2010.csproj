@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{907A02EF-0E42-4066-BE8D-1004D58EBACA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.DataServices</RootNamespace>
+    <AssemblyName>NSoft.NFramework.DataServices.Tests</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AsyncCtpLibrary">
+      <HintPath>..\..\lib\net-4.0\AsyncCtpLibrary.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\lib\net-4.0\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common">
+      <HintPath>..\..\lib\net-4.0\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Data">
+      <HintPath>..\..\lib\net-4.0\Microsoft.Practices.EnterpriseLibrary.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\net-4.0\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="SharpTestsEx">
+      <HintPath>..\..\lib\net-4.0\SharpTestsEx.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractDataServiceFixture.cs" />
+    <Compile Include="Adapters\AbstractDataServiceAdapterFixture.cs" />
+    <Compile Include="Adapters\BinaryDataServiceAdapterFixture.cs" />
+    <Compile Include="Adapters\BsonDataServiceAdapterFixture.cs" />
+    <Compile Include="Adapters\IoCDataServiceAdapterFixture.cs" />
+    <Compile Include="Adapters\JsonDataServiceAdapterFixture.cs" />
+    <Compile Include="Clients\AbstractServicesFixture.cs" />
+    <Compile Include="Clients\HttHandlerClientFixture.cs" />
+    <Compile Include="Clients\LocalDataServiceFixture.cs" />
+    <Compile Include="Clients\WcfClientFixture.cs" />
+    <Compile Include="Clients\WebServiceClientFixture.cs" />
+    <Compile Include="IoCSetupFixture.cs" />
+    <Compile Include="Messages\MessageFixture.cs" />
+    <Compile Include="PersitentObjects\Category.cs" />
+    <Compile Include="PersitentObjects\Customer.cs" />
+    <Compile Include="PersitentObjects\CustomerOrderHistory.cs" />
+    <Compile Include="PersitentObjects\Employee.cs" />
+    <Compile Include="PersitentObjects\OrderDetail.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WindsorInstallers\AdoRepositoryWindsorInstaller.cs" />
+    <Compile Include="WindsorInstallers\DataServiceWindsorInstaller.cs" />
+    <Compile Include="WindsorInstallers\MessageSerializerWindsorInstaller.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NFramework.DataServices.Messages\NFramework.DataServices.Messages-vs2010.csproj">
+      <Project>{6968F79B-6D13-4706-9763-61E27699D957}</Project>
+      <Name>NFramework.DataServices.Messages-vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.DataServices\NFramework.DataServices-vs2010.csproj">
+      <Project>{AF53B5FD-B76D-492D-9ADD-E16D038B03A9}</Project>
+      <Name>NFramework.DataServices-vs2010</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{EB7BEB5B-6813-4A60-B453-93060BE22C30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.Web\NFramework.Web-vs11.csproj">
+      <Project>{D7E756A7-CF16-438E-96AD-AD7470F26948}</Project>
+      <Name>NFramework.Web-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="default.build" />
+    <None Include="northwindEF.db" />
+    <None Include="QueryFiles\Northwind.ado.mssql.ini" />
+    <None Include="QueryFiles\Pubs.ado.mssql.ini" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="logging.nlog.xml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

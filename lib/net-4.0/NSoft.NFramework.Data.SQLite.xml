@@ -1,0 +1,327 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>NSoft.NFramework.Data.SQLite</name>
+  </assembly>
+  <members>
+    <member name="T:NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase">
+      <summary>
+            SQLite 용 Microsoft DAAB Database 클래스입니다.
+            </summary>
+      <remarks>Internally uses SQLite .NET Provider to connect to the database.</remarks>
+      <example>
+        <code>
+            // 환경 설정 파일에 DAAB 관련해서 OracleDatabase를 추가하면 됩니다.
+            <dataConfiguration defaultDatabase="Northwind"><providerMappings><add databaseType="NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SqLiteProvider, NSoft.NFramework.Data.SQLite" name="System.Data.SQLite" /></providerMappings></dataConfiguration></code>
+      </example>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase.#ctor(System.String)">
+      <summary>
+            Initializes a new instance of the SqLiteProvider class.
+            </summary>
+      <param name="connectionString">The connection string.</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase.DeriveParameters(System.Data.Common.DbCommand)">
+      <summary>
+            Retrieves parameter information from the stored procedure specified in the <see cref="T:System.Data.Common.DbCommand" /> 
+            and populates the Parameters collection of the specified <see cref="T:System.Data.Common.DbCommand" /> object. 
+            </summary>
+      <param name="discoveryCommand">The <see cref="T:System.Data.Common.DbCommand" /> to do the discovery.</param>
+    </member>
+    <member name="T:NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabaseAssembler">
+      <summary>
+            Represents the process to build an instance of <see cref="T:NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase" />
+            described by configuration information.
+            </summary>
+      <remarks>
+            Revision 1: Steve Phillips  Date: 25 Nov 2009 - Updated to use EntLib 4.1 core
+            </remarks>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabaseAssembler.Assemble(System.String,System.Configuration.ConnectionStringSettings,Microsoft.Practices.EnterpriseLibrary.Common.Configuration.IConfigurationSource)">
+      <summary>
+            Builds an instance of the concrete subtype of <see cref="T:Microsoft.Practices.EnterpriseLibrary.Data.Database" /> the receiver knows how to build, based on 
+            the provided connection string and any configuration information that might be contained by the 
+            <paramref name="configurationSource" />.
+            </summary>
+      <param name="name">The name for the new database instance.</param>
+      <param name="connectionStringSettings">The connection string for the new database instance.</param>
+      <param name="configurationSource">The source for any additional configuration information.</param>
+      <returns>
+            The new database instance.
+            </returns>
+    </member>
+    <member name="T:NSoft.NFramework.Data.SQLite.ISQLiteRepository">
+      <summary>
+            SQLite DB용 Repository의 인터페이스입니다.
+            </summary>
+    </member>
+    <member name="P:NSoft.NFramework.Data.SQLite.ISQLiteRepository.Db">
+      <summary>
+            SQLite용 <see cref="T:Microsoft.Practices.EnterpriseLibrary.Data.Database" /></summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync">
+      <summary>
+            SQLite DB에 대한 Command 수행을 비동기 방식으로 수행하도록 해주는 메소드를 제공하는 Static Class 입니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteDataTableAsyncBySqlString(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteDataTableAsyncBySqlString(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="sqlString">실행할 SQL String</param>
+      <param name="firstResult">조회할 첫번째 인덱스 (0부터 시작)</param>
+      <param name="maxResults">조회할 최대 레코드 수 (0이면 최대)</param>
+      <param name="parameters">파리미터 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteDataTableAsyncByProcedure(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="spName">실행할 Procedure 명</param>
+      <param name="parameters">파리미터 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteDataTableAsyncByProcedure(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" />를 비동기 방식으로 실행하여, 결과 셋을 <see cref="T:System.Threading.Tasks.Task`1" />로 반환합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="spName">실행할 Procedure 명</param>
+      <param name="firstResult">조회할 첫번째 인덱스 (0부터 시작)</param>
+      <param name="maxResults">조회할 최대 레코드 수 (0이면 최대)</param>
+      <param name="parameters">파리미터 정보</param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteNonQueryBySqlStringAsync(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" />을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="sqlString">실행할 쿼리문</param>
+      <param name="parameters">파리미터 정보</param>
+      <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteNonQueryByProcedureAsync(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" />을 ExecuteNonQuery 메소드로 비동기 실행을 하도록 하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="spName">실행할 프로시져 명</param>
+      <param name="parameters">파리미터 정보</param>
+      <returns>실행에 영향을 받은 행의 수를 결과로 가지는 <see cref="T:System.Threading.Tasks.Task`1" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteReaderBySqlStringAsync(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" /> 를 실행하여, <see cref="T:System.Threading.Tasks.Task`1" />를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="sqlString">실행할 쿼리문</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 셋을 가지는 IDataReader를 결과로 가지는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteReaderByProcedureAsync(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" /> 를 실행하여, <see cref="T:System.Threading.Tasks.Task`1" />를 반환받습니다. 
+            받환받은 DataReader는 꼭 Dispose() 해 주어야 Connection이 닫힙니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="spName">실행할 프로시져 명</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 셋을 가지는 IDataReader를 결과로 가지는 Task</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteScalarBySqlStringAsync(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="sqlString" /> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="sqlString">실행할 쿼리문</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteScalarByProcedureAsync(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="spName" /> 를 비동기 방식으로 실행하여, Scalar 값을 반환하는 <see cref="T:System.Threading.Tasks.Task`1" />를 빌드합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="spName">실행할 쿼리문</param>
+      <param name="parameters">Command Parameters</param>
+      <returns>결과 Scalar 값을 가지는 Task의 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteMapObject``1(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.Data.SQLite.SQLiteCommand,System.Func{``0},NSoft.NFramework.Data.Mappers.INameMapper,System.Int32,System.Int32,System.Action{System.Data.IDataReader,``0},NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="cmd" />를 실행하여, 결과 셋을 Persistent Object의 컬렉션으로 매핑합니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="db">
+      </param>
+      <param name="cmd">
+      </param>
+      <param name="mapObjectFactory">
+      </param>
+      <param name="nameMapper">
+      </param>
+      <param name="firstResult">
+      </param>
+      <param name="maxResults">
+      </param>
+      <param name="additionalMapping">
+      </param>
+      <param name="parameters">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.ExecuteMapObject``1(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.Data.SQLite.SQLiteCommand,System.Func{``0},NSoft.NFramework.Data.Mappers.INameMap,System.Int32,System.Int32,System.Action{System.Data.IDataReader,``0},NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="cmd" />를 실행하여, 결과 셋을 Persistent Object의 컬렉션으로 매핑합니다.
+            </summary>
+      <typeparam name="T">
+      </typeparam>
+      <param name="db">
+      </param>
+      <param name="cmd">
+      </param>
+      <param name="mapObjectFactory">
+      </param>
+      <param name="nameMap">
+      </param>
+      <param name="firstResult">
+      </param>
+      <param name="maxResults">
+      </param>
+      <param name="additionalMapping">
+      </param>
+      <param name="parameters">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.GetSqlStringSQLiteCommand(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String)">
+      <summary>
+            쿼리 문 <paramref name="sqlString" />을 수행할 <see cref="T:System.Data.SQLite.SQLiteCommand" />를 생성합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="sqlString">수행할 쿼리문</param>
+      <returns>생성한 <see cref="T:System.Data.SQLite.SQLiteCommand" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteCommandAsync.GetProcedureSqlCommand(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.String,System.Boolean)">
+      <summary>
+            Procedure <paramref name="spName" />를 수행할 <see cref="T:System.Data.SQLite.SQLiteCommand" /> 를 생성합니다.
+            </summary>
+      <param name="db">DAAB의 SQLite 용 Database 인스턴스</param>
+      <param name="spName">Procedure name</param>
+      <param name="discoverParams">discover parameters</param>
+      <returns>생성한 <see cref="T:System.Data.SQLite.SQLiteCommand" /></returns>
+    </member>
+    <member name="T:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl">
+      <summary>
+            SQLite 전용의 IAdoRepository입니다. 
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.#ctor">
+      <summary>
+            생성자
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.#ctor(System.String)">
+      <summary>
+            생성자
+            </summary>
+      <param name="dbName">
+      </param>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.ExecuteDataSet(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+        <paramref name="cmd" />를 실행하여, 결과를 DataSet으로 반환합니다.
+            </summary>
+      <param name="cmd">실행할 <see cref="T:System.Data.Common.DbCommand" /> instance.</param>
+      <param name="firstResult">첫번째 레코드의 인덱스 (0부터 시작)</param>
+      <param name="maxResults">최대 레코드 수 (0 이면 무시하고, 마지막 레코드까지 가져온다</param>
+      <param name="parameters">collectio of parameters of Command</param>
+      <returns>결과 셋이 담긴 DataSet</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.ExecuteDataTableAsList(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+            여러 ResultSet을 반환할 수 있으므로, DataTable의 컬렉션으로 반환합니다.
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.ExecuteDataTable(System.Data.Common.DbCommand,System.Int32,System.Int32,NSoft.NFramework.Data.IAdoParameter[])">
+      <summary>
+            지정된 Command를 실행하여, DataTable을 빌드합니다.
+            </summary>
+      <param name="cmd">실행할 Select용 Command</param>
+      <param name="firstResult">첫번째 레코드의 인덱스 (0부터 시작)</param>
+      <param name="maxResults">최대 레코드 수 (0 이면 무시하고, 마지막 레코드까지 가져온다</param>
+      <param name="parameters">DbCommand의 Parameter 정보</param>
+      <returns>instance of <see cref="T:System.Data.DataTable" /></returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.ExecuteNonQueryInternal(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command의 ExecuteNonQuery 메소드를 실행합니다.
+            </summary>
+      <param name="cmd">실행할 Command 객체</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.ExecuteScalarInternal(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command의 ExecuteScalar 메소드를 실행합니다.
+            </summary>
+      <param name="cmd">실행할 Command 객체</param>
+      <returns>
+      </returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.ExecuteReaderInternal(System.Data.Common.DbCommand)">
+      <summary>
+            지정된 Command의 ExecuteReader 메소드를 실행합니다.
+            </summary>
+      <param name="cmd">
+      </param>
+      <returns>
+      </returns>
+    </member>
+    <member name="P:NSoft.NFramework.Data.SQLite.SQLiteRepositoryImpl.Db">
+      <summary>
+             Microsoft Enterprise Library DAAB의 Sql Server용 Database
+            </summary>
+    </member>
+    <member name="T:NSoft.NFramework.Data.SQLite.SQLiteTool">
+      <summary>
+            SQLite 용 Utility 클래스입니다.
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.SQLite.SQLiteTool.PragmaSqlStrings">
+      <summary>
+            SQLIte 성능을 높히기 위해, PRAGMA 설정을 합니다.<br />
+            참고 : http://www.sqlite.org/pragma.html
+            </summary>
+    </member>
+    <member name="F:NSoft.NFramework.Data.SQLite.SQLiteTool.PragmaSettings">
+      <summary>
+            성능향상을 위해, SQLite 접속 시에 먼저 설정해 줄 PRAGMA 설정 정보
+            </summary>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteTool.GetAdoDataAdapter(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase)">
+      <summary>
+            SQLite용 AdoDataAdapter를 반환합니다.
+            </summary>
+      <param name="db">SqLiteProvider 인스턴스</param>
+      <returns>AdoDataAdapter 인스턴스</returns>
+    </member>
+    <member name="M:NSoft.NFramework.Data.SQLite.SQLiteTool.CreateSQLiteConnection(NSoft.NFramework.Data.SQLite.EnterpriseLibrary.SQLiteDatabase,System.Boolean@)">
+      <summary>
+        <see cref="T:System.Data.SQLite.SQLiteConnection" />을 생성하고, PRAGMA를 설정한 후, 반환합니다.
+            </summary>
+      <param name="db">SqLiteProvider 인스턴스</param>
+      <param name="newConnectionCreated">새로운 연결인지 여부</param>
+      <returns>SQLiteConnection 인스턴스</returns>
+    </member>
+  </members>
+</doc>

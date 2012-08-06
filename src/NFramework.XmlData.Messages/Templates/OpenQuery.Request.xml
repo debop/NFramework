@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RWXMLDS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" dir="0" cnn="" commandTimeout="90" tranx="1" cursor="3" isolation="4096">
+	<ERRORS />
+	<REQUEST id="0" qtype="1" rtype="1" pageSize="-1" pageNo="-1" sort="">
+		<QUERY>
+			SELECT * FROM [Order Details]
+		</QUERY>
+		<PARAMS />
+		<VALUES />
+		<PREQUERIES />
+		<POSTQUERIES />
+	</REQUEST>
+</RWXMLDS>

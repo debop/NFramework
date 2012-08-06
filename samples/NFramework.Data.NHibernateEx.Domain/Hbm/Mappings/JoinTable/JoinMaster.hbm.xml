@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings">
+
+	<class name="JoinMaster" table="JoinMaster" dynamic-insert="true" dynamic-update="true">
+
+		<id name="Id" column="MasterId" type="int" unsaved-value="0">
+			<generator class="native" />
+		</id>
+
+		<property name="Name" type="String"/>
+
+		<join table="JoinDetail" fetch="join">
+			<key column="MasterId"/>
+			
+			<property name="NickName" />
+			<property name="Description" />
+		</join>
+			  
+	</class>
+</hibernate-mapping>

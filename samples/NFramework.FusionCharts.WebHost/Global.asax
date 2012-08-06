@@ -1,0 +1,1 @@
+﻿<%@ Application Inherits="NSoft.NFramework.FusionCharts.WebHost.FusionChartHttpApplication" Language="C#" %>

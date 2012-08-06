@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+	<session-factory name="Northwind">
+		
+		<property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
+		<property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+		<property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+
+		<property name="connection.connection_string_name">Northwind</property>
+		<property name="connection.isolation">ReadCommitted</property>
+		<property name="command_timeout">90</property>
+
+		<!--<property name="use_outer_join">true</property>-->
+		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+
+		<property name="query.startup_check">true</property>
+		<property name="prepare_sql">true</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<property name="adonet.batch_size">30</property>
+		<property name="adonet.wrap_result_sets">false</property>
+
+		<!-- For NH 2.1.0-->
+		<!--<property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>-->
+		<!--<property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>-->
+
+		<!-- ConnectionString에 User Instance 속성이 True이면 default_schema를 정의하면 안된다. -->
+		<property name="default_schema">Northwind.dbo</property>
+	</session-factory>
+</hibernate-configuration>

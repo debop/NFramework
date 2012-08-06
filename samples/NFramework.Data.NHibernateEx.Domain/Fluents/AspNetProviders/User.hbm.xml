@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain.Mappings"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain" >
+
+	<class name="User" table="NH_ASP_USERS" proxy="IUser" dynamic-insert="true" dynamic-update="true">
+		<id name="Id" column="UserId" type="Int32">
+			<generator class="native" />
+		</id>
+
+		<property name="Name" type="AnsiString" />
+		<property name="InvalidLoginAttempts" type="Int32" />
+		<property name="RegisteredAt" type="DateTime" />
+		<property name="LastLoginDate" type="DateTime" />
+
+		<property name="Enum1" type="EnumStoredAsStringType">
+			<column name="Enum1" length="12" />
+		</property>
+
+		<property name="Enum2" not-null="true" />
+		<property name="Features" not-null="true" />
+
+		<many-to-one name="Role" class="Role" column="RoleId" lazy="proxy" fetch="select" />
+
+		<component name="Component" class="UserComponent">
+			<property name="Property1" type="AnsiString" />
+			<property name="Property2" type="AnsiString" />
+
+			<component name="OtherComponent" class="UserComponent2">
+				<property name="OtherProperty1" type="AnsiString" />
+			</component>
+		</component>
+	</class>
+</hibernate-mapping>

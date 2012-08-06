@@ -1,0 +1,355 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{8BBBC10E-36B1-4C68-9734-298B461DD55B}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.FusionCharts</RootNamespace>
+    <AssemblyName>NSoft.NFramework.FusionCharts</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Charts\Attributes\AlternateGridAttribute.cs" />
+    <Compile Include="Charts\Attributes\AnchorAttribute.cs" />
+    <Compile Include="Charts\Attributes\DataPlotAttribute.cs" />
+    <Compile Include="Charts\Attributes\DivisionalLineAttribute.cs" />
+    <Compile Include="Charts\Attributes\PaddingAttribute.cs" />
+    <Compile Include="Charts\Attributes\PieAttribute.cs" />
+    <Compile Include="Charts\Attributes\SmartLineAttribute.cs" />
+    <Compile Include="Charts\Attributes\ThreeDAttribute.cs" />
+    <Compile Include="Charts\Attributes\ZeroPaneAttribute.cs" />
+    <Compile Include="Charts\Attributes\ZeroPlane3DAttribute.cs" />
+    <Compile Include="Charts\ChartKinds.cs" />
+    <Compile Include="Charts\DualYChart.cs" />
+    <Compile Include="Charts\Elements\CategoriesElement.cs" />
+    <Compile Include="Charts\Elements\CategoryElement.cs" />
+    <Compile Include="Charts\Elements\DataSetCollection.cs" />
+    <Compile Include="Charts\Elements\DataSetElement.cs" />
+    <Compile Include="Charts\Elements\SetElementBase.cs" />
+    <Compile Include="Charts\Elements\ValueSetElement.cs" />
+    <Compile Include="Charts\Elements\VerticalLineElement.cs" />
+    <Compile Include="Charts\Elements\XYPlotCategoriesElement.cs" />
+    <Compile Include="Charts\Elements\XYPlotCategoryElement.cs" />
+    <Compile Include="Charts\Elements\XYPlotDataSetElement.cs" />
+    <Compile Include="Charts\Elements\XYPlotSetElement.cs" />
+    <Compile Include="Charts\Elements\XYSetElement.cs" />
+    <Compile Include="Charts\FusionChartBase.cs" />
+    <Compile Include="Charts\MultiSeriesChart.cs" />
+    <Compile Include="Charts\MultiSeriesStackedChart.cs" />
+    <Compile Include="Charts\SingleSeriesChart.cs" />
+    <Compile Include="Charts\StackedChart.cs" />
+    <Compile Include="Core\Attributes\AboutMenuItemAttribute.cs" />
+    <Compile Include="Core\Attributes\AxisAttribute.cs" />
+    <Compile Include="Core\Attributes\BackgroundAttribute.cs" />
+    <Compile Include="Core\Attributes\BorderAttribute.cs" />
+    <Compile Include="Core\Attributes\ColorAttribute.cs" />
+    <Compile Include="Core\Attributes\CosmeticAttribute.cs" />
+    <Compile Include="Core\Attributes\DashLineAttribute.cs" />
+    <Compile Include="Core\Attributes\ExportAttribute.cs" />
+    <Compile Include="Core\Attributes\ExportDataMenuItemAttribute.cs" />
+    <Compile Include="Core\Attributes\FontAttribute.cs" />
+    <Compile Include="Core\Attributes\FusionLink.cs" />
+    <Compile Include="Core\Attributes\GridAttribute.cs" />
+    <Compile Include="Core\Attributes\ItemAttribute.cs" />
+    <Compile Include="Core\Attributes\LegendAttribute.cs" />
+    <Compile Include="Core\Attributes\LineAttribute.cs" />
+    <Compile Include="Core\Attributes\LineAttributeBase.cs" />
+    <Compile Include="Core\Attributes\LogoAttribute.cs" />
+    <Compile Include="Core\Attributes\MarginAttribute.cs" />
+    <Compile Include="Core\Attributes\MarkAttribute.cs" />
+    <Compile Include="Core\Attributes\MenuItemAttributeBase.cs" />
+    <Compile Include="Core\Attributes\MessageLoggerAttribute.cs" />
+    <Compile Include="Core\Attributes\NumberFormatAttribute.cs" />
+    <Compile Include="Core\Attributes\PivotAttribute.cs" />
+    <Compile Include="Core\Attributes\ScrollBarAttribute.cs" />
+    <Compile Include="Core\Attributes\TickMarkerAttribute.cs" />
+    <Compile Include="Core\Attributes\ToolTipAttribute.cs" />
+    <Compile Include="Core\ChartAttributeBase.cs" />
+    <Compile Include="Core\ChartBase.cs" />
+    <Compile Include="Core\ChartElementBase.cs" />
+    <Compile Include="Core\ChartObjectBase.cs" />
+    <Compile Include="Core\CollectionElement.cs" />
+    <Compile Include="Core\Elements\AlertElement.cs" />
+    <Compile Include="Core\Elements\AlertsElement.cs" />
+    <Compile Include="Core\Elements\CategoriesElementBase.cs" />
+    <Compile Include="Core\Elements\CategoryElementBase.cs" />
+    <Compile Include="Core\Elements\DateTimeLineElement.cs" />
+    <Compile Include="Core\Elements\DateTimeTrendLineCollection.cs" />
+    <Compile Include="Core\Elements\DoubleLineElement.cs" />
+    <Compile Include="Core\Elements\LegendElement.cs" />
+    <Compile Include="Core\Elements\LineElement.cs" />
+    <Compile Include="Core\Elements\LineElementBase.cs" />
+    <Compile Include="Core\Elements\TrendLinesElement.cs" />
+    <Compile Include="Core\IChart.cs" />
+    <Compile Include="Core\IChartAttribute.cs" />
+    <Compile Include="Core\IChartElement.cs" />
+    <Compile Include="Core\IChartObject.cs" />
+    <Compile Include="Core\Styles\AnimationStyle.cs" />
+    <Compile Include="Core\Styles\ApplyElement.cs" />
+    <Compile Include="Core\Styles\BevelStyle.cs" />
+    <Compile Include="Core\Styles\BlurStyle.cs" />
+    <Compile Include="Core\Styles\ChartStyleElementBase.cs" />
+    <Compile Include="Core\Styles\FontStyle.cs" />
+    <Compile Include="Core\Styles\GlowStyle.cs" />
+    <Compile Include="Core\Styles\ShadowStyle.cs" />
+    <Compile Include="Core\Styles\StylesElement.cs" />
+    <Compile Include="Enums\AlertActionKind.cs" />
+    <Compile Include="Enums\AnimationErasing.cs" />
+    <Compile Include="Enums\AnimationParam.cs" />
+    <Compile Include="Enums\FillMethod.cs" />
+    <Compile Include="Enums\FusionTextAlign.cs" />
+    <Compile Include="Enums\FusionVerticalAlign.cs" />
+    <Compile Include="Enums\GraphKind.cs" />
+    <Compile Include="Enums\HorizontalPosition.cs" />
+    <Compile Include="Enums\LabelDisplayStyle.cs" />
+    <Compile Include="Enums\LineEffect.cs" />
+    <Compile Include="Enums\PeriodUnits.cs" />
+    <Compile Include="Enums\RectangleCorner.cs" />
+    <Compile Include="Enums\YAxisKind.cs" />
+    <Compile Include="Exporters\ImageGenerator.cs" />
+    <Compile Include="Exporters\PDFCompress.cs" />
+    <Compile Include="Exporters\PDFGenerator.cs" />
+    <Compile Include="Powers\Attributes\CandleStickNumberFormatAttribute.cs" />
+    <Compile Include="Powers\CandleStick.cs" />
+    <Compile Include="Powers\DragNodeChart.cs" />
+    <Compile Include="Powers\DragNodeShapes.cs" />
+    <Compile Include="Powers\Elements\CandleStickCategoriesElement.cs" />
+    <Compile Include="Powers\Elements\CandleStickCategoryElement.cs" />
+    <Compile Include="Powers\Elements\CandleStickSetElement.cs" />
+    <Compile Include="Powers\Elements\ConnectorElement.cs" />
+    <Compile Include="Powers\Elements\ConnectorsElement.cs" />
+    <Compile Include="Powers\Elements\DragNodeCategoriesElement.cs" />
+    <Compile Include="Powers\Elements\DragNodeCategoryElement.cs" />
+    <Compile Include="Powers\Elements\DragNodeDataSetElement.cs" />
+    <Compile Include="Powers\Elements\DragNodeSetElement.cs" />
+    <Compile Include="Powers\Elements\MultiAxisElement.cs" />
+    <Compile Include="Powers\Elements\MultilevelCategoryElement.cs" />
+    <Compile Include="Powers\Elements\RadarCategoriesElement.cs" />
+    <Compile Include="Powers\Elements\RadarCategoryElement.cs" />
+    <Compile Include="Powers\Elements\TrendSetElement.cs" />
+    <Compile Include="Powers\KagiChart.cs" />
+    <Compile Include="Powers\MultiAxisLineChart.cs" />
+    <Compile Include="Powers\MultilevelPie.cs" />
+    <Compile Include="Powers\PricePlotMethod.cs" />
+    <Compile Include="Powers\RadarChart.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\ChartExtensions.cs" />
+    <Compile Include="Utils\ChartExtensions.Xml.cs" />
+    <Compile Include="Utils\ChartUtil.cs" />
+    <Compile Include="Utils\ChartUtil.Render.cs" />
+    <Compile Include="Utils\ChartUtil.Xml.cs" />
+    <Compile Include="Utils\ColorExtensions.cs" />
+    <Compile Include="Web\Controls\FusionChart.cs" />
+    <Compile Include="Web\HandlerSettings.cs" />
+    <Compile Include="Web\HttpHandlers\DataXmlHandlerBase.cs" />
+    <Compile Include="Web\HttpHandlers\ExportHandler.cs" />
+    <Compile Include="Web\HttpHandlers\FusionChartExporterHandler.cs" />
+    <Compile Include="Web\HttpHandlers\RealTimeDataProviderBase.cs" />
+    <Compile Include="Web\HttpHandlers\RealTimeDataProviders\RandomDataProvider.cs" />
+    <Compile Include="Web\HttpHandlers\RealTimeDataProviders\SystemPerformanceDataProvider.cs" />
+    <Compile Include="Web\HttpHandlers\ResourceFileHandler.cs" />
+    <Compile Include="Widgets\AngularGauge.cs" />
+    <Compile Include="Widgets\Annotations\AnnotationElementBase.cs" />
+    <Compile Include="Widgets\Annotations\AnnotationGroupElement.cs" />
+    <Compile Include="Widgets\Annotations\AnnotationsElement.cs" />
+    <Compile Include="Widgets\Annotations\AnnotationType.cs" />
+    <Compile Include="Widgets\Annotations\ArcAnnotation.cs" />
+    <Compile Include="Widgets\Annotations\CircleAnnotation.cs" />
+    <Compile Include="Widgets\Annotations\ImageAnnotation.cs" />
+    <Compile Include="Widgets\Annotations\LineAnnotationElement.cs" />
+    <Compile Include="Widgets\Annotations\PolygonAnnotation.cs" />
+    <Compile Include="Widgets\Annotations\RectangleAnnotation.cs" />
+    <Compile Include="Widgets\Annotations\TextAnnotation.cs" />
+    <Compile Include="Widgets\Attributes\GaugeAxisAttribute.cs" />
+    <Compile Include="Widgets\Attributes\GaugePivotAttribute.cs" />
+    <Compile Include="Widgets\Attributes\MessageLogAttribute.cs" />
+    <Compile Include="Widgets\Attributes\PointerAttribute.cs" />
+    <Compile Include="Widgets\Attributes\WidgetFontAttribute.cs" />
+    <Compile Include="Widgets\BulletGraph.cs" />
+    <Compile Include="Widgets\Elements\CategoriesElement.cs" />
+    <Compile Include="Widgets\Elements\CategoryCollection.cs" />
+    <Compile Include="Widgets\Elements\CategoryElement.cs" />
+    <Compile Include="Widgets\Elements\ColorElement.cs" />
+    <Compile Include="Widgets\Elements\ColorRangeElement.cs" />
+    <Compile Include="Widgets\Elements\ConnectorCollection.cs" />
+    <Compile Include="Widgets\Elements\ConnectorElement.cs" />
+    <Compile Include="Widgets\Elements\ConnectorsElement.cs" />
+    <Compile Include="Widgets\Elements\DataColumnElement.cs" />
+    <Compile Include="Widgets\Elements\DataColumnTextElement.cs" />
+    <Compile Include="Widgets\Elements\DataTableElement.cs" />
+    <Compile Include="Widgets\Elements\DialElement.cs" />
+    <Compile Include="Widgets\Elements\LegendElement.cs" />
+    <Compile Include="Widgets\Elements\LegendItemElement.cs" />
+    <Compile Include="Widgets\Elements\MilestoneCollection.cs" />
+    <Compile Include="Widgets\Elements\MilestoneElement.cs" />
+    <Compile Include="Widgets\Elements\PointElement.cs" />
+    <Compile Include="Widgets\Elements\PointerElement.cs" />
+    <Compile Include="Widgets\Elements\ProcessCollection.cs" />
+    <Compile Include="Widgets\Elements\ProcessElement.cs" />
+    <Compile Include="Widgets\Elements\ProcessesElement.cs" />
+    <Compile Include="Widgets\Elements\TaskCollection.cs" />
+    <Compile Include="Widgets\Elements\TaskElement.cs" />
+    <Compile Include="Widgets\Elements\TasksElement.cs" />
+    <Compile Include="Widgets\Elements\TrendPointsElement.cs" />
+    <Compile Include="Widgets\GanttChart.cs" />
+    <Compile Include="Widgets\GanttUtil.cs" />
+    <Compile Include="Widgets\GaugeBase.cs" />
+    <Compile Include="Widgets\IGanttChart.cs" />
+    <Compile Include="Widgets\LEDGague.cs" />
+    <Compile Include="Widgets\LinearGauge.cs" />
+    <Compile Include="Widgets\SparkChartBase.cs" />
+    <Compile Include="Widgets\SparkColumn.cs" />
+    <Compile Include="Widgets\SparkLine.cs" />
+    <Compile Include="Widgets\SparkWinLoss.cs" />
+    <Compile Include="Widgets\WidgetBase.cs" />
+    <Compile Include="Widgets\WidgetKinds.cs" />
+    <Compile Include="Widgets\WinLossKind.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376A-DEB0-4CBE-BDBF-D685ADD5CAB3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FusionCharts.js" />
+    <EmbeddedResource Include="Resources\FusionChartsExportComponent.js" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Area2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Bar2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Bubble.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Column2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Column3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Doughnut2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Doughnut3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\FCExporter.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Line.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSBar2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSBar3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSColumn3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSColumn3DLineDY.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSColumnLine3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSCombi2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSCombi3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSCombiDY2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSStackedColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\MSStackedColumn2DLineDY.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Pie2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Pie3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\Scatter.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\ScrollArea2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\ScrollColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\ScrollCombi2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\ScrollCombiDY2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\ScrollLine2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\ScrollStackedColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\SSGrid.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\StackedArea2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\StackedBar2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\StackedBar3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\StackedColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\StackedColumn3D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Charts\StackedColumn3DLineDY.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\CandleStick.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\DragArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\DragColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\DragLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\DragNode.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\ErrorBar2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\FCExporter.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\InverseMSArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\InverseMSColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\InverseMSLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\Kagi.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\LogMSColumn2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\LogMSLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\MSSpline.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\MSSplineArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\MultiAxisLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\MultiLevelPie.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\Radar.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\SelectScatter.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\Spline.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\SplineArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\PowerCharts\Waterfall2D.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\AngularGauge.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\Bulb.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\Cylinder.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\DrawingPad.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\FCExporter.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\Funnel.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\Gantt.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\HBullet.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\HLED.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\HLinearGauge.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\Pyramid.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\RealTimeArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\RealTimeColumn.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\RealTimeLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\RealTimeLineDY.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\RealTimeStackedArea.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\RealTimeStackedColumn.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\SparkColumn.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\SparkLine.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\SparkWinLoss.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\Thermometer.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\VBullet.swf" />
+    <EmbeddedResource Include="Resources\SwfFiles\Widgets\VLED.swf" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

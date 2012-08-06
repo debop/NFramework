@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Tests"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.ForTesting">
+
+	<class name="GuidEntityForTesting" dynamic-insert="true" dynamic-update="true">
+		
+		<id name="Id" type="Guid" unsaved-value="none">
+			<generator class="assigned" />
+		</id>
+
+		<version name="Version" unsaved-value="-1" />
+
+		<property name="Code" type="String" />
+		<property name="Name" type="String" />
+		<property name="Age" />
+	</class>
+</hibernate-mapping>

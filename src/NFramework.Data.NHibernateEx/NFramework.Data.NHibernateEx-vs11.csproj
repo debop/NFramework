@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C19799F1-C38E-4478-A122-C958153F0AD6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.Data.NHibernateEx</RootNamespace>
+    <AssemblyName>NSoft.NFramework.Data.NHibernateEx</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Components.Validator">
+      <HintPath>..\..\lib\net-4.0\Castle.Components.Validator.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\..\lib\net-4.0\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\lib\net-4.0\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\lib\net-4.0\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\..\lib\net-4.0\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Criterion\CriteriaBatch.cs" />
+    <Compile Include="Criterion\EqIncludeNullExpression.cs" />
+    <Compile Include="Criterion\EqOrNullExpression.cs" />
+    <Compile Include="Criterion\FutureBase.cs" />
+    <Compile Include="Criterion\FutureQueryOf.cs" />
+    <Compile Include="Criterion\FutureQueryOptions.cs" />
+    <Compile Include="Criterion\FutureValue.cs" />
+    <Compile Include="Criterion\FutureValueOptions.cs" />
+    <Compile Include="Criterion\InsensitiveLikeIncludeNullExpression.cs" />
+    <Compile Include="Criterion\IsAExpression.cs" />
+    <Compile Include="Criterion\ProcessCriteriaDelegate.cs" />
+    <Compile Include="Criterion\XmlIn.cs" />
+    <Compile Include="DatabaseEngine.cs" />
+    <Compile Include="Dialect\CubridDialect.cs" />
+    <Compile Include="Dialect\MsSqlCe40Dialect.cs" />
+    <Compile Include="Dialect\MsSqlCeDialect.cs" />
+    <Compile Include="Domain\ILocaleValue.cs" />
+    <Compile Include="Domain\IMetadataValue.cs" />
+    <Compile Include="Domain\ITreeNodePosition.cs" />
+    <Compile Include="Domain\LocaleValueBase.cs" />
+    <Compile Include="Domain\MetadataTreeNodeEntityBase.cs" />
+    <Compile Include="Domain\MetadataValue.cs" />
+    <Compile Include="Domain\TreeNodePosition.cs" />
+    <Compile Include="Driver\CubridDataDriver.cs" />
+    <Compile Include="Tools\EntityTool.cs" />
+    <Compile Include="Tools\EntityTool.Map.cs" />
+    <Compile Include="Tools\EntityTool.TreeNode.cs" />
+    <Compile Include="Tools\EntityTool.Validation.cs" />
+    <Compile Include="Domain\CodeEntityBase.cs" />
+    <Compile Include="Domain\HierarchyEntityBase.cs" />
+    <Compile Include="Domain\ICodeEntity.cs" />
+    <Compile Include="Domain\IHierarchyEntity.cs" />
+    <Compile Include="Domain\ILocaledEntity.cs" />
+    <Compile Include="Domain\IMetadataEntity.cs" />
+    <Compile Include="Domain\INamedEntity.cs" />
+    <Compile Include="Domain\ITreeNodeEntity.cs" />
+    <Compile Include="Domain\IUpdateTimestampedEntity.cs" />
+    <Compile Include="Domain\LocaledEntityBase.cs" />
+    <Compile Include="Domain\LocaledMetadataEntityBase.cs" />
+    <Compile Include="Domain\LocaledMetadataTreeNodeEntityBase.cs" />
+    <Compile Include="Domain\LocaledTreeNodeEntityBase.cs" />
+    <Compile Include="Domain\MetadataEntityBase.cs" />
+    <Compile Include="Domain\NamedEntityBase.cs" />
+    <Compile Include="Domain\NamedLocaledEntityBase.cs" />
+    <Compile Include="Domain\TreeNodeEntityBase.cs" />
+    <Compile Include="Domain\DomainServiceBase.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\AbstractCompressBlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\AbstractCompressStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\AbstractCompressUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\DeflateBlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\DeflateStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\GZipBlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\GZipStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\IoCCompressBlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\IoCCompressStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\SevenZipBlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\SevenZipStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\SharpBZip2BlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\SharpBZip2StringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\SharpZipBlobUserType.cs" />
+    <Compile Include="Domain\UserTypes\Compressable\SharpZipStringType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\AbstractSymmetricEncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\AriaEncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\DESEncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\IoCEncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\RC2EncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\RijndaelEncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\Cryptography\TripleDESEncryptStringUserType.cs" />
+    <Compile Include="Domain\UserTypes\CultureUserType.cs" />
+    <Compile Include="Domain\UserTypes\Json\JsonCompressedSerializableUserType.cs" />
+    <Compile Include="Domain\UserTypes\Json\JsonSerializableUserType.cs" />
+    <Compile Include="Domain\UserTypes\Serializations\SerializedObjectUserType.cs" />
+    <Compile Include="Domain\UserTypes\TimeBlockUserType.cs" />
+    <Compile Include="Domain\UserTypes\TimeRangeUserType.cs" />
+    <Compile Include="Domain\UserTypes\YearAndWeekUserType.cs" />
+    <Compile Include="Domain\UserTypes\YearWeekUserType.cs" />
+    <Compile Include="Tools\RepositoryTool.cs" />
+    <Compile Include="Driver\DevartOracleConnectionStringBuilder.cs" />
+    <Compile Include="Driver\DevartOracleDataClientConfiguration.cs" />
+    <Compile Include="Driver\DevartOracleDriver.cs" />
+    <Compile Include="Driver\SqlServerCeDriver.cs" />
+    <Compile Include="Driver\SqlServerClientDriver.cs" />
+    <Compile Include="Domain\AssignedIdEntityBase.cs" />
+    <Compile Include="Domain\DataEntityBase.cs" />
+    <Compile Include="Domain\GuidEntityBase.cs" />
+    <Compile Include="Domain\IAssignedIdEntity.cs" />
+    <Compile Include="Domain\IDataEntity.cs" />
+    <Compile Include="Domain\IStateEntity.cs" />
+    <Compile Include="Domain\StateEntityBase.cs" />
+    <Compile Include="EventListeners\UpdateTimeStampEventListener.cs" />
+    <Compile Include="Facilities\NHIoCInitializationAware.cs" />
+    <Compile Include="Facilities\NHMultipleUnitOfWorkFacility.cs" />
+    <Compile Include="Facilities\NHUnitOfWorkFacility.cs" />
+    <Compile Include="Facilities\NHUnitOfWorkFacilityConfig.cs" />
+    <Compile Include="Fluents\ConventionOptions.cs" />
+    <Compile Include="Fluents\FluentConventionBase.cs" />
+    <Compile Include="Fluents\IFluentConvention.cs" />
+    <Compile Include="Fluents\OracleNamingConvention.cs" />
+    <Compile Include="Fluents\PascalNamingConvention.cs" />
+    <Compile Include="ForTesting\DatabaseTestFixtureBase.cs" />
+    <Compile Include="ForTesting\FluentDatabaseTestFixtureBase.cs" />
+    <Compile Include="ForTesting\FluentNHUnitOfWorkTestContext.cs" />
+    <Compile Include="ForTesting\MappingInfo.cs" />
+    <Compile Include="ForTesting\NHUnitOfWorkTestContext.cs" />
+    <Compile Include="ForTesting\UnitOfWorkTestContext.cs" />
+    <Compile Include="ForTesting\UnitOfWorkTestContextDbStrategy.cs" />
+    <Compile Include="HttpModules\UnitOfWorkHttpApplication.cs" />
+    <Compile Include="HttpModules\UnitOfWorkHttpModule.cs" />
+    <Compile Include="INHOrder.cs" />
+    <Compile Include="INHParameter.cs" />
+    <Compile Include="Interceptors\EditableObjectInterceptor.cs" />
+    <Compile Include="Interceptors\EditablePropertyChangedInterceptor.cs" />
+    <Compile Include="Interceptors\EntityStateInterceptor.cs" />
+    <Compile Include="Interceptors\InterceptorDecorator.cs" />
+    <Compile Include="Interceptors\LoggingInterceptor.cs" />
+    <Compile Include="Interceptors\MultipleInterceptor.cs" />
+    <Compile Include="Interceptors\NotifyPropertyChangedInterceptor.cs" />
+    <Compile Include="Interceptors\ProxyInterceptorBase.cs" />
+    <Compile Include="Loggers\NLogFactory.cs" />
+    <Compile Include="Loggers\NLogLogger.cs" />
+    <Compile Include="Mappers\EnumStringMapper.cs" />
+    <Compile Include="MappingContext.cs" />
+    <Compile Include="NamingRuleKind.cs" />
+    <Compile Include="NHCaches\SysCache\SysCacheConfig.cs" />
+    <Compile Include="NHCaches\SysCache\SysCache.cs" />
+    <Compile Include="NHCaches\SysCache\SysCacheProvider.cs" />
+    <Compile Include="NHCaches\SysCache\SysCacheSectionHandler.cs" />
+    <Compile Include="NHIoC.cs" />
+    <Compile Include="NHOrder.cs" />
+    <Compile Include="NHParameter.cs" />
+    <Compile Include="Tools\NHTool.cs" />
+    <Compile Include="Tools\NHTool.QueryOver.cs" />
+    <Compile Include="Tools\NHTool.Stateless.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IFetchingStrategy.cs" />
+    <Compile Include="Repositories\INHRepository.cs" />
+    <Compile Include="Repositories\NHRepository.cs" />
+    <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="Transformations\DynamicResultTransformer.cs" />
+    <Compile Include="Transformations\TypedResultTransformer.cs" />
+    <Compile Include="UnitOfWork\FluentNHMultipleUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork\FluentNHUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork\INHInitializationAware.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork\IUnitOfWorkImplementor.cs" />
+    <Compile Include="UnitOfWork\LongConversationManager.cs" />
+    <Compile Include="UnitOfWork\NHMultipleUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork\NHMultipleUnitOfWorkImplementor.cs" />
+    <Compile Include="UnitOfWork\NHUnitOfWorkAdapter.cs" />
+    <Compile Include="UnitOfWork\NHUnitOfWorkAdapterBase.cs" />
+    <Compile Include="UnitOfWork\NHUnitOfWorkFactory.cs" />
+    <Compile Include="UnitOfWork\Transactions\IUnitOfWorkTransaction.cs" />
+    <Compile Include="UnitOfWork\Transactions\NHMultipleTransaction.cs" />
+    <Compile Include="UnitOfWork\Transactions\NHTransactionAdapter.cs" />
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="UnitOfWork\UnitOfWorkNestingOptions.cs" />
+    <Compile Include="Tools\CriteriaTool.cs" />
+    <Compile Include="Tools\CriteriaTool.DetachedCriteria.cs" />
+    <Compile Include="Tools\CriteriaTool.Hql.cs" />
+    <Compile Include="Tools\CriteriaTool.ICriteria.cs" />
+    <Compile Include="Tools\NHTool.Linq.cs" />
+    <Compile Include="ForTesting\PersistenceSpecificationTool.cs" />
+    <Compile Include="Tools\QueryOverTool.cs" />
+    <Compile Include="Tools\QueryOverTool.IQueryOver.cs" />
+    <Compile Include="Tools\QueryOverTool.QueryOverOf.cs" />
+    <Compile Include="Tools\NHWith.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{EB7BEB5B-6813-4A60-B453-93060BE22C30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="default.build" />
+    <None Include="UnitOfWork\DefaultRepositoryWindsor.Config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

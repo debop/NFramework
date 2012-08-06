@@ -1,0 +1,50 @@
+﻿using System;
+using System.Diagnostics;
+using System.Threading;
+using NSoft.NFramework.InversionOfControl;
+using NUnit.Framework;
+
+namespace NSoft.NFramework.Data.NHibernateEx {
+    // NOTE : 테스트를 위해서는 Samples\Database\Northwind for Rcl.Data Testing.sql 를 실행해야 합니다.
+    /// <summary>
+    /// 테스트를 위한 추상화 클래스
+    /// </summary>
+    public abstract class IoCSetUpBase {
+        #region << logger >>
+
+        private static readonly NLog.Logger log = NLog.LogManager.GetCurrentClassLogger();
+
+        private static readonly bool IsDebugEnabled = log.IsDebugEnabled;
+
+        #endregion
+
+        [TestFixtureSetUp]
+        public virtual void ClassSetUp() {
+            IoC.Initialize();
+        }
+
+        [TestFixtureTearDown]
+        public virtual void ClassCleanUp() {
+            if(IoC.IsInitialized)
+                IoC.Reset();
+        }
+
+        private static void Prepare() {
+            CollectGarbage();
+            // IncreaseThreadAndProcessPriority();
+        }
+
+        private static void CollectGarbage() {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+            GC.Collect();
+            GC.WaitForFullGCComplete();
+        }
+
+        private static void IncreaseThreadAndProcessPriority() {
+            Thread.CurrentThread.Priority = ThreadPriority.Highest;
+            Process.GetCurrentProcess().PriorityClass = ProcessPriorityClass.RealTime;
+            Process.GetCurrentProcess().ProcessorAffinity = new IntPtr(1);
+        }
+    }
+}

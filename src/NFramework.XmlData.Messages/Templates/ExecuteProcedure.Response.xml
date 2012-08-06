@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<RWXMLDS xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" dir="1" cnn="" commandTimeout="90" tranx="1" cursor="3" isolation="4096">
+	<ERRORS />
+	<RESPONSE reqId="0" id="0" seqId="0" pageCount="-1" totalCount="-1" pageSize="-1" pageNo="-1" sort="" rtype="2">
+		<FIELDS>
+			<F paramType="Int32" size="0">RETURN_VALUE</F>
+		</FIELDS>
+		<RECORDS>
+			<R>
+				<C>0</C>
+			</R>
+		</RECORDS>
+	</RESPONSE>
+	<RESPONSE reqId="0" id="1" seqId="1" pageCount="-1" totalCount="-1" pageSize="-1" pageNo="-1" sort="" rtype="2">
+		<FIELDS>
+			<F paramType="Int32" size="0">RETURN_VALUE</F>
+		</FIELDS>
+		<RECORDS>
+			<R>
+				<C>0</C>
+			</R>
+		</RECORDS>
+	</RESPONSE>
+</RWXMLDS>

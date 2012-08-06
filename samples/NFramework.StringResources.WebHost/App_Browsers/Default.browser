@@ -1,0 +1,18 @@
+<!--
+	다음 위치에서 기존 브라우저 정의를 찾을 수 있습니다.
+	<windir>\Microsoft.NET\Framework\<ver>\CONFIG\Browsers
+-->
+<browsers>
+	<browser refID="Default">
+		<controlAdapters>
+			<!-- ViewState 정보를 특정 Repository에 저장할 수 있도록 하는 IRealPageStatePersister를 IoC를 통해 제공하는 Adapter 입니다. -->
+			<adapter controlType="System.Web.UI.Page" adapterType="NSoft.NFramework.Web.PageAdapters.IoCPageStateAdapter, NSoft.NFramework" />
+
+			<!-- AspImageControlAdapter는 ImageUrl의 상대경로를 절대경로로 변경합니다 : 절대경로를 사용하면 Page Loading 시간을 단축할 수 있습니다.-->
+			<adapter controlType="System.Web.UI.WebControls.Image" adapterType="NSoft.NFramework.Web.ControlAdapters.AspImageControlAdapter, NSoft.NFramework" />
+		</controlAdapters>
+		<capabilities>
+			<capability name="xml" value="true" />
+		</capabilities>
+	</browser>
+</browsers>

@@ -1,0 +1,575 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{36BDDAEE-AED5-4887-A98A-5AD4E844B898}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NSoft.NFramework.FusionCharts.WebHost</RootNamespace>
+    <AssemblyName>NSoft.NFramework.FusionCharts.WebHost</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core">
+      <HintPath>..\..\lib\net-4.0\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Castle.Windsor">
+      <HintPath>..\..\lib\net-4.0\Castle.Windsor.dll</HintPath>
+    </Reference>
+    <Reference Include="Fasterflect">
+      <HintPath>..\..\lib\net-4.0\Fasterflect.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\..\lib\net-4.0\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Ionic.Zip">
+      <HintPath>..\..\lib\net-4.0\Ionic.Zip.dll</HintPath>
+    </Reference>
+    <Reference Include="NCalc">
+      <HintPath>..\..\lib\net-4.0\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\lib\net-4.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NLog">
+      <HintPath>..\..\lib\net-4.0\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\FactoryDB.mdf" />
+    <Content Include="App_Data\FactoryDB_log.ldf">
+      <DependentUpon>FactoryDB.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\MS_SQL_Script.sql" />
+    <Content Include="App_Themes\Default\Css1.css" />
+    <Content Include="App_Themes\Default\Css2.css" />
+    <Content Include="Charts\Ajax\Default.aspx" />
+    <Content Include="Charts\Ajax\MathExpr.aspx" />
+    <Content Include="Charts\Ajax\NormalDistribution.aspx" />
+    <Content Include="Charts\Combinations\CombinationChart.aspx" />
+    <Content Include="Charts\Combinations\Data.xml" />
+    <Content Include="Charts\Combinations\LineDual.xml" />
+    <Content Include="Charts\Combinations\MultiSeriesStackedData.xml" />
+    <Content Include="Charts\MultiSeries\Data.xml" />
+    <Content Include="Charts\MultiSeries\MultiSeriesChart.aspx" />
+    <Content Include="Charts\Scroll\Data.xml" />
+    <Content Include="Charts\Scroll\LineDual.xml" />
+    <Content Include="Charts\Scroll\MultiSeriesStackedData.xml" />
+    <Content Include="Charts\Scroll\ScrollChart.aspx" />
+    <Content Include="Charts\SingleSeries\Data.xml" />
+    <Content Include="Charts\SingleSeries\SingleSeries.aspx" />
+    <Content Include="Charts\Stacked\Data.xml" />
+    <Content Include="Charts\Stacked\MultiSeriesStackedChart.aspx" />
+    <Content Include="Charts\Stacked\MultiSeriesStackedData.xml" />
+    <Content Include="Charts\Stacked\StackedChart.aspx" />
+    <Content Include="Charts\XYPlot\Bubble.xml" />
+    <Content Include="Charts\XYPlot\Scatter.xml" />
+    <Content Include="Charts\XYPlot\XYPlotChart.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="images\loading.gif" />
+    <Content Include="logging.nlog.xml" />
+    <Content Include="Powers\CandleStocks\CandleStickForm.aspx" />
+    <Content Include="Powers\DragNodes\DragNodeChartForm.aspx" />
+    <Content Include="Powers\DragNodes\Static\BasicChart.aspx" />
+    <Content Include="Powers\DragNodes\Static\BasicChart.xml" />
+    <Content Include="Powers\DragNodes\Static\NetworkSimulation.aspx" />
+    <Content Include="Powers\DragNodes\Static\NetworkSimulation.xml" />
+    <Content Include="Powers\Kagi\KagiChartForm.aspx" />
+    <Content Include="Powers\MultiAxis\MultiAxisLineChartForm.aspx" />
+    <Content Include="Powers\MultilevelPieChart\OrganizationChart.aspx" />
+    <Content Include="Powers\MultilevelPieChart\OrganizationChart.xml" />
+    <Content Include="Powers\Radar\RadarChartForm.aspx" />
+    <Content Include="Powers\SplineCharts\SplineChartForm.aspx" />
+    <Content Include="Resources\04.png" />
+    <Content Include="Resources\05.png" />
+    <Content Include="Resources\CEO.jpg" />
+    <Content Include="Resources\desktop.png" />
+    <Content Include="Resources\exchange_server.png" />
+    <Content Include="Resources\firewall.png" />
+    <Content Include="Resources\laptop.png" />
+    <Content Include="Resources\server.png" />
+    <Content Include="Resources\terminal.png" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Widgets\Bullet\Bullet.xml" />
+    <Content Include="Widgets\Bullet\BulletSample.aspx" />
+    <Content Include="Widgets\DrawingPad\DrawingPad.aspx" />
+    <Content Include="Widgets\DrawingPad\DrawingPad.xml" />
+    <Content Include="Widgets\Gantt\Data.xml" />
+    <Content Include="Widgets\Gantt\Default.aspx" />
+    <Content Include="Widgets\Gantt\GanttSample.aspx" />
+    <Content Include="Widgets\Gantt\MultiTasks.xml" />
+    <Content Include="Widgets\Guages\Angular\AngularGauge.xml" />
+    <Content Include="Widgets\Guages\Angular\AngularGaugeSample.aspx" />
+    <Content Include="Widgets\Guages\Angular\EditMode.xml" />
+    <Content Include="Widgets\Guages\Angular\Samples.aspx" />
+    <Content Include="Widgets\Guages\LED\LED.xml" />
+    <Content Include="Widgets\Guages\LED\LEDGaugeSample.aspx" />
+    <Content Include="Widgets\Guages\Linear\LinearGauge.xml" />
+    <Content Include="Widgets\Guages\Linear\LinearGaugeSample.aspx" />
+    <Content Include="Widgets\RealTime\PerformanceCounter.aspx" />
+    <Content Include="Widgets\RealTime\PerformanceCounter.xml" />
+    <Content Include="Widgets\RealTime\RandomData.aspx" />
+    <Content Include="Widgets\RealTime\RandomData.xml" />
+    <Content Include="Widgets\Sparks\Data\SparkColumn.xml" />
+    <Content Include="Widgets\Sparks\Data\SparkLine.xml" />
+    <Content Include="Widgets\Sparks\Data\SparkWinLoss.xml" />
+    <Content Include="Widgets\Sparks\SparkSample.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Charts\Ajax\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Ajax\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Ajax\FactoryDataHandler.ashx.cs">
+      <DependentUpon>FactoryDataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Ajax\MathExpr.aspx.cs">
+      <DependentUpon>MathExpr.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Ajax\MathExpr.aspx.designer.cs">
+      <DependentUpon>MathExpr.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Ajax\MathExprEvaluator.ashx.cs">
+      <DependentUpon>MathExprEvaluator.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Ajax\NormalDistribution.aspx.cs">
+      <DependentUpon>NormalDistribution.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Ajax\NormalDistribution.aspx.designer.cs">
+      <DependentUpon>NormalDistribution.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Ajax\NormalDistributionHandler.ashx.cs">
+      <DependentUpon>NormalDistributionHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Combinations\CombinationChart.aspx.cs">
+      <DependentUpon>CombinationChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Combinations\CombinationChart.aspx.designer.cs">
+      <DependentUpon>CombinationChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\DataHandlers\CombinationChartDataHandler.ashx.cs">
+      <DependentUpon>CombinationChartDataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\DataHandlers\MultiSeriesChartDataHandler.ashx.cs">
+      <DependentUpon>MultiSeriesChartDataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\DataHandlers\MultiSeriesStackedChartDataHandler.ashx.cs">
+      <DependentUpon>MultiSeriesStackedChartDataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\DataHandlers\SingleSeriesChartDataHandler.ashx.cs">
+      <DependentUpon>SingleSeriesChartDataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\DataHandlers\XYPlotChartDataHandler.ashx.cs">
+      <DependentUpon>XYPlotChartDataHandler.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\MultiSeries\MultiSeriesChart.aspx.cs">
+      <DependentUpon>MultiSeriesChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\MultiSeries\MultiSeriesChart.aspx.designer.cs">
+      <DependentUpon>MultiSeriesChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Scroll\ScrollChart.aspx.cs">
+      <DependentUpon>ScrollChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Scroll\ScrollChart.aspx.designer.cs">
+      <DependentUpon>ScrollChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\SingleSeries\SingleSeries.aspx.cs">
+      <DependentUpon>SingleSeries.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\SingleSeries\SingleSeries.aspx.designer.cs">
+      <DependentUpon>SingleSeries.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Stacked\MultiSeriesStackedChart.aspx.cs">
+      <DependentUpon>MultiSeriesStackedChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Stacked\MultiSeriesStackedChart.aspx.designer.cs">
+      <DependentUpon>MultiSeriesStackedChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\Stacked\StackedChart.aspx.cs">
+      <DependentUpon>StackedChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\Stacked\StackedChart.aspx.designer.cs">
+      <DependentUpon>StackedChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Charts\XYPlot\XYPlotChart.aspx.cs">
+      <DependentUpon>XYPlotChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Charts\XYPlot\XYPlotChart.aspx.designer.cs">
+      <DependentUpon>XYPlotChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Common\FusionChartHttpApplication.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Domain\Model\FactoryMaster.cs" />
+    <Compile Include="Domain\Model\FactoryOutput.cs" />
+    <Compile Include="Domain\Services\FactoryRepository.cs" />
+    <Compile Include="MasterPage.Master.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterPage.Master.designer.cs">
+      <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\CandleStocks\CAndleStickDataProvider.ashx.cs">
+      <DependentUpon>CAndleStickDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\CandleStocks\CandleStickForm.aspx.cs">
+      <DependentUpon>CandleStickForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\CandleStocks\CandleStickForm.aspx.designer.cs">
+      <DependentUpon>CandleStickForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\DragNodes\DragNodeChartForm.aspx.cs">
+      <DependentUpon>DragNodeChartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\DragNodes\DragNodeChartForm.aspx.designer.cs">
+      <DependentUpon>DragNodeChartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\DragNodes\DragNodeDataProvider.ashx.cs">
+      <DependentUpon>DragNodeDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\DragNodes\Static\BasicChart.aspx.cs">
+      <DependentUpon>BasicChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\DragNodes\Static\BasicChart.aspx.designer.cs">
+      <DependentUpon>BasicChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\DragNodes\Static\NetworkSimulation.aspx.cs">
+      <DependentUpon>NetworkSimulation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\DragNodes\Static\NetworkSimulation.aspx.designer.cs">
+      <DependentUpon>NetworkSimulation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\Kagi\KagiChartDataProvider.ashx.cs">
+      <DependentUpon>KagiChartDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\Kagi\KagiChartForm.aspx.cs">
+      <DependentUpon>KagiChartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\Kagi\KagiChartForm.aspx.designer.cs">
+      <DependentUpon>KagiChartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\MultiAxis\MultiAxisLineChartDataProvider.ashx.cs">
+      <DependentUpon>MultiAxisLineChartDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\MultiAxis\MultiAxisLineChartForm.aspx.cs">
+      <DependentUpon>MultiAxisLineChartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\MultiAxis\MultiAxisLineChartForm.aspx.designer.cs">
+      <DependentUpon>MultiAxisLineChartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\MultilevelPieChart\MultilevelPieChartDataProvider.ashx.cs">
+      <DependentUpon>MultilevelPieChartDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\MultilevelPieChart\OrganizationChart.aspx.cs">
+      <DependentUpon>OrganizationChart.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\MultilevelPieChart\OrganizationChart.aspx.designer.cs">
+      <DependentUpon>OrganizationChart.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\Radar\RadarChartDataProvider.ashx.cs">
+      <DependentUpon>RadarChartDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\Radar\RadarChartForm.aspx.cs">
+      <DependentUpon>RadarChartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\Radar\RadarChartForm.aspx.designer.cs">
+      <DependentUpon>RadarChartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\SplineCharts\MultiSeriesDataProvider.ashx.cs">
+      <DependentUpon>MultiSeriesDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\SplineCharts\SingleSeriesDataProvider.ashx.cs">
+      <DependentUpon>SingleSeriesDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Powers\SplineCharts\SplineChartForm.aspx.cs">
+      <DependentUpon>SplineChartForm.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Powers\SplineCharts\SplineChartForm.aspx.designer.cs">
+      <DependentUpon>SplineChartForm.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Widgets\Bullet\BulletData.ashx.cs">
+      <DependentUpon>BulletData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Bullet\BulletRealTime.ashx.cs">
+      <DependentUpon>BulletRealTime.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Bullet\BulletSample.aspx.cs">
+      <DependentUpon>BulletSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Bullet\BulletSample.aspx.designer.cs">
+      <DependentUpon>BulletSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\DrawingPad\DrawingPad.aspx.cs">
+      <DependentUpon>DrawingPad.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\DrawingPad\DrawingPad.aspx.designer.cs">
+      <DependentUpon>DrawingPad.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Gantt\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Gantt\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Gantt\GanttDataProvider.ashx.cs">
+      <DependentUpon>GanttDataProvider.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Gantt\GanttSample.aspx.cs">
+      <DependentUpon>GanttSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Gantt\GanttSample.aspx.designer.cs">
+      <DependentUpon>GanttSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\AngularGaugeData.ashx.cs">
+      <DependentUpon>AngularGaugeData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\AngularGaugeRealTime.ashx.cs">
+      <DependentUpon>AngularGaugeRealTime.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\AngularGaugeSample.aspx.cs">
+      <DependentUpon>AngularGaugeSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\AngularGaugeSample.aspx.designer.cs">
+      <DependentUpon>AngularGaugeSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\SampleData.ashx.cs">
+      <DependentUpon>SampleData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\Samples.aspx.cs">
+      <DependentUpon>Samples.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Guages\Angular\Samples.aspx.designer.cs">
+      <DependentUpon>Samples.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\LED\LEDGaugeData.ashx.cs">
+      <DependentUpon>LEDGaugeData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\LED\LEDGaugeRealTime.ashx.cs">
+      <DependentUpon>LEDGaugeRealTime.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\LED\LEDGaugeSample.aspx.cs">
+      <DependentUpon>LEDGaugeSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Guages\LED\LEDGaugeSample.aspx.designer.cs">
+      <DependentUpon>LEDGaugeSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Linear\LinearGaugeData.ashx.cs">
+      <DependentUpon>LinearGaugeData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Linear\LinearGaugeRealTime.ashx.cs">
+      <DependentUpon>LinearGaugeRealTime.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Guages\Linear\LinearGaugeSample.aspx.cs">
+      <DependentUpon>LinearGaugeSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Guages\Linear\LinearGaugeSample.aspx.designer.cs">
+      <DependentUpon>LinearGaugeSample.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\RealTime\PerformanceCounter.aspx.cs">
+      <DependentUpon>PerformanceCounter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\RealTime\PerformanceCounter.aspx.designer.cs">
+      <DependentUpon>PerformanceCounter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\RealTime\RandomData.aspx.cs">
+      <DependentUpon>RandomData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\RealTime\RandomData.aspx.designer.cs">
+      <DependentUpon>RandomData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Sparks\SparkChartData.ashx.cs">
+      <DependentUpon>SparkChartData.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Widgets\Sparks\SparkSample.aspx.cs">
+      <DependentUpon>SparkSample.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Widgets\Sparks\SparkSample.aspx.designer.cs">
+      <DependentUpon>SparkSample.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="logs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Browsers\Default.browser" />
+    <Content Include="Charts\Ajax\FactoryDataHandler.ashx" />
+    <Content Include="Charts\Ajax\MathExprEvaluator.ashx" />
+    <Content Include="Charts\Ajax\NormalDistributionHandler.ashx" />
+    <Content Include="Charts\DataHandlers\CombinationChartDataHandler.ashx" />
+    <Content Include="Charts\DataHandlers\MultiSeriesChartDataHandler.ashx" />
+    <Content Include="Charts\DataHandlers\MultiSeriesStackedChartDataHandler.ashx" />
+    <Content Include="Charts\DataHandlers\SingleSeriesChartDataHandler.ashx" />
+    <Content Include="Charts\DataHandlers\XYPlotChartDataHandler.ashx" />
+    <Content Include="Powers\CandleStocks\CAndleStickDataProvider.ashx" />
+    <Content Include="Powers\DragNodes\DragNodeDataProvider.ashx" />
+    <Content Include="Powers\Kagi\KagiChartDataProvider.ashx" />
+    <Content Include="Powers\MultiAxis\MultiAxisLineChartDataProvider.ashx" />
+    <Content Include="Powers\MultilevelPieChart\MultilevelPieChartDataProvider.ashx" />
+    <Content Include="Powers\Radar\RadarChartDataProvider.ashx" />
+    <Content Include="Powers\SplineCharts\MultiSeriesDataProvider.ashx" />
+    <Content Include="Powers\SplineCharts\SingleSeriesDataProvider.ashx" />
+    <Content Include="Widgets\Bullet\BulletData.ashx" />
+    <Content Include="Widgets\Bullet\BulletRealTime.ashx" />
+    <Content Include="Widgets\Gantt\GanttDataProvider.ashx" />
+    <Content Include="Widgets\Guages\Angular\AngularGaugeData.ashx" />
+    <Content Include="Widgets\Guages\Angular\AngularGaugeRealTime.ashx" />
+    <Content Include="Widgets\Guages\Angular\SampleData.ashx" />
+    <Content Include="Widgets\Guages\LED\LEDGaugeData.ashx" />
+    <Content Include="Widgets\Guages\LED\LEDGaugeRealTime.ashx" />
+    <Content Include="Widgets\Guages\Linear\LinearGaugeData.ashx" />
+    <Content Include="Widgets\Guages\Linear\LinearGaugeRealTime.ashx" />
+    <Content Include="Widgets\Sparks\SparkChartData.ashx" />
+    <None Include="default.build" />
+    <Content Include="MasterPage.Master" />
+    <None Include="_systems\configs\FactoryDB.ado.mssql.ini" />
+    <Content Include="_systems\configs\IoC.Common.config" />
+    <Content Include="_systems\configs\IoC.PageStatePersister.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\NFramework.Data\NFramework.Data-vs11.csproj">
+      <Project>{EB7BEB5B-6813-4A60-B453-93060BE22C30}</Project>
+      <Name>NFramework.Data-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework.FusionCharts\NFramework.FusionCharts-vs11.csproj">
+      <Project>{8bbbc10e-36b1-4c68-9734-298b461dd55b}</Project>
+      <Name>NFramework.FusionCharts-vs11</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\NFramework\NFramework-vs11.csproj">
+      <Project>{0367376a-deb0-4cbe-bdbf-d685add5cab3}</Project>
+      <Name>NFramework-vs11</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>1970</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1810/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+	   Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

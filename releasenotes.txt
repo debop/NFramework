@@ -1,0 +1,23 @@
+﻿NFramework Release notes
+
+
+
+Build 4.0.0 (2012-01-00) - rev  
+==========================================
+
+[Notes]
+
+	
+
+
+[New]
+
+
+[Changes]
+
+
+[Bug Fix]
+
+
+[Known Bugs]
+

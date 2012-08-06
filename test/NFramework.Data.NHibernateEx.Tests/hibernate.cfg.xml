@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
+
+	<bytecode-provider type="lcg"/>
+	<reflection-optimizer use="true" />
+	
+	<!-- NSoft.NFramework.Data.NHibernateEx.NHUnitOfWorkFacility 를 TEST 하기 위해 사용된다. -->
+	<session-factory name="northwind">
+
+		<property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+		<property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
+		<property name="dialect">NHibernate.Dialect.MsSql2005Dialect</property>
+
+		<property name="connection.connection_string_name">Northwind</property>
+
+		<property name="connection.isolation">ReadCommitted</property>
+		<property name="command_timeout">90</property>
+
+		<!--<property name="use_outer_join">true</property>-->
+		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+
+		<property name="query.startup_check">true</property>
+		<property name="prepare_sql">true</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+
+		<property name="adonet.batch_size">30</property>
+		<property name="adonet.wrap_result_sets">false</property>
+
+		<!-- NH 2.1.x -->
+		<!--<property name="proxyfactory.factory_class">NHibernate.ByteCode.Castle.ProxyFactoryFactory, NHibernate.ByteCode.Castle</property>-->
+		<!--<property name="proxyfactory.factory_class">NHibernate.ByteCode.LinFu.ProxyFactoryFactory, NHibernate.ByteCode.LinFu</property>-->
+
+		<!-- DML-style operations : delete/insert/update/bulk copy 시에 hql을 이용할 수 있다. (예: delete Enitty)-->
+		<property name="query.factory_class">NHibernate.Hql.Ast.ANTLR.ASTQueryTranslatorFactory, NHibernate</property>
+
+		<!-- http://fabiomaulo.blogspot.com/2009/06/auto-quote-tablecolumn-names.html -->
+		<!-- none으로 해야 cfg.BuildSessionFactory() 시에 Connection을 만들지 않는다. -->
+		<property name="hbm2ddl.keywords">none</property>
+
+		<!-- ConnectionString에 User Instance 속성이 True이면 default_schema를 정의하면 안된다. -->
+		<property name="default_schema">Northwind.dbo</property>
+
+		<!-- Cache Settings -->
+		<property name="cache.region_prefix">NSoft.NFramework.Data.NHibernateEx</property>
+		<property name="cache.use_second_level_cache">true</property>
+		<property name="cache.use_query_cache">true</property>
+		<property name="cache.use_minimal_puts">true</property>
+
+		<!-- Second Cache Provider -->
+		<property name="cache.provider_class">NHibernate.Cache.HashtableCacheProvider, NHibernate</property>
+
+		<!-- Indexus.NET SharedCache 3.0.5.1을 사용하는 Provider를 NSoft.NFramework에서 제공합니다. NHContrib에서 제공하는 것은 버그가 있어서요 -->
+		<!--<property name="cache.provider_class">NSoft.NFramework.Caching.SharedCache.NHCaches.SharedCacheProvider, NSoft.NFramework.Caching.SharedCache.NHCaches</property>-->
+		
+		<!-- mapping files -->
+		<mapping assembly="NSoft.NFramework.Data.NHibernateEx.Domain" />
+
+		<!-- event listener 추가 -->
+		<!--
+		<listener type="pre-insert" class="NSoft.NFramework.Data.NHibernateEx.EventListeners.UpdateTimestampEventListener, NSoft.NFramework.Data.NHibernateEx"/>
+		<<listener type="pre-update" class="NSoft.NFramework.Data.NHibernateEx.EventListeners.UpdateTimestampEventListener, NSoft.NFramework.Data.NHibernateEx"/>
+		-->
+
+	</session-factory>
+</hibernate-configuration>

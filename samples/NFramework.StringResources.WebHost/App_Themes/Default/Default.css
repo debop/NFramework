@@ -1,0 +1,141 @@
+﻿body {
+    border: 0;
+    color: #000000;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-size: small;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    width: 100%;
+}
+
+
+.button {
+    background: #707070 url(bg-heading1.gif) repeat-x;
+    border: none;
+    cursor: pointer;
+    font-family: Impact, Tahoma bold, Helvetica, sans-serif;
+    font-size: 1.2em;
+    height: 48px;
+    text-transform: uppercase;
+    width: 150px;
+}
+
+
+A:link {
+    color: Black;
+    text-decoration: none;
+}
+
+A:visited {
+    color: Black;
+    text-decoration: none;
+}
+
+A:active {
+    color: Black;
+    text-decoration: none;
+}
+
+A:hover {
+    background-color: Silver;
+    border-color: Gray;
+    border-style: solid;
+    border-width: 1px;
+    color: Black;
+    text-decoration: underline;
+}
+
+
+.header {
+    background-color: #0a6cce;
+    color: White;
+    font-family: verdana, arial, helvetica, sans-serif;
+    font-family: Verdana;
+    font-size: x-small;
+    width: 100%;
+}
+
+
+.hborder {
+    background-color: Gray;
+    border: solid 0px Gray;
+    height: 1px;
+    width: 100%;
+}
+
+.vborder {
+    background-color: Gray;
+    width: 1px;
+}
+
+.menu {
+    background-color: #ececec;
+    color: Black;
+    font-size: 8pt;
+    height: 24px;
+}
+
+.frame {
+    border: none 0px;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    width: 100%;
+}
+
+.login {
+    font-size: .9em;
+    font-weight: bold;
+    height: 31px;
+    padding-top: 10px;
+    text-align: right;
+}
+
+h1 {
+    background: #CBCF60 url(bg-heading1.gif) repeat-x;
+    border-top: 1px solid #CBCF60;
+    display: block;
+    font-family: Impact, Arial Black, Tahoma bold, Helvetica, sans-serif;
+    font-size: 1.4em;
+    font-weight: normal;
+    height: 34px;
+    margin-bottom: 6px;
+    margin-top: 0;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+h2 {
+    background: #F6F8FA;
+    border: 1px solid #DCE0E5;
+    color: #ACADAF;
+    display: block;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 1.4em;
+    font-weight: bold;
+    height: 24px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-bottom: 4px;
+    padding-left: 15px;
+    padding-top: 8px;
+    text-align: left;
+}
+
+h3 {
+    display: inline;
+    font-family: Verdana;
+    font-size: xx-large;
+    font-weight: bold;
+    height: 34px;
+    padding-left: 15px;
+    padding-top: 15px;
+}
+
+.footer {
+    background-color: #3266CC;
+    border-bottom: solid 1px Black;
+    border-top: solid 1px Black;
+    color: White;
+    height: 30px;
+    text-align: center;
+}

@@ -1,0 +1,1 @@
+﻿<%@ Application Inherits="NSoft.NFramework.XmlData.WebHost.XmlDataHttpApplication" Language="C#" %>

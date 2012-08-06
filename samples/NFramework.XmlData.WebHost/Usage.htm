@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>XmlDataService 사용법</title>
+        <meta http-equiv="Keyword" content="NSoft.NFramework,XmlDataService" />
+        <style type="text/css">
+            body {
+                background-color: SteelBlue;
+                color: Beige;
+                font-family: 맑은 고딕, Lucida Console;
+                font-size: 9pt;
+                margin-left: 2pt;
+                margin-top: 2pt;
+            }
+
+            TH {
+                alignment-adjust: central;
+                background: SteelBlue;
+                color: WHITE;
+                font-weight: bold;
+                line-height: 13pt;
+            }
+
+            TD {
+                color: Beige;
+                line-height: 12pt;
+            }
+
+            A {
+                color: WHITE;
+                text-decoration: none;
+            }
+
+            A:active { color: Gold; }
+
+            A:hover {
+                color: Gold;
+                text-decoration: underline;
+            }
+
+            UL {
+                color: Khaki;
+                line-height: 12pt;
+                list-style: square;
+                margin-left: 12pt;
+                text-align: left;
+            }
+
+            LI { line-height: 13pt; }
+        </style>
+    </head>
+    <body>
+        <h1>XML Data Service 사용법</h1>
+        <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="beige">
+            <tr>
+                <th>Methods </th>
+                <th>Description </th>
+            </tr>
+            <tr>
+                <th>IHttpHandler </th>
+                <td>
+                    <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="beige">
+                        <tr>
+                            <th>URI </th>
+                            <td>/XmlDataService.ashx?Product=[ProductName]&amp;UseCompression=[0|1] </td>
+                        </tr>
+                        <tr>
+                            <th>Parameters </th>
+                            <td>Product : 사용할 Database Name (web.config의 connectionStrings의 name)
+                                <br />
+                                UseCompression : 압축 사용 여부 </td>
+                        </tr>
+                        <tr>
+                            <th>예제 </th>
+                            <td><a href="XmlDataService.ashx?Product=Northwind&UseCompression=1">http://localhost/XmlDataService/XmlDataService.ashx?Product=Northwind&UseCompression=1</a> : (Northwind DB, 압축 사용) </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>ASP.NET Pages </th>
+                <td>
+                    <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="beige">
+                        <tr>
+                            <th>URI </th>
+                            <td>/XmlDataService.aspx?Product=[ProductName]&amp;UseCompression=[0|1] </td>
+                        </tr>
+                        <tr>
+                            <th>Parameters </th>
+                            <td>Product : 사용할 Database Name (web.config의 connectionStrings의 name)
+                                <br />
+                                UseCompression : 압축 사용 여부 </td>
+                        </tr>
+                        <tr>
+                            <th>예제 </th>
+                            <td><a href="XmlDataService.aspx?Product=Northwind&UseCompression=1">http://localhost/XmlDataService/XmlDataService.aspx?Product=Northwind&UseCompression=1</a> : (Northwind DB, 압축 사용) </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>ASP.NET WebService </th>
+                <td>
+                    <table cellpadding="2" cellspacing="0" width="100%" border="1" bordercolor="beige">
+                        <tr>
+                            <th>URI </th>
+                            <td>/XmlDataService.asmx </td>
+                        </tr>
+                        <tr>
+                            <th>Methods </th>
+                            <td>
+                                <pre>byte[] Execute(byte[] requestData, string productName, bool useCompression);
+System.Xml.XmlDocument ExecuteToXmlDocument(System.Xml.XmlDocument requestXml, string productName, bool useCompression);</pre>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>예제 </th>
+                            <td>
+                                <pre>byte[] responseData = _xdWebService.Execute(requestData, "", useCompression);
+XmlDocument responseXml = _xdWebService.ExecuteToXmlDocument(requestXml, "", false);</pre>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <th>Method </th>
+                <td><a href="Methods.aspx">Methods.aspx?Product=ProductName</a> (Method 방식의 Request에 제공되는 Method 정보) </td>
+            </tr>
+        </table>
+    </body>
+</html>

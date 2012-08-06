@@ -1,0 +1,15 @@
+﻿<chart caption='Monthly Unit Sales' xAxisName='Month' yAxisName='Units' showValues='0' formatNumberScale='0' showBorder='1' plotFillRatio='100'>
+	<!-- chart에 clickURL을 설정하면 개별 link는 먹지 않는다. clickURL의 n- 은 new window라는 뜻이다. -->
+	<set label='Jan' value='462' Link="javascript:alert('January');" />
+	<set label='Feb' value='857' Link="javascript:PopUp('Febrary');" />
+	<set label='Mar' value='671' Link="javascript:PopUp('March');" />
+	<set label='Apr' value='494' Link="javascript:PopUp('April');" />
+	<set label='May' value='761' Link='P-detailsPopUp,width=400,height=300,toolbar=no,scrollbars=yes,resizable=yes-../Ajax/Default.aspx' />
+	<set label='Jun' value='960' Link='P-detailsPopUp,width=400,height=300,toolbar=no,scrollbars=yes,resizable=yes-../Ajax/Default.aspx' />
+	<set label='Jul' value='629' />
+	<set Label='Aug' value='622' />
+	<set label='Sep' value='376' />
+	<set label='Oct' value='494' />
+	<set label='Nov' value='761' />
+	<set label='Dec' value='960' />
+</chart>

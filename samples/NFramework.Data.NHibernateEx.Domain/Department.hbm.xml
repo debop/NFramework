@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2"
+				   assembly="NSoft.NFramework.Data.NHibernateEx.Domain"
+				   namespace="NSoft.NFramework.Data.NHibernateEx.Domain">
+
+	<!--
+		NOTE: 부서와 같이 계층형 구조를 가지는 엔티티에 대해, DB별로 계층형 정보를 얻을 수 있도록 하였다.
+	-->
+
+	<sql-query name="GetDepartmentAndAncestors.MsSql" cacheable="true" comment="자신과 조상 부서들을 모두 조회합니다.">
+		<return class="Department" />
+		<![CDATA[
+			EXEC GetDepartmentAndAncestors :DepartmentId
+		]]>
+	</sql-query>
+
+	<sql-query name="GetDepartmentAndDescendents.MsSql" cacheable="true" comment="자신과 하위의 모든 자손 부서들을 조회합니다.">
+		<return class="Department" />
+		<![CDATA[
+			EXEC GetDepartmentAndDescendents :DepartmentId
+		]]>
+	</sql-query>
+	
+	<sql-query name="GetDepartmentAndAncestors.Oracle" cacheable="true" comment="자신과 조상 부서들을 모두 조회합니다.">
+		<return class="Department" />
+		<![CDATA[
+			SELECT *
+			  FROM Department
+			 START WITH DepartmentId = :DepartmentId
+			 CONNECT BY PRIOR ParentId = DepartmentId
+		]]>
+	</sql-query>
+
+	<sql-query name="GetDepartmentAndDescendents.Oracle" cacheable="true" comment="자신과 조상 부서들을 모두 조회합니다.">
+		<return class="Department" />
+		<![CDATA[
+			SELECT *
+			  FROM Department
+			 START WITH DepartmentId = :DepartmentId
+			 CONNECT BY PRIOR DepartmentId = ParentId
+		]]>
+	</sql-query>
+
+	<database-object>
+		<create>
+			create proc [GetDepartmentAndAncestors]
+			@DepartmentId int
+			as
+
+				WITH DeptHierarchy (DepartmentId, ParentId)
+				AS (
+					SELECT DepartmentId, ParentId
+					FROM dbo.Department
+					WHERE DepartmentId = @DepartmentId
+
+					UNION ALL
+
+					SELECT D.DepartmentId, D.ParentId
+					FROM dbo.Department D
+					INNER JOIN DeptHierarchy DH ON (D.DepartmentId = DH.ParentId)
+				)
+
+				SELECT D.* FROM Department D inner join DeptHierarchy DH on (D.DepartmentId = DH.DepartmentId);
+
+			RETURN
+		</create>
+		<drop>
+			drop proc [GetDepartmentAndAncestors]
+		</drop>
+		<dialect-scope name="NHibernate.Dialect.MsSql2005Dialect" />
+		<dialect-scope name="NHibernate.Dialect.MsSql2008Dialect" />
+	</database-object>
+
+	<database-object>
+		<create>
+			create proc [GetDepartmentAndDescendents]
+			@DepartmentId int
+			as
+
+				WITH DeptHierarchy (DepartmentId, ParentId)
+				AS (
+					SELECT DepartmentId, ParentId
+					FROM dbo.Department
+					WHERE DepartmentId = @DepartmentId
+
+					UNION ALL
+
+					SELECT D.DepartmentId, D.ParentId
+					FROM dbo.Department D
+					INNER JOIN DeptHierarchy DH ON (D.ParentId = DH.DepartmentId)
+				)
+
+				SELECT D.* FROM Department D inner join DeptHierarchy DH on (D.DepartmentId = DH.DepartmentId);
+
+			RETURN
+		</create>
+		<drop>
+			drop proc [GetDepartmentAndDescendents]
+		</drop>
+		<dialect-scope name="NHibernate.Dialect.MsSql2005Dialect" />
+		<dialect-scope name="NHibernate.Dialect.MsSql2008Dialect" />
+	</database-object>
+
+</hibernate-mapping>

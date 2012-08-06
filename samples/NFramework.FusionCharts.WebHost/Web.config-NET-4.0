@@ -1,0 +1,146 @@
+﻿<?xml version="1.0"?>
+<configuration> 
+	<configSections>
+		<section name="castle" type="Castle.Windsor.Configuration.AppDomain.CastleSectionHandler, Castle.Windsor"/>
+		<section name="dataConfiguration" type="Microsoft.Practices.EnterpriseLibrary.Data.Configuration.DatabaseSettings, Microsoft.Practices.EnterpriseLibrary.Data, Version=4.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35"/>
+		<section name="log4net" type="log4net.Config.Log4NetConfigurationSectionHandler, log4net"/>
+	</configSections>
+
+	<appSettings>
+		<!-- 주차를 계산하는 로직을 선택합니다. System.Globalization.CalendarWeekRule [FirstDay(한국)|FirstFourDayWeek(ISO 8601)|FirstFullWeek] -->
+		<add key="WeekOfYear.CalendarWeekRule" value="FirstFourDayWeek"/>
+		<!-- 주차 계산 시 한 주의 시작 요일을 지정함. 한국은 Sunday, ISO 8601 은 Monday 이다.-->
+		<add key="WeekOfYear.FirstDayOfWeek" value="Monday"/>
+	</appSettings>
+
+	<!-- Microsoft Enterprise Library 4.1 DAAB -->
+	<dataConfiguration defaultDatabase="FactoryDB"/>
+	<connectionStrings>
+		<add name="FactoryDB" 
+			 connectionString="Data Source=.\SQLEXPRESS;AttachDbFileName=|DataDirectory|\FactoryDB.mdf;Integrated Security=True;User Instance=True;Asynchronous Processing=true;" 
+			 providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+
+	<!-- Castle -->
+	<castle>
+		<include uri="file://_systems/configs/IoC.Common.config"/>
+	</castle>
+
+	<!-- This section contains the log4net configuration settings -->
+	<!--
+		log4net을 사용하기 위해서는 AssemblyInfo.cs 에 다음과 같은 코드를 넣어야 된다.
+		
+		[assembly:log4net.Config.XmlConfigurator(Watch=true)]																										// log4net 환경설정이 app configuration에 있을 때
+		[assembly: log4net.Config.XmlConfigurator(ConfigFileExtension = "log4net", Watch=true)]                 // log4net 용 환경설정을 xxxx.log4net 으로 할 때
+		Pattern layout help : http://logging.apache.org/log4net/release/sdk/log4net.Layout.PatternLayout.html
+	-->
+	<log4net debug="false">
+		<appender name="ConsoleAppender" type="log4net.Appender.ConsoleAppender">
+			<layout type="log4net.Layout.PatternLayout">
+				<param name="ConversionPattern" value="%-4timestamp [%2.5thread] %-5level [%class{1}.%method] : %message%newline"/>
+			</layout>
+		</appender>
+		<appender name="LogFileAppender" type="log4net.Appender.FileAppender">
+			<file value="_systems\logs\RCL.FusionCharts.log"/>
+			<appendToFile value="false"/>
+			<lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+			<layout type="log4net.Layout.PatternLayout">
+				<param name="ConversionPattern" value="%date [%2.5thread] %-5level %class.%method : %message%newline"/>
+			</layout>
+		</appender>
+		<appender name="RollingFileAppender" type="log4net.Appender.RollingFileAppender">
+			<file value="_systems\logs\RCL.FusionCharts.log"/>
+			<appendToFile value="true"/>
+			<rollingStyle value="Composite"/>
+			<datePattern value="yyyyMMdd"/>
+			<maxSizeRollBackups value="5"/>
+			<maximumFileSize value="1MB"/>
+			<lockingModel type="log4net.Appender.FileAppender+MinimalLock"/>
+			<layout type="log4net.Layout.PatternLayout">
+				<param name="ConversionPattern" value="%date [%2.5thread] %-5level [%class.%method] : %message%newline"/>
+			</layout>
+		</appender>
+		<!-- level : ALL, DEBUG, INFO, WARN, ERROR, FATAL, OFF-->
+		<root>
+			<level value="ALL"/>
+			<appender-ref ref="RollingFileAppender"/>
+		</root>
+		<!--
+		<logger name="RCL">
+			<level value="DEBUG"/>
+		</logger>
+		-->
+	</log4net>
+
+	<system.web>
+		<!-- 
+			컴파일된 페이지에 디버깅 기호를 삽입하려면 
+			compilation debug="true"로 설정하십시오. 이렇게 하면 
+			성능에 영향을 주므로 개발하는 동안에만 이 값을 
+			true로 설정하십시오.
+		-->
+		<compilation debug="false">
+		</compilation>
+		<!--
+			<authentication> 섹션에서는 ASP.NET에서 사용되는 
+			보안 인증 모드의 구성을 설정하여 들어오는 
+			사용자를 식별할 수 있습니다. 
+		-->
+		<authentication mode="Windows"/>
+		<!--
+			<customErrors> 섹션에서는 요청을 실행하는 동안 
+			처리되지 않은 오류가 발생하는 경우 수행할 작업을 
+			구성할 수 있습니다. 특히 이 섹션에서는 
+			개발자가 오류 스택 추적 대신 html 오류 페이지가 표시되도록 
+			구성할 수 있습니다.
+
+		<customErrors mode="RemoteOnly" defaultRedirect="GenericErrorPage.htm">
+			<error statusCode="403" redirect="NoAccess.htm" />
+			<error statusCode="404" redirect="FileNotFound.htm" />
+		</customErrors>
+		-->
+		<httpHandlers>
+			<!-- NOTE : Resource File을 다운 받기 위한 Handler 입니다. FusionResourceFile.axd?File=FusionCharts.js-->
+			<add verb="*" path="RCL.FusionCharts.ResourceFile.axd" type="RCL.FusionCharts.Web.ResourceFileHandler, RCL.FusionCharts" validate="false"/>
+			<!-- NOTE : Fusion Chart 를 Image로 변환하는 Handler 입니다.-->
+			<add verb="*" path="RCL.FusionCharts.Export.axd" type="RCL.FusionCharts.Web.ExportHandler, RCL.FusionCharts" validate="false"/>
+			<!-- NOTE : RealTime Chart를 위한 실시간 Data를 제공하는 예제 Handler 입니다.-->
+			<add verb="*" path="RCL.FusionCharts.RandomData.axd" type="RCL.FusionCharts.Web.RandomDataProvider, RCL.FusionCharts" validate="false"/>
+			<add verb="*" path="RCL.FusionCharts.PerformanceCounter.axd" type="RCL.FusionCharts.Web.SystemPerformanceDataProvider, RCL.FusionCharts" validate="false"/>
+		</httpHandlers>
+		<pages controlRenderingCompatibilityVersion="3.5" clientIDMode="AutoID"/>
+	</system.web>
+	<!-- 
+		IIS(Internet Information Services) 7.0에서 ASP.NET AJAX를 실행하려면
+		system.webServer 섹션이 필요합니다. 이전 버전의 IIS에서는 필요하지 않습니다.
+	-->
+	<system.webServer>
+		<validation validateIntegratedModeConfiguration="false"/>
+		<handlers>
+			<!-- NOTE : Resource File을 다운 받기 위한 Handler 입니다. FusionResourceFile.axd?File=FusionCharts.js-->
+			<add name="RCL_FusionCharts_ResourceFile_axd" verb="*" path="RCL.FusionCharts.ResourceFile.axd" type="RCL.FusionCharts.Web.ResourceFileHandler, RCL.FusionCharts"/>
+			<!-- NOTE : Fusion Chart 를 Image로 변환하는 Handler 입니다.-->
+			<add name="RCL_FusionCharts_Export_axd" verb="*" path="RCL.FusionCharts.Export.axd" type="RCL.FusionCharts.Web.ExportHandler, RCL.FusionCharts"/>
+			<!-- NOTE : RealTime Chart를 위한 실시간 Data를 제공하는 예제 Handler 입니다.-->
+			<add name="RCL_FusionCharts_RandomData_axd" verb="*" path="RCL.FusionCharts.RandomData.axd" type="RCL.FusionCharts.Web.RandomDataProvider, RCL.FusionCharts"/>
+			<add name="RCL_FusionCharts_PerformanceCounter_axd" verb="*" path="RCL.FusionCharts.PerformanceCounter.axd" type="RCL.FusionCharts.Web.SystemPerformanceDataProvider, RCL.FusionCharts"/>
+		</handlers>
+	</system.webServer>
+	<runtime>
+		<assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+			<!-- Castle Version 변경에 따라 -->
+			<dependentAssembly>
+				<assemblyIdentity name="Castle.Core" publicKeyToken="407dd0808d44fbdc"/>
+				<bindingRedirect oldVersion="1.0.0.0-1.1.65535.65535" newVersion="1.2.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Castle.MicroKernel" publicKeyToken="407dd0808d44fbdc"/>
+				<bindingRedirect oldVersion="1.0.0.0-2.0.65535.65535" newVersion="2.1.0.0"/>
+			</dependentAssembly>
+			<dependentAssembly>
+				<assemblyIdentity name="Castle.Windsor" publicKeyToken="407dd0808d44fbdc"/>
+				<bindingRedirect oldVersion="1.0.0.0-2.0.65535.65535" newVersion="2.1.0.0"/>
+			</dependentAssembly>
+		</assemblyBinding>
+	</runtime>
+</configuration>
