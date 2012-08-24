@@ -1,0 +1,14 @@
+Mongo DB를 서비스로 만들기 위해서 다음과 같은 작업을 수행하면 됩니다.
+
+1. MongoDB 파일들을 압축을 풀어 C:\Program Files\MongoDB  폴더에 복사합니다. 
+	 mongod.exe 파일이 존재하는지 확인
+
+2. 도스 창에서 아래와 같이 입력하시고 실행하면 됩니다.	 
+
+		>mongod --bind_ip 127.0.0.1 --logpath "C:\mongod.log" --logappend --dbpath "C:\Program Files\MongoDB\Data" --directoryperdb --install
+		
+		# C:\Program Files\MongoDB 에 설치되었을 시에 (로그 파일은 Program Files 경로를 제대로 못찾는다. 그래서 root에 쓰도록 했다)
+
+	단 모든 경로는 미리 생성되어 있어야합니다.
+	NOTE : --logpath 는 절대경로에 파일명까지 지정해야 합니다.  (현재 버전에서 logpath에 공백이 들어가면 안됩니다. - 버그 : 예 : "C:\Program Files\MongoDB\Logs\mongod.log" 해도 안됩니다)
+	NOTE : --dbpath 는 절대경로 전체를 지정해 주어야 합니다.

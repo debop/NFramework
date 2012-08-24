@@ -7,6 +7,7 @@ namespace NSoft.NFramework.Caching.Memcached.NHCaches {
     /// Memcached를 캐시 저장소로 사용하는 NHibernate 2nd Cache의 Client 클래스입니다.
     /// </summary>
     public class MemcachedCacheClient : NHibernate.Cache.ICache {
+
         #region << logger >>
 
         private static readonly NLog.Logger log = NLog.LogManager.GetCurrentClassLogger();

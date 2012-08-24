@@ -205,16 +205,17 @@ namespace NSoft.NFramework.InversionOfControl {
             if(GlobalContainer == null) {
                 lock(_syncLock) {
                     if(GlobalContainer == null) {
-                        if(IsDebugEnabled)
-                            log.Debug("IoC 전역 컨테이너를 초기화합니다... container=[{0}], thread id=[{1}]", container,
-                                      Thread.CurrentThread.ManagedThreadId);
+                        if (IsDebugEnabled)
+                            log.Debug("IoC 전역 컨테이너를 초기화합니다... container=[{0}], thread id=[{1}]",
+                                      container, Thread.CurrentThread.ManagedThreadId);
 
                         GlobalContainer = container;
                         Thread.MemoryBarrier();
                         BindingKernelComponentEvents(GlobalContainer);
 
-                        if(log.IsInfoEnabled)
-                            log.Info("IoC 전역 컨테이너 초기화에 성공했습니다!!! thread id=[{0}]", Thread.CurrentThread.ManagedThreadId);
+                        if (log.IsInfoEnabled)
+                            log.Info("IoC 전역 컨테이너 초기화에 성공했습니다!!! thread id=[{0}]",
+                                     Thread.CurrentThread.ManagedThreadId);
                     }
                 }
             }
